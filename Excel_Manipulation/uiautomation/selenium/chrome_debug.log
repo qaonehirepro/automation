@@ -1,0 +1,2 @@
+[10784:13252:0412/183755.089:ERROR:device_event_log_impl.cc(214)] [18:37:55.089] USB: usb_device_handle_win.cc:1056 Failed to read descriptor from node connection: A device attached to the system is not functioning. (0x1F)
+[10784:13252:0412/183755.099:ERROR:device_event_log_impl.cc(214)] [18:37:55.099] USB: usb_device_handle_win.cc:1056 Failed to read descriptor from node connection: A device attached to the system is not functioning. (0x1F)
