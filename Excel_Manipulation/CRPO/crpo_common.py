@@ -3,12 +3,13 @@ import json
 
 
 class CrpoCommon:
+    domain = 'https://amsin.hirepro.in'
 
     @staticmethod
     def login_to_crpo(login_name, password, tenant):
         header = {"content-type": "application/json"}
         data = {"LoginName": login_name, "Password": password, "TenantAlias": tenant, "UserName": login_name}
-        response = requests.post("https://amsinsec.hirepro.in/py/common/user/login_user/", headers=header,
+        response = requests.post(crpo_common_obj.domain + "/py/common/user/login_user/", headers=header,
                                  data=json.dumps(data), verify=False)
         login_response = response.json()
         headers = {"content-type": "application/json", "APP-NAME": "py3app", "X-APPLMA": "true",
@@ -20,7 +21,7 @@ class CrpoCommon:
         request = {"testId": int(test_id), "testUserId": int(test_user_id),
                    "reportFlags": {"eduWorkProfilesRequired": True, "testUsersScoreRequired": True,
                                    "fileContentRequired": False, "isProctroingDetailsRequired": True}, "print": False}
-        response = requests.post("https://amsinsec.hirepro.in/py/assessment/report/api/v1/candidatetranscript/",
+        response = requests.post(crpo_common_obj.domain + "/py/assessment/report/api/v1/candidatetranscript/",
                                  headers=token,
                                  data=json.dumps(request, default=str), verify=False)
         return response.json()
@@ -30,17 +31,17 @@ class CrpoCommon:
         print(token)
         request = {
             "testUserIds": tu_ids, "isForce": True}
-        response = requests.post(
-            "https://amsinsec.hirepro.in/py/assessment/htmltest/api/v1/initiate-test-proc/?isSync=false",
-            headers=token,
-            data=json.dumps(request, default=str), verify=False)
+        response = requests.post(crpo_common_obj.domain +
+                                 "/py/assessment/htmltest/api/v1/initiate-test-proc/?isSync=false",
+                                 headers=token,
+                                 data=json.dumps(request, default=str), verify=False)
         return response.json()
 
     @staticmethod
     def job_status(token, contextguid):
         print(token)
         request = {"ContextGUID": contextguid}
-        response = requests.post("https://amsinsec.hirepro.in/py/crpo/api/v1/getStatusOfAsyncAPI",
+        response = requests.post(crpo_common_obj.domain + "/py/crpo/api/v1/getStatusOfAsyncAPI",
                                  headers=token, data=json.dumps(request, default=str), verify=False)
         resp_dict = json.loads(response.content)
         # api_job_status = resp_dict['data']['JobState']
@@ -54,7 +55,7 @@ class CrpoCommon:
         token.pop('content-type', None)
         token.pop('X-APPLMA', None)
         request = {'file': (file_name, open(file_path, 'rb'))}
-        url = 'https://amsin.hirepro.in/py/common/filehandler/api/v2/upload/.doc,.rtf,.dot,.docx,' \
+        url = crpo_common_obj.domain + '/py/common/filehandler/api/v2/upload/.doc,.rtf,.dot,.docx,' \
               '.docm,.dotx,.dotm,.docb,.pdf,.xls,.xlt,.xlm,.xlsx,.xlsm,.xltx,.xltm,.xlsb,.xla,.xlam,.xll,' \
               '.xlw,.ppt,.pot,.pps,.pptx,.pptm,.potx,.potm,.ppam,.ppsx,.ppsm,.sldx,.sldm,.zip,.rar,.7z,.gz,.jpeg,' \
               '.jpg,.gif,.png,.msg,.txt,.mp4,.mvw,.3gp,.sql,.webm,.csv,.odt,.json,.ods,.ogg,.p12,/5000/'
@@ -68,7 +69,7 @@ class CrpoCommon:
     def untag_candidate(token, data1):
         # sample data = [{"testUserIds": [893441, 893442, 893443]}]
         for request in data1:
-            response = requests.post("https://amsinsec.hirepro.in/py/assessment/testuser/api/v1/un-tag/",
+            response = requests.post(crpo_common_obj.domain + "/py/assessment/testuser/api/v1/un-tag/",
                                      headers=token,
                                      data=json.dumps(request, default=str), verify=False)
 
@@ -77,7 +78,7 @@ class CrpoCommon:
         token.pop('X-APPLMA', None)
         print(token)
         request = {"testUserId": testuser_id}
-        response = requests.post("https://amsinsec.hirepro.in/py/assessment/testuser/api/v1/get_proctor_detail/",
+        response = requests.post(crpo_common_obj.domain + "/py/assessment/testuser/api/v1/get_proctor_detail/",
                                  headers=token,
                                  data=json.dumps(request, default=str), verify=False)
         tu_proctor_details = response.json()
@@ -88,13 +89,13 @@ class CrpoCommon:
         token.pop('X-APPLMA', None)
         print(token)
         request = {"testId": test_id, "candidateId": candidate_id}
-        response = requests.post("https://amsinsec.hirepro.in/py/assessment/testuser/api/v1/re_initiate_automation/",
+        response = requests.post(crpo_common_obj.domain + "/py/assessment/testuser/api/v1/re_initiate_automation/",
                                  headers=token,
                                  data=json.dumps(request, default=str), verify=False)
 
     @staticmethod
     def get_all_questions(token, request_data):
-        response = requests.post("https://amsinsec.hirepro.in/py/assessment/authoring/api/v1/getAllQuestion/",
+        response = requests.post(crpo_common_obj.domain + "/py/assessment/authoring/api/v1/getAllQuestion/",
                                  headers=token,
                                  data=str(request_data.get('request')), verify=False)
         get_all_questions_resp = json.loads(response.content)
@@ -102,14 +103,14 @@ class CrpoCommon:
 
     @staticmethod
     def generate_applicant_report(token, request_payload):
-        response = requests.post("https://amsinsec.hirepro.in/py/common/xl_creator/api/v1/generate_applicant_report/",
+        response = requests.post(crpo_common_obj.domain + "/py/common/xl_creator/api/v1/generate_applicant_report/",
                                  headers=token, data=json.dumps(request_payload, default=str), verify=False)
         resp_dict = json.loads(response.content)
         return resp_dict
 
     @staticmethod
     def initiate_vendor_score(crpotoken, cid, test_id):
-        url = 'https://amsinsec.hirepro.in/py/assessment/assessmentvendor/api/v1/initiateVendorScore/'
+        url = crpo_common_obj.domain + '/py/assessment/assessmentvendor/api/v1/initiateVendorScore/'
         data = {"testId": test_id, "candidateIds": [cid], "isForced": True}
 
         response = requests.post(url,
@@ -123,7 +124,7 @@ class CrpoCommon:
     def untag_candidate_by_cid(token, test_id, candidate_ids):
         data1 = [{"testId": test_id, "candidateIds": candidate_ids}]
         for request in data1:
-            response = requests.post("https://amsinsec.hirepro.in/py/assessment/testuser/api/v1/un-tag/",
+            response = requests.post(crpo_common_obj.domain + "/py/assessment/testuser/api/v1/un-tag/",
                                      headers=token,
                                      data=json.dumps(request, default=str), verify=False)
             print(response)

@@ -1,10 +1,10 @@
-from COMMON.read_excel import *
+from Excel_Manipulation.COMMON.read_excel import *
 import datetime
 import xlsxwriter
 import mysql
 import mysql.connector
-from CRPO.credentials import *
-from CRPO.crpo_common import *
+from Excel_Manipulation.CRPO.credentials import *
+from Excel_Manipulation.CRPO.crpo_common import *
 
 
 class QuestionSearch:
@@ -22,13 +22,13 @@ class QuestionSearch:
         requests.packages.urllib3.disable_warnings()
         self.started = datetime.datetime.now()
         self.started = self.started.strftime("%Y-%M-%d-%H-%M-%S")
-        input_file_path = 'C:\\Users\\User\\Desktop\\Automation\\PythonWorkingScripts_InputData\\' \
+        input_file_path = 'D:\\automation\\PythonWorkingScripts_InputData\\' \
                           'Assessment/Search\\question_search_boundary_automation.xls'
         excel_read_obj.excel_read(input_file_path, 0)
         self.excel_requests = excel_read_obj.details
 
         self.write_excel = xlsxwriter.Workbook(
-            'C:\\Users\\User\\Desktop\\Automation\\PythonWorkingScripts_Output\\Assessment\\search\\question_boundary_search_'
+            'D:\\automation\\PythonWorkingScripts_Output\\Assessment\\search\\question_boundary_search_'
             + self.started + '.xls')
         self.ws = self.write_excel.add_worksheet()
         self.black_color = self.write_excel.add_format({'font_color': 'black', 'font_size': 9})
@@ -61,7 +61,7 @@ class QuestionSearch:
         self.expected_id = []
         for i in excel_expected_ids:
             self.expected_id.append(int(float(i)))
-        print(self.expected_id)
+        # print(self.expected_id)
         resp_dict = CrpoCommon.get_all_questions(token, request_data)
 
         status = resp_dict['status']
@@ -189,7 +189,7 @@ class QuestionSearch:
         self.final_qur = ""
         if where_str:
             self.final_qur = select_str + " where " + where_str + ";"
-            print(self.final_qur)
+            # print(self.final_qur)
 
         if self.final_qur:
             try:

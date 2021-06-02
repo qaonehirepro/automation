@@ -16,10 +16,10 @@ class AllConfigurations():
     # 3."save_path" is having output path (which will be generated post completion of the script)
     # -----------------------------------------------------------------------------------------------------------------#
     def filePath(self, jobrole_name, jobrole_id):
-        self.expected_excel_sheet_path = r'C:\Users\User\Desktop\Automation\PythonWorkingScripts_InputData\Assessment\applicant_report\job1_1.xlsx'
+        self.expected_excel_sheet_path = r'D:\automation\PythonWorkingScripts_InputData\Assessment\applicant_report\job1_1.xlsx'
 
-        self.download_path = r'C:\Users\User\Desktop\Automation\PythonWorkingScripts_InputData\Assessment\applicant_report\downloaded\downloadedfile.xlsx'
-        self.save_path = r'C:\Users\User\Desktop\Automation\PythonWorkingScripts_Output\Assessment\report\applicantreport.xlsx'
+        self.download_path = r'D:\automation\PythonWorkingScripts_InputData\Assessment\applicant_report\downloaded\downloadedfile.xlsx'
+        self.save_path = r'D:\automation\PythonWorkingScripts_Output\Assessment\report\applicantreport.xlsx'
 
     # -----------------------------------------------------------------------------------------------------------------#
     # 1.  xlsxwriter.Workbook is used to create Excel Workbook in the specified path

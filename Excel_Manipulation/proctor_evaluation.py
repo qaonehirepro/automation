@@ -1,12 +1,12 @@
-from CRPO.crpo_common import *
-from CRPO.credentials import *
-from COMMON.read_excel import *
-from COMMON.writeExcel import *
+from Excel_Manipulation.CRPO.crpo_common import *
+from Excel_Manipulation.CRPO.credentials import *
+from Excel_Manipulation.COMMON.read_excel import *
+from Excel_Manipulation.COMMON.writeExcel import *
 
 
 class ProctorEvaluation:
     def __init__(self):
-        save_path = "C:\\Users\\User\Desktop\\Automation\\PythonWorkingScripts_Output\\Assessment\\proctoring_evaluation"
+        save_path = "D:\\automation\\PythonWorkingScripts_Output\\Assessment\\proctoring\\proctoring_eval"
         write_excel_object.save_result(save_path)
         # 0th Row Header
         header = ['Proctoring Evaluation automation']
@@ -24,14 +24,14 @@ class ProctorEvaluation:
             if overall_proctoring_status_value is False:
                 self.status = 'Suspicious'
             else:
-                if overall_proctoring_status_value >= 0:
-                    self.status = 'Not Suspicious'
-                elif 0 < overall_proctoring_status_value <= 0.33:
+                if 0 < overall_proctoring_status_value <= 0.33:
                     self.status = 'Low'
-                elif 0.33 < overall_proctoring_status_value < 0.66:
+                elif 0.33 < overall_proctoring_status_value <= 0.66:
                     self.status = 'Medium'
-                else:
+                elif 0.66 < overall_proctoring_status_value <= 1:
                     self.status = 'Highly Suspicious'
+                else:
+                    self.status = 'Not Suspicious'
         else:
             self.status = 'Not Suspicious'
 
@@ -46,6 +46,7 @@ class ProctorEvaluation:
             self.overalll_status_color = write_excel_object.red_color
 
     def proctor_detail(self, row_count, current_excel_data, token):
+        # row_count = row_count + 1
         self.over_all_status = 'Pass'
         self.overalll_status_color = write_excel_object.green_color
         tu_id = int(current_excel_data.get('testUserId'))
@@ -81,8 +82,9 @@ class ProctorEvaluation:
                                     self.current_status_color)
         write_excel_object.ws.write(row_count, 12, self.status, self.current_status_color)
 
-        self.compare_results(current_excel_data.get('overallSuspiciousValue'), overall_suspicious_value)
-        write_excel_object.ws.write(row_count, 13, current_excel_data.get('overallSuspiciousValue'),
+        excel_overall_suspicious_value = round(current_excel_data.get('overallSuspiciousValue'), 2)
+        self.compare_results(excel_overall_suspicious_value, overall_suspicious_value)
+        write_excel_object.ws.write(row_count, 13, excel_overall_suspicious_value,
                                     self.current_status_color)
         write_excel_object.ws.write(row_count, 14, overall_suspicious_value, self.current_status_color)
 
@@ -94,13 +96,13 @@ class ProctorEvaluation:
                                     write_excel_object.black_color_bold)
         write_excel_object.ws.write(row_count, 4, current_excel_data.get('testUserId'),
                                     write_excel_object.black_color_bold)
-        self.row_count = row_count + 1
+
 
 
 login_token = crpo_common_obj.login_to_crpo(cred_crpo_admin.get('user'), cred_crpo_admin.get('password'),
                                             cred_crpo_admin.get('tenant'))
 excel_read_obj.excel_read(
-    'C:\\Users\\User\\Desktop\\Automation\\PythonWorkingScripts_InputData\\Assessment\\proc_eval\\proc_eval.xls', 0)
+    'D:\\automation\\PythonWorkingScripts_InputData\\Assessment\\proc_eval\\proc_eval1.xls', 0)
 excel_data = excel_read_obj.details
 proctor_obj = ProctorEvaluation()
 tuids = []
@@ -115,8 +117,8 @@ while current_job_status == 'Pending':
     current_job_status = current_job_status['data']['JobState']
     print("_________________ Proctor Evaluation is in Progress _______________________")
     print(current_job_status)
+row_count = 2
 for data in excel_data:
-    row_count = 2
     proctor_obj.proctor_detail(row_count, data, login_token)
     row_count = row_count + 1
 ended = datetime.datetime.now()

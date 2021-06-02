@@ -1,11 +1,11 @@
 import xlsxwriter
-from COMMON.read_excel import *
+from Excel_Manipulation.COMMON.read_excel import *
 # return requests.get(url).json()
 import datetime
 import time
-from CRPO.credentials import *
-from CRPO.crpo_common import *
-from ASSESSMENT.assessment_common import *
+from  Excel_Manipulation.CRPO.credentials import *
+from  Excel_Manipulation.CRPO.crpo_common import *
+from  Excel_Manipulation.ASSESSMENT.assessment_common import *
 
 
 class ReInitiateAutomation:
@@ -15,8 +15,8 @@ class ReInitiateAutomation:
         self.started = self.started.strftime("%Y-%M-%d-%H-%M-%S")
         self.row_size = 2
         self.write_excel = xlsxwriter.Workbook(
-            'C:\\Users\\User\Desktop\\Automation\\PythonWorkingScripts_Output'
-            '\\Assessment\\reinitiate - ' + self.started + '.xls')
+            'D:\\automation\\PythonWorkingScripts_Output'
+            '\\Assessment\\reinitiate\\reinitiate - ' + self.started + '.xls')
         self.final_status = ''
         self.ws = self.write_excel.add_worksheet()
         self.black_color = self.write_excel.add_format({'font_color': 'black', 'font_size': 9})
@@ -97,7 +97,7 @@ class ReInitiateAutomation:
 
 
 re_initiate_obj = ReInitiateAutomation()
-input_file_path = 'C:\\Users\\User\\Desktop\\Automation\\PythonWorkingScripts_InputData\\Assessment' \
+input_file_path = 'D:\\automation\\PythonWorkingScripts_InputData\\Assessment' \
                   '\\reinitiateautomation1.xls'
 excel_read_obj.excel_read(input_file_path, 0)
 excel_data = excel_read_obj.details

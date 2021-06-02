@@ -1,13 +1,13 @@
-from uiautomation.assessment_ui_common import *
+from Excel_Manipulation.uiautomation.assessment_ui_common import *
 import time
-from uiautomation.assessment_data_verification import *
-from COMMON.read_excel import *
+from Excel_Manipulation.uiautomation.assessment_data_verification import *
+from Excel_Manipulation.COMMON.read_excel import *
 
 class OnlineAssessment:
 
     def __init__(self):
         self.url = "https://amsinsec.hirepro.in/assessment/#/assess/login/eyJhbGlhcyI6ImF0In0="
-        self.path = r"C:\Users\User\Desktop\Automation\chromedriver.exe"
+        self.path = r"D:\automation\chromedriver.exe"
 
 
     def mcq_assessment(self, current_excel_data):
@@ -134,7 +134,7 @@ class OnlineAssessment:
 
 print(datetime.datetime.now())
 assessment_obj = OnlineAssessment()
-input_file_path = "C:/Users/User/Desktop/Automation/PythonWorkingScripts_InputData/UI/Assessment/ui_relogin.xls"
+input_file_path = "D:/automation/PythonWorkingScripts_InputData/UI/Assessment/ui_relogin.xls"
 excel_read_obj.excel_read(input_file_path, 0)
 excel_data = excel_read_obj.details
 for current_excel_row in excel_data:

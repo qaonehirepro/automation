@@ -1,7 +1,7 @@
-from uiautomation.assessment_ui_common import *
-from uiautomation.assessment_data_verification import *
-from COMMON.read_excel import *
-from COMMON.writeExcel import *
+from Excel_Manipulation.uiautomation.assessment_ui_common import *
+from Excel_Manipulation.uiautomation.assessment_data_verification import *
+from Excel_Manipulation.COMMON.read_excel import *
+from Excel_Manipulation.COMMON.writeExcel import *
 
 
 class QPVerification:
@@ -9,10 +9,10 @@ class QPVerification:
     def __init__(self):
         self.row = 1
 
-        save_path = r"C:\Users\User\Desktop\Automation\PythonWorkingScripts_Output\Assessment"
+        save_path = r"D:\automation\PythonWorkingScripts_Output\Assessment\UI"
         write_excel_object.save_result(save_path)
         self.url = "https://amsinsec.hirepro.in/assessment/#/assess/login/eyJhbGlhcyI6ImF0In0="
-        self.path = r"C:\Users\User\Desktop\Automation\chromedriver.exe"
+        self.path = r"D:\automation\chromedriver.exe"
         header = ['QP_Verification']
         write_excel_object.write_headers_for_scripts(0, 0, header, write_excel_object.black_color_bold)
         header = ['Test Cases', 'Status', 'Test Id', 'Candidate Id', 'Testuser ID', 'User Name', 'Password',
@@ -90,7 +90,7 @@ class QPVerification:
 
 print(datetime.datetime.now())
 assessment_obj = QPVerification()
-input_file_path = r"C:\Users\User\Desktop\Automation\PythonWorkingScripts_InputData\UI\Assessment\qp_verification.xls"
+input_file_path = r"D:\automation\PythonWorkingScripts_InputData\UI\Assessment\qp_verification.xls"
 excel_read_obj.excel_read(input_file_path, 0)
 questions = excel_read_obj.details
 print(questions)

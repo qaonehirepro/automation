@@ -1,4 +1,4 @@
-from COMMON.read_excel import *
+from Excel_Manipulation.COMMON.read_excel import *
 from selenium import webdriver
 import datetime
 import time
@@ -15,10 +15,10 @@ class Create_Case():
         # self.__borwser_Location = "/home/muthumurugan/Desktop/chromedriver_2.37"
         self.__url = "https://accenturetest-in.hirepro.in/automation-mandatory"
         # self.driver = webdriver.Chrome(self.__borwser_Location)
-        self.driver = webdriver.Chrome(executable_path=r"C:\Users\User\Desktop\Automation\chromedriver.exe")
+        self.driver = webdriver.Chrome(executable_path=r"D:\automation\chromedriver.exe")
         now = datetime.datetime.now()
         self.__current_DateTime = now.strftime("%d-%m-%Y")
-        file_path = 'C:\\Users\\User\\Desktop\\Automation\\PythonWorkingScripts_InputData\\' \
+        file_path = 'D:\\automation\\PythonWorkingScripts_InputData\\' \
                     'Microsite\\GenericExcelTest.xls'
 
         sheet_index = 2
@@ -831,7 +831,7 @@ class Create_Case():
 
     def save(self):
         self.wb_Result.save(
-            'C:\\Users\\User\\Desktop\\Automation\\PythonWorkingScripts_Output\\Microsite\\'
+            'D:\\automation\\PythonWorkingScripts_Output\\Microsite\\'
             'UI_Functionality_VandV(' + self.__current_DateTime + ').xls')
 
     def final_status(self, starttime, endtime):

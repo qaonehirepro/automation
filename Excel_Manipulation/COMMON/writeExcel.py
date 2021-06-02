@@ -23,6 +23,7 @@ class Excel:
         self.over_all_status_color = self.over_all_status_pass
 
     def excelReadExpectedSheet(self, excepted_sheet_path):
+        print (excepted_sheet_path)
         self.expected_excel = xlrd.open_workbook(excepted_sheet_path)
         self.expected_excel_sheet1 = self.expected_excel.sheet_by_index(0)
 

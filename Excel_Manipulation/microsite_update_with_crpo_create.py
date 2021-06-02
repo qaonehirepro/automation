@@ -1,4 +1,4 @@
-from COMMON.read_excel import *
+from Excel_Manipulation.COMMON.read_excel import *
 from selenium import webdriver
 import time
 import datetime
@@ -40,7 +40,7 @@ class CreateCase:
             'font: bold on,height 250,color-index red;pattern: pattern solid,fore-colour light_yellow;'
             'border: left thin,right thin,top thin,bottom thin')
 
-        file_path = 'C:\\Users\\User\\Desktop\\Automation\\PythonWorkingScripts_InputData\\' \
+        file_path = 'D:\\automation\\PythonWorkingScripts_InputData\\' \
                     'Microsite\\GenericExcelTest.xls'
 
         sheet_index = 1
@@ -65,7 +65,7 @@ class CreateCase:
             # self.browser_location = "/home/muthumurugan/Desktop/chromedriver_2.37"
             self.url = 'https://automation-in.hirepro.in/?candidate=%s' % self.candidate_id
             # self.driver = webdriver.Chrome(self.browser_location)
-            self.driver = webdriver.Chrome(executable_path=r"C:\Users\User\Desktop\Automation\chromedriver.exe")
+            self.driver = webdriver.Chrome(executable_path=r"D:\automation\chromedriver.exe")
         else:
             print ("candidate not created in CRPO due to some technical glitch")
             print (self.response_data)
@@ -1065,7 +1065,7 @@ class CreateCase:
         C2.over_all_report_status(self.ui_ms_row_status, self.ms_ams_row_status)
         self.rowsize += 2
         C2.wb_Result.save(
-            'C:\\Users\\User\\Desktop\\Automation\\PythonWorkingScripts_Output\\Microsite\\'
+            'D:\\automation\\PythonWorkingScripts_Output\\Microsite\\'
             'Microsite_UpdateCase(' + self.current_DateTime + ').xls')
 
     def over_all_report_status(self, ui_ms_row_status, ms_ams_row_status):
@@ -1391,7 +1391,7 @@ C2.ws.write(0, 1, C2.over_all_status, C2.over_all_status_color)
 C2.ws.write(0, 2, C2.starttime1, C2.base_style1)
 C2.ws.write(0, 3, endtime1, C2.base_style1)
 C2.wb_Result.save(
-        'C:\\Users\\User\\Desktop\\Automation\\PythonWorkingScripts_Output\\Microsite\\'
+        'D:\\automation\\PythonWorkingScripts_Output\\Microsite\\'
         'Microsite_UpdateCase(' + C2.current_DateTime + ').xls')
 delete_Candidate_customes = 'delete from  candidate_customs where id = ' \
                                 '(select candidatecustom_id from candidates where id=%s);' %C2.candidate_id

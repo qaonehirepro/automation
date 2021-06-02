@@ -1,8 +1,8 @@
 import datetime
 import xlsxwriter
-from COMMON.read_excel import *
-from CRPO.crpo_common import *
-from CRPO.credentials import *
+from Excel_Manipulation.COMMON.read_excel import *
+from Excel_Manipulation.CRPO.crpo_common import *
+from Excel_Manipulation.CRPO.credentials import *
 
 
 class AllowedFileExtensions:
@@ -18,7 +18,7 @@ class AllowedFileExtensions:
         self.started = datetime.datetime.now()
         self.started = self.started.strftime("%Y-%M-%d-%H-%M-%S")
         self.row_size = 2
-        file = "C:\\Users\\User\\Desktop\\Automation\\PythonWorkingScripts_Output\\allowed_extensions\\allowed_extensions -"
+        file = "D:\\automation\\PythonWorkingScripts_Output\\allowed_extensions\\allowed_extensions -"
         self.write_excel = xlsxwriter.Workbook(file + self.started + '.xls')
         self.black_color = self.write_excel.add_format({'font_color': 'black', 'font_size': 9})
         self.black_color_bold = self.write_excel.add_format({'font_color': 'black', 'bold': True, 'font_size': 9})
@@ -41,7 +41,7 @@ class AllowedFileExtensions:
 
     def validate_files(self, token, excel_input):
         try:
-            file_path = 'C:\\Users\\User\\Desktop\\Automation\\PythonWorkingScripts_InputData\\allowed_extensions\\%s' \
+            file_path = 'D:\\automation\\PythonWorkingScripts_InputData\\allowed_extensions\\%s' \
                         % (excel_input.get('filePathName'))
             file_name = excel_input.get('fileName')
             print(file_name)
@@ -78,7 +78,7 @@ allowed_ext_obj = AllowedFileExtensions()
 login_token = crpo_common_obj.login_to_crpo(cred_crpo_admin.get('user'), cred_crpo_admin.get('password'),
                                             cred_crpo_admin.get('tenant'))
 
-input_file_path = 'C:\\Users\\User\\Desktop\\Automation\\PythonWorkingScripts_InputData\\allowed_extensions\\allowed_extensions_inputfile.xls'
+input_file_path = 'D:\\automation\\PythonWorkingScripts_InputData\\allowed_extensions\\allowed_extensions_inputfile.xls'
 excel_read_obj.excel_read(input_file_path, 0)
 excel_data = excel_read_obj.details
 for data in excel_data:

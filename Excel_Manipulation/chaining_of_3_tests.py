@@ -1,9 +1,9 @@
 import xlsxwriter
 import datetime
-from COMMON.read_excel import *
-from CRPO.credentials import *
-from CRPO.crpo_common import *
-from ASSESSMENT.assessment_common import *
+from Excel_Manipulation.COMMON.read_excel import *
+from Excel_Manipulation.CRPO.credentials import *
+from Excel_Manipulation.CRPO.crpo_common import *
+from Excel_Manipulation.ASSESSMENT.assessment_common import *
 # from crpo_common import *
 import time
 
@@ -15,7 +15,7 @@ class ChainingOfTests:
         self.started = datetime.datetime.now()
         self.started = self.started.strftime("%Y-%m-%d-%H-%M-%S")
         self.write_excel = xlsxwriter.Workbook(
-            'C:\\Users\\User\Desktop\\Automation\\PythonWorkingScripts_Output'
+            'D:\\automation\\PythonWorkingScripts_Output'
             '\\Assessment\\3tests_Chaining_Automation - ' + self.started + '.xls')
 
         self.ws = self.write_excel.add_worksheet()
@@ -305,7 +305,7 @@ class ChainingOfTests:
 
 
 chaining_obj = ChainingOfTests()
-input_file_path = 'C:\\Users\\User\\Desktop\\Automation\\PythonWorkingScripts_InputData\\Assessment\\chaining\\3_tests_login_automation.xls'
+input_file_path = 'D:\\automation\\PythonWorkingScripts_InputData\\Assessment\\chaining\\3_tests_login_automation.xls'
 crpo_headers = crpo_common_obj.login_to_crpo(cred_crpo_admin.get('user'), cred_crpo_admin.get('password'),
                                              cred_crpo_admin.get('tenant'))
 excel_read_obj.excel_read(input_file_path, 0)

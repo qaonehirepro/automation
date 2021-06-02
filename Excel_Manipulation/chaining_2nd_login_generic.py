@@ -1,9 +1,9 @@
 import xlsxwriter
 import datetime
-from COMMON.read_excel import *
-from ASSESSMENT.assessment_common import *
-from CRPO.credentials import *
-from CRPO.crpo_common import *
+from Excel_Manipulation.COMMON.read_excel import *
+from Excel_Manipulation.ASSESSMENT.assessment_common import *
+from Excel_Manipulation.CRPO.credentials import *
+from Excel_Manipulation.CRPO.crpo_common import *
 # from second_login_assessment_data import *
 # from crpo_common import *
 import time
@@ -15,7 +15,7 @@ class ChainingOfTwoTests:
         self.started = datetime.datetime.now()
         self.started = self.started.strftime("%Y-%m-%d-%H-%M-%S")
         self.write_excel = xlsxwriter.Workbook(
-            'C:\\Users\\User\Desktop\\Automation\\PythonWorkingScripts_Output'
+            'D:\\automation\\PythonWorkingScripts_Output'
             '\\Assessment\\Chaining_Automation - ' + self.started + '.xls')
 
         self.ws = self.write_excel.add_worksheet()
@@ -168,7 +168,7 @@ class ChainingOfTwoTests:
 
 
 chaining_obj = ChainingOfTwoTests()
-input_file_path = 'C:\\Users\\User\\Desktop\\Automation\\PythonWorkingScripts_InputData\\Assessment\\chaining\\2ndlogincase.xls'
+input_file_path = 'D:\\automation\\PythonWorkingScripts_InputData\\Assessment\\chaining\\2ndlogincase.xls'
 # input_file_path = 'C:\\Users\\User\\Desktop\\Automation\\PythonWorkingScripts_InputData\\Assessment\\chaining\\hp_tl.xls'
 
 excel_read_obj.excel_read(input_file_path, 0)

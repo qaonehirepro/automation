@@ -1,9 +1,9 @@
 import ast
-from applicantReportConfig import *
-from COMMON.writeExcel import *
+from Excel_Manipulation.applicantReportConfig import *
+from Excel_Manipulation.COMMON.writeExcel import *
 import urllib.request
-from CRPO.crpo_common import *
-from CRPO.credentials import *
+from Excel_Manipulation.CRPO.crpo_common import *
+from Excel_Manipulation.CRPO.credentials import *
 import time
 
 
@@ -52,8 +52,8 @@ class AssessmentInterviewReport:
 
 air = AssessmentInterviewReport()
 total_jobs_count = config_obj.total_jobs.values()
-crpo_headers = crpo_common_obj.login_to_crpo(cred_crpo_admin.get('user'), cred_crpo_admin.get('password'),
-                                             cred_crpo_admin.get('tenant'))
+# crpo_headers = crpo_common_obj.login_to_crpo(cred_crpo_admin.get('user'), cred_crpo_admin.get('password'),
+#                                              cred_crpo_admin.get('tenant'))
 for jobrole_name, jobrole_id in config_obj.total_jobs.items():
     try:
         print("------------------------------------------------------------------------")
@@ -61,7 +61,7 @@ for jobrole_name, jobrole_id in config_obj.total_jobs.items():
         print("------------------------------------------------------------------------")
         config_obj.filePath(jobrole_name, jobrole_id)
         config_obj.writeExcelConfigurations()
-        air.downloadReport(crpo_headers)
+        # air.downloadReport(crpo_headers)
         write_excel_object.save_result(config_obj.save_path)
         write_excel_object.excelReadExpectedSheet(config_obj.expected_excel_sheet_path)
         write_excel_object.excelReadActualSheet(config_obj.download_path)
@@ -74,3 +74,4 @@ for jobrole_name, jobrole_id in config_obj.total_jobs.items():
               "Please verify it manually" % (jobrole_name, jobrole_id))
         print("------------------------------------------------------------------------")
         print(e)
+
