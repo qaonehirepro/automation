@@ -306,6 +306,7 @@ class ChainingOfTests:
 
 chaining_obj = ChainingOfTests()
 input_file_path = 'D:\\automation\\PythonWorkingScripts_InputData\\Assessment\\chaining\\3_tests_login_automation.xls'
+#input_file_path = 'D:\\automation\\PythonWorkingScripts_InputData\\Assessment\\chaining\\3_tests_failure_test.xls'
 crpo_headers = crpo_common_obj.login_to_crpo(cred_crpo_admin.get('user'), cred_crpo_admin.get('password'),
                                              cred_crpo_admin.get('tenant'))
 excel_read_obj.excel_read(input_file_path, 0)

@@ -49,14 +49,14 @@ class CreateCase:
     def loginToCRPO(self):
         header = {"content-type": "application/json"}
         data = {"LoginName": "admin", "Password": "4LWS-0671", "TenantAlias": "Automation", "UserName": "admin"}
-        response = requests.post('https://amsinsec.hirepro.in/py/common/user/login_user/', headers=header,
+        response = requests.post('https://amsin.hirepro.in/py/common/user/login_user/', headers=header,
                                  data=json.dumps(data), verify=False)
         abc = response.json()
         headers = {"content-type": "application/json", "X-AUTH-TOKEN": abc.get("Token")}
         return headers
 
     def create_candidate(self):
-        response = requests.post('https://amsinsec.hirepro.in/py/rpo/create_candidate/', headers=self.loginToCRPO(),
+        response = requests.post('https://amsin.hirepro.in/py/rpo/create_candidate/', headers=self.loginToCRPO(),
                                  data=json.dumps(self.create_candidate_request), verify=False)
         self.response_data = response.json()
         self.candidate_id = self.response_data.get('CandidateId')
@@ -71,6 +71,7 @@ class CreateCase:
             print (self.response_data)
 
     def msdbconnection(self):
+
         self.conn1 = mysql.connector.connect(host='52.66.103.86',
                                              database='automation-in052018',
                                              user='root',
@@ -78,7 +79,9 @@ class CreateCase:
         self.cursor = self.conn1.cursor()
 
     def amsdbconnection(self):
-        self.conn = mysql.connector.connect(host='35.154.36.218',
+        # 35.154.213.175
+        # 35.154.36.218
+        self.conn = mysql.connector.connect(host='35.154.213.175',
                                             database='appserver_core',
                                             user='qauser',
                                             password='qauser')

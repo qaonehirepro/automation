@@ -1,4 +1,4 @@
-from Excel_Manipulation.uiautomation.assessment_ui_common import *
+from Excel_Manipulation.uiautomation.assessment_ui_common_v2 import *
 import time
 from Excel_Manipulation.uiautomation.assessment_data_verification import *
 from Excel_Manipulation.COMMON.read_excel import *
@@ -6,7 +6,7 @@ from Excel_Manipulation.COMMON.read_excel import *
 class OnlineAssessment:
 
     def __init__(self):
-        self.url = "https://amsinsec.hirepro.in/assessment/#/assess/login/eyJhbGlhcyI6ImF0In0="
+        self.url = "https://amsin.hirepro.in/assessment/#/assess/login/eyJhbGlhcyI6ImF0In0="
         self.path = r"D:\automation\chromedriver.exe"
 
 
@@ -40,7 +40,7 @@ class OnlineAssessment:
                     self.browser.switch_to.window(self.browser.window_handles[0])
                     time.sleep(1)
                     self.browser.execute_script(
-                        '''window.open("https://amsinsec.hirepro.in/assessment/#/assess/login/eyJhbGlhcyI6ImF0In0=", "_blank");''')
+                        '''window.open("https://amsin.hirepro.in/assessment/#/assess/login/eyJhbGlhcyI6ImF0In0=", "_blank");''')
                     time.sleep(2)
                     self.browser.switch_to.window(self.browser.window_handles[1])
                     login_details = assess_ui_common_obj.ui_login_to_test(current_excel_data.get('loginName'),

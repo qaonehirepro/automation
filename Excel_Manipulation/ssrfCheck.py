@@ -19,10 +19,10 @@ class SecurityCheck:
         self.row_size = 2
         self.write_excel = xlsxwriter.Workbook(
             'D:\\automation\\PythonWorkingScripts_Output\\SSRF\\security_check - ' + self.started + '.xls')
-        self.allowed_apis = ['https://amsinsec.hirepro.in/py/rpo/upload_zipped_photos/',
-                             'https://amsinsec.hirepro.in/py/crpo/api/v1/asyncAPIContextUpdate',
-                             'https://amsinsec.hirepro.in/py/pofu/api/v1/submit-form/',
-                             'https://amsinsec.hirepro.in/py/assessment/htmltest/api/v1/submit-video-answer/']
+        self.allowed_apis = ['https://amsin.hirepro.in/py/rpo/upload_zipped_photos/',
+                             'https://amsin.hirepro.in/py/crpo/api/v1/asyncAPIContextUpdate',
+                             'https://amsin.hirepro.in/py/pofu/api/v1/submit-form/',
+                             'https://amsin.hirepro.in/py/assessment/htmltest/api/v1/submit-video-answer/']
         self.ws = self.write_excel.add_worksheet()
         self.black_color = self.write_excel.add_format({'font_color': 'black', 'font_size': 9})
         self.red_color = self.write_excel.add_format({'font_color': 'red', 'font_size': 9})

@@ -16,7 +16,7 @@ class AssessmentUICommon:
         return self.driver
 
     def ui_login_to_test(self, user_name, password):
-        time.sleep(20)
+        time.sleep(10)
         self.driver.find_element_by_name('loginUsername').clear()
         self.driver.find_element_by_name('loginUsername').send_keys(user_name)
         self.driver.find_element_by_name('loginPassword').clear()
@@ -37,8 +37,9 @@ class AssessmentUICommon:
         return login_status
 
     def select_i_agree(self):
-        time.sleep(5)
+        time.sleep(1)
         i_agree_status = self.driver.find_element_by_class_name('chk')
+        # i_agree_status = self.driver.find_element_by_xpath('//div[@class="chk"]')
         is_selected = i_agree_status.is_selected()
         if not is_selected:
             i_agree_status.click()

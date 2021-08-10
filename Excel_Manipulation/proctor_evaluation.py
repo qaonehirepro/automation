@@ -24,31 +24,43 @@ class ProctorEvaluation:
             if overall_proctoring_status_value is False:
                 self.status = 'Suspicious'
             else:
-                if 0 < overall_proctoring_status_value <= 0.33:
-                    self.status = 'Low'
-                elif 0.33 < overall_proctoring_status_value <= 0.66:
-                    self.status = 'Medium'
-                elif 0.66 < overall_proctoring_status_value <= 1:
+                if overall_proctoring_status_value >= 0.66:
                     self.status = 'Highly Suspicious'
+
+                elif overall_proctoring_status_value >= 0.35:
+                    self.status = 'Medium'
+
+                elif overall_proctoring_status_value > 0:
+                    self.status = 'Low'
                 else:
                     self.status = 'Not Suspicious'
+
+
+                # if 0 < overall_proctoring_status_value <= 0.35:
+                #     self.status = 'Low'
+                # elif 0.35 < overall_proctoring_status_value <= 0.66:
+                #     self.status = 'Medium'
+                # elif 0.66 < overall_proctoring_status_value <= 1:
+                #     self.status = 'Highly Suspicious'
+                # else:
+                #     self.status = 'Not Suspicious'
         else:
             self.status = 'Not Suspicious'
 
     def compare_results(self, excel_data, actual_data):
         if excel_data == actual_data:
-            self.current_status = 'Pass'
             self.current_status_color = write_excel_object.green_color
         else:
             self.current_status = 'Fail'
-            self.over_all_status = 'Fail'
+            proctor_obj.over_all_status = 'Fail'
             self.current_status_color = write_excel_object.red_color
-            self.overalll_status_color = write_excel_object.red_color
+            proctor_obj.overalll_status_color = write_excel_object.red_color
+            self.test_case_status_color = write_excel_object.red_color
 
     def proctor_detail(self, row_count, current_excel_data, token):
-        # row_count = row_count + 1
-        self.over_all_status = 'Pass'
-        self.overalll_status_color = write_excel_object.green_color
+        self.current_status_color = write_excel_object.green_color
+        self.current_status = 'Pass'
+        self.test_case_status_color = write_excel_object.green_color
         tu_id = int(current_excel_data.get('testUserId'))
         tu_proctor_details = crpo_common_obj.proctor_evaluation_detail(token, tu_id)
         proctorDetail = tu_proctor_details['data']['proctorDetail']
@@ -77,6 +89,8 @@ class ProctorEvaluation:
         overall_proctoring_status = proctorDetail.get('finalDecision')
         overall_suspicious_value = proctorDetail.get('systemOverallDecision')
         self.suspicious_or_not_supicious(overall_proctoring_status, overall_suspicious_value)
+
+
         self.compare_results(current_excel_data.get('overallProctoringStatus'), self.status)
         write_excel_object.ws.write(row_count, 11, current_excel_data.get('overallProctoringStatus'),
                                     self.current_status_color)
@@ -90,7 +104,7 @@ class ProctorEvaluation:
 
         write_excel_object.ws.write(row_count, 0, current_excel_data.get('testCase'),
                                     write_excel_object.black_color_bold)
-        write_excel_object.ws.write(row_count, 1, self.current_status, self.current_status_color)
+        write_excel_object.ws.write(row_count, 1, self.current_status, self.test_case_status_color)
         write_excel_object.ws.write(row_count, 2, current_excel_data.get('testId'), write_excel_object.black_color_bold)
         write_excel_object.ws.write(row_count, 3, current_excel_data.get('candidateId'),
                                     write_excel_object.black_color_bold)
@@ -98,14 +112,16 @@ class ProctorEvaluation:
                                     write_excel_object.black_color_bold)
 
 
-
 login_token = crpo_common_obj.login_to_crpo(cred_crpo_admin.get('user'), cred_crpo_admin.get('password'),
                                             cred_crpo_admin.get('tenant'))
 excel_read_obj.excel_read(
-    'D:\\automation\\PythonWorkingScripts_InputData\\Assessment\\proc_eval\\proc_eval1.xls', 0)
+    'D:\\automation\\PythonWorkingScripts_InputData\\Assessment\\proc_eval\\proc_eval3.xls', 0)
 excel_data = excel_read_obj.details
 proctor_obj = ProctorEvaluation()
 tuids = []
+overalll_status_color = write_excel_object.green_color
+over_all_status = 'Pass'
+
 for fetch_tuids in excel_data:
     tuids.append(int(fetch_tuids.get('testUserId')))
 context_id = CrpoCommon.force_evaluate_proctoring(login_token, tuids)

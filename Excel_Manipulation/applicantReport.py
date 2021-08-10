@@ -52,26 +52,37 @@ class AssessmentInterviewReport:
 
 air = AssessmentInterviewReport()
 total_jobs_count = config_obj.total_jobs.values()
-# crpo_headers = crpo_common_obj.login_to_crpo(cred_crpo_admin.get('user'), cred_crpo_admin.get('password'),
-#                                              cred_crpo_admin.get('tenant'))
+crpo_headers = crpo_common_obj.login_to_crpo(cred_crpo_admin.get('user'), cred_crpo_admin.get('password'),
+                                             cred_crpo_admin.get('tenant'))
 for jobrole_name, jobrole_id in config_obj.total_jobs.items():
-    try:
-        print("------------------------------------------------------------------------")
-        print("Job Name :- %s     and      Job Id:- %s" % (jobrole_name, jobrole_id))
-        print("------------------------------------------------------------------------")
-        config_obj.filePath(jobrole_name, jobrole_id)
-        config_obj.writeExcelConfigurations()
-        # air.downloadReport(crpo_headers)
-        write_excel_object.save_result(config_obj.save_path)
-        write_excel_object.excelReadExpectedSheet(config_obj.expected_excel_sheet_path)
-        write_excel_object.excelReadActualSheet(config_obj.download_path)
-        write_excel_object.excelWriteHeaders(hierarchy_headers_count=3)
-        write_excel_object.excelMatchValues(usecase_name='Applicant Report', comparision_required_from_index=3,
-                                            total_testcase_count=48)
-    except Exception as e:
-        print("------------------------------------------------------------------------")
-        print("Job Name :- %s and Job Id:- %s is not ran Successfully, " \
-              "Please verify it manually" % (jobrole_name, jobrole_id))
-        print("------------------------------------------------------------------------")
-        print(e)
-
+    print("------------------------------------------------------------------------")
+    print("Job Name :- %s     and      Job Id:- %s" % (jobrole_name, jobrole_id))
+    print("------------------------------------------------------------------------")
+    config_obj.filePath(jobrole_name, jobrole_id)
+    config_obj.writeExcelConfigurations()
+    air.downloadReport(crpo_headers)
+    write_excel_object.save_result(config_obj.save_path)
+    write_excel_object.excelReadExpectedSheet(config_obj.expected_excel_sheet_path)
+    write_excel_object.excelReadActualSheet(config_obj.download_path)
+    write_excel_object.excelWriteHeaders(hierarchy_headers_count=3)
+    write_excel_object.excelMatchValues(usecase_name='Applicant Report', comparision_required_from_index=3,
+                                        total_testcase_count=48)
+    # try:
+    #     print("------------------------------------------------------------------------")
+    #     print("Job Name :- %s     and      Job Id:- %s" % (jobrole_name, jobrole_id))
+    #     print("------------------------------------------------------------------------")
+    #     config_obj.filePath(jobrole_name, jobrole_id)
+    #     config_obj.writeExcelConfigurations()
+    #     # air.downloadReport(crpo_headers)
+    #     write_excel_object.save_result(config_obj.save_path)
+    #     write_excel_object.excelReadExpectedSheet(config_obj.expected_excel_sheet_path)
+    #     write_excel_object.excelReadActualSheet(config_obj.download_path)
+    #     write_excel_object.excelWriteHeaders(hierarchy_headers_count=3)
+    #     write_excel_object.excelMatchValues(usecase_name='Applicant Report', comparision_required_from_index=3,
+    #                                         total_testcase_count=48)
+    # except Exception as e:
+    #     print("------------------------------------------------------------------------")
+    #     print("Job Name :- %s and Job Id:- %s is not ran Successfully, " \
+    #           "Please verify it manually" % (jobrole_name, jobrole_id))
+    #     print("------------------------------------------------------------------------")
+    #     print(e)

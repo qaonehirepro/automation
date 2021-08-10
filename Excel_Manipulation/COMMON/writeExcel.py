@@ -14,7 +14,8 @@ class Excel:
         self.write_excel = xlsxwriter.Workbook(save_excel_path + self.started + '.xls')
         self.ws = self.write_excel.add_worksheet()
         self.black_color = self.write_excel.add_format({'font_color': 'black', 'font_size': 9})
-        self.red_color = self.write_excel.add_format({'font_color': 'red', 'font_size': 9})
+        self.red_color = self.write_excel.add_format({'bg_color': 'red', 'font_color': 'black', 'font_size': 9})
+        # self.red_color = self.write_excel.add_format({'font_color': 'red', 'font_size': 9})
         self.green_color = self.write_excel.add_format({'font_color': 'green', 'font_size': 9})
         self.orange_color = self.write_excel.add_format({'font_color': 'orange', 'font_size': 9})
         self.black_color_bold = self.write_excel.add_format({'font_color': 'black', 'bold': True, 'font_size': 9})
@@ -28,6 +29,7 @@ class Excel:
         self.expected_excel_sheet1 = self.expected_excel.sheet_by_index(0)
 
     def excelReadActualSheet(self, actual_sheet_path):
+        print(actual_sheet_path)
         self.actual_excel = xlrd.open_workbook(actual_sheet_path)
         self.actual_excel_sheet1 = self.actual_excel.sheet_by_index(0)
 

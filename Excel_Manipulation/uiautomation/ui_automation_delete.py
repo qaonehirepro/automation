@@ -9,7 +9,9 @@ class delete_ssrf_data:
         print(datetime.datetime.now())
 
     def amsdbconnection(self):
-        self.conn = mysql.connector.connect(host='35.154.36.218',
+        # replica = 35.154.213.175
+        # master = 35.154.36.218
+        self.conn = mysql.connector.connect(host='35.154.213.175',
                                             database='appserver_core',
                                             user='qauser',
                                             password='qauser')

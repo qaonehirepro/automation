@@ -54,7 +54,9 @@ class CreateCase:
         self.cursor = self.conn1.cursor()
 
     def amsdbconnection(self):
-        self.conn = mysql.connector.connect(host='35.154.36.218',
+        # 35.154.213.175
+        # 35.154.36.218
+        self.conn = mysql.connector.connect(host='35.154.213.175',
                                             database='appserver_core',
                                             user='hireprouser',
                                             password='tech@123')

@@ -1,15 +1,14 @@
-data = {"choice1": "MS QP Automation Question1 Answer1", "choice2": "MS QP Automation Question1 Answer2","choice3": "MS QP Automation Question1 Answer3", "choice4": "MS QP Automation Question1 Answer4"}
+from selenium import webdriver
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.by import By
+from selenium.common.exceptions import TimeoutException
 
-# q2 = {"choice1": "MS QP Automation Question2 Answer1", "choice2": "MS QP Automation Question2 Answer2","choice3": "MS QP Automation Question2 Answer3", "choice4": "MS QP Automation Question2 Answer4"}
-# q3 = {"choice1": "MS QP Automation Question13 Answer1", "choice2": "MS QP Automation Question3 Answer2","choice3": "MS QP Automation Question3 Answer3", "choice4": "MS QP Automation Question3 Answer4"}
-# q4 = {"choice1": "MS QP Automation Question4 Answer1", "choice2": "MS QP Automation Question4 Answer2","choice3": "MS QP Automation Question4 Answer3", "choice4": "MS QP Automation Question4 Answer4"}
-# q5 = {"choice1": "MS QP Automation Question5 Answer1", "choice2": "MS QP Automation Question5 Answer2","choice3": "MS QP Automation Question5 Answer3", "choice4": "MS QP Automation Question5 Answer4"}
-# print(data)
-
-a = "MS QP Automation Question1 Answer4"
-position = 0
-for key, value in data.items():
-    position = position + 1
-    if a == value:
-        print(key)
-        print(position)
+browser = webdriver.Chrome('D:\\automation\\chromedriver.exe')
+browser.get("https://amsin.hirepro.in/crpo/#/login/AT")
+delay = 40 # seconds
+try:
+    myElem = WebDriverWait(browser, delay).until(EC.presence_of_element_located((By.NAME, 'loginName')))
+    print ("Page is ready!")
+except TimeoutException:
+    print("Hello")

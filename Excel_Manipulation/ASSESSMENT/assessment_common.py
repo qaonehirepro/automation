@@ -1,6 +1,7 @@
 import requests
 import json
-from ASSESSMENT import submit_test_data
+#from ASSESSMENT import submit_test_data
+from Excel_Manipulation.ASSESSMENT import submit_test_data
 import time
 
 
@@ -93,15 +94,16 @@ class AssessmentCommon:
 
     @staticmethod
     def pearson_call_backs(test_user_id, score_details):
+
         print(test_user_id, score_details)
-        content = """ <?xml version = "1.0" encoding = "UTF-8"?>
+        content = """<?xml version = "1.0" encoding = "UTF-8"?>
           <imsx_POXEnvelopeRequest xmlns = "http://www.imsglobal.org/services/ltiv1p1/xsd/imsoms_v1p0">
             <imsx_POXHeader>
               <imsx_POXRequestHeaderInfo>
                 <imsx_version>V1.0</imsx_version>
                 <imsx_messageIdentifier>7777897</imsx_messageIdentifier>
               </imsx_POXRequestHeaderInfo>
-            </imsx_POXHeader>	
+            </imsx_POXHeader>
             <imsx_POXBody>
               <replaceResultRequest>
                 <resultRecord>
@@ -110,10 +112,10 @@ class AssessmentCommon:
                   </sourcedGUID>
                   <tin>
                     <tinID>28035214</tinID>
-                  </tin>		
+                  </tin>
                   <result>
                     <resultScore>
-                      <language>en</language>						
+                      <language>en</language>
                       <textString>{score_response}</textString>
                     </resultScore>
                   </result>
@@ -122,10 +124,13 @@ class AssessmentCommon:
             </imsx_POXBody>
           </imsx_POXEnvelopeRequest> """
 
+
         content = content.format(test_user_id="%s" % test_user_id, score_response="%s" % score_details)
+        print(content)
         response = requests.post(
             "https://amsin.hirepro.in/py/assessment/assessmentvendor/api/v1/vcb/versant/?tn=76EF28AF-6DB5-11EA-8197-0262BDD19558",
             headers={"Content-Type": "application/xml"}, data=content)
+        print(response.headers)
         print(response)
         print(response.content)
 
@@ -235,7 +240,7 @@ class AssessmentCommon:
     @staticmethod
     def login_to_test_v3(login_name, password, tenant, domain):
         print(login_name, password, domain)
-        header = {"content-type": "application/json"}
+        header = {"content-type": "application/json", "X-APPLMA": "true"}
         data = {"LoginName": login_name, "Password": password, "TenantAlias": tenant}
         login_url = domain + 'htmltest/api/v2/login_to_test/'
         response = requests.post(login_url, headers=header, data=json.dumps(data), verify=False)
@@ -282,3 +287,6 @@ class AssessmentCommon:
 
 
 assessment_common_obj = AssessmentCommon()
+# test_user_id = 880555
+# score_details = [{"scoreComponent": "Overall", "scoreValue": 70.0, "minScore": 20, "maxScore": 80}]
+# assessment_common_obj.pearson_call_backs(test_user_id, score_details)
