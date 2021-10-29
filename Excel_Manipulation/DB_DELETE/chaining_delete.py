@@ -11,6 +11,7 @@ class delete_ssrf_data:
     def amsdbconnection(self):
         #replica = 35.154.213.175
         # master = 35.154.36.218
+        #this is test
         self.conn = mysql.connector.connect(host='35.154.36.218',
                                             database='appserver_core',
                                             user='qauser',
