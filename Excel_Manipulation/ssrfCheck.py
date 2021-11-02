@@ -1,11 +1,12 @@
 import xlsxwriter
-from Excel_Manipulation.COMMON.read_excel import *
+from automation.Excel_Manipulation.COMMON.read_excel import *
+from automation.Excel_Manipulation.COMMON.io_path import *
 import requests
 import json
 import datetime
-from Excel_Manipulation.CRPO.credentials import *
-from Excel_Manipulation.CRPO.crpo_common import *
-from Excel_Manipulation.ASSESSMENT.assessment_common import *
+from automation.Excel_Manipulation.CRPO.credentials import *
+from automation.Excel_Manipulation.CRPO.crpo_common import *
+from automation.Excel_Manipulation.ASSESSMENT.assessment_common import *
 
 
 class SecurityCheck:
@@ -14,11 +15,9 @@ class SecurityCheck:
         requests.packages.urllib3.disable_warnings()
         self.started = datetime.datetime.now()
         self.started = self.started.strftime("%Y-%M-%d-%H-%M-%S")
-        input_file_path = 'D:\\automation\\PythonWorkingScripts_InputData\\SSRF\\SSRF_Final1.xls'
-        excel_read_obj.excel_read(input_file_path, 0)
+        excel_read_obj.excel_read(input_path_ssrf_check, 0)
         self.row_size = 2
-        self.write_excel = xlsxwriter.Workbook(
-            'D:\\automation\\PythonWorkingScripts_Output\\SSRF\\security_check - ' + self.started + '.xls')
+        self.write_excel = xlsxwriter.Workbook(output_path_ssrf_check + self.started + '.xls')
         self.allowed_apis = ['https://amsin.hirepro.in/py/rpo/upload_zipped_photos/',
                              'https://amsin.hirepro.in/py/crpo/api/v1/asyncAPIContextUpdate',
                              'https://amsin.hirepro.in/py/pofu/api/v1/submit-form/',

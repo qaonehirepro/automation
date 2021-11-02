@@ -1,9 +1,9 @@
-from Excel_Manipulation.COMMON.report import *
-from Excel_Manipulation.COMMON.writeExcel import *
-from Excel_Manipulation.CRPO.crpo_common import *
-from Excel_Manipulation.CRPO.credentials import *
-from Excel_Manipulation.COMMON.io_path import *
-from Excel_Manipulation.COMMON.api_requests_for_reports import *
+from automation.Excel_Manipulation.COMMON.report import *
+from automation.Excel_Manipulation.COMMON.writeExcel import *
+from automation.Excel_Manipulation.CRPO.crpo_common import *
+from automation.Excel_Manipulation.CRPO.credentials import *
+from automation.Excel_Manipulation.COMMON.io_path import *
+from automation.Excel_Manipulation.COMMON.api_requests_for_reports import *
 
 crpo_headers = crpo_common_obj.login_to_crpo(cred_crpo_admin.get('user'), cred_crpo_admin.get('password'),
                                              cred_crpo_admin.get('tenant'))

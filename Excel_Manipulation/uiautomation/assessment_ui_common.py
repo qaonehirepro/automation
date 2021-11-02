@@ -16,6 +16,7 @@ class AssessmentUICommon:
         return self.driver
 
     def ui_login_to_test(self, user_name, password):
+
         time.sleep(10)
         self.driver.find_element_by_name('loginUsername').clear()
         self.driver.find_element_by_name('loginUsername').send_keys(user_name)

@@ -1,7 +1,7 @@
 import datetime
 
-input_common_dir = 'F:\\automation\\PythonWorkingScripts_InputData\\'
-output_common_dir = 'F:\\automation\\PythonWorkingScripts_Output\\'
+input_common_dir = 'F:\\qa_automation\\automation\\PythonWorkingScripts_InputData\\'
+output_common_dir = 'F:\\qa_automation\\automation\\PythonWorkingScripts_Output\\'
 started = datetime.datetime.now()
 started = started.strftime("%d-%m-%Y")
 # input paths
@@ -25,7 +25,7 @@ input_path_microsite_generic_case = input_common_dir +'Microsite\\GenericExcelTe
 
 # output paths
 output_path_allowed_extension = output_common_dir + 'allowed_extensions\\allowed_extensions(' + started + ').xlsx'
-output_path_applicant_report = output_common_dir + 'Assessment\\report\\applicantreport.xls'
+output_path_applicant_report = output_common_dir + 'Assessment\\report\\applicantreport'
 output_path_2tests_chaining = output_common_dir + 'Assessment\\Chaining_Automation -'
 output_path_3tests_chaining = output_common_dir + 'Assessment\\3tests_Chaining_Automation - '
 output_path_plagiarism_report = output_common_dir + 'Assessment\\plagiarism_report\\plagiarism_report'

@@ -56,9 +56,9 @@ class CrpoCommon:
         token.pop('X-APPLMA', None)
         request = {'file': (file_name, open(file_path, 'rb'))}
         url = crpo_common_obj.domain + '/py/common/filehandler/api/v2/upload/.doc,.rtf,.dot,.docx,' \
-              '.docm,.dotx,.dotm,.docb,.pdf,.xls,.xlt,.xlm,.xlsx,.xlsm,.xltx,.xltm,.xlsb,.xla,.xlam,.xll,' \
-              '.xlw,.ppt,.pot,.pps,.pptx,.pptm,.potx,.potm,.ppam,.ppsx,.ppsm,.sldx,.sldm,.zip,.rar,.7z,.gz,.jpeg,' \
-              '.jpg,.gif,.png,.msg,.txt,.mp4,.mvw,.3gp,.sql,.webm,.csv,.odt,.json,.ods,.ogg,.p12,/5000/'
+                                       '.docm,.dotx,.dotm,.docb,.pdf,.xls,.xlt,.xlm,.xlsx,.xlsm,.xltx,.xltm,.xlsb,.xla,.xlam,.xll,' \
+                                       '.xlw,.ppt,.pot,.pps,.pptx,.pptm,.potx,.potm,.ppam,.ppsx,.ppsm,.sldx,.sldm,.zip,.rar,.7z,.gz,.jpeg,' \
+                                       '.jpg,.gif,.png,.msg,.txt,.mp4,.mvw,.3gp,.sql,.webm,.csv,.odt,.json,.ods,.ogg,.p12,/5000/'
 
         api_request = requests.post(url, headers=token, files=request, verify=False)
         # print(api_request.headers.get('X-GUID'))
@@ -135,6 +135,52 @@ class CrpoCommon:
                                      headers=token,
                                      data=json.dumps(request, default=str), verify=False)
             print(response)
+
+    @staticmethod
+    def create_candidate(token, usn):
+        request = {"PersonalDetails": {"FirstName": usn, "Email1": usn + "qaone.h.i.repro@gmail.com", "USN": usn}}
+        # req = {"PersonalDetails": {"FirstName": "MuthuMurugan", "Email1": "qaonehirepro@gmail.com", "USN": "151_2"}}
+        response = requests.post('https://amsin.hirepro.in/py/rpo/create_candidate/', headers=token,
+                                 data=json.dumps(request), verify=False)
+        response_data = response.json()
+        candidate_id = response_data.get('CandidateId')
+        if response_data.get('status') == 'OK':
+            print("candidate created in crpo")
+            url = 'https://automation-in.hirepro.in/?candidate=%s' % candidate_id
+        else:
+            print("candidate not created in CRPO due to some technical glitch")
+            print(response_data)
+        return candidate_id
+
+    @staticmethod
+    def tag_candidate_to_test(token, cid, testid, eventid, jobroleid):
+        request = {"CandidateIds": [int(cid)], "TestIds": [int(testid)], "EventId": int(eventid),
+                   "JobRoleId": int(jobroleid), "Sync": "True"}
+        response = requests.post(
+            "https://amsin.hirepro.in/py/crpo/applicant/api/v1/tagCandidatesToEventJobRoleTests/",
+            headers=token,
+            data=json.dumps(request, default=str), verify=False)
+        return response
+
+    @staticmethod
+    def test_user_credentials(token, tu_id):
+        request = {"testUserId": tu_id}
+        response = requests.post(
+            "https://amsin.hirepro.in/py/assessment/testuser/api/v1/getCredential/",
+            headers=token,
+            data=json.dumps(request, default=str), verify=False)
+        # data = response.json()
+        return response.json()
+
+    @staticmethod
+    def get_all_test_user(token, cid):
+        request = {"isMyAssessments": False, "search": {"candidateIds": [cid]}}
+        response = requests.post("https://amsin.hirepro.in/py/assessment/testuser/api/v1/getAllTestUser/",
+                                 headers=token,
+                                 data=json.dumps(request, default=str), verify=False)
+        data = response.json()
+        test_user_id = data['data']['testUserInfos'][0]['id']
+        return test_user_id
 
 
 crpo_common_obj = CrpoCommon()

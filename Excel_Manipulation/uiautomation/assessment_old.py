@@ -1,6 +1,8 @@
 # import datetime
-from COMMON.read_excel import *
-from uiautomation.assessment_ui_common import *
+#from COMMON.read_excel import *
+from Excel_Manipulation.COMMON.read_excel import *
+#from uiautomation.assessment_ui_common import *
+from Excel_Manipulation.uiautomation.assessment_ui_common import *
 import time
 
 
@@ -8,7 +10,7 @@ class OnlineAssessment:
 
     def __init__(self):
         self.url = "https://amsinsec.hirepro.in/assessment/#/assess/login/eyJhbGlhcyI6ImF0In0="
-        self.path = r"C:\Users\User\Desktop\Automation\chromedriver.exe"
+        self.path = r"F:\automation\chromedriver.exe"
         self.browser = assess_ui_common_obj.initiate_browser(self.url, self.path)
 
     def mcq_assessment(self, current_excel_data):

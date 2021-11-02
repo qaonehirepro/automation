@@ -1,7 +1,7 @@
-from Excel_Manipulation.uiautomation.assessment_ui_common_v2 import *
-from Excel_Manipulation.uiautomation.assessment_data_verification import *
-from Excel_Manipulation.COMMON.read_excel import *
-from Excel_Manipulation.COMMON.writeExcel import *
+from automation.Excel_Manipulation.uiautomation.assessment_ui_common_v2 import *
+from automation.Excel_Manipulation.uiautomation.assessment_data_verification import *
+from automation.Excel_Manipulation.COMMON.read_excel import *
+from automation.Excel_Manipulation.COMMON.writeExcel import *
 
 
 class QPVerification:
@@ -9,10 +9,10 @@ class QPVerification:
     def __init__(self):
         self.row = 1
 
-        save_path = r"D:\automation\PythonWorkingScripts_Output\Assessment\UI"
+        save_path = r"F:\qa_automation\automation\PythonWorkingScripts_Output\UI\QP_"
         write_excel_object.save_result(save_path)
         self.url = "https://amsin.hirepro.in/assessment/#/assess/login/eyJhbGlhcyI6ImF0In0="
-        self.path = r"D:\automation\chromedriver.exe"
+        self.path = r"F:\qa_automation\automation\chromedriver.exe"
         header = ['QP_Verification']
         write_excel_object.write_headers_for_scripts(0, 0, header, write_excel_object.black_color_bold)
         header = ['Test Cases', 'Status', 'Test Id', 'Candidate Id', 'Testuser ID', 'User Name', 'Password',
@@ -60,8 +60,6 @@ class QPVerification:
                                             write_excel_object.green_color)
                 write_excel_object.ws.write(self.row, 6, candidate_details.get('password'),
                                             write_excel_object.green_color)
-
-
                 for excel in qn_infos:
                     for actual in delivered_questions:
                         if excel['questions'] in actual['questions']:
@@ -90,7 +88,8 @@ class QPVerification:
 
 print(datetime.datetime.now())
 assessment_obj = QPVerification()
-input_file_path = r"D:\automation\PythonWorkingScripts_InputData\UI\Assessment\qp_verification.xls"
+# input_file_path = r"F:\automation\PythonWorkingScripts_InputData\UI\Assessment\qp_verification.xls"
+input_file_path = r"F:\qa_automation\automation\PythonWorkingScripts_InputData\UI\Assessment\qp_verification.xls"
 excel_read_obj.excel_read(input_file_path, 0)
 questions = excel_read_obj.details
 print(questions)

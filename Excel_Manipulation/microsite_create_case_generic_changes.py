@@ -1,4 +1,5 @@
-from Excel_Manipulation.COMMON.read_excel import *
+from automation.Excel_Manipulation.COMMON.read_excel import *
+from automation.Excel_Manipulation.COMMON.io_path import *
 from selenium import webdriver
 import time
 import datetime
@@ -10,14 +11,10 @@ import mysql.connector
 class CreateCase:
 
     def __init__(self):
-        # self.browser_location = "/home/muthumurugan/Desktop/chromedriver_2.37"
         self.url = "https://automation-in.hirepro.in/automation3"
-        # self.url = "https://at-in.hirepro.in/muthutest"
-        # self.driver = webdriver.Chrome(self.browser_location)
-        self.driver = webdriver.Chrome(executable_path=r"D:\automation\chromedriver.exe")
+        self.driver = webdriver.Chrome(executable_path=r"F:\qa_automation\automation\chromedriver.exe")
         self.starttime = datetime.datetime.now()
         self.starttime1 = "Strated:- %s" %self.starttime.strftime("%H-%M-%S")
-
 
         self.current_DateTime = self.starttime.strftime("%d-%m-%Y")
         self.style0 = xlwt.easyxf('font: name Times New Roman, color-index black, bold on')
@@ -37,12 +34,10 @@ class CreateCase:
             'font: bold on,height 250,color-index red;pattern: pattern solid,fore-colour light_yellow;'
             'border: left thin,right thin,top thin,bottom thin')
         #
-        file_path = 'D:\\automation\\PythonWorkingScripts_InputData' \
-                    '\\Microsite\\GenericExcelTest.xls'
-        #
-        # file_path = '/home/muthumurugan/Desktop/Automation/PythonWorkingScripts_InputData/' \
-        #             'Microsite/GenericExcelTest_ssrf.xls'
-
+        # file_path = 'F:\\automation\\PythonWorkingScripts_InputData' \
+        #             '\\Microsite\\GenericExcelTest.xls'
+        file_path = input_path_microsite_create_case
+        print(file_path)
         sheet_index = 0
         excel_read_obj.excel_read(file_path, sheet_index)
 
@@ -1041,9 +1036,10 @@ class CreateCase:
         self.ws.write(self.rowsize+2, 1, self.ms_ams_row_status, self.ms_ams_status_color)
         C2.over_all_report_status(self.ui_ms_row_status, self.ms_ams_row_status)
         self.rowsize += 2
-        C2.wb_Result.save(
-            'D:\\automation\\PythonWorkingScripts_Output\\Microsite\\'
-            'Microsite_CreateCase1(' + self.current_DateTime + ').xls')
+        # C2.wb_Result.save(
+        #     'F:\\automation\\PythonWorkingScripts_Output\\Microsite\\'
+        #     'Microsite_CreateCase1(' + self.current_DateTime + ').xls')
+        C2.wb_Result.save(output_path_microsite_create_case)
 
     def over_all_report_status(self, ui_ms_row_status, ms_ams_row_status):
         pass
@@ -1367,6 +1363,7 @@ C2.ws.write(0, 0, "Microsite Create Case ", C2.base_style1)
 C2.ws.write(0, 1, C2.over_all_status, C2.over_all_status_color)
 C2.ws.write(0, 2, C2.starttime1, C2.base_style1)
 C2.ws.write(0, 3, endtime1, C2.base_style1)
-C2.wb_Result.save(
-        'D:\\automation\\PythonWorkingScripts_Output\\Microsite\\'
-        'Microsite_CreateCase1(' + C2.current_DateTime + ').xls')
+# C2.wb_Result.save(
+#         'F:\\automation\\PythonWorkingScripts_Output\\Microsite\\'
+#         'Microsite_CreateCase1(' + C2.current_DateTime + ').xls')
+C2.wb_Result.save(output_path_microsite_create_case)

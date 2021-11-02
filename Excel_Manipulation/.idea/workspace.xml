@@ -29,7 +29,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../vinod ui/UI-Automation-master/UI-Automation-master" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
@@ -44,7 +44,7 @@
       <recent name="C:\Users\User\Desktop\Automation\Excel_Manipulation\venv" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.allowed_extensions">
+  <component name="RunManager" selected="Python.allowed_extensions_v2">
     <configuration name="allowed_extensions" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Excel_Manipulation" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -66,19 +66,19 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="assessment" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="allowed_extensions_v2" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Excel_Manipulation" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/uiautomation" />
-      <option name="IS_MODULE_SDK" value="true" />
+      <option name="SDK_HOME" value="C:\Users\Dell\AppData\Local\Programs\Python\Python39\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/uiautomation/assessment.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/allowed_extensions_v2.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -152,14 +152,15 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.allowed_extensions_v2" />
         <item itemvalue="Python.allowed_extensions" />
         <item itemvalue="Python.crpo_common" />
         <item itemvalue="Python.microsite_update_with_crpo_create" />
         <item itemvalue="Python.assessment_qp_verification" />
-        <item itemvalue="Python.assessment" />
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -185,60 +186,6 @@
         <option value="1" />
       </list>
     </option>
-  </component>
-  <component name="WindowStateProjectService">
-    <state width="1364" height="440" key="DebuggerActiveHint" timestamp="1618317523803">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="1364" height="440" key="DebuggerActiveHint/0.0.1366.728@0.0.1366.728" timestamp="1618317523803" />
-    <state width="1345" height="205" key="GridCell.Tab.0.bottom" timestamp="1622007717040">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="1345" height="205" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1622007717040" />
-    <state width="1345" height="205" key="GridCell.Tab.0.center" timestamp="1622007717039">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="1345" height="205" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1622007717039" />
-    <state width="1345" height="205" key="GridCell.Tab.0.left" timestamp="1622007717039">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="1345" height="205" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1622007717039" />
-    <state width="1345" height="205" key="GridCell.Tab.0.right" timestamp="1622007717040">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="1345" height="205" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1622007717040" />
-    <state width="1345" height="243" key="GridCell.Tab.1.bottom" timestamp="1620826610769">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="1345" height="243" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1620826610769" />
-    <state width="1345" height="243" key="GridCell.Tab.1.center" timestamp="1620826610769">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="1345" height="243" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1620826610769" />
-    <state width="1345" height="243" key="GridCell.Tab.1.left" timestamp="1620826610768">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="1345" height="243" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1620826610768" />
-    <state width="1345" height="243" key="GridCell.Tab.1.right" timestamp="1620826610769">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="1345" height="243" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1620826610769" />
-    <state x="404" y="105" width="540" height="524" key="StructurePopup" timestamp="1619501213898">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="404" y="105" width="540" height="524" key="StructurePopup/0.0.1366.728@0.0.1366.728" timestamp="1619501213898" />
-    <state x="283" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1619779172985">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="283" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1366.728@0.0.1366.728" timestamp="1619779172985" />
-    <state x="200" y="93" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1618399777356">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="200" y="93" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1366.728@0.0.1366.728" timestamp="1618399777356" />
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1619596104168">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1619596104168" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

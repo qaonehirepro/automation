@@ -1,7 +1,7 @@
-from Excel_Manipulation.uiautomation.assessment_ui_common_v2 import *
-from Excel_Manipulation.uiautomation.assessment_data_verification import *
-from Excel_Manipulation.COMMON.read_excel import *
-from Excel_Manipulation.COMMON.writeExcel import *
+from automation.Excel_Manipulation.uiautomation.assessment_ui_common_v2 import *
+from automation.Excel_Manipulation.uiautomation.assessment_data_verification import *
+from automation.Excel_Manipulation.COMMON.read_excel import *
+from automation.Excel_Manipulation.COMMON.writeExcel import *
 
 
 class QPVerification:

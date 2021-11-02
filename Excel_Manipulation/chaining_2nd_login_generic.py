@@ -1,9 +1,10 @@
 import xlsxwriter
 import datetime
-from Excel_Manipulation.COMMON.read_excel import *
-from Excel_Manipulation.ASSESSMENT.assessment_common import *
-from Excel_Manipulation.CRPO.credentials import *
-from Excel_Manipulation.CRPO.crpo_common import *
+from automation.Excel_Manipulation.COMMON.read_excel import *
+from automation.Excel_Manipulation.ASSESSMENT.assessment_common import *
+from automation.Excel_Manipulation.CRPO.credentials import *
+from automation.Excel_Manipulation.CRPO.crpo_common import *
+from automation.Excel_Manipulation.COMMON.io_path import *
 # from second_login_assessment_data import *
 # from crpo_common import *
 import time
@@ -14,9 +15,10 @@ class ChainingOfTwoTests:
     def __init__(self):
         self.started = datetime.datetime.now()
         self.started = self.started.strftime("%Y-%m-%d-%H-%M-%S")
-        self.write_excel = xlsxwriter.Workbook(
-            'D:\\automation\\PythonWorkingScripts_Output'
-            '\\Assessment\\Chaining_Automation - ' + self.started + '.xls')
+        # self.write_excel = xlsxwriter.Workbook(
+        #     'F:\\automation\\PythonWorkingScripts_Output'
+        #     '\\Assessment\\Chaining_Automation - ' + self.started + '.xls')
+        self.write_excel = xlsxwriter.Workbook(output_path_2tests_chaining + self.started + '.xls')
 
         self.ws = self.write_excel.add_worksheet()
         self.black_color = self.write_excel.add_format({'font_color': 'black', 'font_size': 9})
@@ -168,10 +170,10 @@ class ChainingOfTwoTests:
 
 
 chaining_obj = ChainingOfTwoTests()
-input_file_path = 'D:\\automation\\PythonWorkingScripts_InputData\\Assessment\\chaining\\2ndlogincase.xls'
+# input_file_path = 'F:\\automation\\PythonWorkingScripts_InputData\\Assessment\\chaining\\2ndlogincase.xls'
 # input_file_path = 'C:\\Users\\User\\Desktop\\Automation\\PythonWorkingScripts_InputData\\Assessment\\chaining\\hp_tl.xls'
 
-excel_read_obj.excel_read(input_file_path, 0)
+excel_read_obj.excel_read(input_path_2tests_chaining, 0)
 excel_data = excel_read_obj.details
 crpo_headers = crpo_common_obj.login_to_crpo(cred_crpo_admin.get('user'), cred_crpo_admin.get('password'),
                                              cred_crpo_admin.get('tenant'))

@@ -1,7 +1,7 @@
 import requests
 import json
 #from ASSESSMENT import submit_test_data
-from Excel_Manipulation.ASSESSMENT import submit_test_data
+from automation.Excel_Manipulation.ASSESSMENT import submit_test_data
 import time
 
 

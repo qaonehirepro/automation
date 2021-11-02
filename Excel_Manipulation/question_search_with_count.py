@@ -1,11 +1,11 @@
-from Excel_Manipulation.COMMON.read_excel import *
+from automation.Excel_Manipulation.COMMON.read_excel import *
 import datetime
 import xlsxwriter
 import mysql
 import mysql.connector
-from Excel_Manipulation.CRPO.crpo_common import *
-from Excel_Manipulation.CRPO.credentials import *
-
+from automation.Excel_Manipulation.CRPO.crpo_common import *
+from automation.Excel_Manipulation.CRPO.credentials import *
+from automation.Excel_Manipulation.COMMON.io_path import *
 
 class QuestionSearch:
 
@@ -15,14 +15,13 @@ class QuestionSearch:
         requests.packages.urllib3.disable_warnings()
         self.started = datetime.datetime.now()
         self.started = self.started.strftime("%Y-%M-%d-%H-%M-%S")
-        input_file_path = 'D:\\automation\\PythonWorkingScripts_InputData\\' \
-                          'Assessment\\Search\\question_search_Automation.xls'
-        excel_read_obj.excel_read(input_file_path, 0)
+        excel_read_obj.excel_read(input_path_question_search_count, 0)
         self.excel_requests = excel_read_obj.details
 
-        self.write_excel = xlsxwriter.Workbook(
-            'D:\\automation\\PythonWorkingScripts_Output\\Assessment\\search\\question_search_'
-            + self.started + '.xls')
+        # self.write_excel = xlsxwriter.Workbook(
+        #     'F:\\automation\\PythonWorkingScripts_Output\\Assessment\\search\\question_search_'
+        #     + self.started + '.xls')
+        self.write_excel = xlsxwriter.Workbook(output_path_question_search_count + self.started + '.xls')
         self.ws = self.write_excel.add_worksheet()
         self.black_color = self.write_excel.add_format({'font_color': 'black', 'font_size': 9})
         self.red_color = self.write_excel.add_format({'font_color': 'red', 'font_size': 9})

@@ -2,7 +2,7 @@ import ast
 import xlsxwriter
 import datetime
 import time
-from Excel_Manipulation.CRPO.crpo_common import *
+from automation.Excel_Manipulation.CRPO.crpo_common import *
 import urllib.request
 
 # ----------------------------------------------------------------------------------------------------------------------#

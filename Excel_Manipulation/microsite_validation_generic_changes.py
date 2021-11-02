@@ -1,4 +1,5 @@
-from Excel_Manipulation.COMMON.read_excel import *
+from automation.Excel_Manipulation.COMMON.read_excel import *
+from automation.Excel_Manipulation.COMMON.io_path import *
 from selenium import webdriver
 import datetime
 import time
@@ -15,12 +16,12 @@ class Create_Case():
         # self.__borwser_Location = "/home/muthumurugan/Desktop/chromedriver_2.37"
         self.__url = "https://accenturetest-in.hirepro.in/automation-mandatory"
         # self.driver = webdriver.Chrome(self.__borwser_Location)
-        self.driver = webdriver.Chrome(executable_path=r"D:\automation\chromedriver.exe")
+        self.driver = webdriver.Chrome(executable_path=r"F:\qa_automation\automation\chromedriver.exe")
         now = datetime.datetime.now()
         self.__current_DateTime = now.strftime("%d-%m-%Y")
-        file_path = 'D:\\automation\\PythonWorkingScripts_InputData\\' \
-                    'Microsite\\GenericExcelTest.xls'
-
+        # file_path = 'F:\\automation\\PythonWorkingScripts_InputData\\' \
+        #             'Microsite\\GenericExcelTest.xls'
+        file_path = input_path_microsite_generic_case
         sheet_index = 2
         excel_read_obj.excel_read(file_path, sheet_index)
 
@@ -830,9 +831,10 @@ class Create_Case():
             print ("Candidate Id not created")
 
     def save(self):
-        self.wb_Result.save(
-            'D:\\automation\\PythonWorkingScripts_Output\\Microsite\\'
-            'UI_Functionality_VandV(' + self.__current_DateTime + ').xls')
+        # self.wb_Result.save(
+        #     'F:\\automation\\PythonWorkingScripts_Output\\Microsite\\'
+        #     'UI_Functionality_VandV(' + self.__current_DateTime + ').xls')
+        self.wb_Result.save(output_path_microsite_generic_case)
 
     def final_status(self, starttime, endtime):
         self.ws.write(0, 1, "Over All Status is :- " + self.overall_status, self.overall_status_color)
@@ -854,7 +856,7 @@ for i in range(0, tot):
     C2.mainmethod()
     # print xlob.xl_first_name[i]
 endtime = datetime.datetime.now()
-print (endtime)
+print(endtime)
 total_execution_time = endtime - starttime
 C2.final_status(starttime, endtime)
-print (total_execution_time)
+print(total_execution_time)

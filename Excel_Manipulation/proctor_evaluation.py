@@ -1,13 +1,12 @@
-from Excel_Manipulation.CRPO.crpo_common import *
-from Excel_Manipulation.CRPO.credentials import *
-from Excel_Manipulation.COMMON.read_excel import *
-from Excel_Manipulation.COMMON.writeExcel import *
-
+from automation.Excel_Manipulation.CRPO.crpo_common import *
+from automation.Excel_Manipulation.CRPO.credentials import *
+from automation.Excel_Manipulation.COMMON.read_excel import *
+from automation.Excel_Manipulation.COMMON.writeExcel import *
+from automation.Excel_Manipulation.COMMON.io_path import *
 
 class ProctorEvaluation:
     def __init__(self):
-        save_path = "D:\\automation\\PythonWorkingScripts_Output\\Assessment\\proctoring\\proctoring_eval"
-        write_excel_object.save_result(save_path)
+        write_excel_object.save_result(output_path_proctor_evaluation)
         # 0th Row Header
         header = ['Proctoring Evaluation automation']
         # 1 Row Header
@@ -114,8 +113,7 @@ class ProctorEvaluation:
 
 login_token = crpo_common_obj.login_to_crpo(cred_crpo_admin.get('user'), cred_crpo_admin.get('password'),
                                             cred_crpo_admin.get('tenant'))
-excel_read_obj.excel_read(
-    'D:\\automation\\PythonWorkingScripts_InputData\\Assessment\\proc_eval\\proc_eval3.xls', 0)
+excel_read_obj.excel_read(input_path_proctor_evaluation, 0)
 excel_data = excel_read_obj.details
 proctor_obj = ProctorEvaluation()
 tuids = []

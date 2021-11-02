@@ -6,7 +6,7 @@ import datetime
 class delete_ssrf_data:
 
     def __init__(self):
-        print (datetime.datetime.now())
+        print(datetime.datetime.now())
 
     def amsdbconnection(self):
         # replica = 35.154.213.175

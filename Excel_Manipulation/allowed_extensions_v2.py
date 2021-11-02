@@ -1,9 +1,9 @@
 # import xlsxwriter
-from Excel_Manipulation.COMMON.style_sheets import *
-from Excel_Manipulation.COMMON.read_excel import *
-from Excel_Manipulation.CRPO.crpo_common import *
-from Excel_Manipulation.CRPO.credentials import *
-from Excel_Manipulation.COMMON.io_path import *
+from automation.Excel_Manipulation.COMMON.style_sheets import *
+from automation.Excel_Manipulation.COMMON.read_excel import *
+from automation.Excel_Manipulation.CRPO.crpo_common import *
+from automation.Excel_Manipulation.CRPO.credentials import *
+from automation.Excel_Manipulation.COMMON.io_path import *
 
 
 class AllowedFileExtensions:
