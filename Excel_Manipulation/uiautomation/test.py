@@ -1,14 +1,19 @@
-from selenium import webdriver
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.by import By
-from selenium.common.exceptions import TimeoutException
+delivered = ['MS Question Randomization medium1', 'MS Question Randomization high1',
+             'MS Question Randomization medium2', 'MS Question Randomization high5', 'MS Question Randomization Low 3',
+             'MS Question Randomization Low 2']
 
-browser = webdriver.Chrome('D:\\automation\\chromedriver.exe')
-browser.get("https://amsin.hirepro.in/crpo/#/login/AT")
-delay = 40 # seconds
-try:
-    myElem = WebDriverWait(browser, delay).until(EC.presence_of_element_located((By.NAME, 'loginName')))
-    print ("Page is ready!")
-except TimeoutException:
-    print("Hello")
+expected_questions = ['MS Question Randomization Low 1', 'MS Question Randomization Low 2',
+                      'MS Question Randomization Low 3', 'MS Question Randomization Low 4',
+                      'MS Question Randomization Low 5',
+                      'MS Question Randomization medium1', 'MS Question Randomization medium2',
+                      'MS Question Randomization medium3', 'MS Question Randomization medium4',
+                      'MS Question Randomization medium5', 'MS Question Randomization high1',
+                      'MS Question Randomization high2', 'MS Question Randomization high3',
+                      'MS Question Randomization high4', 'MS Question Randomization high5']
+
+final = (set(delivered) - set(expected_questions))
+print(len(final))
+print(str(final))
+#     print('got the question which is expected')
+# else:
+#     print('got the question which is not expected')
