@@ -106,8 +106,12 @@ class AssessmentUICommon:
 
     def find_question_string(self):
         question_string = self.driver.find_element_by_name('questionHtmlString').text
-        print(question_string)
-        return question_string
+        # print(question_string)
+        groupname = self.driver.find_element_by_name('groupName').text
+        section_name = self.driver.find_element_by_name('sectionName').text
+        # print(groupname)
+        # print(section_name)
+        return question_string, groupname, section_name
 
 
 assess_ui_common_obj = AssessmentUICommon()

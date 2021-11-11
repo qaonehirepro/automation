@@ -84,30 +84,7 @@ class QPVerification:
                 write_excel_object.ws.write(self.row, 9, str(mismatched_questions), color)
                 write_excel_object.ws.write(self.row, 1, status, color)
                 # self.col = self.col + 2
-
-            # for excel in qn_infos:
-            #     for delivered_questions in delivered_questions:
-            #         if excel['questions'] in actual['questions']:
-            #             write_excel_object.ws.write(self.row, self.col, excel['questions'],
-            #                                         write_excel_object.green_color)
-            #             write_excel_object.ws.write(self.row, self.col + 1, actual['questions'],
-            #                                         write_excel_object.green_color)
-            #             write_excel_object.ws.write(self.row, 1, 'Pass',
-            #                                         write_excel_object.green_color)
-            #             print(excel['questions'])
-            #             print(actual['questions'])
-            #             print('Matched')
-            #             self.col = self.col + 2
-            #             break
-            #     else:
-            #         write_excel_object.ws.write(self.row, self.col, excel['questions'],
-            #                                     write_excel_object.green_color)
-            #         write_excel_object.ws.write(self.row, self.col + 1, "Question Not Available",
-            #                                     write_excel_object.red_color)
-            #         write_excel_object.ws.write(self.row, 1, 'Fail',
-            #                                     write_excel_object.green_color)
-            #         self.col = self.col + 2
-
+                # if
         self.browser.close()
 
 

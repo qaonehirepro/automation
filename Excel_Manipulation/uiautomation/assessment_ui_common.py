@@ -1,4 +1,5 @@
 from selenium import webdriver
+from selenium.webdriver.common.by import By
 import datetime
 import time
 
@@ -18,19 +19,18 @@ class AssessmentUICommon:
     def ui_login_to_test(self, user_name, password):
 
         time.sleep(10)
-        self.driver.find_element_by_name('loginUsername').clear()
-        self.driver.find_element_by_name('loginUsername').send_keys(user_name)
-        self.driver.find_element_by_name('loginPassword').clear()
-        self.driver.find_element_by_name('loginPassword').send_keys(password)
-        self.driver.find_element_by_name('btnLogin').click()
-        # time.sleep(5)
+        self.driver.find_element(By.NAME, 'loginUsername').clear()
+        self.driver.find_element(By.NAME, 'loginUsername').send_keys(user_name)
+        self.driver.find_element(By.NAME, 'loginPassword').clear()
+        self.driver.find_element(By.NAME, 'loginPassword').send_keys(password)
+        self.driver.find_element(By.NAME, 'btnLogin').click()
         login_status = "None"
         try:
-            if self.driver.find_element_by_xpath(
-                    '//div[@class="text-center login-error ng-binding ng-scope"]').is_displayed():
+            if self.driver.find_element(By.XPATH,
+                                        '//div[@class="text-center login-error ng-binding ng-scope"]').is_displayed():
                 print("Unable to Login ")
-                error_message = self.driver.find_element_by_xpath(
-                    '//div[@class="text-center login-error ng-binding ng-scope"]').text
+                error_message = self.driver.find_element(By.XPATH,
+                                                         '//div[@class="text-center login-error ng-binding ng-scope"]').text
                 login_status = error_message
         except Exception as e:
             print(e)
@@ -39,8 +39,7 @@ class AssessmentUICommon:
 
     def select_i_agree(self):
         time.sleep(1)
-        i_agree_status = self.driver.find_element_by_class_name('chk')
-        # i_agree_status = self.driver.find_element_by_xpath('//div[@class="chk"]')
+        i_agree_status = self.driver.find_element(By.CLASS_NAME, 'chk')
         is_selected = i_agree_status.is_selected()
         if not is_selected:
             i_agree_status.click()
@@ -48,9 +47,8 @@ class AssessmentUICommon:
         return is_selected
 
     def select_answer_for_the_question(self, answer):
-        # time.sleep(1)
         value = "//input[@name='answerOptions' and @value='%s']" % answer
-        answered = self.driver.find_element_by_xpath(value)
+        answered = self.driver.find_element(By.XPATH, value)
         is_answered = answered.is_selected()
         if not is_answered:
             answered.click()
@@ -58,17 +56,17 @@ class AssessmentUICommon:
     def check_answered_status(self, previous_answer):
         time.sleep(1)
         value = "//input[@name='answerOptions' and @value='%s']" % previous_answer
-        answered = self.driver.find_element_by_xpath(value).is_enabled()
+        answered = self.driver.find_element(By.XPATH, value).is_enabled()
         return answered
 
     def next_question(self, question_index):
         time.sleep(1)
         value = "btnQuestionIndex%s" % str(question_index)
-        self.driver.find_element_by_name(value).click()
+        self.driver.find_element(By.NAME, value).click()
 
     def start_test_button_status(self):
         time.sleep(1)
-        is_enabled = self.driver.find_element_by_name('btnStartTest').is_enabled()
+        is_enabled = self.driver.find_element(By.NAME, 'btnStartTest').is_enabled()
         if is_enabled:
             start_button_status = 'Enabled'
         else:
@@ -77,23 +75,23 @@ class AssessmentUICommon:
 
     def start_test(self):
         time.sleep(1)
-        self.driver.find_element_by_name('btnStartTest').click()
+        self.driver.find_element(By.NAME, 'btnStartTest').click()
 
     def end_test(self):
         time.sleep(3)
-        self.driver.find_element_by_xpath("//button[@class='btn btn-danger ng-scope']").click()
+        self.driver.find_element(By.XPATH, "//button[@class='btn btn-danger ng-scope']").click()
 
     def end_test_confirmation(self):
         time.sleep(5)
-        self.driver.find_element_by_name('btnCloseTest').click()
+        self.driver.find_element(By.NAME, 'btnCloseTest').click()
         print("Test is ended Successfully")
 
     def unanswer_question(self):
-        self.driver.find_element_by_xpath("//button[@class='btn btn-default btnUnanswer ng-scope']").click()
+        self.driver.find_element(By.XPATH, "//button[@class='btn btn-default btnUnanswer ng-scope']").click()
         print("Un Answer Succeded")
 
     def find_question_string(self):
-        question_string = self.driver.find_element_by_name('questionHtmlString').text
+        question_string = self.driver.find_element(By.NAME, 'questionHtmlString').text
         print(question_string)
         return question_string
 
