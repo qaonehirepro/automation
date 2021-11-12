@@ -1,2 +1,7 @@
-question_infos = 'Muthu'
-print('S1G2 - Something %s went wrong ', question_infos)
+tup = ('physics', 'chemistry', 1997, 2000);
+tup2 = ('physics', 'chemistry', 1997, 2000);
+tup = tup + tup2
+print(tup)
+# del tup
+# print("After deleting tup : ")
+# # print(tup)
