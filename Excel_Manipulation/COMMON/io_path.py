@@ -43,7 +43,8 @@ output_path_microsite_generic_case = output_common_dir + 'Microsite\\UI_Function
 
 # UI Automation Output Path
 output_path_ui_vet_qs = output_common_dir + 'Assessment\\UI\\VET\\qs(' + started + ').xlsx'
-output_path_ui_mcq_randomization = output_common_dir + 'UI\\qprandomization_'
+output_path_ui_mcq_randomization = output_common_dir + 'UI\\mcq_qprandomization_'
+output_path_ui_subjective_randomization = output_common_dir + 'UI\\subjective_qprandomization_'
 
 # Assessment URLS
 
