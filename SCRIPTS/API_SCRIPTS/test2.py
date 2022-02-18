@@ -1,0 +1,6 @@
+a = {'PersonalDetails': {'FirstName': 'Encryption', 'MiddleName': 'Check', 'LastName': 'Automation',
+                         'PassportNo': 'P1234567', 'Mobile1': '1111111111', 'PanNo': 'PANCA1234D',
+                         'DateOfBirth': '2021-12-21T18:30:00.000Z', 'PhoneOffice': '2222222222.0',
+                         'Email2': 'encryptionemail2@gmail.com', 'Email1': 'encryptionemail1@gmail.com',
+                         'CurrencyType': None, 'USN': 'ENCRYPTION_CHECK1', 'AadhaarNo': '1000000000001'},
+     'SourceDetails': {'SourceId': '3638'}}

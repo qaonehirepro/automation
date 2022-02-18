@@ -12,7 +12,7 @@ class CreateCase:
 
     def __init__(self):
         self.url = "https://automation-in.hirepro.in/automation3"
-        self.driver = webdriver.Chrome(executable_path=r"/automation/chromedriver.exe")
+        self.driver = webdriver.Chrome(executable_path=r"F:\qa_automation\chromedriver.exe")
         self.starttime = datetime.datetime.now()
         self.starttime1 = "Strated:- %s" %self.starttime.strftime("%H-%M-%S")
 

@@ -10,7 +10,7 @@ class AssessmentDataVerification:
         self.started = self.started.strftime("%Y-%M-%d-%H-%M-%S")
         self.row_size = 2
         self.write_excel = xlsxwriter.Workbook(
-            'F:\\automation\\PythonWorkingScripts_Output\\UI\\UI_Automation_MCQ_Only - ' + self.started + '.xls')
+            'F:\\qa_automation\\PythonWorkingScripts_Output\\UI\\UI_Automation_MCQ_Only - ' + self.started + '.xls')
         self.final_status = ''
         self.ws = self.write_excel.add_worksheet()
         self.black_color = self.write_excel.add_format({'font_color': 'black', 'font_size': 9})
@@ -44,11 +44,14 @@ class AssessmentDataVerification:
     # Actual Data - This is the data where we fetch it from the CRPO_COMMON Application candidate_transcript api
     def assessment_data_report(self, token, excel_data):
         row_size = 2
+        print(token)
         for tu_details in excel_data:
             candidate_answers = []
             test_id = int(tu_details.get('testId'))
             test_user_id = int(tu_details.get('testUserId'))
+            print(test_user_id)
             actual_data = crpo_common_obj.candidate_web_transcript(token, test_id, test_user_id)
+            print(actual_data)
             data = actual_data.get('data')
             mcq_data = data.get('mcq')
             for index in range(0, len(mcq_data)):

@@ -29,6 +29,7 @@ class AllowedFileExtensions:
         self.ws.write(1, 2, "File Name", style_sheet_obj.black_color_bold)
         self.ws.write(1, 3, "Expected Status", style_sheet_obj.black_color_bold)
         self.ws.write(1, 4, "Actual Status", style_sheet_obj.black_color_bold)
+        self.ws.write(1, 5, "API Response", style_sheet_obj.black_color_bold)
 
     def validate_files(self, token, excel_input):
         try:
@@ -36,10 +37,19 @@ class AllowedFileExtensions:
             file_name = excel_input.get('fileName')
             print(file_name)
             resp = crpo_common_obj.upload_files(token, file_name, file_path)
-            if resp.get('status') == 'OK':
+
+            # print(resp.headres)
+            if resp.get('status') == 'OK' and resp['data']:
                 actual_status = 'allowed'
+            elif "DisAllowed fileExtension" in (resp['error']['errorDescription']):
+                actual_status = 'disallowed - fileExtension for the control'
+            elif 'File extension does not match file format' in resp['error']['errorDescription']:
+                actual_status = "disallowed - File extension does not match file format"
+
+            elif 'UnAcceptable file format' in resp['error']['errorDescription']:
+                actual_status = "UnAcceptable file format"
             else:
-                actual_status = 'disallowed'
+                actual_status = "status unknown"
             self.ws.write(self.row_size, 0, excel_input.get('extensionType'), style_sheet_obj.black_color)
             self.ws.write(self.row_size, 2, excel_input.get('fileName'), style_sheet_obj.black_color)
             self.ws.write(self.row_size, 3, excel_input.get('expectedStatus'), style_sheet_obj.black_color)
@@ -47,9 +57,11 @@ class AllowedFileExtensions:
             if excel_input.get('expectedStatus') == actual_status:
                 self.ws.write(self.row_size, 1, "Pass", style_sheet_obj.green_color)
                 self.ws.write(self.row_size, 4, actual_status, style_sheet_obj.black_color)
+                # self.ws.write(self.row_size, 5, str(resp), style_sheet_obj.black_color)
             else:
                 self.ws.write(self.row_size, 1, "Fail", style_sheet_obj.red_color)
                 self.ws.write(self.row_size, 4, actual_status, style_sheet_obj.red_color)
+                self.ws.write(self.row_size, 5, str(resp), style_sheet_obj.black_color)
                 self.over_all_status = 'Fail'
                 self.over_all_status_color = style_sheet_obj.over_all_status_failed
             self.row_size += 1

@@ -14,6 +14,7 @@ class CrpoCommon:
         login_response = response.json()
         headers = {"content-type": "application/json", "APP-NAME": "py3app", "X-APPLMA": "true",
                    "X-AUTH-TOKEN": login_response.get("Token")}
+        print(headers)
         return headers
 
     @staticmethod
@@ -50,11 +51,14 @@ class CrpoCommon:
 
     @staticmethod
     def upload_files(token, file_name, file_path):
+        # print(token)
         # This API does not require content type and its not Lambda API as of 29/04/2021
         # so poping the values from token.
         token.pop('content-type', None)
         token.pop('X-APPLMA', None)
         request = {'file': (file_name, open(file_path, 'rb'))}
+        token.update({'x-guid': file_name + '12_20_2021_5'})
+        print(token.get('x-guid'))
         url = crpo_common_obj.domain + '/py/common/filehandler/api/v2/upload/.doc,.rtf,.dot,.docx,' \
                                        '.docm,.dotx,.dotm,.docb,.pdf,.xls,.xlt,.xlm,.xlsx,.xlsm,.xltx,.xltm,.xlsb,.xla,.xlam,.xll,' \
                                        '.xlw,.ppt,.pot,.pps,.pptx,.pptm,.potx,.potm,.ppam,.ppsx,.ppsm,.sldx,.sldm,.zip,.rar,.7z,.gz,.jpeg,' \
@@ -63,6 +67,7 @@ class CrpoCommon:
         api_request = requests.post(url, headers=token, files=request, verify=False)
         # print(api_request.headers.get('X-GUID'))
         resp_dict = json.loads(api_request.content)
+        print(resp_dict)
         return resp_dict
 
     @staticmethod
@@ -153,6 +158,23 @@ class CrpoCommon:
         return candidate_id
 
     @staticmethod
+    def create_candidate_v2(token, request):
+        # request = {"PersonalDetails": {"FirstName": usn, "Email1": usn + "qaone.h.i.repro@gmail.com", "USN": usn}}
+        # # req = {"PersonalDetails": {"FirstName": "MuthuMurugan", "Email1": "qaonehirepro@gmail.com", "USN": "151_2"}}
+        response = requests.post('https://amsin.hirepro.in/py/rpo/create_candidate/', headers=token,
+                                 data=json.dumps(request), verify=False)
+        response_data = response.json()
+        print(response_data)
+        candidate_id = response_data.get('CandidateId')
+        if response_data.get('status') == 'OK':
+            print("candidate created in crpo")
+            # url = 'https://automation-in.hirepro.in/?candidate=%s' % candidate_id
+        else:
+            print("candidate not created in CRPO_COMMON due to some technical glitch")
+
+        return candidate_id
+
+    @staticmethod
     def tag_candidate_to_test(token, cid, testid, eventid, jobroleid):
         request = {"CandidateIds": [int(cid)], "TestIds": [int(testid)], "EventId": int(eventid),
                    "JobRoleId": int(jobroleid), "Sync": "True"}
@@ -182,5 +204,46 @@ class CrpoCommon:
         test_user_id = data['data']['testUserInfos'][0]['id']
         return test_user_id
 
+    @staticmethod
+    def get_candidate_by_id(token, cid):
+        request = {"CandidateId": cid, "RequiredDetails": [1]}
+        response = requests.post("https://amsin.hirepro.in/py/rpo/get_candidate_details_by_id/",
+                                 headers=token,
+                                 data=json.dumps(request, default=str), verify=False)
+        candidate_details = response.json()
+
+        return candidate_details
+
+    @staticmethod
+    def create_question(token, request):
+        # token = {'content-type': 'application/json', 'APP-NAME': 'py3app', 'X-APPLMA': 'true',
+        #          'X-AUTH-TOKEN': 'Tkn:3af8d1e6-bc1c-4923-8786-b3c7ab04655d'}
+
+        response = requests.post("https://amsin.hirepro.in/py/assessment/authoring/api/v1/createQuestion/",
+                                 headers=token, data=json.dumps(request), verify=False)
+        question_id_resp = response.json()
+        question_id = question_id_resp['data']['questionId']
+        print(question_id)
+        return question_id
+
+    @staticmethod
+    def get_question_for_id(token, question_id):
+        # token = {'content-type': 'application/json', 'APP-NAME': 'py3app', 'X-APPLMA': 'true',
+        #          'X-AUTH-TOKEN': 'Tkn:60be3298-12bd-4801-bb91-301712468d1e'}
+        request = {"id": question_id}
+        response = requests.post("https://amsin.hirepro.in/py/assessment/authoring/api/v1/getQuestionForId/",
+                                 headers=token,
+                                 data=json.dumps(request, default=str), verify=False)
+        question_id_details = response.json()
+        return question_id_details
+
+    @staticmethod
+    def get_test_user_infos(token, payload):
+        response = requests.post("https://amsin.hirepro.in/py/assessment/testuser/api/v1/info/",
+                                 headers=token,
+                                 data=json.dumps(payload, default=str), verify=False)
+        test_user_infos = response.json()
+        return test_user_infos
 
 crpo_common_obj = CrpoCommon()
+# crpo_common_obj.get_question_for_id(123895)

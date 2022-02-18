@@ -1,4 +1,5 @@
 from SCRIPTS.UI_COMMON.assessment_ui_common_v2 import *
+from SCRIPTS.COMMON.io_path import *
 import os
 import time
 from SCRIPTS.UI_SCRIPTS.assessment_data_verification import *
@@ -11,12 +12,11 @@ class HireproChainingOfTwoTests:
     def __init__(self):
         time = datetime.datetime.now()
         self.date = time.strftime('%y_%m_%d')
-        self.url = "https://amsin.hirepro.in/assessment/#/assess/login/eyJhbGlhcyI6ImF1dG9tYXRpb24ifQ=="
-        self.path = r"F:\qa_automation\automation\chromedriver.exe"
+        # self.url = "https://amsin.hirepro.in/assessment/#/assess/login/eyJhbGlhcyI6ImF1dG9tYXRpb24ifQ=="
+        # self.path = r"F:\qa_automation\automation\chromedriver.exe"
         self.started = time.strftime("%Y-%M-%d-%H-%M-%S")
         self.row_size = 2
-        self.write_excel = xlsxwriter.Workbook(
-            'F:\\qa_automation\\automation\PythonWorkingScripts_Output\\UI\\hirepro_chaining - ' + self.started + '.xls')
+        self.write_excel = xlsxwriter.Workbook(output_path_ui_hirepro_chaining)
         self.final_status = ''
         self.ws = self.write_excel.add_worksheet()
         self.black_color = self.write_excel.add_format({'font_color': 'black', 'font_size': 9})
@@ -61,7 +61,7 @@ class HireproChainingOfTwoTests:
         self.common_path = path
         print(self.common_path)
 
-        self.browser = assess_ui_common_obj.initiate_browser(self.url, self.path)
+        self.browser = assess_ui_common_obj.initiate_browser(amsin_automation_assessment_url, chrome_driver_path)
         login_details = assess_ui_common_obj.ui_login_to_test(current_excel_data.get('loginName'),
                                                               (current_excel_data.get('password')))
         self.browser.get_screenshot_as_file(self.common_path + "\\1_t1_afterlogin.png")
@@ -210,9 +210,9 @@ class HireproChainingOfTwoTests:
 
 chaining_obj = HireproChainingOfTwoTests()
 # input_file_path = r"F:\automation\PythonWorkingScripts_InputData\UI\Assessment\hirepro_chaining_at.xls"
-input_file_path = r"F:\qa_automation\automation\PythonWorkingScripts_InputData\UI\Assessment\hirepro_chaining_at.xls"
+# input_file_path = r"F:\qa_automation\PythonWorkingScripts_InputData\UI\Assessment\hirepro_chaining_at.xls"
 
-excel_read_obj.excel_read(input_file_path, 0)
+excel_read_obj.excel_read(input_path_ui_hirepro_chaining, 0)
 excel_data = excel_read_obj.details
 row_value = 1
 for current_excel_row in excel_data:

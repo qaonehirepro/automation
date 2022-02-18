@@ -16,7 +16,7 @@ class Create_Case():
         # self.__borwser_Location = "/home/muthumurugan/Desktop/chromedriver_2.37"
         self.__url = "https://accenturetest-in.hirepro.in/automation-mandatory"
         # self.driver = webdriver.Chrome(self.__borwser_Location)
-        self.driver = webdriver.Chrome(executable_path=r"/automation/chromedriver.exe")
+        self.driver = webdriver.Chrome(executable_path=r"F:\qa_automation\chromedriver.exe")
         now = datetime.datetime.now()
         self.__current_DateTime = now.strftime("%d-%m-%Y")
         # file_path = 'F:\\automation\\PythonWorkingScripts_InputData\\' \

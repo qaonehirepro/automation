@@ -7,7 +7,7 @@ class OnlineAssessment:
 
     def __init__(self):
         self.url = "https://amsin.hirepro.in/assessment/#/assess/login/eyJhbGlhcyI6ImF0In0="
-        self.path = r"F:\qa_automation\automation\chromedriver.exe"
+        self.path = r"F:\qa_automation\chromedriver.exe"
 
     def mcq_assessment(self, current_excel_data):
         self.browser = assess_ui_common_obj.initiate_browser(self.url, self.path)
@@ -134,13 +134,14 @@ class OnlineAssessment:
 print(datetime.datetime.now())
 assessment_obj = OnlineAssessment()
 # input_file_path = r"F:\automation\PythonWorkingScripts_InputData\UI\Assessment\ui_relogin.xls"
-input_file_path = r"F:\qa_automation\automation\PythonWorkingScripts_InputData\UI\Assessment\ui_relogin.xls"
+input_file_path = r"F:\qa_automation\PythonWorkingScripts_InputData\UI\Assessment\ui_relogin.xls"
 excel_read_obj.excel_read(input_file_path, 0)
 excel_data = excel_read_obj.details
 for current_excel_row in excel_data:
     assessment_obj.mcq_assessment(current_excel_row)
 crpo_token = crpo_common_obj.login_to_crpo('admin', 'Email@admin', 'AT')
-time.sleep(10)
+print(crpo_token)
+# time.sleep(10)
 obj_assessment_data_verification.assessment_data_report(crpo_token, excel_data)
 obj_assessment_data_verification.write_excel.close()
 print(datetime.datetime.now())
