@@ -1,41 +1,22 @@
-import xlsxwriter
 from SCRIPTS.COMMON.read_excel import *
-# return requests.get(url).json()
-import datetime
-import time
+from SCRIPTS.COMMON.write_excel_new import *
 from SCRIPTS.CRPO_COMMON.credentials import *
 from SCRIPTS.CRPO_COMMON.crpo_common import *
 from SCRIPTS.ASSESSMENT_COMMON.assessment_common import *
 from SCRIPTS.COMMON.io_path import *
 
+
 class ReInitiateAutomation:
     def __init__(self):
-        self.started = datetime.datetime.now()
-        self.started = self.started.strftime("%Y-%M-%d-%H-%M-%S")
         self.row_size = 2
-        self.write_excel = xlsxwriter.Workbook(output_path_reinitiate_automation + self.started + '.xls')
-        self.final_status = ''
-        self.ws = self.write_excel.add_worksheet()
-        self.black_color = self.write_excel.add_format({'font_color': 'black', 'font_size': 9})
-        self.red_color = self.write_excel.add_format({'font_color': 'red', 'font_size': 9})
-        self.green_color = self.write_excel.add_format({'font_color': 'green', 'font_size': 9})
-        self.orange_color = self.write_excel.add_format({'font_color': 'orange', 'font_size': 9})
-        self.black_color_bold = self.write_excel.add_format({'font_color': 'black', 'bold': True, 'font_size': 9})
-        self.over_all_status_pass = self.write_excel.add_format({'font_color': 'green', 'bold': True, 'font_size': 9})
-        self.over_all_status_failed = self.write_excel.add_format({'font_color': 'red', 'bold': True, 'font_size': 9})
-        self.over_all_status_color = self.over_all_status_pass
-        self.over_all_status = 'Pass'
-        self.ws.write(0, 0, "Reinitiate relogin automation", self.black_color_bold)
-        self.ws.write(1, 0, "Testcases", self.black_color_bold)
-        self.ws.write(1, 1, "Status", self.black_color_bold)
-        self.ws.write(1, 2, "Test ID", self.black_color_bold)
-        self.ws.write(1, 3, "Candidate ID", self.black_color_bold)
-        self.ws.write(1, 4, "Login Name", self.black_color_bold)
-        self.ws.write(1, 5, "Password", self.black_color_bold)
-        self.ws.write(1, 6, "Is Vendor Test", self.black_color_bold)
-        self.ws.write(1, 7, "Is SLC Enabled", self.black_color_bold)
-        self.ws.write(1, 8, "Expected Status", self.black_color_bold)
-        self.ws.write(1, 9, "Actual Status", self.black_color_bold)
+        write_excel_object.save_result(output_path_reinitiate_automation)
+        header = ["Reinitiate relogin automation"]
+        write_excel_object.write_headers_for_scripts(0, 0, header,
+                                                     write_excel_object.black_color_bold)
+        header1 = ["Testcases", "Status", "Test ID", "Candidate ID", "Login Name", "Password", "Is Vendor Test",
+                   "Is SLC Enabled", "Expected Status", "Actual Status"]
+        write_excel_object.write_headers_for_scripts(1, 0, header1,
+                                                     write_excel_object.black_color_bold)
 
     def test_user_next_test_status(self, login_response):
         print(login_response)
@@ -71,25 +52,17 @@ class ReInitiateAutomation:
             self.final_status = "Pending"
 
     def excel_write(self, data):
-
-        if self.final_status == data.get('expectedStatus'):
-            status = "Pass"
-            final_status_color = self.green_color
-        else:
-            status = "Fail"
-            self.over_all_status = "Fail"
-            self.over_all_status_color = self.red_color
-            final_status_color = self.red_color
-        self.ws.write(self.row_size, 0, data.get('testCaseInfo'), self.black_color)
-        self.ws.write(self.row_size, 1, status, final_status_color)
-        self.ws.write(self.row_size, 2, data.get('primaryTestId'), self.black_color)
-        self.ws.write(self.row_size, 3, data.get('candidateId'), self.black_color)
-        self.ws.write(self.row_size, 4, data.get('loginName'), self.black_color)
-        self.ws.write(self.row_size, 5, data.get('password'), self.black_color)
-        self.ws.write(self.row_size, 6, data.get('isVendorTest'), self.black_color)
-        self.ws.write(self.row_size, 7, data.get('IsSLCEnabled'), self.black_color)
-        self.ws.write(self.row_size, 8, data.get('expectedStatus'), final_status_color)
-        self.ws.write(self.row_size, 9, self.final_status, final_status_color)
+        write_excel_object.compare_results_and_write_vertically(data.get('testCaseInfo'), None, self.row_size, 0)
+        write_excel_object.compare_results_and_write_vertically(data.get('primaryTestId'), None, self.row_size, 2)
+        write_excel_object.compare_results_and_write_vertically(data.get('candidateId'), None, self.row_size, 3)
+        write_excel_object.compare_results_and_write_vertically(data.get('loginName'), None, self.row_size, 4)
+        write_excel_object.compare_results_and_write_vertically(data.get('password'), None, self.row_size, 5)
+        write_excel_object.compare_results_and_write_vertically(data.get('isVendorTest'), None, self.row_size, 6)
+        write_excel_object.compare_results_and_write_vertically(data.get('IsSLCEnabled'), None, self.row_size, 7)
+        write_excel_object.compare_results_and_write_vertically(data.get('expectedStatus'), self.final_status,
+                                                                self.row_size, 8)
+        write_excel_object.compare_results_and_write_vertically(write_excel_object.current_status, None, self.row_size,
+                                                                1)
         self.row_size = self.row_size + 1
 
 
@@ -98,7 +71,6 @@ excel_read_obj.excel_read(input_path_reinitiate_automation, 0)
 excel_data = excel_read_obj.details
 crpo_headers = crpo_common_obj.login_to_crpo(cred_crpo_admin.get('user'), cred_crpo_admin.get('password'),
                                              cred_crpo_admin.get('tenant'))
-
 untag_candidates_details = [{"testUserIds": [893441, 893442, 893443]},
                             {"testUserIds": [893444]},
                             {"testUserIds": [893445]},
@@ -113,14 +85,6 @@ for data in excel_data:
     time.sleep(5)
     assessment_headers = AssessmentCommon.login_to_test(login_name=data.get('loginName'), password=data.get('password'),
                                                         tenant='automation')
-
     re_initiate_obj.test_user_next_test_status(assessment_headers)
     re_initiate_obj.excel_write(data)
-
-ended = datetime.datetime.now()
-ended = "Ended:- %s" % ended.strftime("%Y-%M-%d-%H-%M-%S")
-re_initiate_obj.ws.write(0, 1, re_initiate_obj.over_all_status, re_initiate_obj.over_all_status_color)
-re_initiate_obj.ws.write(0, 2, 'Started:- ' + re_initiate_obj.started, re_initiate_obj.black_color_bold)
-re_initiate_obj.ws.write(0, 3, ended, re_initiate_obj.black_color_bold)
-re_initiate_obj.ws.write(0, 4, "Total_Testcase_Count:- 29", re_initiate_obj.black_color_bold)
-re_initiate_obj.write_excel.close()
+write_excel_object.write_overall_status(testcases_count=29)

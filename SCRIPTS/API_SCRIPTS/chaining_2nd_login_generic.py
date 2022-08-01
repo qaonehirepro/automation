@@ -244,7 +244,7 @@ for data in excel_data:
         if data.get('firstTestIsTypeOf') == 'VET' and data.get('IsCallbackRequired') == 'Yes':
             # print(data.get('scoreCallBack'))
             # print(type(data.get('scoreCallBack')))
-            assessment_common_obj.pearson_call_backs(int(data.get('testUserId')), data.get('scoreCallBack'))
+            assessment_common_obj.pearson_call_backs(int(data.get('testUserId')), data.get('scoreCallBack'), 'AUTOMATION')
 
         # Below condition is to fetch score for non Hirepro and Non VET tests Currently Talentlens is not in use
         elif data.get('firstTestIsTypeOf') != 'VET' or data.get('firstTestIsTypeOf') != 'HP':
@@ -258,6 +258,7 @@ for data in excel_data:
         next_test_details = {}
         next_tu_infos1 = {}
         actual_status = "None"
+        print(submit_token)
         initiate_automation_resp = assessment_common_obj.initiate_automation(submit_token, data.get('candidateId'),
                                                                              int(data.get('primaryTestId')),
                                                                              domain=domain)
@@ -270,6 +271,7 @@ for data in excel_data:
                                                                         initiate_automation_data.get('contextId'))
             if polling_api_response['data']['JobState'] == "SUCCESS":
                 # once Job status is success, we are processing the response below
+                print(polling_api_response)
                 next_test_details = assessment_common_obj.process_next_test_links_for_chaining(polling_api_response,
                                                                                                previous_domain=domain)
 

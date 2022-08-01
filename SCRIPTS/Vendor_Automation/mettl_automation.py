@@ -6,10 +6,10 @@ import time
 from SCRIPTS.UI_SCRIPTS.assessment_data_verification import *
 
 
-class CocubesAutomation:
+class MettlAutomation:
 
     def __init__(self):
-        self.url = "https://amsin.hirepro.in/assessment/#/assess/login/eyJhbGlhcyI6ImF0In0="
+        self.url = "https://amsin.hirepro.in/assessment/#/assess/login/eyJhbGlhcyI6ImF1dG9tYXRpb24ifQ=="
         self.path = r"F:\qa_automation\chromedriver.exe"
         write_excel_object.save_result(output_path_ui_mettl)
         # 0th Row Header
@@ -28,7 +28,6 @@ class CocubesAutomation:
         overall_color = write_excel_object.green_color
         browser = assess_ui_common_obj.initiate_browser(self.url, self.path)
         login_details = assess_ui_common_obj.ui_login_to_test(login_id, password)
-        # self.browser.get_screenshot_as_file(self.common_path + "\\1_t1_afterlogin.png")
         overall_status = 'pass'
         if login_details == 'SUCCESS':
             i_agreed = assess_ui_common_obj.select_i_agree()
@@ -293,17 +292,18 @@ class CocubesAutomation:
         write_excel_object.write_excel.close()
 
 
-qs = CocubesAutomation()
-token = crpo_common_obj.login_to_crpo(cred_crpo_admin_at.get('user'), cred_crpo_admin_at.get('password'),
-                                      cred_crpo_admin_at.get('tenant'))
+qs = MettlAutomation()
+token = crpo_common_obj.login_to_crpo(cred_crpo_admin.get('user'), cred_crpo_admin.get('password'),
+                                      cred_crpo_admin.get('tenant'))
 
 sprint_id = input('Enter Sprint ID')
 candidate_id = crpo_common_obj.create_candidate(token, sprint_id)
 print(candidate_id)
-test_id = 14018
-event_id = 10642
-jobrole_id = 30252
+test_id = 14675
+event_id = 11105
+jobrole_id = 30337
 tag_candidate = crpo_common_obj.tag_candidate_to_test(token, candidate_id, test_id, event_id, jobrole_id)
+time.sleep(10)
 test_userid = crpo_common_obj.get_all_test_user(token, candidate_id)
 print(test_userid)
 tu_req_payload = {"testUserId": test_userid,

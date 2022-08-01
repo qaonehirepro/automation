@@ -28,7 +28,7 @@ class AssessmentUICommon:
         return self.driver
 
     def ui_login_to_test(self, user_name, password):
-        time.sleep(5)
+        time.sleep(8)
         self.driver.find_element(By.NAME, 'loginUsername').clear()
         self.driver.find_element(By.NAME, 'loginUsername').send_keys(user_name)
         self.driver.find_element(By.NAME, 'loginPassword').clear()
@@ -40,6 +40,7 @@ class AssessmentUICommon:
             if self.driver.find_element(By.XPATH,
                                         '//div[@class="text-center login-error ng-binding ng-scope"]').is_displayed():
                 print("Unable to Login ")
+                time.sleep(2)
                 error_message = self.driver.find_element(By.XPATH,
                                                          '//div[@class="text-center login-error ng-binding ng-scope"]').text
                 login_status = error_message
@@ -97,6 +98,22 @@ class AssessmentUICommon:
         time.sleep(1)
         self.driver.find_element(By.NAME, 'btnStartTest').click()
 
+    def check_security_key_model_window_availability(self):
+        status = 'Success'
+        try:
+            if self.driver.find_element(By.NAME, 'securityKey').is_displayed():
+                print("Security page is displayed")
+                status = "Success"
+        except Exception as e:
+            print(e)
+            status = 'Failed'
+        return status
+
+    def validate_security_key(self, secure_password):
+        self.driver.find_element(By.NAME, 'securityKey').send_keys(secure_password)
+        self.driver.find_element(By.XPATH, '//button[text()="Verify"]').click()
+        time.sleep(3)
+
     def end_test(self):
         time.sleep(3)
         self.driver.find_element(By.XPATH, "//button[@class='btn btn-danger ng-scope']").click()
@@ -119,6 +136,7 @@ class AssessmentUICommon:
         return question_string
 
     def rejection_page(self):
+        print("This is Rejected Method")
         data = {}
         try:
             if self.driver.find_element(By.NAME, 'nextTestMsg').is_displayed():
@@ -126,14 +144,16 @@ class AssessmentUICommon:
                 overall_page_message = self.driver.find_element(By.XPATH, "//*[@class='ng-scope']").text
                 data = {'is_next_test_available': 'Not Available', 'is_shortlisted': 'Rejected',
                         'message': message, 'consent_yes': 'EMPTY', 'consent_no': 'EMPTY',
-                        'consent_paragraph': 'EMPTY', 'next_test_page_message': overall_page_message}
+                        'consent_paragraph': 'EMPTY', 'next_test_page_message': overall_page_message,
+                        'retest_required': False}
 
         except Exception as e:
             print(e)
             message = "shortlisting not available"
             data = {'is_next_test_available': 'EXCEPTION OCCURRED', 'is_shortlisted': 'EXCEPTION OCCURRED',
                     'message': message, 'consent_yes': 'EXCEPTION OCCURRED', 'consent_no': 'EXCEPTION OCCURRED',
-                    'consent_paragraph': 'EXCEPTION OCCURRED', 'next_test_page_message': 'EXCEPTION OCCURRED'}
+                    'consent_paragraph': 'EXCEPTION OCCURRED', 'next_test_page_message': 'EXCEPTION OCCURRED',
+                    'retest_required': False}
         return data
 
     def shortlisting_page(self):
@@ -142,34 +162,47 @@ class AssessmentUICommon:
             if self.driver.find_element(By.NAME, 'btnStartNextTest').is_displayed():
                 overall_page_message = self.driver.find_element(By.XPATH, "//*[@class='ng-scope']").text
                 button_message = self.driver.find_element(By.NAME, 'btnStartNextTest').text
-                next_test_message = self.driver.find_element(By.NAME, 'nextTestMsg').text
-                if button_message == 'Yes, Take me to the next test':
-                    consent_message = self.driver.find_element(By.XPATH, "//*[@class='next-msg ng-scope']").text
-                    consent_yes = self.driver.find_element(By.XPATH, "//*[@class='btn btn-success btn-yes']").text
-                    consent_no = self.driver.find_element(By.XPATH, "//*[@class='btn btn-default red-button']").text
-                    data = {'is_next_test_available': 'Available', 'is_shortlisted': 'Shortlisted with Consent',
-                            'message': next_test_message, 'consent_yes': consent_yes, 'consent_no': consent_no,
-                            'consent_paragraph': consent_message, 'next_test_page_message': overall_page_message}
+                print("This is button message")
+                print(button_message)
+                if button_message == 'Yes, Request for Retest':
+                    data = {'is_next_test_available': 'Not Available', 'is_shortlisted': 'Retest Case',
+                            'message': 'EMPTY', 'consent_yes': 'EMPTY', 'consent_no': 'EMPTY',
+                            'consent_paragraph': 'EMPTY', 'next_test_page_message': overall_page_message,
+                            'retest_required': True}
                 else:
-                    if next_test_message == 'We have another test lined up for you.':
-                        data = {'is_next_test_available': 'Available', 'is_shortlisted': 'Autotest',
-                                'message': next_test_message, 'consent_yes': 'EMPTY', 'consent_no': 'EMPTY',
-                                'consent_paragraph': 'EMPTY', 'next_test_page_message': overall_page_message}
-                    elif next_test_message == 'Congratulations! You are eligible for the next test.':
-                        data = {'is_next_test_available': 'Available', 'is_shortlisted': 'Shortlisted',
-                                'message': next_test_message, 'consent_yes': 'EMPTY', 'consent_no': 'EMPTY',
-                                'consent_paragraph': 'EMPTY', 'next_test_page_message': overall_page_message}
+                    next_test_message = self.driver.find_element(By.NAME, 'nextTestMsg').text
+                    if button_message == 'Yes, Take me to the next test':
+                        consent_message = self.driver.find_element(By.XPATH, "//*[@class='next-msg ng-scope']").text
+                        consent_yes = self.driver.find_element(By.XPATH, "//*[@class='btn btn-success btn-yes']").text
+                        consent_no = self.driver.find_element(By.XPATH, "//*[@class='btn btn-default red-button']").text
+                        data = {'is_next_test_available': 'Available', 'is_shortlisted': 'Shortlisted with Consent',
+                                'message': next_test_message, 'consent_yes': consent_yes, 'consent_no': consent_no,
+                                'consent_paragraph': consent_message, 'next_test_page_message': overall_page_message,
+                                'retest_required': False}
                     else:
-                        data = {'is_next_test_available': 'Available', 'is_shortlisted': 'DEBUG',
-                                'message': next_test_message, 'consent_yes': 'DEBUG', 'consent_no': 'DEBUG',
-                                'consent_paragraph': 'DEBUG', 'next_test_page_message': overall_page_message}
+                        if next_test_message == 'We have another test lined up for you.':
+                            data = {'is_next_test_available': 'Available', 'is_shortlisted': 'Autotest',
+                                    'message': next_test_message, 'consent_yes': 'EMPTY', 'consent_no': 'EMPTY',
+                                    'consent_paragraph': 'EMPTY', 'next_test_page_message': overall_page_message,
+                                    'retest_required': False}
+                        elif next_test_message == 'Congratulations! You are eligible for the next test.':
+                            data = {'is_next_test_available': 'Available', 'is_shortlisted': 'Shortlisted',
+                                    'message': next_test_message, 'consent_yes': 'EMPTY', 'consent_no': 'EMPTY',
+                                    'consent_paragraph': 'EMPTY', 'next_test_page_message': overall_page_message,
+                                    'retest_required': False}
+                        else:
+                            data = {'is_next_test_available': 'Available', 'is_shortlisted': 'DEBUG',
+                                    'message': next_test_message, 'consent_yes': 'DEBUG', 'consent_no': 'DEBUG',
+                                    'consent_paragraph': 'DEBUG', 'next_test_page_message': overall_page_message,
+                                    'retest_required': False}
         except Exception as e:
             print(e)
             next_test_message = "Shortlisting Not Available"
             data = {'is_next_test_available': 'EXCEPTION OCCURRED', 'is_shortlisted': 'EXCEPTION OCCURRED',
                     'message': next_test_message, 'consent_yes': 'EXCEPTION OCCURRED',
                     'consent_no': 'EXCEPTION OCCURRED', 'consent_paragraph': 'EXCEPTION OCCURRED',
-                    'next_test_page_message': 'EXCEPTION OCCURRED'}
+                    'next_test_page_message': 'EXCEPTION OCCURRED', 'retest_required': False}
+            print("This is Shortlist method")
         print(data)
         return data
 
@@ -330,17 +363,35 @@ class AssessmentUICommon:
     def survey_submit(self):
         time.sleep(60)
         try:
-            if self.driver.find_element(By.XPATH, "//*[@class = 'wdtContextualItem  wdtContextNext']").is_displayed():
+            if self.driver.find_element(By.XPATH,
+                                        "//*[@class = 'wdtContextualItem  wdtContextNext']").is_displayed():
                 self.driver.find_element(By.XPATH, "//*[@class = 'wdtContextualItem  wdtContextNext']").click()
                 print("survey Question Success")
             survey_submit = "Successful"
-            is_element_successful = False
+            is_element_successful = True
         except Exception as e:
             print(e)
             print("survey Question  Failed")
             survey_submit = "Failed"
             is_element_successful = False
         return survey_submit, is_element_successful
+
+    def vet_retest(self, retest_consent):
+        time.sleep(60)
+        try:
+            if retest_consent == 'Yes, Request for Retest':
+                self.driver.find_element(By.XPATH, "//*[@class='btn btn-success']").click()
+            else:
+                self.driver.find_element(By.XPATH, "//*[@class='btn btn-default']").click()
+                print("VET Retest Success")
+            vet_retest = "Retest Consent Success"
+            is_element_successful = True
+        except Exception as e:
+            print(e)
+            print("VET Retest Failed")
+            vet_retest = "Retest Consent Failed"
+            is_element_successful = False
+        return vet_retest, is_element_successful
 
     def cocubes_disclaimer(self):
         time.sleep(5)
@@ -564,6 +615,192 @@ class AssessmentUICommon:
             is_element_successful = False
             mettl_next_section = "Mettl Final Submit Confirmation failed"
         return group_names, is_element_successful
+
+    def tl_start_test(self):
+        time.sleep(30)
+        try:
+            self.driver.switch_to.frame('thirdPartyIframe')
+            # job title text
+            self.driver.find_element(By.XPATH, "//*[@id='textbox_62fa715a-0dcb-498b-bf09-151fa7faad61']").send_keys(
+                'QA')
+            # recent position type
+            self.driver.find_element(By.XPATH,
+                                     '//*[@id="dropdown_d7244e75-eb2a-47a9-b23b-70f3412244d1"]/option[3]').click()
+            # Recent Industry
+            self.driver.find_element(By.XPATH,
+                                     '//*[@id="dropdown_a7d5f8e3-1de4-4840-acf2-5a3d5ab7265e"]/option[2]').click()
+            # recent occupation
+            self.driver.find_element(By.XPATH,
+                                     '//*[@id="dropdown_7ed143db-e43f-4759-af35-9f5eebde8a8f"]/option[4]').click()
+            # next button
+            self.driver.find_element(By.XPATH, '//*[@id="navigateNextBottom').click()
+
+            print("TL Test is Started")
+            tl_start_test = "Start test Success"
+            is_element_successful = True
+
+        except Exception as e:
+            print(e)
+            print("TL test is not Started")
+            is_element_successful = False
+            tl_start_test = "Start test Failed"
+        return tl_start_test, is_element_successful
+
+    def tl_copyright_page(self):
+        time.sleep(5)
+        try:
+            self.driver.find_element(By.XPATH, '//*[@id="navigateNextBottom"]').click()
+
+            print("TL Copywrite success")
+            tl_copyright_page = "Copywrite Success"
+            is_element_successful = True
+
+        except Exception as e:
+            print(e)
+            print("TL Copywrite Failed")
+            is_element_successful = False
+            tl_copyright_page = "Copywrite Failed"
+        return tl_copyright_page, is_element_successful
+
+    def tl_instructions_page1(self):
+        time.sleep(5)
+        try:
+            self.driver.find_element(By.XPATH, '//*[@id="navigateNextBottom"]').click()
+            print("TL instructions2 success")
+            tl_instructions_page1 = "instructions Success"
+            is_element_successful = True
+
+        except Exception as e:
+            print(e)
+            print("TL instructions2 failed")
+            is_element_successful = False
+            tl_instructions_page = "instructions Failed"
+        return tl_instructions_page1, is_element_successful
+
+    def tl_instructions_page2(self):
+        time.sleep(5)
+        try:
+            self.driver.find_element(By.XPATH, '//*[@class="btn btn-primary').click()
+            print("TL instructions success")
+            tl_instructions_page2 = "instructions2 Success"
+            is_element_successful = True
+
+        except Exception as e:
+            print(e)
+            print("TL instructions failed")
+            is_element_successful = False
+            tl_instructions_page2 = "instructions2 Failed"
+        return tl_instructions_page2, is_element_successful
+
+    def tl_test_directions1(self):
+        tl_test_directions1 = "EMPTY"
+        is_element_successful = None
+        for count in range(0, 9):
+            time.sleep(5)
+            try:
+                self.driver.find_element(By.XPATH, '//*[@id="navigateNextBottom').click()
+                print("TL instructions success")
+                tl_test_directions1 = "test directions1 Success"
+                is_element_successful = True
+
+            except Exception as e:
+                print(e)
+                print("TL instructions failed")
+                is_element_successful = False
+                tl_test_directions1 = "test directions1 Failed"
+
+        return tl_test_directions1, is_element_successful
+
+    def wheebox_starttest_checkbox(self):
+        time.sleep(5)
+        try:
+            self.driver.switch_to.frame('thirdPartyIframe')
+            self.driver.find_element(By.XPATH, "//*[@class='checkbox state-success']").click()
+            print("Wheebox agreement is Accepted")
+            wheebox_agreement = "Agreed"
+            is_element_successful = True
+
+        except Exception as e:
+            print(e)
+            print("Wheebox agreement is failed")
+            is_element_successful = False
+            wheebox_agreement = "Not Agreed"
+        return wheebox_agreement, is_element_successful
+
+    def wheebox_proceed_test(self):
+        time.sleep(30)
+        try:
+            self.driver.find_element(By.XPATH, "//*[@id='waitingLoungButton']").click()
+            print("Wheebox proceed test  is success")
+            wheebox_proceed_test = "Success"
+            is_element_successful = True
+
+        except Exception as e:
+            print(e)
+            print("Wheebox proceed test is failed")
+            is_element_successful = False
+            wheebox_proceed_test = "Failed"
+        return wheebox_proceed_test, is_element_successful
+
+    def wheebox_auto_next_qn(self):
+        time.sleep(2)
+        try:
+            self.driver.find_element(By.XPATH, "//*[@class='checkbox green-txt-clr unselectable']").click()
+            print("Auto next question is success")
+            wheebox_auto_next_qn = "Success"
+            is_element_successful = True
+
+        except Exception as e:
+            print(e)
+            print("Auto next question is failed")
+            is_element_successful = False
+            wheebox_auto_next_qn = "Failed"
+        return wheebox_auto_next_qn, is_element_successful
+
+    def wheebox_answer_qn(self):
+        time.sleep(2)
+        try:
+            self.driver.find_element(By.XPATH, "//*[@class='radio state-error']").click()
+            print("Question answer is success")
+            wheebox_answer_qn = "answered"
+            is_element_successful = True
+
+        except Exception as e:
+            print(e)
+            print("Question answer is failed")
+            is_element_successful = False
+            wheebox_answer_qn = "Not answered"
+        return wheebox_answer_qn, is_element_successful
+
+    def wheebox_submit_test(self):
+        time.sleep(2)
+        try:
+            self.driver.find_element(By.XPATH, "//*[@class='pull-right unselectable']").click()
+            print("Test is submitted successfully")
+            wheebox_submit_test = "submitted"
+            is_element_successful = True
+
+        except Exception as e:
+            print(e)
+            print("Test is not submitted successfully")
+            is_element_successful = False
+            wheebox_submit_test = "Not submitted"
+        return wheebox_submit_test, is_element_successful
+
+    def wheebox_confirm_submit(self):
+        time.sleep(2)
+        try:
+            self.driver.find_element(By.XPATH, "//*[@class='confirm']").click()
+            print("Test is submitted successfully")
+            wheebox_confirm_submit = "submitted"
+            is_element_successful = True
+
+        except Exception as e:
+            print(e)
+            print("Test is not submitted successfully")
+            is_element_successful = False
+            wheebox_confirm_submit = "Not submitted"
+        return wheebox_confirm_submit, is_element_successful
 
 
 assess_ui_common_obj = AssessmentUICommon()

@@ -16,6 +16,7 @@ class Excel:
         self.black_color = self.write_excel.add_format({'font_color': 'black', 'font_size': 9})
         self.red_color = self.write_excel.add_format({'bg_color': 'red', 'font_color': 'black', 'font_size': 9})
         # self.red_color = self.write_excel.add_format({'font_color': 'red', 'font_size': 9})
+        self.green_color_bold = self.write_excel.add_format({'font_color': 'green', 'font_size': 9, 'bold': True})
         self.green_color = self.write_excel.add_format({'font_color': 'green', 'font_size': 9})
         self.orange_color = self.write_excel.add_format({'font_color': 'orange', 'font_size': 9})
         self.black_color_bold = self.write_excel.add_format({'font_color': 'black', 'bold': True, 'font_size': 9})
@@ -44,6 +45,16 @@ class Excel:
             self.ws.write(i+1, 0, "Header - " + str(i+1), self.black_color_bold)
             for j in range(1, self.expected_excel_sheet1.ncols):
                 self.ws.write(i+1, j + 2, expected_sheet_rows[j], self.black_color_bold)
+
+    @staticmethod
+    def write_excel1(data_to_be_written_in_excel):
+        #This is a normal write excel script without comparing any
+        # 0th index is row
+        # 1st index is column
+        # 2nd index is value
+        # 3rd index is color coding
+        for final_data in data_to_be_written_in_excel:
+            write_excel_object.ws.write(final_data[0], final_data[1], final_data[2], final_data[3])
 
     def excelMatchValues(self, usecase_name, comparision_required_from_index, total_testcase_count):
         self.ws.write(0, 0, usecase_name, self.black_color_bold)

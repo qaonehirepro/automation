@@ -9,7 +9,7 @@ from SCRIPTS.UI_SCRIPTS.assessment_data_verification import *
 class VersantQuickScreener:
 
     def __init__(self):
-        self.url = "https://pearsonstg.hirepro.in/assessment/#/assess/login/eyJhbGlhcyI6ImNycG9kZW1vIn0="
+        self.url = "https://pearsonstg.hirepro.in/assessment/#/assess/login/eyJhbGlhcyI6ImF1dG9tYXRpb24ifQ%3D%3D"
         self.path = r"F:\qa_automation\chromedriver.exe"
         write_excel_object.save_result(output_path_ui_vet_qs)
         # 0th Row Header
@@ -149,14 +149,14 @@ class VersantQuickScreener:
         write_excel_object.write_excel.close()
 
 qs = VersantQuickScreener()
-token = crpo_common_obj.login_to_crpo(cred_crpo_admin_crpodemo.get('user'), cred_crpo_admin_crpodemo.get('password'),
-                                      cred_crpo_admin_crpodemo.get('tenant'))
+token = crpo_common_obj.login_to_crpo(cred_crpo_admin.get('user'), cred_crpo_admin.get('password'),
+                                      cred_crpo_admin.get('tenant'))
 sprint_id = input('Enter Sprint ID')
 candidate_id = crpo_common_obj.create_candidate(token, sprint_id)
 print(candidate_id)
-test_id = 12269
-event_id = 8947
-jobrole_id = 29841
+test_id = 14677
+event_id = 11105
+jobrole_id = 30337
 tag_candidate = crpo_common_obj.tag_candidate_to_test(token, candidate_id, test_id, event_id, jobrole_id)
 test_userid = crpo_common_obj.get_all_test_user(token, candidate_id)
 print(test_userid)

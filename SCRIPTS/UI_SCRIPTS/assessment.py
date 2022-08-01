@@ -2,11 +2,12 @@ from SCRIPTS.UI_COMMON.assessment_ui_common_v2 import *
 import time
 from SCRIPTS.UI_SCRIPTS.assessment_data_verification import *
 from SCRIPTS.COMMON.read_excel import *
+from SCRIPTS.COMMON.io_path import *
 
 class OnlineAssessment:
 
     def __init__(self):
-        self.url = "https://amsin.hirepro.in/assessment/#/assess/login/eyJhbGlhcyI6ImF0In0="
+        self.url = amsin_at_assessment_url
         self.path = r"F:\qa_automation\chromedriver.exe"
 
     def mcq_assessment(self, current_excel_data):
@@ -138,8 +139,9 @@ input_file_path = r"F:\qa_automation\PythonWorkingScripts_InputData\UI\Assessmen
 excel_read_obj.excel_read(input_file_path, 0)
 excel_data = excel_read_obj.details
 for current_excel_row in excel_data:
+    print(current_excel_row)
     assessment_obj.mcq_assessment(current_excel_row)
-crpo_token = crpo_common_obj.login_to_crpo('admin', 'Email@admin', 'AT')
+crpo_token = crpo_common_obj.login_to_crpo('admin', 'At@2021$$', 'AT')
 print(crpo_token)
 # time.sleep(10)
 obj_assessment_data_verification.assessment_data_report(crpo_token, excel_data)

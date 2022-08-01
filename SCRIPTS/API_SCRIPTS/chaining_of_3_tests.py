@@ -195,7 +195,7 @@ class ChainingOfTests:
                 if test_id_data.get('test_type_for_test') == 'versant' and test_id_data.get(
                         'is_callback_req_for_test') == 'Yes':
                     assessment_common_obj.pearson_call_backs(int(test_id_data.get('tu_id')),
-                                                             test_id_data.get('score_callback'))
+                                                             test_id_data.get('score_callback'),'AUTOMATION')
 
                 # Below condition is to fetch score for non Hirepro and Non VET tests Currently Talentlens is not in use
                 elif test_id_data.get('test_type_for_test') != 'VET' and test_id_data.get('test_type_for_test') != 'HP':

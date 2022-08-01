@@ -4,6 +4,7 @@ import json
 
 class CrpoCommon:
     domain = 'https://amsin.hirepro.in'
+    pearson_domain = 'https://pearsonstg.hirepro.in'
 
     @staticmethod
     def login_to_crpo(login_name, password, tenant):
@@ -67,7 +68,7 @@ class CrpoCommon:
         api_request = requests.post(url, headers=token, files=request, verify=False)
         # print(api_request.headers.get('X-GUID'))
         resp_dict = json.loads(api_request.content)
-        print(resp_dict)
+        # print(resp_dict)
         return resp_dict
 
     @staticmethod
@@ -143,9 +144,10 @@ class CrpoCommon:
 
     @staticmethod
     def create_candidate(token, usn):
-        request = {"PersonalDetails": {"FirstName": usn, "Email1": usn + "qaone.h.i.repro@gmail.com", "USN": usn}}
+        request = {"PersonalDetails": {"FirstName": usn, "Email1": "S1N1J1E1V11111" + usn + "@gmail.com", "USN": usn,
+                                       "DateOfBirth": "2022-02-08T18:30:00.000Z"}}
         # req = {"PersonalDetails": {"FirstName": "MuthuMurugan", "Email1": "qaonehirepro@gmail.com", "USN": "151_2"}}
-        response = requests.post('https://amsin.hirepro.in/py/rpo/create_candidate/', headers=token,
+        response = requests.post(crpo_common_obj.domain + "/py/rpo/create_candidate/", headers=token,
                                  data=json.dumps(request), verify=False)
         response_data = response.json()
         candidate_id = response_data.get('CandidateId')
@@ -161,7 +163,7 @@ class CrpoCommon:
     def create_candidate_v2(token, request):
         # request = {"PersonalDetails": {"FirstName": usn, "Email1": usn + "qaone.h.i.repro@gmail.com", "USN": usn}}
         # # req = {"PersonalDetails": {"FirstName": "MuthuMurugan", "Email1": "qaonehirepro@gmail.com", "USN": "151_2"}}
-        response = requests.post('https://amsin.hirepro.in/py/rpo/create_candidate/', headers=token,
+        response = requests.post(crpo_common_obj.domain + "/py/rpo/create_candidate/", headers=token,
                                  data=json.dumps(request), verify=False)
         response_data = response.json()
         print(response_data)
@@ -178,26 +180,26 @@ class CrpoCommon:
     def tag_candidate_to_test(token, cid, testid, eventid, jobroleid):
         request = {"CandidateIds": [int(cid)], "TestIds": [int(testid)], "EventId": int(eventid),
                    "JobRoleId": int(jobroleid), "Sync": "True"}
-        response = requests.post(
-            "https://amsin.hirepro.in/py/crpo/applicant/api/v1/tagCandidatesToEventJobRoleTests/",
-            headers=token,
-            data=json.dumps(request, default=str), verify=False)
+        response = requests.post(crpo_common_obj.domain +
+                                 "/py/crpo/applicant/api/v1/tagCandidatesToEventJobRoleTests/",
+                                 headers=token,
+                                 data=json.dumps(request, default=str), verify=False)
         return response
 
     @staticmethod
     def test_user_credentials(token, tu_id):
         request = {"testUserId": tu_id}
-        response = requests.post(
-            "https://amsin.hirepro.in/py/assessment/testuser/api/v1/getCredential/",
-            headers=token,
-            data=json.dumps(request, default=str), verify=False)
+        response = requests.post(crpo_common_obj.domain +
+                                 "/py/assessment/testuser/api/v1/getCredential/",
+                                 headers=token,
+                                 data=json.dumps(request, default=str), verify=False)
         # data = response.json()
         return response.json()
 
     @staticmethod
     def get_all_test_user(token, cid):
         request = {"isMyAssessments": False, "search": {"candidateIds": [cid]}}
-        response = requests.post("https://amsin.hirepro.in/py/assessment/testuser/api/v1/getAllTestUser/",
+        response = requests.post(crpo_common_obj.domain + "/py/assessment/testuser/api/v1/getAllTestUser/",
                                  headers=token,
                                  data=json.dumps(request, default=str), verify=False)
         data = response.json()
@@ -207,7 +209,7 @@ class CrpoCommon:
     @staticmethod
     def get_candidate_by_id(token, cid):
         request = {"CandidateId": cid, "RequiredDetails": [1]}
-        response = requests.post("https://amsin.hirepro.in/py/rpo/get_candidate_details_by_id/",
+        response = requests.post(crpo_common_obj.domain + "/py/rpo/get_candidate_details_by_id/",
                                  headers=token,
                                  data=json.dumps(request, default=str), verify=False)
         candidate_details = response.json()
@@ -219,7 +221,7 @@ class CrpoCommon:
         # token = {'content-type': 'application/json', 'APP-NAME': 'py3app', 'X-APPLMA': 'true',
         #          'X-AUTH-TOKEN': 'Tkn:3af8d1e6-bc1c-4923-8786-b3c7ab04655d'}
 
-        response = requests.post("https://amsin.hirepro.in/py/assessment/authoring/api/v1/createQuestion/",
+        response = requests.post(crpo_common_obj.domain + "/py/assessment/authoring/api/v1/createQuestion/",
                                  headers=token, data=json.dumps(request), verify=False)
         question_id_resp = response.json()
         question_id = question_id_resp['data']['questionId']
@@ -231,7 +233,7 @@ class CrpoCommon:
         # token = {'content-type': 'application/json', 'APP-NAME': 'py3app', 'X-APPLMA': 'true',
         #          'X-AUTH-TOKEN': 'Tkn:60be3298-12bd-4801-bb91-301712468d1e'}
         request = {"id": question_id}
-        response = requests.post("https://amsin.hirepro.in/py/assessment/authoring/api/v1/getQuestionForId/",
+        response = requests.post(crpo_common_obj.domain + "/py/assessment/authoring/api/v1/getQuestionForId/",
                                  headers=token,
                                  data=json.dumps(request, default=str), verify=False)
         question_id_details = response.json()
@@ -239,11 +241,97 @@ class CrpoCommon:
 
     @staticmethod
     def get_test_user_infos(token, payload):
-        response = requests.post("https://amsin.hirepro.in/py/assessment/testuser/api/v1/info/",
+        response = requests.post(crpo_common_obj.domain + "/py/assessment/testuser/api/v1/info/",
                                  headers=token,
                                  data=json.dumps(payload, default=str), verify=False)
         test_user_infos = response.json()
         return test_user_infos
+
+    @staticmethod
+    def search_test_user_by_cid_and_testid(token, cid, test_id):
+        request = {"isPartnerTestUserInfo": True, "testId": test_id,
+                   "search": {"status": 6, "candidateSearch": {"ids": [cid]}}}
+        response = requests.post(crpo_common_obj.domain + "/py/assessment/testuser/api/v1/getTestUsersForTest/",
+                                 headers=token,
+                                 data=json.dumps(request, default=str), verify=False)
+        data = response.json()
+        if 'testInfo' in data['data']:
+            test_user_id = data['data']['testUserInfos'][0]['applicantBasicInfos'][0]['testUserId']
+            copied_test_user_id = data['data']['testUserInfos'][0]['copiedTestUserId']
+            offline_attended = data['data']['testUserInfos'][0]['isOffline']
+            # total_score = int(data['data']['testUserInfos'][0]['totalScore'])
+            test_user_data = {'testUserId': test_user_id, 'parentTestUserId': copied_test_user_id,
+                              'Offline': offline_attended}
+        else:
+            test_user_data = {'testUserId': "NotExist", 'parentTestUserId': "EMPTY",
+                              'Offline': "EMPTY"}
+
+        return test_user_data
+
+    @staticmethod
+    def get_test_user_infos_v2(token, tuid):
+
+        payload = {"testUserId": tuid, "requiredFlags": {"isGroupSectionWiseMarks": True, "isVendorDetails": True,
+                                                         "isCodingSummary": False}}
+        response = requests.post(crpo_common_obj.domain + "/py/assessment/testuser/api/v1/info/",
+                                 headers=token,
+                                 data=json.dumps(payload, default=str), verify=False)
+        test_user_infos = response.json()
+        return test_user_infos
+
+    @staticmethod
+    def change_applicant_status(token, applicant_id, event_id, jobrole_id, status_id):
+
+        payload = {"ApplicantIds": [applicant_id], "EventId": event_id, "JobRoleId": jobrole_id,
+                   "ToStatusId": status_id,
+                   "Sync": "False", "Comments": "", "InitiateStaffing": False}
+        response = requests.post(crpo_common_obj.domain + "/py/crpo/applicant/api/v1/applicantStatusChange/",
+                                 headers=token,
+                                 data=json.dumps(payload, default=str), verify=False)
+        test_user_infos = response.json()
+        print(test_user_infos)
+        return test_user_infos
+
+    @staticmethod
+    def get_applicant_infos(token, candidate_id):
+        payload = {"CandidateIds": [candidate_id]}
+        response = requests.post(crpo_common_obj.domain + "/py/crpo/applicant/api/v1/getApplicantsInfo/",
+                                 headers=token,
+                                 data=json.dumps(payload, default=str), verify=False)
+        applicant_infos = response.json()
+        return applicant_infos
+
+    @staticmethod
+    def force_untag_testuser(token, test_user_id):
+        request = {"testUserIds": [test_user_id], "isForced": True}
+        response = requests.post(crpo_common_obj.domain + "/py/assessment/testuser/api/v1/un-tag/",
+                                 headers=token,
+                                 data=json.dumps(request, default=str), verify=False)
+        return response
+
+    @staticmethod
+    def persistent_save(token, s3_url):
+        request = [{
+            "origFileUrl": s3_url,
+            "relativePath": "at/proctor/image/10324/1367938", "isSync": True, "targetBucket": "recording-bucket",
+            "metaData": None}]
+        response = requests.post(crpo_common_obj.pearson_domain +
+                                 "/py/common/filehandler/api/v2/persistent-save/",
+                                 headers=token,
+                                 data=json.dumps(request, default=str), verify=False)
+        resp = json.loads(response.content)
+        return resp
+
+    @staticmethod
+    def check_audio_distortion(token, s3_persistent_url):
+        request = {"FileUrl": s3_persistent_url}
+        response = requests.post(crpo_common_obj.pearson_domain +
+                                 "/py/common/voice_distortion/check_audio_distortion/",
+                                 headers=token,
+                                 data=json.dumps(request, default=str), verify=False)
+        resp = json.loads(response.content)
+        return resp
+
 
 crpo_common_obj = CrpoCommon()
 # crpo_common_obj.get_question_for_id(123895)

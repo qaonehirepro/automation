@@ -12,7 +12,7 @@ class QPVerification:
 
         # save_path = r"F:\qa_automation\PythonWorkingScripts_Output\UI\QP_"
         write_excel_object.save_result(output_path_ui_qp_verification)
-        self.url = "https://amsin.hirepro.in/assessment/#/assess/login/eyJhbGlhcyI6ImF0In0="
+        self.url = amsin_at_assessment_url
         # self.path = r"F:\qa_automation\chromedriver.exe"
         header = ['QP_Verification']
         write_excel_object.write_headers_for_scripts(0, 0, header, write_excel_object.black_color_bold)

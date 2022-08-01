@@ -1,11 +1,12 @@
 import requests
 import json
-#from ASSESSMENT_COMMON import submit_test_data
+# from ASSESSMENT_COMMON import submit_test_data
 from SCRIPTS.ASSESSMENT_COMMON import submit_test_data
 import time
 
 
 class AssessmentCommon:
+    common_domain = 'https://amsin'
 
     def __init__(self):
         pass
@@ -14,7 +15,7 @@ class AssessmentCommon:
     def login_to_test(login_name, password, tenant):
         header = {"content-type": "application/json", "X-APPLMA": "true", "APP-NAME": "py3app"}
         data = {"LoginName": login_name, "Password": password, "TenantAlias": tenant}
-        response = requests.post("https://pearson.hirepro.in/py/assessment/htmltest/api/v2/login_to_test/",
+        response = requests.post("https://amsin.hirepro.in/py/assessment/htmltest/api/v2/login_to_test/",
                                  headers=header,
                                  data=json.dumps(data), verify=False)
         login_response = response.json()
@@ -25,15 +26,15 @@ class AssessmentCommon:
     def decide_domain(self, type_of_test):
         print(type_of_test)
         if type_of_test == 'HP':
-            domain = "https://amsin.hirepro.in/py/assessment/"
+            domain = assessment_common_obj.common_domain + ".hirepro.in/py/assessment/"
         elif type_of_test == 'Cocubes':
-            domain = "https://amsin.hirepro.in/py/assessment/"
+            domain = assessment_common_obj.common_domain + ".hirepro.in/py/assessment/"
         elif type_of_test == 'TALENTLENS':
             domain = "https://talentlensstg.hirepro.in/py/assessment/"
         elif type_of_test == 'VET':
             domain = "https://pearsonstg.hirepro.in/py/assessment/"
         else:
-            domain = "https://amsin.hirepro.in/py/assessment/"
+            domain = assessment_common_obj.common_domain + ".hirepro.in/py/assessment/"
 
         return domain
 
@@ -93,7 +94,7 @@ class AssessmentCommon:
         return submit_token
 
     @staticmethod
-    def pearson_call_backs(test_user_id, score_details):
+    def pearson_call_backs(test_user_id, score_details, tenant):
 
         print(test_user_id, score_details)
         content = """<?xml version = "1.0" encoding = "UTF-8"?>
@@ -124,12 +125,21 @@ class AssessmentCommon:
             </imsx_POXBody>
           </imsx_POXEnvelopeRequest> """
 
-
         content = content.format(test_user_id="%s" % test_user_id, score_response="%s" % score_details)
         print(content)
-        response = requests.post(
-            "https://amsin.hirepro.in/py/assessment/assessmentvendor/api/v1/vcb/versant/?tn=76EF28AF-6DB5-11EA-8197-0262BDD19558",
-            headers={"Content-Type": "application/xml"}, data=content)
+        # AUTOMATION
+        if tenant == 'AUTOMATION':
+            response = requests.post(assessment_common_obj.common_domain +
+                                     ".hirepro.in/py/assessment/assessmentvendor/api/v1/vcb/versant/?tn=76EF28AF-6DB5-11EA-8197-0262BDD19558",
+                                     headers={"Content-Type": "application/xml"}, data=content)
+
+        elif tenant == 'AT':
+            response = requests.post(assessment_common_obj.common_domain +
+                                     ".hirepro.in/py/assessment/assessmentvendor/api/v1/vcb/versant/?tn=EE596328-A963-11EA-9A76-0262BDD19558",
+                                     headers={"Content-Type": "application/xml"}, data=content)
+        else:
+            print("This is Pearson Callbacks please specify the tenant")
+
         print(response.headers)
         print(response)
         print(response.content)
@@ -156,9 +166,10 @@ class AssessmentCommon:
                 "debugTimeStamp": "2020-12-22T14:13:50.704Z"}
         # print(data)
         while status != 'SUCCESS':
-            response = requests.post("https://amsin.hirepro.in/py/crpo/api/v1/getStatusOfAsyncAPI",
-                                     headers=token,
-                                     data=json.dumps(data, default=str), verify=False)
+            response = requests.post(
+                assessment_common_obj.common_domain + ".hirepro.in/py/crpo/api/v1/getStatusOfAsyncAPI",
+                headers=token,
+                data=json.dumps(data, default=str), verify=False)
             json_resp = response.json()
             status = json_resp['data']['JobState']
             print(json_resp)
@@ -215,7 +226,7 @@ class AssessmentCommon:
     @staticmethod
     def next_test_info_for_2nd_login(login_name, password, tenant, domain):
         second_login_data = {}
-        header = {"content-type": "application/json","APP-NAME": "py3app","X-APPLMA": "true"}
+        header = {"content-type": "application/json", "APP-NAME": "py3app", "X-APPLMA": "true"}
         data = {"loginName": login_name, "password": password, "tenantAlias": tenant,
                 "debugTimeStamp": "2020-12-02T13:32:30.749Z"}
         login_url = domain + 'htmltest/api/v1/test-user-next_test/'
@@ -252,7 +263,7 @@ class AssessmentCommon:
             if not test_type:
                 test_type = 'HP'
             are_you_able_to_login = 'Yes'
-            login_token = {'X-AUTH-TOKEN': login_response.get("Token"), "X-APPLMA": "true","APP-NAME": "py3app"}
+            login_token = {'X-AUTH-TOKEN': login_response.get("Token"), "X-APPLMA": "true", "APP-NAME": "py3app"}
             test_user_infos = {'nextTestID': login_response.get("TestId"),
                                'nextTestName': login_response.get("TestName"),
                                'nextTestCandidateId': login_response.get("CandidateId"),
@@ -284,6 +295,55 @@ class AssessmentCommon:
                       "login_response": login_response}
 
         return login_resp
+
+    @staticmethod
+    def analyze_image(token, file_name, file_path):
+        context_id = None
+        next_test_info = None
+        # url = domain + 'testuser/api/v1/initiate_automation/'
+        url = assessment_common_obj.common_domain + 'testuser/api/v2/initiate_automation/'
+        token.pop('content-type', None)
+        token.pop('X-APPLMA', None)
+        request = {'file': (file_name, open(file_path, 'rb'))}
+        token.update({'x-guid': file_name + '12_20_2021_5'})
+        # print(token.get('x-guid'))
+        url = assessment_common_obj.common_domain + '.hirepro.in/py/common/face_comparison/v2/analyze_image/true/false/false'
+        api_request = requests.post(url, headers=token, files=request, verify=False)
+        # print(api_request.headers.get('X-GUID'))
+        resp_dict = json.loads(api_request.content)
+        # print(resp_dict)
+        return resp_dict
+
+    @staticmethod
+    def code_compiler(token, request):
+        json_resp = {}
+        response = requests.post(
+            assessment_common_obj.common_domain + ".hirepro.in/py/assessment/htmltest/api/v1/code-compiler/",
+            headers=token,
+            data=json.dumps(request, default=str), verify=False)
+        code_token = response.json()
+        return code_token
+
+    @staticmethod
+    def code_compiler_get_result(token, request):
+        compilation_results = {}
+        status = 'Pending'
+        counter = 1
+        if counter <= 12:
+            while status != 'SUCCESS':
+                counter += 1
+                response = requests.post(
+                    assessment_common_obj.common_domain + ".hirepro.in/py/assessment/htmltest/api/v1/code-compiler-get-result/",
+                    headers=token,
+                    data=json.dumps(request, default=str), verify=False)
+                compilation_results = response.json()
+                if compilation_results['codingCompileResponse'] is None:
+                    time.sleep(5)
+                else:
+                    status = "SUCCESS"
+        else:
+            print("TimedOut")
+        return compilation_results
 
 
 assessment_common_obj = AssessmentCommon()

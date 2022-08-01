@@ -9,7 +9,7 @@ from SCRIPTS.UI_SCRIPTS.assessment_data_verification import *
 class CocubesAutomation:
 
     def __init__(self):
-        self.url = "https://qaassesscocubes.hirepro.in/hprotest/#/assess/login/eyJhbGlhcyI6ImF0In0="
+        self.url = "https://qaassesscocubes.hirepro.in/hprotest/#/assess/login/eyJhbGlhcyI6ImF1dG9tYXRpb24ifQ=="
         self.path = r"F:\qa_automation\chromedriver.exe"
         write_excel_object.save_result(output_path_ui_cocubes)
         # 0th Row Header
@@ -316,16 +316,17 @@ class CocubesAutomation:
 
 
 qs = CocubesAutomation()
-token = crpo_common_obj.login_to_crpo(cred_crpo_admin_at.get('user'), cred_crpo_admin_at.get('password'),
-                                      cred_crpo_admin_at.get('tenant'))
+token = crpo_common_obj.login_to_crpo(cred_crpo_admin.get('user'), cred_crpo_admin.get('password'),
+                                      cred_crpo_admin.get('tenant'))
 
 sprint_id = input('Enter Sprint ID')
 candidate_id = crpo_common_obj.create_candidate(token, sprint_id)
 print(candidate_id)
-test_id = 13965
-event_id = 10639
-jobrole_id = 30251
+test_id = 14671
+event_id = 11105
+jobrole_id = 30337
 tag_candidate = crpo_common_obj.tag_candidate_to_test(token, candidate_id, test_id, event_id, jobrole_id)
+time.sleep(10)
 test_userid = crpo_common_obj.get_all_test_user(token, candidate_id)
 print(test_userid)
 tu_req_payload = {"testUserId": test_userid,
