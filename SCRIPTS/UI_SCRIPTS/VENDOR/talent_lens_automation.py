@@ -10,7 +10,7 @@ class TalentLensAutomation:
 
     def __init__(self):
         self.url = "https://talentlensstg.hirepro.in/assessment/#/assess/login/eyJhbGlhcyI6ImF0In0="
-        self.path = r"F:\qa_automation\chromedriver.exe"
+        self.path = r"/chromedriver.exe"
         write_excel_object.save_result(output_path_ui_mettl)
         # 0th Row Header
         header = ['Mettl']

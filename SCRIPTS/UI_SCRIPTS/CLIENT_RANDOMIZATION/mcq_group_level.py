@@ -1,4 +1,4 @@
-from SCRIPTS.UI_SCRIPTS.assessment_ui_common_v2 import *
+from SCRIPTS.UI_COMMON.assessment_ui_common_v2 import *
 from SCRIPTS.COMMON.read_excel import *
 from SCRIPTS.COMMON.write_excel_new import *
 from SCRIPTS.COMMON.io_path import *
@@ -10,16 +10,14 @@ class QPVerification:
 
     def __init__(self):
         self.row = 1
-        write_excel_object.save_result(output_path_ui_mcq_client_test_random)
+        write_excel_object.save_result(output_path_ui_mcq_client_group_random)
         header = ['QP_Verification']
         write_excel_object.write_headers_for_scripts(0, 0, header, write_excel_object.black_color_bold)
         header = ['Test Cases', 'Status', 'Test Id', 'Candidate Id', 'Testuser ID', 'User Name', 'Password',
                   'mismatched questions(in QP) - question out of the QP', "Mismatched Group1 if any",
                   "Mismatched Group2 if any", "Expected Overall Randomization",
-                  "Actual Overall Randomization", "Expected Test level Randomization ( group position swap)",
-                  "Actual test level Randomization ( group position swap )",
-                  "Expected Group Randomization ( section position swap )",
-                  "Actual Group Randomization ( section position swap )",
+                  "Actual Overall Randomization", "Expected Group Randomization ( section position swap)",
+                  "Actual Group Randomization ( section position swap)",
                   "Expected Group1 Randomization", "Actual Group1 Randomization",
                   "Expected Group2 Randomization", "Actual Group2 Randomization",
                   '1st login Q1', '2nd login Q1', '1st login Q2', '2nd login Q2', '1st login Q3', '2nd login Q3',
@@ -144,7 +142,6 @@ class QPVerification:
 
     def verify_questions(self, tu_details, login_user, login_pass, candidate_id, tu_id):
         self.overall_randomization = "No"
-        self.test_level_randomization = "No"
         self.group_randomization = "No"
         self.g1_randomization = "No"
         self.g2_randomization = "No"
@@ -164,16 +161,14 @@ class QPVerification:
                 assess_ui_common_obj.start_test()
                 for question_index in range(1, int(tu_details.get('expectedTotalQuestionsCount') + 1)):
                     assess_ui_common_obj.next_question(question_index)
-                    qn_string = assess_ui_common_obj.find_question_string1()
-                    print(qn_string)
+                    qn_string = assess_ui_common_obj.find_question_string_v2()
+                    # print(qn_string)
                     self.delivered_questions.append(qn_string[0])
                     self.qn_details = {'question': qn_string[0], 'group': qn_string[1], 'section': qn_string[2],
                                        'index': question_index}
                     client_side_randomization.is_randomized(self.qn_details)
                     if self.qn_details.get('group') == 'Group1':
                         self.actual_g1_questions.append(self.qn_details.get('question'))
-                        if 21 <= self.qn_details.get('index') <= 40:
-                            self.test_level_randomization = "Yes"
                         if self.qn_details.get('section') == 'Group1Section1':
                             if 11 <= self.qn_details.get('index') <= 20:
                                 self.group_randomization = "Yes"
@@ -181,13 +176,12 @@ class QPVerification:
                             if 1 <= self.qn_details.get('index') <= 10:
                                 self.group_randomization = "Yes"
                     elif self.qn_details.get('group') == 'Group2':
+                        print("This is actual G2")
                         self.actual_g2_questions.append(self.qn_details.get('question'))
-                        if 1 <= self.qn_details.get('index') <= 20:
-                            self.test_level_randomization = "Yes"
-                        if self.qn_details.get('section') == 'Group1Section1':
+                        if self.qn_details.get('section') == 'Group2Section1':
                             if 31 <= self.qn_details.get('index') <= 40:
                                 self.group_randomization = "Yes"
-                        elif self.qn_details.get('section') == 'Group1Section2':
+                        elif self.qn_details.get('section') == 'Group2Section2':
                             if 21 <= self.qn_details.get('index') <= 30:
                                 self.group_randomization = "Yes"
 
@@ -208,7 +202,7 @@ class QPVerification:
                         assess_ui_common_obj.start_test()
                         for question_index in range(1, int(tu_details.get('expectedTotalQuestionsCount') + 1)):
                             assess_ui_common_obj.next_question(question_index)
-                            qn_string = assess_ui_common_obj.find_question_string()
+                            qn_string = assess_ui_common_obj.find_question_string_v2()
                             self.relogin_questions.append(qn_string[0])
                 self.browser.quit()
                 write_excel_object.compare_results_and_write_vertically(tu_details.get('testCases'), None, self.row, 0)
@@ -240,6 +234,8 @@ class QPVerification:
                                             write_excel_object.current_status_color)
 
                 group2_mismatched = set(self.group2_questions) - set(self.actual_g2_questions)
+                print(self.group2_questions)
+                print(self.actual_g2_questions)
                 if len(group2_mismatched) >= 1:
                     write_excel_object.current_status = 'Fail'
                     write_excel_object.overall_status = 'Fail'
@@ -252,18 +248,15 @@ class QPVerification:
 
                 write_excel_object.compare_results_and_write_vertically(tu_details.get('expectedOverallRandomization'),
                                                                         self.overall_randomization, self.row, 10)
-                write_excel_object.compare_results_and_write_vertically(
-                    tu_details.get('expectedTestLevelRandomization'),
-                    self.test_level_randomization, self.row, 12)
                 write_excel_object.compare_results_and_write_vertically(tu_details.get('expectedGroupRandomization'),
-                                                                        self.group_randomization, self.row, 14)
+                                                                        self.group_randomization, self.row, 12)
                 write_excel_object.compare_results_and_write_vertically(tu_details.get('expectedGroup1Randomization'),
-                                                                        self.g1_randomization, self.row, 16)
+                                                                        self.g1_randomization, self.row, 14)
                 write_excel_object.compare_results_and_write_vertically(tu_details.get('expectedGroup2Randomization'),
-                                                                        self.g2_randomization, self.row, 18)
-                col = 20
+                                                                        self.g2_randomization, self.row, 16)
+                col = 18
                 for index in range(0, int(tu_details.get('expectedTotalQuestionsCount'))):
-                    print(index)
+                    # print(index)
                     write_excel_object.compare_results_and_write_vertically(self.delivered_questions[index],
                                                                             self.relogin_questions[index], self.row,
                                                                             col)
@@ -273,11 +266,11 @@ class QPVerification:
 
 
 client_side_randomization = QPVerification()
-excel_read_obj.excel_read(input_path_ui_mcq_client_section_random, 3)
+excel_read_obj.excel_read(input_path_ui_mcq_client_section_random, 2)
 candidate_details = excel_read_obj.details
 token = crpo_common_obj.login_to_crpo(cred_crpo_admin.get('user'), cred_crpo_admin.get('password'),
                                       cred_crpo_admin.get('tenant'))
-test_id = 15251
+test_id = 15249
 event_id = 11625
 jobrole_id = 30439
 sprint_id = input('Enter Sprint ID ')
@@ -285,7 +278,7 @@ next_cand = 2000
 for current_excel_row in candidate_details:
     next_cand = next_cand + 1
     sprint_id = sprint_id + str(next_cand)
-    print(sprint_id)
+    # print(sprint_id)
     candidate_id = crpo_common_obj.create_candidate(token, sprint_id)
     tag_candidate = crpo_common_obj.tag_candidate_to_test(token, candidate_id, test_id, event_id, jobrole_id)
     time.sleep(5)
@@ -294,5 +287,9 @@ for current_excel_row in candidate_details:
     tu_cred = crpo_common_obj.test_user_credentials(token, test_userid)
     login_id = tu_cred['data']['testUserCredential']['loginId']
     password = tu_cred['data']['testUserCredential']['password']
+    # login_id = "AT152381400410"
+    # password = "E@^XEQKg"
+    # candidate_id = 1400410
+    # test_userid = 2359164
     client_side_randomization.verify_questions(current_excel_row, login_id, password, candidate_id, test_userid)
 write_excel_object.write_overall_status(1)

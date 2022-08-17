@@ -38,6 +38,8 @@ class ProctorEvaluation:
             self.status = 'Not Suspicious'
 
     def proctor_detail(self, row_count, current_excel_data, token):
+        write_excel_object.current_status_color = write_excel_object.green_color
+        write_excel_object.current_status = "Pass"
         tu_id = int(current_excel_data.get('testUserId'))
         tu_proctor_details = crpo_common_obj.proctor_evaluation_detail(token, tu_id)
         proctorDetail = tu_proctor_details['data']['proctorDetail']
@@ -65,8 +67,10 @@ class ProctorEvaluation:
         write_excel_object.compare_results_and_write_vertically(current_excel_data.get('testCase'), None, row_count, 0)
         write_excel_object.compare_results_and_write_vertically(write_excel_object.current_status, None, row_count, 1)
         write_excel_object.compare_results_and_write_vertically(current_excel_data.get('testId'), None, row_count, 2)
-        write_excel_object.compare_results_and_write_vertically(current_excel_data.get('candidateId'), None, row_count, 3)
-        write_excel_object.compare_results_and_write_vertically(current_excel_data.get('testUserId'), None, row_count, 4)
+        write_excel_object.compare_results_and_write_vertically(current_excel_data.get('candidateId'), None, row_count,
+                                                                3)
+        write_excel_object.compare_results_and_write_vertically(current_excel_data.get('testUserId'), None, row_count,
+                                                                4)
 
 
 login_token = crpo_common_obj.login_to_crpo(cred_crpo_admin.get('user'), cred_crpo_admin.get('password'),

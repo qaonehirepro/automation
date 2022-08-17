@@ -1,4 +1,4 @@
-from SCRIPTS.UI_SCRIPTS.assessment_ui_common_v2 import *
+from SCRIPTS.UI_COMMON.assessment_ui_common_v2 import *
 from SCRIPTS.COMMON.read_excel import *
 from SCRIPTS.COMMON.writeExcel import *
 from SCRIPTS.COMMON.io_path import *
@@ -126,7 +126,7 @@ class QPVerification:
                 assess_ui_common_obj.start_test()
                 for question_index in range(1, int(tu_details.get('expectedTotalQuestionsCount') + 1)):
                     assess_ui_common_obj.next_question(question_index)
-                    qn_string = assess_ui_common_obj.find_question_string()
+                    qn_string = assess_ui_common_obj.find_question_string_v2()
                     self.delivered_questions.append(qn_string[0])
                     qn_details = {'question': qn_string[0], 'group': qn_string[1], 'section': qn_string[2]}
                     qp_verification.question_owner(qn_string)
@@ -147,7 +147,7 @@ class QPVerification:
                         assess_ui_common_obj.start_test()
                         for question_index in range(1, int(tu_details.get('expectedTotalQuestionsCount') + 1)):
                             assess_ui_common_obj.next_question(question_index)
-                            qn_string = assess_ui_common_obj.find_question_string()
+                            qn_string = assess_ui_common_obj.find_question_string_v2()
                             self.relogin_questions.append(qn_string[0])
                             # qn_details = {'question': qn_string[0], 'group': qn_string[1], 'section': qn_string[2]}
                 self.browser.close()
@@ -232,7 +232,6 @@ class QPVerification:
                 col = 44
                 print("This is Muthu")
                 for index in range(0, int(tu_details.get('expectedTotalQuestionsCount'))):
-                    print(index)
                     write_excel_object.ws.write(self.row, col, self.delivered_questions[index],
                                                 write_excel_object.black_color)
                     if self.delivered_questions[index] == self.relogin_questions[index]:

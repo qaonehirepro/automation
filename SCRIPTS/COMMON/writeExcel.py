@@ -94,5 +94,6 @@ class Excel:
         self.ws.write(0, 4, "Ended :- " + str(self.endeded_time), self.black_color_bold)
         self.write_excel.close()
 
+
 write_excel_object = Excel()
 

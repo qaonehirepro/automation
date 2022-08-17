@@ -6,22 +6,15 @@ import datetime
 import xlwt
 import mysql
 import mysql.connector
-import requests
-import json
+
 
 class CreateCase:
 
     def __init__(self):
-
-        sprint_id = input('Enter Sprint ID')
-        self.create_candidate_request = {"PersonalDetails": {"Name": "Muthu Murugan Ramalingam",
-                                                             "Email1": 'S1N1J1E1V1' + sprint_id + '@gmail.com',
-                                                             "USN": sprint_id},
-                                         "SourceDetails": {"SourceId": "2366"}}
-        self.create_candidate()
+        self.url = "https://automation-in.hirepro.in/automation3"
+        self.driver = webdriver.Chrome(executable_path=r"/chromedriver.exe")
         self.starttime = datetime.datetime.now()
-        self.starttime1 = "Strated:- %s" % self.starttime.strftime(" %H-%M-%S")
-
+        self.starttime1 = "Strated:- %s" %self.starttime.strftime("%H-%M-%S")
 
         self.current_DateTime = self.starttime.strftime("%d-%m-%Y")
         self.style0 = xlwt.easyxf('font: name Times New Roman, color-index black, bold on')
@@ -40,44 +33,19 @@ class CreateCase:
         self.base_style2 = xlwt.easyxf(
             'font: bold on,height 250,color-index red;pattern: pattern solid,fore-colour light_yellow;'
             'border: left thin,right thin,top thin,bottom thin')
-
-        # file_path = 'F:\\automation\\PythonWorkingScripts_InputData\\' \
-        #             'Microsite\\GenericExcelTest.xls'
-        file_path = input_path_microsite_update_case
-
-        sheet_index = 1
+        #
+        # file_path = 'F:\\automation\\PythonWorkingScripts_InputData' \
+        #             '\\Microsite\\GenericExcelTest.xls'
+        file_path = input_path_microsite_create_case
+        print(file_path)
+        sheet_index = 0
         excel_read_obj.excel_read(file_path, sheet_index)
 
-    def loginToCRPO(self):
-        header = {"content-type": "application/json"}
-        data = {"LoginName": "admin", "Password": "4LWS-0671", "TenantAlias": "Automation", "UserName": "admin"}
-        response = requests.post('https://amsin.hirepro.in/py/common/user/login_user/', headers=header,
-                                 data=json.dumps(data), verify=False)
-        abc = response.json()
-        headers = {"content-type": "application/json", "X-AUTH-TOKEN": abc.get("Token")}
-        return headers
-
-    def create_candidate(self):
-        response = requests.post('https://amsin.hirepro.in/py/rpo/create_candidate/', headers=self.loginToCRPO(),
-                                 data=json.dumps(self.create_candidate_request), verify=False)
-        self.response_data = response.json()
-        self.candidate_id = self.response_data.get('CandidateId')
-        if self.response_data.get('status') == 'OK':
-            print ("candidate created in crpo")
-            # self.browser_location = "/home/muthumurugan/Desktop/chromedriver_2.37"
-            self.url = 'https://automation-in.hirepro.in/?candidate=%s' % self.candidate_id
-            # self.driver = webdriver.Chrome(self.browser_location)
-            self.driver = webdriver.Chrome(executable_path=r"F:\qa_automation\chromedriver.exe")
-        else:
-            print ("candidate not created in CRPO due to some technical glitch")
-            print (self.response_data)
-
     def msdbconnection(self):
-
         self.conn1 = mysql.connector.connect(host='52.66.103.86',
                                              database='automation-in052018',
-                                             user='root',
-                                             password='data')
+                                             user='readuser',
+                                             password='readuser')
         self.cursor = self.conn1.cursor()
 
     def amsdbconnection(self):
@@ -85,8 +53,8 @@ class CreateCase:
         # 35.154.36.218
         self.conn = mysql.connector.connect(host='35.154.213.175',
                                             database='appserver_core',
-                                            user='qauser',
-                                            password='qauser')
+                                            user='hireprouser',
+                                            password='tech@123')
         self.cursor = self.conn.cursor()
 
     def find_element_by_id(self, locator_id, xl_data, message):
@@ -670,8 +638,7 @@ class CreateCase:
         try:
             self.cursor.execute(query)
             self.data = self.cursor.fetchone()
-        except Exception as e:
-            print (e)
+        except:
             print("Execute_Query Method is Throwing Exception")
 
     def execute_query2(self, query):
@@ -1070,8 +1037,10 @@ class CreateCase:
         C2.over_all_report_status(self.ui_ms_row_status, self.ms_ams_row_status)
         self.rowsize += 2
         # C2.wb_Result.save(
-        #     'F:\\automation\\PythonWorkingScripts_Output\\Microsite\\Microsite_UpdateCase(' + self.current_DateTime + ').xls')
-        C2.wb_Result.save(output_path_microsite_update_case)
+        #     'F:\\automation\\PythonWorkingScripts_Output\\Microsite\\'
+        #     'Microsite_CreateCase1(' + self.current_DateTime + ').xls')
+        C2.wb_Result.save(output_path_microsite_create_case)
+
     def over_all_report_status(self, ui_ms_row_status, ms_ams_row_status):
         pass
         if ui_ms_row_status=='Fail' or ms_ams_row_status=='Fail':
@@ -1389,29 +1358,12 @@ for i in range(0, tot):
     C2.mainmethod()
     print ("Iteration Count:- %s" % i)
 endtime = datetime.datetime.now()
-endtime1 = "Ended:- %s" %endtime.strftime(" %H-%M-%S")
-C2.ws.write(0, 0, "Microsite Update Case ", C2.base_style1)
+endtime1 = "Ended:- %s" %endtime.strftime("%H-%M-%S")
+C2.ws.write(0, 0, "Microsite Create Case ", C2.base_style1)
 C2.ws.write(0, 1, C2.over_all_status, C2.over_all_status_color)
 C2.ws.write(0, 2, C2.starttime1, C2.base_style1)
 C2.ws.write(0, 3, endtime1, C2.base_style1)
 # C2.wb_Result.save(
 #         'F:\\automation\\PythonWorkingScripts_Output\\Microsite\\'
-#         'Microsite_UpdateCase(' + C2.current_DateTime + ').xls')
-C2.wb_Result.save(output_path_microsite_update_case)
-delete_Candidate_customes = 'delete from  candidate_customs where id = ' \
-                                '(select candidatecustom_id from candidates where id=%s);' %C2.candidate_id
-delete_edu_profiles = 'delete from candidate_education_profiles where candidate_id =%s;'%C2.candidate_id
-delete_emp_profiles = 'delete from candidate_work_profiles where candidate_id =%s;'%C2.candidate_id
-delete_candidates = 'delete from candidates where id= %s;'%C2.candidate_id
-delete_microsite_candidate = 'delete from candidate where candidate_amsid= %s'%C2.candidate_id
-C2.msdbconnection()
-C2.cursor.execute(delete_microsite_candidate)
-C2.conn1.commit()
-C2.conn1.close()
-C2.amsdbconnection()
-C2.cursor.execute(delete_Candidate_customes)
-C2.cursor.execute(delete_edu_profiles)
-C2.cursor.execute(delete_emp_profiles)
-C2.cursor.execute(delete_candidates)
-C2.conn.commit()
-C2.conn.close()
+#         'Microsite_CreateCase1(' + C2.current_DateTime + ').xls')
+C2.wb_Result.save(output_path_microsite_create_case)

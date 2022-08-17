@@ -13,20 +13,15 @@ class QPVerification:
         write_excel_object.save_result(output_path_ui_mcq_client_test_random)
         header = ['QP_Verification']
         write_excel_object.write_headers_for_scripts(0, 0, header, write_excel_object.black_color_bold)
-        header = ["Test Cases", "Status", "Test Id", "Candidate Id", "Testuser ID", "User Name", "Password",
-                  "mismatched questions(in QP) - question out of the QP", "Mismatched S1G1 if any",
-                  "Mismatched S2G1 if any", "Mismatched S1G2 if any", "Mismatched S2G2 if any",
-                  "Mismatched Group1 if any",
-                  "Mismatched Group2 if any", "Expected Overall Randomization", "Actual Overall Randomization",
-                  "Expected S1G1 Randomization", "Actual S1G1 Randomization",
-                  "Expected S2G1 Randomization", "Actual S2G1 Randomization",
-                  "Expected S1G2 Randomization", "Actual S1G2 Randomization", "Expected S2G2 Randomization",
-                  "Actual S2G2 Randomization", "Expected Group1 Randomization",
-                  "Actual Group1 Randomization", "Expected Group2 Randomization",
-                  "Actual Group2 Randomization", "Expected Group Randomization ( section position swap )",
-                  "Actual Group Randomization ( section position swap )",
-                  "Expected Test level Randomization ( group position swap)",
+        header = ['Test Cases', 'Status', 'Test Id', 'Candidate Id', 'Testuser ID', 'User Name', 'Password',
+                  'mismatched questions(in QP) - question out of the QP', "Mismatched Group1 if any",
+                  "Mismatched Group2 if any", "Expected Overall Randomization",
+                  "Actual Overall Randomization", "Expected Test level Randomization ( group position swap)",
                   "Actual test level Randomization ( group position swap )",
+                  "Expected Group Randomization ( section position swap )",
+                  "Actual Group Randomization ( section position swap )",
+                  "Expected Group1 Randomization", "Actual Group1 Randomization",
+                  "Expected Group2 Randomization", "Actual Group2 Randomization",
                   '1st login Q1', '2nd login Q1', '1st login Q2', '2nd login Q2', '1st login Q3', '2nd login Q3',
                   '1st login Q4', '2nd login Q4', '1st login Q5', '2nd login Q5', '1st login Q6', '2nd login Q6',
                   '1st login Q7', '2nd login Q7', '1st login Q8', '2nd login Q8', '1st login Q9', '2nd login Q9',
@@ -131,7 +126,8 @@ class QPVerification:
         self.group1_questions = self.section1_group1_questions + self.section2_group1_questions
         self.group2_questions = self.section1_group2_questions + self.section2_group2_questions
 
-        self.expected_questions = self.group1_questions + self.group2_questions
+        self.expected_questions = self.section1_group1_questions + self.section2_group1_questions + \
+                                  self.section1_group2_questions + self.section2_group2_questions
 
     def is_randomized(self, qn_details):
         for all_qns_with_index in self.qp_qn_index:
@@ -141,31 +137,15 @@ class QPVerification:
                     if 1 <= qn_details.get('index') <= 20:
                         if qn_details.get('question') in self.group1_questions:
                             self.g1_randomization = "Yes"
-                        if 1 <= qn_details.get('index') <= 10:
-                            if qn_details.get('question') in self.section1_group1_questions:
-                                self.s1g1_randomization = "Yes"
-                        elif 11 <= qn_details.get('index') <= 20:
-                            if qn_details.get('question') in self.section2_group1_questions:
-                                self.s2g1_randomization = "Yes"
                     elif 21 <= qn_details.get('index') <= 40:
                         if qn_details.get('question') in self.group2_questions:
                             self.g2_randomization = "Yes"
-                        if 21 <= qn_details.get('index') <= 30:
-                            if qn_details.get('question') in self.section1_group2_questions:
-                                self.s1g2_randomization = "Yes"
-                        elif 31 <= qn_details.get('index') <= 40:
-                            if qn_details.get('question') in self.section2_group2_questions:
-                                self.s2g2_randomization = "Yes"
                 break
 
     def verify_questions(self, tu_details, login_user, login_pass, candidate_id, tu_id):
         self.overall_randomization = "No"
         self.test_level_randomization = "No"
         self.group_randomization = "No"
-        self.s1g1_randomization = "No"
-        self.s2g1_randomization = "No"
-        self.s1g2_randomization = "No"
-        self.s2g2_randomization = "No"
         self.g1_randomization = "No"
         self.g2_randomization = "No"
         self.color = write_excel_object.green_color
@@ -175,10 +155,6 @@ class QPVerification:
         self.relogin_questions = []
         self.actual_g1_questions = []
         self.actual_g2_questions = []
-        self.actual_s1g1_questions = []
-        self.actual_s2g1_questions = []
-        self.actual_s1g2_questions = []
-        self.actual_s2g2_questions = []
         self.browser = assess_ui_common_obj.initiate_browser(amsin_automation_assessment_url, chrome_driver_path)
         login_details = assess_ui_common_obj.ui_login_to_test(login_user, login_pass)
         if login_details == 'SUCCESS':
@@ -199,23 +175,19 @@ class QPVerification:
                         if 21 <= self.qn_details.get('index') <= 40:
                             self.test_level_randomization = "Yes"
                         if self.qn_details.get('section') == 'Group1Section1':
-                            self.actual_s1g1_questions.append(qn_string[0])
                             if 11 <= self.qn_details.get('index') <= 20:
                                 self.group_randomization = "Yes"
                         elif self.qn_details.get('section') == 'Group1Section2':
-                            self.actual_s2g1_questions.append(qn_string[0])
                             if 1 <= self.qn_details.get('index') <= 10:
                                 self.group_randomization = "Yes"
                     elif self.qn_details.get('group') == 'Group2':
                         self.actual_g2_questions.append(self.qn_details.get('question'))
                         if 1 <= self.qn_details.get('index') <= 20:
                             self.test_level_randomization = "Yes"
-                        if self.qn_details.get('section') == 'Group2Section1':
-                            self.actual_s1g2_questions.append(qn_string[0])
+                        if self.qn_details.get('section') == 'Group1Section1':
                             if 31 <= self.qn_details.get('index') <= 40:
                                 self.group_randomization = "Yes"
-                        elif self.qn_details.get('section') == 'Group2Section2':
-                            self.actual_s2g2_questions.append(qn_string[0])
+                        elif self.qn_details.get('section') == 'Group1Section2':
                             if 21 <= self.qn_details.get('index') <= 30:
                                 self.group_randomization = "Yes"
 
@@ -256,53 +228,6 @@ class QPVerification:
                     mismatched_questions = 'No Mismatch - Expected delivery'
                 write_excel_object.ws.write(self.row, 7, str(mismatched_questions),
                                             write_excel_object.current_status_color)
-
-                print(self.actual_s1g1_questions)
-                s1g1_mismatched = set(self.section1_group1_questions) - set(self.actual_s1g1_questions)
-                if len(s1g1_mismatched) >= 1:
-                    write_excel_object.current_status = 'Fail'
-                    write_excel_object.overall_status = 'Fail'
-                    write_excel_object.current_status_color = write_excel_object.red_color
-                    write_excel_object.overall_status_color = write_excel_object.red_color
-                else:
-                    s1g1_mismatched = 'No Mismatch - Expected delivery'
-                write_excel_object.ws.write(self.row, 8, str(s1g1_mismatched),
-                                            write_excel_object.current_status_color)
-
-                s2g1_mismatched = set(self.section2_group1_questions) - set(self.actual_s2g1_questions)
-                print(self.actual_s2g1_questions)
-                if len(s2g1_mismatched) >= 1:
-                    write_excel_object.current_status = 'Fail'
-                    write_excel_object.overall_status = 'Fail'
-                    write_excel_object.current_status_color = write_excel_object.red_color
-                    write_excel_object.overall_status_color = write_excel_object.red_color
-                else:
-                    s2g1_mismatched = 'No Mismatch - Expected delivery'
-                write_excel_object.ws.write(self.row, 9, str(s2g1_mismatched),
-                                            write_excel_object.current_status_color)
-
-                s1g2_mismatched = set(self.section1_group2_questions) - set(self.actual_s1g2_questions)
-                print(self.actual_s1g2_questions)
-                if len(s1g2_mismatched) >= 1:
-                    write_excel_object.current_status = 'Fail'
-                    write_excel_object.overall_status = 'Fail'
-                    write_excel_object.current_status_color = write_excel_object.red_color
-                    write_excel_object.overall_status_color = write_excel_object.red_color
-                else:
-                    s1g2_mismatched = 'No Mismatch - Expected delivery'
-                write_excel_object.ws.write(self.row, 10, str(s1g2_mismatched), write_excel_object.current_status_color)
-
-                s2g2_mismatched = set(self.section2_group2_questions) - set(self.actual_s2g2_questions)
-                print(self.actual_s2g2_questions)
-                if len(s2g2_mismatched) >= 1:
-                    write_excel_object.current_status = 'Fail'
-                    write_excel_object.overall_status = 'Fail'
-                    write_excel_object.current_status_color = write_excel_object.red_color
-                    write_excel_object.overall_status_color = write_excel_object.red_color
-                else:
-                    s2g2_mismatched = 'No Mismatch - Expected delivery'
-                write_excel_object.ws.write(self.row, 11, str(s2g2_mismatched), write_excel_object.current_status_color)
-
                 group1_mismatched = set(self.group1_questions) - set(self.actual_g1_questions)
                 if len(group1_mismatched) >= 1:
                     write_excel_object.current_status = 'Fail'
@@ -311,7 +236,7 @@ class QPVerification:
                     write_excel_object.overall_status_color = write_excel_object.red_color
                 else:
                     group1_mismatched = 'No Mismatch - Expected delivery'
-                write_excel_object.ws.write(self.row, 12, str(group1_mismatched),
+                write_excel_object.ws.write(self.row, 8, str(group1_mismatched),
                                             write_excel_object.current_status_color)
 
                 group2_mismatched = set(self.group2_questions) - set(self.actual_g2_questions)
@@ -322,30 +247,21 @@ class QPVerification:
                     write_excel_object.overall_status_color = write_excel_object.red_color
                 else:
                     group2_mismatched = 'No Mismatch - Expected delivery'
-                write_excel_object.ws.write(self.row, 13, str(group2_mismatched),
+                write_excel_object.ws.write(self.row, 9, str(group2_mismatched),
                                             write_excel_object.current_status_color)
 
                 write_excel_object.compare_results_and_write_vertically(tu_details.get('expectedOverallRandomization'),
-                                                                        self.overall_randomization, self.row, 14)
-                write_excel_object.compare_results_and_write_vertically(tu_details.get('expectedS1G1Randomization'),
-                                                                        self.s1g1_randomization, self.row, 16)
-                write_excel_object.compare_results_and_write_vertically(tu_details.get('expectedS2G1Randomization'),
-                                                                        self.s2g1_randomization, self.row, 18)
-                write_excel_object.compare_results_and_write_vertically(tu_details.get('expectedS1G2Randomization'),
-                                                                        self.s1g2_randomization, self.row, 20)
-                write_excel_object.compare_results_and_write_vertically(tu_details.get('expectedS2G2Randomization'),
-                                                                        self.s2g2_randomization, self.row, 22)
-                write_excel_object.compare_results_and_write_vertically(tu_details.get('expectedGroup1Randomization'),
-                                                                        self.g1_randomization, self.row, 24)
-                write_excel_object.compare_results_and_write_vertically(tu_details.get('expectedGroup2Randomization'),
-                                                                        self.g2_randomization, self.row, 26)
-                write_excel_object.compare_results_and_write_vertically(tu_details.get('expectedGroupRandomization'),
-                                                                        self.group_randomization, self.row, 28)
+                                                                        self.overall_randomization, self.row, 10)
                 write_excel_object.compare_results_and_write_vertically(
                     tu_details.get('expectedTestLevelRandomization'),
-                    self.test_level_randomization, self.row, 30)
-
-                col = 32
+                    self.test_level_randomization, self.row, 12)
+                write_excel_object.compare_results_and_write_vertically(tu_details.get('expectedGroupRandomization'),
+                                                                        self.group_randomization, self.row, 14)
+                write_excel_object.compare_results_and_write_vertically(tu_details.get('expectedGroup1Randomization'),
+                                                                        self.g1_randomization, self.row, 16)
+                write_excel_object.compare_results_and_write_vertically(tu_details.get('expectedGroup2Randomization'),
+                                                                        self.g2_randomization, self.row, 18)
+                col = 20
                 for index in range(0, int(tu_details.get('expectedTotalQuestionsCount'))):
                     print(index)
                     write_excel_object.compare_results_and_write_vertically(self.delivered_questions[index],
@@ -357,7 +273,7 @@ class QPVerification:
 
 
 client_side_randomization = QPVerification()
-excel_read_obj.excel_read(input_path_ui_mcq_client_section_random, 4)
+excel_read_obj.excel_read(input_path_ui_mcq_client_section_random, 3)
 candidate_details = excel_read_obj.details
 token = crpo_common_obj.login_to_crpo(cred_crpo_admin.get('user'), cred_crpo_admin.get('password'),
                                       cred_crpo_admin.get('tenant'))

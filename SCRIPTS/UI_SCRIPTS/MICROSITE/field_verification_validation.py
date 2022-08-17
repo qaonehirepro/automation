@@ -16,7 +16,7 @@ class Create_Case():
         # self.__borwser_Location = "/home/muthumurugan/Desktop/chromedriver_2.37"
         self.__url = "https://accenturetest-in.hirepro.in/automation-mandatory"
         # self.driver = webdriver.Chrome(self.__borwser_Location)
-        self.driver = webdriver.Chrome(executable_path=r"F:\qa_automation\chromedriver.exe")
+        self.driver = webdriver.Chrome(executable_path=r"/chromedriver.exe")
         now = datetime.datetime.now()
         self.__current_DateTime = now.strftime("%d-%m-%Y")
         # file_path = 'F:\\automation\\PythonWorkingScripts_InputData\\' \
@@ -73,7 +73,7 @@ class Create_Case():
 
     def find_element_by_xpath(self, locator_id, xl_data, message):
         try:
-            time.sleep(0.3)
+            # time.sleep(0.3)
             locator_id1 = "//select[@id='%s']" % locator_id
             if self.driver.find_element_by_xpath(locator_id1).is_displayed() == 0:
                 self.data = xl_data
@@ -90,7 +90,7 @@ class Create_Case():
         try:
             if self.driver.find_element_by_id('declaration').is_displayed() != 0:
                 self.driver.find_element_by_id('declaration').click()
-                time.sleep(0.10)
+                # time.sleep(0.10)
         except Exception as e:
             print ("declaration is not available")
             # print e

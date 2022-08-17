@@ -28,7 +28,8 @@ class AssessmentUICommon:
         return self.driver
 
     def ui_login_to_test(self, user_name, password):
-        time.sleep(8)
+        # time.sleep(8)
+        self.driver.implicitly_wait(10)
         self.driver.find_element(By.NAME, 'loginUsername').clear()
         self.driver.find_element(By.NAME, 'loginUsername').send_keys(user_name)
         self.driver.find_element(By.NAME, 'loginPassword').clear()
@@ -40,7 +41,8 @@ class AssessmentUICommon:
             if self.driver.find_element(By.XPATH,
                                         '//div[@class="text-center login-error ng-binding ng-scope"]').is_displayed():
                 print("Unable to Login ")
-                time.sleep(2)
+                # time.sleep(2)
+                self.driver.implicitly_wait(2)
                 error_message = self.driver.find_element(By.XPATH,
                                                          '//div[@class="text-center login-error ng-binding ng-scope"]').text
                 login_status = error_message
@@ -54,8 +56,6 @@ class AssessmentUICommon:
             # time.sleep(1)
             i_agree_status = WebDriverWait(self.driver, self.delay).until(
                 EC.presence_of_element_located((By.CLASS_NAME, 'chk')))
-            # i_agree_status = self.driver.find_element_by_class_name('chk')
-            # i_agree_status = self.driver.find_element_by_xpath('//div[@class="chk"]')
             is_selected = i_agree_status.is_selected()
             if not is_selected:
                 i_agree_status.click()
@@ -75,18 +75,18 @@ class AssessmentUICommon:
             answered.click()
 
     def check_answered_status(self, previous_answer):
-        time.sleep(1)
+        # time.sleep(1)
         value = "//input[@name='answerOptions' and @value='%s']" % previous_answer
         answered = self.driver.find_element(By.XPATH, value).is_enabled()
         return answered
 
     def next_question(self, question_index):
-        time.sleep(1)
+        # time.sleep(1)
         value = "btnQuestionIndex%s" % str(question_index)
         self.driver.find_element(By.NAME, value).click()
 
     def start_test_button_status(self):
-        time.sleep(1)
+        # time.sleep(1)
         is_enabled = self.driver.find_element(By.NAME, 'btnStartTest').is_enabled()
         if is_enabled:
             start_button_status = 'Enabled'
@@ -95,7 +95,7 @@ class AssessmentUICommon:
         return start_button_status
 
     def start_test(self):
-        time.sleep(1)
+        # time.sleep(1)
         self.driver.find_element(By.NAME, 'btnStartTest').click()
 
     def check_security_key_model_window_availability(self):
@@ -134,6 +134,19 @@ class AssessmentUICommon:
         question_string = self.driver.find_element(By.NAME, 'questionHtmlString').text
         print(question_string)
         return question_string
+
+    def find_question_string_v2(self):
+        question_string = self.driver.find_element(By.NAME, 'questionHtmlString').text
+        groupname = self.driver.find_element(By.NAME, 'groupName').text
+        section_name = self.driver.find_element(By.NAME, 'sectionName').text
+        return question_string, groupname, section_name
+
+    def find_question_string_for_rtc(self):
+        parent_question_string = self.driver.find_element(By.NAME, 'questionParentHtmlString').text
+        child_question_string = self.driver.find_element(By.NAME, 'questionHtmlString').text
+        groupname = self.driver.find_element(By.NAME, 'groupName').text
+        section_name = self.driver.find_element(By.NAME, 'sectionName').text
+        return parent_question_string, child_question_string, groupname, section_name
 
     def rejection_page(self):
         print("This is Rejected Method")

@@ -1,4 +1,4 @@
-from SCRIPTS.UI_SCRIPTS.assessment_ui_common_v2 import *
+from SCRIPTS.UI_COMMON.assessment_ui_common_v2 import *
 from SCRIPTS.COMMON.read_excel import *
 from SCRIPTS.COMMON.write_excel_new import *
 from SCRIPTS.COMMON.io_path import *
@@ -19,7 +19,7 @@ class QPVerification:
                   "Expected Overall Randomization",
                   "Actual Overall Randomization", "Expected S1G1 Randomization", "Actual S1G1 Randomization",
                   "Expected S2G1 Randomization", "Actual S2G1 Randomization", "Expected S1G2 Randomization",
-                  "Actual S1G2 Randomization", "Expected S2G2 Randomization", "Actual S1G2 Randomization",
+                  "Actual S1G2 Randomization", "Expected S2G2 Randomization", "Actual S2G2 Randomization",
                   '1st login Q1', '2nd login Q1', '1st login Q2', '2nd login Q2', '1st login Q3', '2nd login Q3',
                   '1st login Q4', '2nd login Q4', '1st login Q5', '2nd login Q5', '1st login Q6', '2nd login Q6',
                   '1st login Q7', '2nd login Q7', '1st login Q8', '2nd login Q8', '1st login Q9', '2nd login Q9',
@@ -188,7 +188,7 @@ class QPVerification:
                 assess_ui_common_obj.start_test()
                 for question_index in range(1, int(tu_details.get('expectedTotalQuestionsCount') + 1)):
                     assess_ui_common_obj.next_question(question_index)
-                    qn_string = assess_ui_common_obj.find_question_string1()
+                    qn_string = assess_ui_common_obj.find_question_string_v2()
                     print(qn_string)
                     self.delivered_questions.append(qn_string[0])
                     self.qn_details = {'question': qn_string[0], 'group': qn_string[1], 'section': qn_string[2],
@@ -212,7 +212,7 @@ class QPVerification:
                         assess_ui_common_obj.start_test()
                         for question_index in range(1, int(tu_details.get('expectedTotalQuestionsCount') + 1)):
                             assess_ui_common_obj.next_question(question_index)
-                            qn_string = assess_ui_common_obj.find_question_string()
+                            qn_string = assess_ui_common_obj.find_question_string_v2()
                             self.relogin_questions.append(qn_string[0])
                             # self.relogin_qn_details = {'question': qn_string[0], 'group': qn_string[1],
                             #                            'section': qn_string[2], "index": question_index}

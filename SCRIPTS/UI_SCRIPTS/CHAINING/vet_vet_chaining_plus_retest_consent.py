@@ -52,22 +52,22 @@ class VetChaining:
         self.ws.write(1, 17, "Actual overAllPageMessage", self.black_color_bold)
 
     def vet_vet_chaining_with_retest_consent(self, current_excel_data, row_value):
-        screenshot_directory = "F:\\screenshot\\" + current_excel_data.get('testCases')
-        path = os.path.join(screenshot_directory)
-        if not os.path.exists(path):
-            os.mkdir(path)
-        screenshot_directory = path + '\\screen_shot_' + self.date
-        path = os.path.join(screenshot_directory)
-        if not os.path.exists(path):
-            os.mkdir(path)
-
-        self.common_path = path
-        print(self.common_path)
+        # screenshot_directory = "F:\\screenshot\\" + current_excel_data.get('testCases')
+        # path = os.path.join(screenshot_directory)
+        # if not os.path.exists(path):
+        #     os.mkdir(path)
+        # screenshot_directory = path + '\\screen_shot_' + self.date
+        # path = os.path.join(screenshot_directory)
+        # if not os.path.exists(path):
+        #     os.mkdir(path)
+        #
+        # self.common_path = path
+        # print(self.common_path)
 
         self.browser = assess_ui_common_obj.initiate_browser(amsin_at_vet_url, chrome_driver_path)
         login_details = assess_ui_common_obj.ui_login_to_test(current_excel_data.get('loginName'),
                                                               (current_excel_data.get('password')))
-        self.browser.get_screenshot_as_file(self.common_path + "\\1_t1_afterlogin.png")
+        # self.browser.get_screenshot_as_file(self.common_path + "\\1_t1_afterlogin.png")
         self.ws.write(row_value, 0, current_excel_data.get('testCases'), self.black_color)
         self.ws.write(row_value, 2, current_excel_data.get('testId'), self.black_color)
         self.ws.write(row_value, 3, current_excel_data.get('candidateId'), self.black_color)
@@ -84,18 +84,18 @@ class VetChaining:
             if i_agreed:
                 start_test_status = assess_ui_common_obj.start_test_button_status()
                 assess_ui_common_obj.start_test()
-                self.browser.get_screenshot_as_file(self.common_path + "\\2_t1_afterstarttest.png")
+                # self.browser.get_screenshot_as_file(self.common_path + "\\2_t1_afterstarttest.png")
                 time.sleep(5)
-                self.browser.get_screenshot_as_file(self.common_path + "\\3_t1_beforeendtest.png")
+                # self.browser.get_screenshot_as_file(self.common_path + "\\3_t1_beforeendtest.png")
                 assess_ui_common_obj.end_test()
-                self.browser.get_screenshot_as_file(self.common_path + "\\4_t1_beforeconfirm.png")
+                # self.browser.get_screenshot_as_file(self.common_path + "\\4_t1_beforeconfirm.png")
                 assess_ui_common_obj.end_test_confirmation()
-                self.browser.get_screenshot_as_file(self.common_path + "\\5_t1_afterconfirm.png")
+                # self.browser.get_screenshot_as_file(self.common_path + "\\5_t1_afterconfirm.png")
                 assessment_common_obj.pearson_call_backs(int(current_excel_data.get('testUserId')),
                                                          current_excel_data.get('scoreCallBack'), 'AT')
 
                 time.sleep(120)
-                self.browser.get_screenshot_as_file(self.common_path + "\\6_t1_slcpage.png")
+                # self.browser.get_screenshot_as_file(self.common_path + "\\6_t1_slcpage.png")
                 status = assess_ui_common_obj.shortlisting_page()
                 print(status)
                 # is_needed_to_call_next_method = True
@@ -103,7 +103,7 @@ class VetChaining:
                     if current_excel_data.get('consent') == "No":
                         is_needed_to_call_next_method = False
                         assess_ui_common_obj.consent_no()
-                        self.browser.get_screenshot_as_file(self.common_path + "\\10_t1_consent_no.png")
+                        # self.browser.get_screenshot_as_file(self.common_path + "\\10_t1_consent_no.png")
                         # self.browser.quit()
 
                     else:

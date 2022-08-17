@@ -1,5 +1,4 @@
-from SCRIPTS.UI_SCRIPTS.assessment_ui_common_v2 import *
-from SCRIPTS.UI_SCRIPTS.assessment_data_verification import *
+from SCRIPTS.UI_COMMON.assessment_ui_common_v2 import *
 from SCRIPTS.COMMON.read_excel import *
 from SCRIPTS.COMMON.writeExcel import *
 from SCRIPTS.COMMON.io_path import *
@@ -9,8 +8,7 @@ class QPVerification:
 
     def __init__(self):
         self.row = 1
-
-        write_excel_object.save_result(output_path_ui_subjective_randomization)
+        write_excel_object.save_result(output_path_ui_mcq_randomization)
         header = ['QP_Verification']
         self.overall_status = 'pass'
         self.overall_status_color = write_excel_object.green_color
@@ -38,54 +36,54 @@ class QPVerification:
                   '2nd login Q16', '1st login Q17', '2nd login Q17', '1st login Q18', '2nd login Q18', '1st login Q19',
                   '2nd login Q19', '1st login Q20', '2nd login Q20', '1st login Q21', '2nd login Q21']
         write_excel_object.write_headers_for_scripts(1, 0, header, write_excel_object.black_color_bold)
-        self.expected_low_section1_group1 = ['MS UI Automation SUBJECTIVE Randomization Low1',
-                                             'MS UI Automation SUBJECTIVE Randomization Low2',
-                                             'MS UI Automation SUBJECTIVE Randomization Low3']
-        self.expected_medium_section1_group1 = ['MS UI Automation SUBJECTIVE Randomization Medium1',
-                                                'MS UI Automation SUBJECTIVE Randomization Medium2',
-                                                'MS UI Automation SUBJECTIVE Randomization Medium3']
-        self.expected_high_section1_group1 = ['MS UI Automation SUBJECTIVE Randomization High1',
-                                              'MS UI Automation SUBJECTIVE Randomization High2',
-                                              'MS UI Automation SUBJECTIVE Randomization High3']
+        self.expected_low_section1_group1 = ['MS UI Automation MCQ Randomization Low1',
+                                             'MS UI Automation MCQ Randomization Low2',
+                                             'MS UI Automation MCQ Randomization Low3']
+        self.expected_medium_section1_group1 = ['MS UI Automation MCQ Randomization Medium1',
+                                                'MS UI Automation MCQ Randomization Medium2',
+                                                'MS UI Automation MCQ Randomization Medium3']
+        self.expected_high_section1_group1 = ['MS UI Automation MCQ Randomization High1',
+                                              'MS UI Automation MCQ Randomization High2',
+                                              'MS UI Automation MCQ Randomization High3']
 
-        self.expected_low_section2_group1 = ['MS UI Automation SUBJECTIVE Randomization Low4',
-                                             'MS UI Automation SUBJECTIVE Randomization Low5']
-        self.expected_medium_section2_group1 = ['MS UI Automation SUBJECTIVE Randomization Medium4',
-                                                'MS UI Automation SUBJECTIVE Randomization Medium5']
-        self.expected_high_section2_group1 = ['MS UI Automation SUBJECTIVE Randomization High4',
-                                              'MS UI Automation SUBJECTIVE Randomization High5']
+        self.expected_low_section2_group1 = ['MS UI Automation MCQ Randomization Low4',
+                                             'MS UI Automation MCQ Randomization Low5']
+        self.expected_medium_section2_group1 = ['MS UI Automation MCQ Randomization Medium4',
+                                                'MS UI Automation MCQ Randomization Medium5']
+        self.expected_high_section2_group1 = ['MS UI Automation MCQ Randomization High4',
+                                              'MS UI Automation MCQ Randomization High5']
 
-        self.expected_low_section1_group2 = ['MS UI Automation SUBJECTIVE Randomization Low6',
-                                             'MS UI Automation SUBJECTIVE Randomization Low7',
-                                             'MS UI Automation SUBJECTIVE Randomization Low8',
-                                             'MS UI Automation SUBJECTIVE Randomization Low9',
-                                             'MS UI Automation SUBJECTIVE Randomization Low10']
-        self.expected_medium_section1_group2 = ['MS UI Automation SUBJECTIVE Randomization Medium6',
-                                                'MS UI Automation SUBJECTIVE Randomization Medium7',
-                                                'MS UI Automation SUBJECTIVE Randomization Medium8',
-                                                'MS UI Automation SUBJECTIVE Randomization Medium9',
-                                                'MS UI Automation SUBJECTIVE Randomization Medium10']
-        self.expected_high_section1_group2 = ['MS UI Automation SUBJECTIVE Randomization High6',
-                                              'MS UI Automation SUBJECTIVE Randomization High7',
-                                              'MS UI Automation SUBJECTIVE Randomization High8',
-                                              'MS UI Automation SUBJECTIVE Randomization High9',
-                                              'MS UI Automation SUBJECTIVE Randomization High10']
+        self.expected_low_section1_group2 = ['MS UI Automation MCQ Randomization Low6',
+                                             'MS UI Automation MCQ Randomization Low7',
+                                             'MS UI Automation MCQ Randomization Low8',
+                                             'MS UI Automation MCQ Randomization Low9',
+                                             'MS UI Automation MCQ Randomization Low10']
+        self.expected_medium_section1_group2 = ['MS UI Automation MCQ Randomization Medium6',
+                                                'MS UI Automation MCQ Randomization Medium7',
+                                                'MS UI Automation MCQ Randomization Medium8',
+                                                'MS UI Automation MCQ Randomization Medium9',
+                                                'MS UI Automation MCQ Randomization Medium10']
+        self.expected_high_section1_group2 = ['MS UI Automation MCQ Randomization High6',
+                                              'MS UI Automation MCQ Randomization High7',
+                                              'MS UI Automation MCQ Randomization High8',
+                                              'MS UI Automation MCQ Randomization High9',
+                                              'MS UI Automation MCQ Randomization High10']
 
-        self.expected_low_section2_group2 = ['MS UI Automation SUBJECTIVE Randomization Low11',
-                                             'MS UI Automation SUBJECTIVE Randomization Low12',
-                                             'MS UI Automation SUBJECTIVE Randomization Low13',
-                                             'MS UI Automation SUBJECTIVE Randomization Low14',
-                                             'MS UI Automation SUBJECTIVE Randomization Low15']
-        self.expected_medium_section2_group2 = ['MS UI Automation SUBJECTIVE Randomization Medium11',
-                                                'MS UI Automation SUBJECTIVE Randomization Medium12',
-                                                'MS UI Automation SUBJECTIVE Randomization Medium13',
-                                                'MS UI Automation SUBJECTIVE Randomization Medium14',
-                                                'MS UI Automation SUBJECTIVE Randomization Medium15']
-        self.expected_high_section2_group2 = ['MS UI Automation SUBJECTIVE Randomization High11',
-                                              'MS UI Automation SUBJECTIVE Randomization High12',
-                                              'MS UI Automation SUBJECTIVE Randomization High13',
-                                              'MS UI Automation SUBJECTIVE Randomization High14',
-                                              'MS UI Automation SUBJECTIVE Randomization High15']
+        self.expected_low_section2_group2 = ['MS UI Automation MCQ Randomization Low11',
+                                             'MS UI Automation MCQ Randomization Low12',
+                                             'MS UI Automation MCQ Randomization Low13',
+                                             'MS UI Automation MCQ Randomization Low14',
+                                             'MS UI Automation MCQ Randomization Low15']
+        self.expected_medium_section2_group2 = ['MS UI Automation MCQ Randomization Medium11',
+                                                'MS UI Automation MCQ Randomization Medium12',
+                                                'MS UI Automation MCQ Randomization Medium13',
+                                                'MS UI Automation MCQ Randomization Medium14',
+                                                'MS UI Automation MCQ Randomization Medium15']
+        self.expected_high_section2_group2 = ['MS UI Automation MCQ Randomization High11',
+                                              'MS UI Automation MCQ Randomization High12',
+                                              'MS UI Automation MCQ Randomization High13',
+                                              'MS UI Automation MCQ Randomization High14',
+                                              'MS UI Automation MCQ Randomization High15']
 
         self.expected_section1_group1 = self.expected_low_section1_group1 + self.expected_medium_section1_group1 \
                                         + self.expected_high_section1_group1
@@ -128,7 +126,7 @@ class QPVerification:
                 assess_ui_common_obj.start_test()
                 for question_index in range(1, int(tu_details.get('expectedTotalQuestionsCount') + 1)):
                     assess_ui_common_obj.next_question(question_index)
-                    qn_string = assess_ui_common_obj.find_question_string()
+                    qn_string = assess_ui_common_obj.find_question_string_v2()
                     self.delivered_questions.append(qn_string[0])
                     qn_details = {'question': qn_string[0], 'group': qn_string[1], 'section': qn_string[2]}
                     qp_verification.question_owner(qn_string)
@@ -143,14 +141,13 @@ class QPVerification:
                 login_details = assess_ui_common_obj.ui_login_to_test(tu_details.get('userName'),
                                                                       tu_details.get('password'))
                 if login_details == 'SUCCESS':
-                    print('2nd login')
                     i_agreed = assess_ui_common_obj.select_i_agree()
                     if i_agreed:
                         start_test_status = assess_ui_common_obj.start_test_button_status()
                         assess_ui_common_obj.start_test()
                         for question_index in range(1, int(tu_details.get('expectedTotalQuestionsCount') + 1)):
                             assess_ui_common_obj.next_question(question_index)
-                            qn_string = assess_ui_common_obj.find_question_string()
+                            qn_string = assess_ui_common_obj.find_question_string_v2()
                             self.relogin_questions.append(qn_string[0])
                             # qn_details = {'question': qn_string[0], 'group': qn_string[1], 'section': qn_string[2]}
                         self.browser.close()
@@ -233,6 +230,7 @@ class QPVerification:
                                                              int(tu_details.get('expectedS2G2HighCount')), self.row,
                                                              col=41)
                 col = 44
+                print("This is Muthu")
                 for index in range(0, int(tu_details.get('expectedTotalQuestionsCount'))):
                     write_excel_object.ws.write(self.row, col, self.delivered_questions[index],
                                                 write_excel_object.black_color)
@@ -342,7 +340,7 @@ class QPVerification:
 
 print(datetime.datetime.now())
 qp_verification = QPVerification()
-excel_read_obj.excel_read(input_path_ui_mcq_randomization, 2)
+excel_read_obj.excel_read(input_path_ui_mcq_randomization, 1)
 candidate_details = excel_read_obj.details
 for current_excel_row in candidate_details:
     qp_verification.verify_questions(current_excel_row)

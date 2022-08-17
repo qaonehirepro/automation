@@ -61,6 +61,7 @@ input_path_ui_vet_vet_chaining = input_common_dir + 'UI\\Assessment\\vet_chainin
 input_path_ui_test_security = input_common_dir + 'UI\\Assessment\\test_security.xls'
 input_path_ui_reuse_score = input_common_dir + 'Assessment\\reuse_score.xls'
 input_path_ui_mcq_client_section_random = input_common_dir + 'UI\\Assessment\\clientside_randomization.xls'
+input_path_ui_rtc_static = input_common_dir + 'UI\\Assessment\\rtc_static.xls'
 
 # output paths
 output_path_allowed_extension = output_common_dir + 'allowed_extensions\\API_allowed_extensions(' + started + ').xlsx'
@@ -98,3 +99,7 @@ output_path_ui_vet_vet_chaining = output_common_dir + 'UI\\UI_vet_vet_chaining_p
 output_path_ui_mcq_client_section_random = output_common_dir + 'UI\\UI_client_mcq_random_sectionwise_qprandomization_'
 output_path_ui_mcq_client_group_random = output_common_dir + 'UI\\UI_client_mcq_random_groupwise_qprandomization_'
 output_path_ui_mcq_client_test_random = output_common_dir + 'UI\\UI_client_mcq_random_testlevel_qprandomization_'
+output_path_ui_rtc_static = output_common_dir + 'UI\\rtc_static.xls'
+output_path_ui_subjective_client_test_random = output_common_dir + 'UI\\UI_client_subjective_random_testlevel_'
+output_path_ui_subjective_client_group_random = output_common_dir + 'UI\\UI_client_subjective_random_grouplevel_'
+output_path_ui_subjective_client_section_random = output_common_dir + 'UI\\UI_client_subjective_random_sectionlevel_'

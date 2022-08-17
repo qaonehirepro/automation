@@ -49,22 +49,22 @@ class HireproChainingOfTwoTests:
         self.ws.write(1, 17, "Actual overAllPageMessage", self.black_color_bold)
 
     def mcq_assessment(self, current_excel_data, row_value):
-        screenshot_directory = "F:\\screenshot\\" + current_excel_data.get('testCases')
-        path = os.path.join(screenshot_directory)
-        if not os.path.exists(path):
-            os.mkdir(path)
-        screenshot_directory = path + '\\screen_shot_' + self.date
-        path = os.path.join(screenshot_directory)
-        if not os.path.exists(path):
-            os.mkdir(path)
-
-        self.common_path = path
-        print(self.common_path)
+        # screenshot_directory = "F:\\screenshot\\" + current_excel_data.get('testCases')
+        # path = os.path.join(screenshot_directory)
+        # if not os.path.exists(path):
+        #     os.mkdir(path)
+        # screenshot_directory = path + '\\screen_shot_' + self.date
+        # path = os.path.join(screenshot_directory)
+        # if not os.path.exists(path):
+        #     os.mkdir(path)
+        #
+        # self.common_path = path
+        # print(self.common_path)
 
         self.browser = assess_ui_common_obj.initiate_browser(amsin_automation_assessment_url, chrome_driver_path)
         login_details = assess_ui_common_obj.ui_login_to_test(current_excel_data.get('loginName'),
                                                               (current_excel_data.get('password')))
-        self.browser.get_screenshot_as_file(self.common_path + "\\1_t1_afterlogin.png")
+        # self.browser.get_screenshot_as_file(self.common_path + "\\1_t1_afterlogin.png")
         self.ws.write(row_value, 0, current_excel_data.get('testCases'), self.black_color)
         self.ws.write(row_value, 2, current_excel_data.get('testId'), self.black_color)
         self.ws.write(row_value, 3, current_excel_data.get('candidateId'), self.black_color)
@@ -81,7 +81,7 @@ class HireproChainingOfTwoTests:
             if i_agreed:
                 start_test_status = assess_ui_common_obj.start_test_button_status()
                 assess_ui_common_obj.start_test()
-                self.browser.get_screenshot_as_file(self.common_path + "\\2_t1_afterstarttest.png")
+                # self.browser.get_screenshot_as_file(self.common_path + "\\2_t1_afterstarttest.png")
                 assess_ui_common_obj.select_answer_for_the_question(current_excel_data.get('ans_qid1'))
                 assess_ui_common_obj.next_question(2)
                 assess_ui_common_obj.select_answer_for_the_question(current_excel_data.get('ans_qid2'))
@@ -92,20 +92,20 @@ class HireproChainingOfTwoTests:
                 assess_ui_common_obj.next_question(5)
                 assess_ui_common_obj.select_answer_for_the_question(current_excel_data.get('ans_qid5'))
                 time.sleep(2)
-                self.browser.get_screenshot_as_file(self.common_path + "\\3_t1_beforeendtest.png")
+                # self.browser.get_screenshot_as_file(self.common_path + "\\3_t1_beforeendtest.png")
                 assess_ui_common_obj.end_test()
-                self.browser.get_screenshot_as_file(self.common_path + "\\4_t1_beforeconfirm.png")
+                # self.browser.get_screenshot_as_file(self.common_path + "\\4_t1_beforeconfirm.png")
                 assess_ui_common_obj.end_test_confirmation()
-                self.browser.get_screenshot_as_file(self.common_path + "\\5_t1_afterconfirm.png")
-                time.sleep(10)
-                self.browser.get_screenshot_as_file(self.common_path + "\\6_t1_slcpage.png")
+                # self.browser.get_screenshot_as_file(self.common_path + "\\5_t1_afterconfirm.png")
+                time.sleep(5)
+                # self.browser.get_screenshot_as_file(self.common_path + "\\6_t1_slcpage.png")
                 status = assess_ui_common_obj.shortlisting_page()
                 # is_needed_to_call_next_method = True
                 if status.get('is_next_test_available') == 'Available':
                     if current_excel_data.get('consent') == "No":
                         is_needed_to_call_next_method = False
                         assess_ui_common_obj.consent_no()
-                        self.browser.get_screenshot_as_file(self.common_path + "\\10_t1_consent_no.png")
+                        # self.browser.get_screenshot_as_file(self.common_path + "\\10_t1_consent_no.png")
                         # self.browser.quit()
 
                     else:
@@ -113,12 +113,12 @@ class HireproChainingOfTwoTests:
                         is_needed_to_call_next_method = False
                         assess_ui_common_obj.start_next_test()
                         time.sleep(3)
-                        self.browser.get_screenshot_as_file(self.common_path + "\\7_t2_nexttestlogin.png")
-                        time.sleep(2)
+                        # self.browser.get_screenshot_as_file(self.common_path + "\\7_t2_nexttestlogin.png")
+                        # time.sleep(2)
                         assess_ui_common_obj.select_i_agree()
                         assess_ui_common_obj.start_test()
                         time.sleep(3)
-                        self.browser.get_screenshot_as_file(self.common_path + "\\8_t2_afterstarttest.png")
+                        # self.browser.get_screenshot_as_file(self.common_path + "\\8_t2_afterstarttest.png")
                         assess_ui_common_obj.next_question(2)
                         assess_ui_common_obj.next_question(3)
                         assess_ui_common_obj.next_question(4)
@@ -126,7 +126,7 @@ class HireproChainingOfTwoTests:
                         assess_ui_common_obj.end_test()
                         assess_ui_common_obj.end_test_confirmation()
                         time.sleep(3)
-                        self.browser.get_screenshot_as_file(self.common_path + "\\9_t2_aftersubmission.png")
+                        # self.browser.get_screenshot_as_file(self.common_path + "\\9_t2_aftersubmission.png")
                         self.browser.quit()
 
                 else:

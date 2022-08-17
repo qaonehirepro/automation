@@ -1,5 +1,5 @@
 from SCRIPTS.COMMON.report import *
-from SCRIPTS.COMMON.writeExcel import *
+from SCRIPTS.COMMON.write_excel_new import *
 from SCRIPTS.CRPO_COMMON.crpo_common import *
 from SCRIPTS.CRPO_COMMON.credentials import *
 from SCRIPTS.COMMON.io_path import *
