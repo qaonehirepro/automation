@@ -41,7 +41,7 @@ class VersantQuickScreener:
                 speaking_tips = assess_ui_common_obj.vet_speaking_tips()
                 overview = assess_ui_common_obj.vet_overview()
                 instruction = assess_ui_common_obj.vet_instruction()
-                for i in range(0, 11):
+                for i in range(0, 9):
                     assess_ui_common_obj.play_audio()
                     print("Current_iteration is :  ", i)
                     time.sleep(60)

@@ -67,7 +67,7 @@ class CreateCase:
             # self.browser_location = "/home/muthumurugan/Desktop/chromedriver_2.37"
             self.url = 'https://automation-in.hirepro.in/?candidate=%s' % self.candidate_id
             # self.driver = webdriver.Chrome(self.browser_location)
-            self.driver = webdriver.Chrome(executable_path=r"/chromedriver.exe")
+            self.driver = webdriver.Chrome(executable_path=r"F:\qa_automation\chromedriver.exe")
         else:
             print ("candidate not created in CRPO due to some technical glitch")
             print (self.response_data)

@@ -1,21 +1,9 @@
-a = {'MS Client side question randomization group2section1 question25',
-     'MS Client side question randomization group2section1 question24',
-     'MS Client side question randomization group2section1 question26',
-     'MS Client side question randomization group2section1 question23',
-     'MS Client side question randomization group2section1 question28',
-     'MS Client side question randomization group2section1 question27',
-     'MS Client side question randomization group2section1 question29',
-     'MS Client side question randomization group2section1 question30',
-     'MS Client side question randomization group2section1 question21',
-     'MS Client side question randomization group2section1 question22'}
+import json
+a = "{\"overall\":0.3,\"computeAudioStat\":false,\"audio\":{\"weightage\":0.5,\"isEnabled\":true,\"no_of_words\":100,\"audioStat\":{\"suspiciousCountList\":[{\"weightage\":0.8,\"to\":1,\"from\":0.8}],\"isEnabled\":true}},\"video\":{\"weightage\":0.3,\"zero_count\":3,\"multiple_count\":1,\"zero_timespan\":40,\"multipleIntervalCount\":{\"isEnabled\":true,\"intervalCount\":[{\"weightage\":0.86,\"count\":1,\"interval\":90},{\"weightage\":0.56,\"count\":2,\"interval\":30}]},\"isEnabled\":true,\"multiple_timespan\":20,\"zeroIntervalCount\":{\"isEnabled\":false,\"intervalCount\":[{\"weightage\":0.85,\"count\":1,\"interval\":90},{\"weightage\":0.55,\"count\":2,\"interval\":30}]},\"behaviouralVideo\":{\"isEnabled\":false,\"multipleFace\":{\"isEnabled\":false,\"confidenceThreshold\":80,\"count\":3,\"weightage\":0.32},\"multiplePerson\":{\"isEnabled\":false,\"confidenceThreshold\":80,\"count\":3,\"weightage\":0.33}}},\"face\":{\"multipleFace\":{\"weightage\":0.6,\"suspiciousThreshold\":12,\"isEnabled\":true},\"noFace\":{\"weightage\":0.5,\"suspiciousThreshold\":10,\"isEnabled\":true},\"goldenImage\":{\"weightage\":0.1,\"isEnabled\":true},\"suspiciousCount\":{\"weightage\":0.8,\"isEnabled\":true,\"suspiciousThresholdPercentage\":80},\"isEnabled\":true,\"faceMisMatch\":{\"weightage\":0.4,\"suspiciousThreshold\":3,\"isEnabled\":true}},\"behavioural\":{\"isEnabled\":true,\"mobile\":{\"isEnabled\":true,\"confidenceThreshold\":80,\"count\":3,\"weightage\":0.41},\"navigation\":{\"isEnabled\":true,\"countBy\":{\"count\":3,\"weightage\":0.42},\"timespanBy\":{\"timespan\":10,\"count\":1,\"weightage\":0.43}}}}"
 
-b = {'MS Client side question randomization group2section2 question35',
-     'MS Client side question randomization group2section2 question38',
-     'MS Client side question randomization group2section2 question34',
-     'MS Client side question randomization group2section2 question40',
-     'MS Client side question randomization group2section2 question31',
-     'MS Client side question randomization group2section2 question37',
-     'MS Client side question randomization group2section2 question33',
-     'MS Client side question randomization group2section2 question36',
-     'MS Client side question randomization group2section2 question32',
-     'MS Client side question randomization group2section2 question39'}
+print(a)
+print(type(a))
+
+print(type(json.loads(a)))
+data = json.loads(a)
+print(data)

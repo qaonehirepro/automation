@@ -1,0 +1,2041 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.4.1">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="video interview2" enabled="true">
+      <stringProp name="TestPlan.comments">This test plan was created by the BlazeMeter converter v.3.1.23. Please contact support@blazemeter.com for further support.</stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+        <collectionProp name="HeaderManager.headers">
+          <elementProp name="sec-ch-ua" elementType="Header">
+            <stringProp name="Header.name">sec-ch-ua</stringProp>
+            <stringProp name="Header.value">&quot;Chromium&quot;;v=&quot;104&quot;, &quot; Not A;Brand&quot;;v=&quot;99&quot;, &quot;Google Chrome&quot;;v=&quot;104&quot;</stringProp>
+          </elementProp>
+          <elementProp name="sec-ch-ua-mobile" elementType="Header">
+            <stringProp name="Header.name">sec-ch-ua-mobile</stringProp>
+            <stringProp name="Header.value">?0</stringProp>
+          </elementProp>
+          <elementProp name="sec-ch-ua-platform" elementType="Header">
+            <stringProp name="Header.name">sec-ch-ua-platform</stringProp>
+            <stringProp name="Header.value">&quot;Windows&quot;</stringProp>
+          </elementProp>
+          <elementProp name="User-Agent" elementType="Header">
+            <stringProp name="Header.name">User-Agent</stringProp>
+            <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36</stringProp>
+          </elementProp>
+        </collectionProp>
+      </HeaderManager>
+      <hashTree/>
+      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments">
+          <elementProp name="BASE_URL_1" elementType="Argument">
+            <stringProp name="Argument.name">BASE_URL_1</stringProp>
+            <stringProp name="Argument.value">amsin.hirepro.in</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="BASE_URL_2" elementType="Argument">
+            <stringProp name="Argument.name">BASE_URL_2</stringProp>
+            <stringProp name="Argument.value">fonts.googleapis.com</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="BASE_URL_3" elementType="Argument">
+            <stringProp name="Argument.name">BASE_URL_3</stringProp>
+            <stringProp name="Argument.value">cdnjs.cloudflare.com</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="BASE_URL_4" elementType="Argument">
+            <stringProp name="Argument.name">BASE_URL_4</stringProp>
+            <stringProp name="Argument.value">unpkg.com</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="BASE_URL_5" elementType="Argument">
+            <stringProp name="Argument.name">BASE_URL_5</stringProp>
+            <stringProp name="Argument.value">cdn.polyfill.io</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="BASE_URL_6" elementType="Argument">
+            <stringProp name="Argument.name">BASE_URL_6</stringProp>
+            <stringProp name="Argument.value">cdn.jsdelivr.net</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="BASE_URL_7" elementType="Argument">
+            <stringProp name="Argument.name">BASE_URL_7</stringProp>
+            <stringProp name="Argument.value">fonts.gstatic.com</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="BASE_URL_8" elementType="Argument">
+            <stringProp name="Argument.name">BASE_URL_8</stringProp>
+            <stringProp name="Argument.value">ams.hirepro.in</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="BASE_URL_9" elementType="Argument">
+            <stringProp name="Argument.name">BASE_URL_9</stringProp>
+            <stringProp name="Argument.value">bwidthnew.hirepro.in</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="BASE_URL_10" elementType="Argument">
+            <stringProp name="Argument.name">BASE_URL_10</stringProp>
+            <stringProp name="Argument.value">s3-ap-southeast-1.amazonaws.com</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+        </collectionProp>
+      </Arguments>
+      <hashTree/>
+      <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults" enabled="true">
+        <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+          <collectionProp name="Arguments.arguments"/>
+        </elementProp>
+        <stringProp name="HTTPSampler.domain"></stringProp>
+        <stringProp name="HTTPSampler.port"></stringProp>
+        <stringProp name="HTTPSampler.protocol"></stringProp>
+        <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+        <stringProp name="HTTPSampler.path"></stringProp>
+        <stringProp name="HTTPSampler.concurrentPool">6</stringProp>
+        <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+        <stringProp name="HTTPSampler.response_timeout"></stringProp>
+      </ConfigTestElement>
+      <hashTree/>
+      <DNSCacheManager guiclass="DNSCachePanel" testclass="DNSCacheManager" testname="DNS Cache Manager" enabled="true">
+        <collectionProp name="DNSCacheManager.servers"/>
+        <boolProp name="DNSCacheManager.clearEachIteration">true</boolProp>
+        <boolProp name="DNSCacheManager.isCustomResolver">false</boolProp>
+      </DNSCacheManager>
+      <hashTree/>
+      <AuthManager guiclass="AuthPanel" testclass="AuthManager" testname="HTTP Authorization Manager" enabled="true">
+        <collectionProp name="AuthManager.auth_list"/>
+        <boolProp name="AuthManager.controlledByThreadGroup">false</boolProp>
+      </AuthManager>
+      <hashTree/>
+      <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager" enabled="true">
+        <collectionProp name="CookieManager.cookies"/>
+        <boolProp name="CookieManager.clearEachIteration">true</boolProp>
+        <boolProp name="CookieManager.controlledByThreadGroup">false</boolProp>
+      </CookieManager>
+      <hashTree/>
+      <CacheManager guiclass="CacheManagerGui" testclass="CacheManager" testname="HTTP Cache Manager" enabled="true">
+        <boolProp name="clearEachIteration">true</boolProp>
+        <boolProp name="useExpires">false</boolProp>
+        <boolProp name="CacheManager.controlledByThread">false</boolProp>
+      </CacheManager>
+      <hashTree/>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration">0</stringProp>
+        <stringProp name="ThreadGroup.delay">0</stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Test" enabled="true">
+          <boolProp name="TransactionController.includeTimers">false</boolProp>
+          <boolProp name="TransactionController.parent">false</boolProp>
+        </TransactionController>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="https://amsin.hirepro.in/interview/#/home/eyJsdCI6ICJUa246ZTEwOTEwYzktOTIwOC00OTE3LWI3MmQtMTZmYjk4ZDY5NGNmIn0=" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">interview/#/home/eyJsdCI6ICJUa246ZTEwOTEwYzktOTIwOC00OTE3LWI3MmQtMTZmYjk4ZDY5NGNmIn0=</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Upgrade-Insecure-Requests" elementType="Header">
+                  <stringProp name="Header.name">Upgrade-Insecure-Requests</stringProp>
+                  <stringProp name="Header.value">1</stringProp>
+                </elementProp>
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+              <stringProp name="RandomTimer.range">0.0</stringProp>
+              <stringProp name="ConstantTimer.delay">0</stringProp>
+              <stringProp name="TestPlan.comments">Recorded time was 0 milliseconds</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="https://amsin.hirepro.in/py/crpo/api/v1/interview/get_my_info/" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">py/crpo/api/v1/interview/get_my_info/</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="x-guid" elementType="Header">
+                  <stringProp name="Header.name">x-guid</stringProp>
+                  <stringProp name="Header.value">4c2fbd33-79ec-4d48-8243-a4b19e27af03_1</stringProp>
+                </elementProp>
+                <elementProp name="X-APPLMA" elementType="Header">
+                  <stringProp name="Header.name">X-APPLMA</stringProp>
+                  <stringProp name="Header.value">true</stringProp>
+                </elementProp>
+                <elementProp name="APP-NAME" elementType="Header">
+                  <stringProp name="Header.name">APP-NAME</stringProp>
+                  <stringProp name="Header.value">videointerview</stringProp>
+                </elementProp>
+                <elementProp name="Content-Type" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
+                </elementProp>
+                <elementProp name="X-AUTH-TOKEN" elementType="Header">
+                  <stringProp name="Header.name">X-AUTH-TOKEN</stringProp>
+                  <stringProp name="Header.value">Tkn:e10910c9-9208-4917-b72d-16fb98d694cf</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="https://amsin.hirepro.in/py/crpo/api/v1/interview/get_my_room/" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">py/crpo/api/v1/interview/get_my_room/</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="x-guid" elementType="Header">
+                  <stringProp name="Header.name">x-guid</stringProp>
+                  <stringProp name="Header.value">4c2fbd33-79ec-4d48-8243-a4b19e27af03_2</stringProp>
+                </elementProp>
+                <elementProp name="X-APPLMA" elementType="Header">
+                  <stringProp name="Header.name">X-APPLMA</stringProp>
+                  <stringProp name="Header.value">true</stringProp>
+                </elementProp>
+                <elementProp name="APP-NAME" elementType="Header">
+                  <stringProp name="Header.name">APP-NAME</stringProp>
+                  <stringProp name="Header.value">videointerview</stringProp>
+                </elementProp>
+                <elementProp name="Content-Type" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
+                </elementProp>
+                <elementProp name="X-AUTH-TOKEN" elementType="Header">
+                  <stringProp name="Header.name">X-AUTH-TOKEN</stringProp>
+                  <stringProp name="Header.value">Tkn:e10910c9-9208-4917-b72d-16fb98d694cf</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="https://amsin.hirepro.in/py/crpo/api/v1/interview/lipsync/get_lipsync_samples_status/" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;irId&quot;:23803}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">py/crpo/api/v1/interview/lipsync/get_lipsync_samples_status/</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="x-guid" elementType="Header">
+                  <stringProp name="Header.name">x-guid</stringProp>
+                  <stringProp name="Header.value">4c2fbd33-79ec-4d48-8243-a4b19e27af03_3</stringProp>
+                </elementProp>
+                <elementProp name="X-APPLMA" elementType="Header">
+                  <stringProp name="Header.name">X-APPLMA</stringProp>
+                  <stringProp name="Header.value">true</stringProp>
+                </elementProp>
+                <elementProp name="APP-NAME" elementType="Header">
+                  <stringProp name="Header.name">APP-NAME</stringProp>
+                  <stringProp name="Header.value">videointerview</stringProp>
+                </elementProp>
+                <elementProp name="Content-Type" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
+                </elementProp>
+                <elementProp name="X-AUTH-TOKEN" elementType="Header">
+                  <stringProp name="Header.name">X-AUTH-TOKEN</stringProp>
+                  <stringProp name="Header.value">Tkn:e10910c9-9208-4917-b72d-16fb98d694cf</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="https://amsin.hirepro.in/py/conference_app/conference/v1/saveParticipantActivityStats/" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;0&quot;:{&quot;time&quot;:&quot;2022-08-26T14:29:01.452Z&quot;,&quot;page&quot;:&quot;amsin.hirepro.in/interview/#/home/eyJsdCI6ICJUa246ZTEwOTEwYzktOTIwOC00OTE3LWI3MmQtMTZmYjk4ZDY5NGNmIn0=&quot;,&quot;activity&quot;:&quot;Cerror&quot;,&quot;message&quot;:&quot;{\&quot;0\&quot;:\&quot;100.105.150.186\&quot;}&quot;},&quot;canLoginActivityLog&quot;:[{&quot;interview_activity_log&quot;:{&quot;activity&quot;:&quot;Interview link has been clicked&quot;,&quot;timestamp&quot;:&quot;2022-08-26T14:28:58.312Z&quot;}},{&quot;interview_activity_log&quot;:{&quot;activity&quot;:&quot;On proctorCompatibility page&quot;,&quot;timestamp&quot;:&quot;2022-08-26T14:29:01.376Z&quot;}}],&quot;userActivityLog&quot;:[{&quot;clientSystemInfo&quot;:&quot;Browser:chrome-104.0.0.0, OS:windows-windows-10, IPAddress:100.105.150.186, timeZone:Asia/Calcutta&quot;},{&quot;netWorkinfoLog&quot;:{&quot;downlink&quot;:10,&quot;effectiveType&quot;:&quot;4g&quot;,&quot;rtt&quot;:100,&quot;saveData&quot;:false}},{&quot;deviceMemoryLog&quot;:{&quot;deviceMemory&quot;:8}},{&quot;webDriverStatLog&quot;:{&quot;webDriverStat&quot;:false}},{&quot;batteryStatLog&quot;:{&quot;charging&quot;:true,&quot;batteryLifeInSec&quot;:null,&quot;level&quot;:1}},{&quot;mediaDeviceInfoLog&quot;:{&quot;mediaDevices&quot;:{&quot;audioinput&quot;:[{&quot;autoGainControl&quot;:true,&quot;channelCount&quot;:1,&quot;deviceId&quot;:&quot;default&quot;,&quot;echoCancellation&quot;:true,&quot;groupId&quot;:&quot;84ae27ade9b6cf9f56b9d783f49582bee2570630ce2e45dae7305ed2cbb83185&quot;,&quot;latency&quot;:0.01,&quot;noiseSuppression&quot;:true,&quot;sampleRate&quot;:48000,&quot;sampleSize&quot;:16,&quot;isActive&quot;:true,&quot;kind&quot;:&quot;audioinput&quot;,&quot;label&quot;:&quot;Default - Microphone Array (IntelÂ® Smart Sound Technology (IntelÂ® SST))&quot;},{&quot;deviceId&quot;:&quot;communications&quot;,&quot;kind&quot;:&quot;audioinput&quot;,&quot;label&quot;:&quot;Communications - Microphone Array (IntelÂ® Smart Sound Technology (IntelÂ® SST))&quot;,&quot;groupId&quot;:&quot;84ae27ade9b6cf9f56b9d783f49582bee2570630ce2e45dae7305ed2cbb83185&quot;},{&quot;deviceId&quot;:&quot;4eddfd86adb705f5a295b0134d28f5ec25dd3cbcc32640e540575dc469971d71&quot;,&quot;kind&quot;:&quot;audioinput&quot;,&quot;label&quot;:&quot;Microphone Array (IntelÂ® Smart Sound Technology (IntelÂ® SST))&quot;,&quot;groupId&quot;:&quot;84ae27ade9b6cf9f56b9d783f49582bee2570630ce2e45dae7305ed2cbb83185&quot;}],&quot;videoinput&quot;:[{&quot;aspectRatio&quot;:1.3333333333333333,&quot;brightness&quot;:0,&quot;colorTemperature&quot;:4600,&quot;contrast&quot;:0,&quot;deviceId&quot;:&quot;a1248194fbc09a342793ad5d4d980cb7dcc0bbcc7612f585db16eb99ede995cf&quot;,&quot;exposureCompensation&quot;:1,&quot;exposureMode&quot;:&quot;continuous&quot;,&quot;exposureTime&quot;:156.25,&quot;facingMode&quot;:&quot;user&quot;,&quot;frameRate&quot;:30,&quot;groupId&quot;:&quot;e50784b96d3d2682819b252b44491ffd812d3c2cc353526b90ccfaf28a020fac&quot;,&quot;height&quot;:480,&quot;resizeMode&quot;:&quot;none&quot;,&quot;saturation&quot;:64,&quot;sharpness&quot;:2,&quot;whiteBalanceMode&quot;:&quot;continuous&quot;,&quot;width&quot;:640,&quot;isActive&quot;:true,&quot;kind&quot;:&quot;videoinput&quot;,&quot;label&quot;:&quot;Integrated Webcam (1bcf:2b98)&quot;},{&quot;deviceId&quot;:&quot;911cafa2b562abe5a402ec7b30f3fd439c68fa042b0b5b1a027e6e7a17a369a4&quot;,&quot;kind&quot;:&quot;videoinput&quot;,&quot;label&quot;:&quot;OBS Virtual Camera&quot;,&quot;groupId&quot;:&quot;478df494e0eafd4c08560cdef73a724bd3e391c63960b0292af0685f4ab8a2af&quot;}],&quot;audiooutput&quot;:[{&quot;deviceId&quot;:&quot;default&quot;,&quot;kind&quot;:&quot;audiooutput&quot;,&quot;label&quot;:&quot;Default - Speakers (Realtek(R) Audio)&quot;,&quot;groupId&quot;:&quot;dc8c1852fc6591956f1d34ec4ea1decdda65968d0c3d7614fbc7c24e82b4b105&quot;},{&quot;deviceId&quot;:&quot;communications&quot;,&quot;kind&quot;:&quot;audiooutput&quot;,&quot;label&quot;:&quot;Communications - Speakers (Realtek(R) Audio)&quot;,&quot;groupId&quot;:&quot;dc8c1852fc6591956f1d34ec4ea1decdda65968d0c3d7614fbc7c24e82b4b105&quot;},{&quot;deviceId&quot;:&quot;01be74f4b9b1be37cca8d479caeaf6abc1483206b5fafd644e1b48fa97dfbb51&quot;,&quot;kind&quot;:&quot;audiooutput&quot;,&quot;label&quot;:&quot;Speakers (Realtek(R) Audio)&quot;,&quot;groupId&quot;:&quot;dc8c1852fc6591956f1d34ec4ea1decdda65968d0c3d7614fbc7c24e82b4b105&quot;}]}}}],&quot;joinedStreamId&quot;:false,&quot;disableBlockUI&quot;:true}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">py/conference_app/conference/v1/saveParticipantActivityStats/</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="x-guid" elementType="Header">
+                  <stringProp name="Header.name">x-guid</stringProp>
+                  <stringProp name="Header.value">4c2fbd33-79ec-4d48-8243-a4b19e27af03_7</stringProp>
+                </elementProp>
+                <elementProp name="X-APPLMA" elementType="Header">
+                  <stringProp name="Header.name">X-APPLMA</stringProp>
+                  <stringProp name="Header.value">true</stringProp>
+                </elementProp>
+                <elementProp name="APP-NAME" elementType="Header">
+                  <stringProp name="Header.name">APP-NAME</stringProp>
+                  <stringProp name="Header.value">videointerview</stringProp>
+                </elementProp>
+                <elementProp name="Content-Type" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
+                </elementProp>
+                <elementProp name="X-AUTH-TOKEN" elementType="Header">
+                  <stringProp name="Header.name">X-AUTH-TOKEN</stringProp>
+                  <stringProp name="Header.value">Tkn:e10910c9-9208-4917-b72d-16fb98d694cf</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="https://amsin.hirepro.in/py/common/filehandler/api/v3/upload/.gif,.png,.jpg,.jpeg,.doc,.docx,.rtf,.pdf,.txt,.xls,.xlsx,.zip,.rar,.7z,.gz,.ppt,.pps,.pptx,.mp4,.mvw,.3gp/5000/" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="------WebKitFormBoundaryq2YpW7Eny9jjCCpG&#xd;&#xa;Content-Disposition: form-data; name" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                  <stringProp name="Argument.name">------WebKitFormBoundaryq2YpW7Eny9jjCCpG&#xd;
+Content-Disposition: form-data; name</stringProp>
+                  <stringProp name="Argument.value">&quot;file&quot;; filename=&quot;selfieImage.jpeg&quot;&#xd;
+Content-Type: image/jpeg&#xd;
+&#xd;
+&#xd;
+------WebKitFormBoundaryq2YpW7Eny9jjCCpG--&#xd;
+</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">py/common/filehandler/api/v3/upload/.gif,.png,.jpg,.jpeg,.doc,.docx,.rtf,.pdf,.txt,.xls,.xlsx,.zip,.rar,.7z,.gz,.ppt,.pps,.pptx,.mp4,.mvw,.3gp/5000/</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="x-guid" elementType="Header">
+                  <stringProp name="Header.name">x-guid</stringProp>
+                  <stringProp name="Header.value">4c2fbd33-79ec-4d48-8243-a4b19e27af03_8</stringProp>
+                </elementProp>
+                <elementProp name="X-APPLMA" elementType="Header">
+                  <stringProp name="Header.name">X-APPLMA</stringProp>
+                  <stringProp name="Header.value">true</stringProp>
+                </elementProp>
+                <elementProp name="APP-NAME" elementType="Header">
+                  <stringProp name="Header.name">APP-NAME</stringProp>
+                  <stringProp name="Header.value">videointerview</stringProp>
+                </elementProp>
+                <elementProp name="Content-Type" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">multipart/form-data; boundary=----WebKitFormBoundaryq2YpW7Eny9jjCCpG</stringProp>
+                </elementProp>
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
+                </elementProp>
+                <elementProp name="X-AUTH-TOKEN" elementType="Header">
+                  <stringProp name="Header.name">X-AUTH-TOKEN</stringProp>
+                  <stringProp name="Header.value">Tkn:e10910c9-9208-4917-b72d-16fb98d694cf</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="https://amsin.hirepro.in/py/common/face_comparison/analyze_image" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;imageUrl&quot;:&quot;https://s3-ap-southeast-1.amazonaws.com/ams-in-self-expiring-files/1-24h/crpodemo/uploaded/ee7b13d2-e240-4ccd-838b-9cbf37f6f513selfieImage.jpeg&quot;,&quot;detectFaces&quot;:true,&quot;detectObjects&quot;:true,&quot;confidenceThreshold&quot;:50}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">py/common/face_comparison/analyze_image</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="x-guid" elementType="Header">
+                  <stringProp name="Header.name">x-guid</stringProp>
+                  <stringProp name="Header.value">4c2fbd33-79ec-4d48-8243-a4b19e27af03_9</stringProp>
+                </elementProp>
+                <elementProp name="X-APPLMA" elementType="Header">
+                  <stringProp name="Header.name">X-APPLMA</stringProp>
+                  <stringProp name="Header.value">true</stringProp>
+                </elementProp>
+                <elementProp name="APP-NAME" elementType="Header">
+                  <stringProp name="Header.name">APP-NAME</stringProp>
+                  <stringProp name="Header.value">videointerview</stringProp>
+                </elementProp>
+                <elementProp name="Content-Type" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
+                </elementProp>
+                <elementProp name="X-AUTH-TOKEN" elementType="Header">
+                  <stringProp name="Header.name">X-AUTH-TOKEN</stringProp>
+                  <stringProp name="Header.value">Tkn:e10910c9-9208-4917-b72d-16fb98d694cf</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="https://amsin.hirepro.in/py/common/filehandler/api/v2/persistent-save/" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">[{&quot;origFileUrl&quot;:&quot;https://s3-ap-southeast-1.amazonaws.com/ams-in-self-expiring-files/1-24h/crpodemo/uploaded/ee7b13d2-e240-4ccd-838b-9cbf37f6f513selfieImage.jpeg&quot;,&quot;relativePath&quot;:&quot;proctored_data/248/1467841/goldenImage/Interviewee_23623_Anil_Yadav&quot;,&quot;targetBucket&quot;:&quot;rekognition-images&quot;,&quot;isSync&quot;:true,&quot;metaData&quot;:{&quot;goldenimage&quot;:true,&quot;timeStamp&quot;:&quot;2022-08-26T14:29:15.858Z&quot;}}]</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">py/common/filehandler/api/v2/persistent-save/</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="x-guid" elementType="Header">
+                  <stringProp name="Header.name">x-guid</stringProp>
+                  <stringProp name="Header.value">4c2fbd33-79ec-4d48-8243-a4b19e27af03_10</stringProp>
+                </elementProp>
+                <elementProp name="X-APPLMA" elementType="Header">
+                  <stringProp name="Header.name">X-APPLMA</stringProp>
+                  <stringProp name="Header.value">true</stringProp>
+                </elementProp>
+                <elementProp name="APP-NAME" elementType="Header">
+                  <stringProp name="Header.name">APP-NAME</stringProp>
+                  <stringProp name="Header.value">videointerview</stringProp>
+                </elementProp>
+                <elementProp name="Content-Type" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
+                </elementProp>
+                <elementProp name="X-AUTH-TOKEN" elementType="Header">
+                  <stringProp name="Header.name">X-AUTH-TOKEN</stringProp>
+                  <stringProp name="Header.value">Tkn:e10910c9-9208-4917-b72d-16fb98d694cf</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="https://amsin.hirepro.in/py/common/filehandler/api/v3/upload/.webm/5000/" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="------WebKitFormBoundary6ECfOOEYqJyYjAeI&#xd;&#xa;Content-Disposition: form-data; name" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                  <stringProp name="Argument.name">------WebKitFormBoundary6ECfOOEYqJyYjAeI&#xd;
+Content-Disposition: form-data; name</stringProp>
+                  <stringProp name="Argument.value">&quot;file&quot;; filename=&quot;surroundNoiseCheck.webm&quot;&#xd;
+Content-Type: application/octet-stream&#xd;
+&#xd;
+&#xd;
+------WebKitFormBoundary6ECfOOEYqJyYjAeI--&#xd;
+</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">py/common/filehandler/api/v3/upload/.webm/5000/</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="x-guid" elementType="Header">
+                  <stringProp name="Header.name">x-guid</stringProp>
+                  <stringProp name="Header.value">4c2fbd33-79ec-4d48-8243-a4b19e27af03_13</stringProp>
+                </elementProp>
+                <elementProp name="X-APPLMA" elementType="Header">
+                  <stringProp name="Header.name">X-APPLMA</stringProp>
+                  <stringProp name="Header.value">true</stringProp>
+                </elementProp>
+                <elementProp name="APP-NAME" elementType="Header">
+                  <stringProp name="Header.name">APP-NAME</stringProp>
+                  <stringProp name="Header.value">videointerview</stringProp>
+                </elementProp>
+                <elementProp name="Content-Type" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">multipart/form-data; boundary=----WebKitFormBoundary6ECfOOEYqJyYjAeI</stringProp>
+                </elementProp>
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
+                </elementProp>
+                <elementProp name="X-AUTH-TOKEN" elementType="Header">
+                  <stringProp name="Header.name">X-AUTH-TOKEN</stringProp>
+                  <stringProp name="Header.value">Tkn:e10910c9-9208-4917-b72d-16fb98d694cf</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="https://amsin.hirepro.in/py/common/filehandler/api/v2/persistent-save/" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">[{&quot;origFileUrl&quot;:&quot;https://s3-ap-southeast-1.amazonaws.com/ams-in-self-expiring-files/1-24h/crpodemo/uploaded/f81a5c5f-0af8-49c9-b35c-f0c47ae4cf4esurroundNoiseCheck.webm&quot;,&quot;relativePath&quot;:&quot;proctored_data/248/1467841/conference-files/backgroundNoise/Anil_Yadav&quot;,&quot;targetBucket&quot;:&quot;rekognition-images&quot;,&quot;isSync&quot;:false,&quot;metaData&quot;:{}}]</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">py/common/filehandler/api/v2/persistent-save/</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="x-guid" elementType="Header">
+                  <stringProp name="Header.name">x-guid</stringProp>
+                  <stringProp name="Header.value">4c2fbd33-79ec-4d48-8243-a4b19e27af03_14</stringProp>
+                </elementProp>
+                <elementProp name="X-APPLMA" elementType="Header">
+                  <stringProp name="Header.name">X-APPLMA</stringProp>
+                  <stringProp name="Header.value">true</stringProp>
+                </elementProp>
+                <elementProp name="APP-NAME" elementType="Header">
+                  <stringProp name="Header.name">APP-NAME</stringProp>
+                  <stringProp name="Header.value">videointerview</stringProp>
+                </elementProp>
+                <elementProp name="Content-Type" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
+                </elementProp>
+                <elementProp name="X-AUTH-TOKEN" elementType="Header">
+                  <stringProp name="Header.name">X-AUTH-TOKEN</stringProp>
+                  <stringProp name="Header.value">Tkn:e10910c9-9208-4917-b72d-16fb98d694cf</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="https://amsin.hirepro.in/py/common/filehandler/api/v3/upload/.webm/5000/" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="------WebKitFormBoundaryQP03531LSWgH9NOG&#xd;&#xa;Content-Disposition: form-data; name" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                  <stringProp name="Argument.name">------WebKitFormBoundaryQP03531LSWgH9NOG&#xd;
+Content-Disposition: form-data; name</stringProp>
+                  <stringProp name="Argument.value">&quot;file&quot;; filename=&quot;video_Foundation.webm&quot;&#xd;
+Content-Type: video/webm&#xd;
+&#xd;
+&#xd;
+------WebKitFormBoundaryQP03531LSWgH9NOG--&#xd;
+</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">py/common/filehandler/api/v3/upload/.webm/5000/</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="x-guid" elementType="Header">
+                  <stringProp name="Header.name">x-guid</stringProp>
+                  <stringProp name="Header.value">4c2fbd33-79ec-4d48-8243-a4b19e27af03_15</stringProp>
+                </elementProp>
+                <elementProp name="X-APPLMA" elementType="Header">
+                  <stringProp name="Header.name">X-APPLMA</stringProp>
+                  <stringProp name="Header.value">true</stringProp>
+                </elementProp>
+                <elementProp name="APP-NAME" elementType="Header">
+                  <stringProp name="Header.name">APP-NAME</stringProp>
+                  <stringProp name="Header.value">videointerview</stringProp>
+                </elementProp>
+                <elementProp name="Content-Type" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">multipart/form-data; boundary=----WebKitFormBoundaryQP03531LSWgH9NOG</stringProp>
+                </elementProp>
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
+                </elementProp>
+                <elementProp name="X-AUTH-TOKEN" elementType="Header">
+                  <stringProp name="Header.name">X-AUTH-TOKEN</stringProp>
+                  <stringProp name="Header.value">Tkn:e10910c9-9208-4917-b72d-16fb98d694cf</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="https://amsin.hirepro.in/py/common/filehandler/api/v2/persistent-save/" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">[{&quot;origFileUrl&quot;:&quot;https://s3-ap-southeast-1.amazonaws.com/ams-in-self-expiring-files/1-24h/crpodemo/uploaded/6ae6b9fe-5f45-49c9-9dc2-79220036eaa1video_Foundation.webm&quot;,&quot;relativePath&quot;:&quot;proctored_data/248/1467841/lipSync/6219f485-6198-4584-874d-6499211d4958/training-data/&quot;,&quot;targetBucket&quot;:&quot;rekognition-images&quot;,&quot;isSync&quot;:false,&quot;metaData&quot;:{&quot;sequence&quot;:0,&quot;Content-Type&quot;:&quot;video/webm&quot;}}]</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">py/common/filehandler/api/v2/persistent-save/</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="x-guid" elementType="Header">
+                  <stringProp name="Header.name">x-guid</stringProp>
+                  <stringProp name="Header.value">4c2fbd33-79ec-4d48-8243-a4b19e27af03_16</stringProp>
+                </elementProp>
+                <elementProp name="X-APPLMA" elementType="Header">
+                  <stringProp name="Header.name">X-APPLMA</stringProp>
+                  <stringProp name="Header.value">true</stringProp>
+                </elementProp>
+                <elementProp name="APP-NAME" elementType="Header">
+                  <stringProp name="Header.name">APP-NAME</stringProp>
+                  <stringProp name="Header.value">videointerview</stringProp>
+                </elementProp>
+                <elementProp name="Content-Type" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
+                </elementProp>
+                <elementProp name="X-AUTH-TOKEN" elementType="Header">
+                  <stringProp name="Header.name">X-AUTH-TOKEN</stringProp>
+                  <stringProp name="Header.value">Tkn:e10910c9-9208-4917-b72d-16fb98d694cf</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="https://amsin.hirepro.in/py/common/filehandler/api/v3/upload/.webm/5000/" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="------WebKitFormBoundarynlZV8XZthcuOvD9l&#xd;&#xa;Content-Disposition: form-data; name" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                  <stringProp name="Argument.name">------WebKitFormBoundarynlZV8XZthcuOvD9l&#xd;
+Content-Disposition: form-data; name</stringProp>
+                  <stringProp name="Argument.value">&quot;file&quot;; filename=&quot;video_Positivity.webm&quot;&#xd;
+Content-Type: video/webm&#xd;
+&#xd;
+&#xd;
+------WebKitFormBoundarynlZV8XZthcuOvD9l--&#xd;
+</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">py/common/filehandler/api/v3/upload/.webm/5000/</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="x-guid" elementType="Header">
+                  <stringProp name="Header.name">x-guid</stringProp>
+                  <stringProp name="Header.value">4c2fbd33-79ec-4d48-8243-a4b19e27af03_17</stringProp>
+                </elementProp>
+                <elementProp name="X-APPLMA" elementType="Header">
+                  <stringProp name="Header.name">X-APPLMA</stringProp>
+                  <stringProp name="Header.value">true</stringProp>
+                </elementProp>
+                <elementProp name="APP-NAME" elementType="Header">
+                  <stringProp name="Header.name">APP-NAME</stringProp>
+                  <stringProp name="Header.value">videointerview</stringProp>
+                </elementProp>
+                <elementProp name="Content-Type" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">multipart/form-data; boundary=----WebKitFormBoundarynlZV8XZthcuOvD9l</stringProp>
+                </elementProp>
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
+                </elementProp>
+                <elementProp name="X-AUTH-TOKEN" elementType="Header">
+                  <stringProp name="Header.name">X-AUTH-TOKEN</stringProp>
+                  <stringProp name="Header.value">Tkn:e10910c9-9208-4917-b72d-16fb98d694cf</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="https://amsin.hirepro.in/py/common/filehandler/api/v2/persistent-save/" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">[{&quot;origFileUrl&quot;:&quot;https://s3-ap-southeast-1.amazonaws.com/ams-in-self-expiring-files/1-24h/crpodemo/uploaded/2ccd3c8c-180b-47a6-acbc-38875b0f8347video_Positivity.webm&quot;,&quot;relativePath&quot;:&quot;proctored_data/248/1467841/lipSync/6219f485-6198-4584-874d-6499211d4958/training-data/&quot;,&quot;targetBucket&quot;:&quot;rekognition-images&quot;,&quot;isSync&quot;:false,&quot;metaData&quot;:{&quot;sequence&quot;:1,&quot;Content-Type&quot;:&quot;video/webm&quot;}}]</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">py/common/filehandler/api/v2/persistent-save/</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="x-guid" elementType="Header">
+                  <stringProp name="Header.name">x-guid</stringProp>
+                  <stringProp name="Header.value">4c2fbd33-79ec-4d48-8243-a4b19e27af03_18</stringProp>
+                </elementProp>
+                <elementProp name="X-APPLMA" elementType="Header">
+                  <stringProp name="Header.name">X-APPLMA</stringProp>
+                  <stringProp name="Header.value">true</stringProp>
+                </elementProp>
+                <elementProp name="APP-NAME" elementType="Header">
+                  <stringProp name="Header.name">APP-NAME</stringProp>
+                  <stringProp name="Header.value">videointerview</stringProp>
+                </elementProp>
+                <elementProp name="Content-Type" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
+                </elementProp>
+                <elementProp name="X-AUTH-TOKEN" elementType="Header">
+                  <stringProp name="Header.name">X-AUTH-TOKEN</stringProp>
+                  <stringProp name="Header.value">Tkn:e10910c9-9208-4917-b72d-16fb98d694cf</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="https://amsin.hirepro.in/py/common/filehandler/api/v3/upload/.webm/5000/" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="------WebKitFormBoundary1a9U2DI0Mz75IKHT&#xd;&#xa;Content-Disposition: form-data; name" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                  <stringProp name="Argument.name">------WebKitFormBoundary1a9U2DI0Mz75IKHT&#xd;
+Content-Disposition: form-data; name</stringProp>
+                  <stringProp name="Argument.value">&quot;file&quot;; filename=&quot;video_Mathematics.webm&quot;&#xd;
+Content-Type: video/webm&#xd;
+&#xd;
+&#xd;
+------WebKitFormBoundary1a9U2DI0Mz75IKHT--&#xd;
+</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">py/common/filehandler/api/v3/upload/.webm/5000/</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="x-guid" elementType="Header">
+                  <stringProp name="Header.name">x-guid</stringProp>
+                  <stringProp name="Header.value">4c2fbd33-79ec-4d48-8243-a4b19e27af03_19</stringProp>
+                </elementProp>
+                <elementProp name="X-APPLMA" elementType="Header">
+                  <stringProp name="Header.name">X-APPLMA</stringProp>
+                  <stringProp name="Header.value">true</stringProp>
+                </elementProp>
+                <elementProp name="APP-NAME" elementType="Header">
+                  <stringProp name="Header.name">APP-NAME</stringProp>
+                  <stringProp name="Header.value">videointerview</stringProp>
+                </elementProp>
+                <elementProp name="Content-Type" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">multipart/form-data; boundary=----WebKitFormBoundary1a9U2DI0Mz75IKHT</stringProp>
+                </elementProp>
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
+                </elementProp>
+                <elementProp name="X-AUTH-TOKEN" elementType="Header">
+                  <stringProp name="Header.name">X-AUTH-TOKEN</stringProp>
+                  <stringProp name="Header.value">Tkn:e10910c9-9208-4917-b72d-16fb98d694cf</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="https://amsin.hirepro.in/py/common/filehandler/api/v2/persistent-save/" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">[{&quot;origFileUrl&quot;:&quot;https://s3-ap-southeast-1.amazonaws.com/ams-in-self-expiring-files/1-24h/crpodemo/uploaded/b6732721-0db2-498f-a51e-097f608af72avideo_Mathematics.webm&quot;,&quot;relativePath&quot;:&quot;proctored_data/248/1467841/lipSync/6219f485-6198-4584-874d-6499211d4958/training-data/&quot;,&quot;targetBucket&quot;:&quot;rekognition-images&quot;,&quot;isSync&quot;:false,&quot;metaData&quot;:{&quot;sequence&quot;:2,&quot;Content-Type&quot;:&quot;video/webm&quot;}}]</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">py/common/filehandler/api/v2/persistent-save/</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="x-guid" elementType="Header">
+                  <stringProp name="Header.name">x-guid</stringProp>
+                  <stringProp name="Header.value">4c2fbd33-79ec-4d48-8243-a4b19e27af03_20</stringProp>
+                </elementProp>
+                <elementProp name="X-APPLMA" elementType="Header">
+                  <stringProp name="Header.name">X-APPLMA</stringProp>
+                  <stringProp name="Header.value">true</stringProp>
+                </elementProp>
+                <elementProp name="APP-NAME" elementType="Header">
+                  <stringProp name="Header.name">APP-NAME</stringProp>
+                  <stringProp name="Header.value">videointerview</stringProp>
+                </elementProp>
+                <elementProp name="Content-Type" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
+                </elementProp>
+                <elementProp name="X-AUTH-TOKEN" elementType="Header">
+                  <stringProp name="Header.name">X-AUTH-TOKEN</stringProp>
+                  <stringProp name="Header.value">Tkn:e10910c9-9208-4917-b72d-16fb98d694cf</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="https://amsin.hirepro.in/py/common/filehandler/api/v3/upload/.webm/5000/" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="------WebKitFormBoundaryirM3au0AvPfodZYV&#xd;&#xa;Content-Disposition: form-data; name" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                  <stringProp name="Argument.name">------WebKitFormBoundaryirM3au0AvPfodZYV&#xd;
+Content-Disposition: form-data; name</stringProp>
+                  <stringProp name="Argument.value">&quot;file&quot;; filename=&quot;video_Bottlebrush.webm&quot;&#xd;
+Content-Type: video/webm&#xd;
+&#xd;
+&#xd;
+------WebKitFormBoundaryirM3au0AvPfodZYV--&#xd;
+</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">py/common/filehandler/api/v3/upload/.webm/5000/</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="x-guid" elementType="Header">
+                  <stringProp name="Header.name">x-guid</stringProp>
+                  <stringProp name="Header.value">4c2fbd33-79ec-4d48-8243-a4b19e27af03_21</stringProp>
+                </elementProp>
+                <elementProp name="X-APPLMA" elementType="Header">
+                  <stringProp name="Header.name">X-APPLMA</stringProp>
+                  <stringProp name="Header.value">true</stringProp>
+                </elementProp>
+                <elementProp name="APP-NAME" elementType="Header">
+                  <stringProp name="Header.name">APP-NAME</stringProp>
+                  <stringProp name="Header.value">videointerview</stringProp>
+                </elementProp>
+                <elementProp name="Content-Type" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">multipart/form-data; boundary=----WebKitFormBoundaryirM3au0AvPfodZYV</stringProp>
+                </elementProp>
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
+                </elementProp>
+                <elementProp name="X-AUTH-TOKEN" elementType="Header">
+                  <stringProp name="Header.name">X-AUTH-TOKEN</stringProp>
+                  <stringProp name="Header.value">Tkn:e10910c9-9208-4917-b72d-16fb98d694cf</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="https://amsin.hirepro.in/py/common/filehandler/api/v2/persistent-save/" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">[{&quot;origFileUrl&quot;:&quot;https://s3-ap-southeast-1.amazonaws.com/ams-in-self-expiring-files/1-24h/crpodemo/uploaded/4877ebf8-5a2f-4739-b65f-046a9aed1abcvideo_Bottlebrush.webm&quot;,&quot;relativePath&quot;:&quot;proctored_data/248/1467841/lipSync/6219f485-6198-4584-874d-6499211d4958/training-data/&quot;,&quot;targetBucket&quot;:&quot;rekognition-images&quot;,&quot;isSync&quot;:false,&quot;metaData&quot;:{&quot;sequence&quot;:3,&quot;Content-Type&quot;:&quot;video/webm&quot;}}]</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">py/common/filehandler/api/v2/persistent-save/</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="x-guid" elementType="Header">
+                  <stringProp name="Header.name">x-guid</stringProp>
+                  <stringProp name="Header.value">4c2fbd33-79ec-4d48-8243-a4b19e27af03_22</stringProp>
+                </elementProp>
+                <elementProp name="X-APPLMA" elementType="Header">
+                  <stringProp name="Header.name">X-APPLMA</stringProp>
+                  <stringProp name="Header.value">true</stringProp>
+                </elementProp>
+                <elementProp name="APP-NAME" elementType="Header">
+                  <stringProp name="Header.name">APP-NAME</stringProp>
+                  <stringProp name="Header.value">videointerview</stringProp>
+                </elementProp>
+                <elementProp name="Content-Type" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
+                </elementProp>
+                <elementProp name="X-AUTH-TOKEN" elementType="Header">
+                  <stringProp name="Header.name">X-AUTH-TOKEN</stringProp>
+                  <stringProp name="Header.value">Tkn:e10910c9-9208-4917-b72d-16fb98d694cf</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="https://amsin.hirepro.in/py/common/filehandler/api/v3/upload/.webm/5000/" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="------WebKitFormBoundaryGvFG6N3IRRX3ln7d&#xd;&#xa;Content-Disposition: form-data; name" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                  <stringProp name="Argument.name">------WebKitFormBoundaryGvFG6N3IRRX3ln7d&#xd;
+Content-Disposition: form-data; name</stringProp>
+                  <stringProp name="Argument.value">&quot;file&quot;; filename=&quot;video_Footballer.webm&quot;&#xd;
+Content-Type: video/webm&#xd;
+&#xd;
+&#xd;
+------WebKitFormBoundaryGvFG6N3IRRX3ln7d--&#xd;
+</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">py/common/filehandler/api/v3/upload/.webm/5000/</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="x-guid" elementType="Header">
+                  <stringProp name="Header.name">x-guid</stringProp>
+                  <stringProp name="Header.value">4c2fbd33-79ec-4d48-8243-a4b19e27af03_23</stringProp>
+                </elementProp>
+                <elementProp name="X-APPLMA" elementType="Header">
+                  <stringProp name="Header.name">X-APPLMA</stringProp>
+                  <stringProp name="Header.value">true</stringProp>
+                </elementProp>
+                <elementProp name="APP-NAME" elementType="Header">
+                  <stringProp name="Header.name">APP-NAME</stringProp>
+                  <stringProp name="Header.value">videointerview</stringProp>
+                </elementProp>
+                <elementProp name="Content-Type" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">multipart/form-data; boundary=----WebKitFormBoundaryGvFG6N3IRRX3ln7d</stringProp>
+                </elementProp>
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
+                </elementProp>
+                <elementProp name="X-AUTH-TOKEN" elementType="Header">
+                  <stringProp name="Header.name">X-AUTH-TOKEN</stringProp>
+                  <stringProp name="Header.value">Tkn:e10910c9-9208-4917-b72d-16fb98d694cf</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="https://amsin.hirepro.in/py/common/filehandler/api/v2/persistent-save/" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">[{&quot;origFileUrl&quot;:&quot;https://s3-ap-southeast-1.amazonaws.com/ams-in-self-expiring-files/1-24h/crpodemo/uploaded/7fdb49e3-8d37-42ba-9655-1eeb25d1a88bvideo_Footballer.webm&quot;,&quot;relativePath&quot;:&quot;proctored_data/248/1467841/lipSync/6219f485-6198-4584-874d-6499211d4958/training-data/&quot;,&quot;targetBucket&quot;:&quot;rekognition-images&quot;,&quot;isSync&quot;:false,&quot;metaData&quot;:{&quot;sequence&quot;:4,&quot;Content-Type&quot;:&quot;video/webm&quot;}}]</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">py/common/filehandler/api/v2/persistent-save/</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="x-guid" elementType="Header">
+                  <stringProp name="Header.name">x-guid</stringProp>
+                  <stringProp name="Header.value">4c2fbd33-79ec-4d48-8243-a4b19e27af03_24</stringProp>
+                </elementProp>
+                <elementProp name="X-APPLMA" elementType="Header">
+                  <stringProp name="Header.name">X-APPLMA</stringProp>
+                  <stringProp name="Header.value">true</stringProp>
+                </elementProp>
+                <elementProp name="APP-NAME" elementType="Header">
+                  <stringProp name="Header.name">APP-NAME</stringProp>
+                  <stringProp name="Header.value">videointerview</stringProp>
+                </elementProp>
+                <elementProp name="Content-Type" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
+                </elementProp>
+                <elementProp name="X-AUTH-TOKEN" elementType="Header">
+                  <stringProp name="Header.name">X-AUTH-TOKEN</stringProp>
+                  <stringProp name="Header.value">Tkn:e10910c9-9208-4917-b72d-16fb98d694cf</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="https://amsin.hirepro.in/py/common/filehandler/api/v3/upload/.webm/5000/" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="------WebKitFormBoundarydK6x9LJIZ0LEsLxc&#xd;&#xa;Content-Disposition: form-data; name" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                  <stringProp name="Argument.name">------WebKitFormBoundarydK6x9LJIZ0LEsLxc&#xd;
+Content-Disposition: form-data; name</stringProp>
+                  <stringProp name="Argument.value">&quot;file&quot;; filename=&quot;video_Profession.webm&quot;&#xd;
+Content-Type: video/webm&#xd;
+&#xd;
+&#xd;
+------WebKitFormBoundarydK6x9LJIZ0LEsLxc--&#xd;
+</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">py/common/filehandler/api/v3/upload/.webm/5000/</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="x-guid" elementType="Header">
+                  <stringProp name="Header.name">x-guid</stringProp>
+                  <stringProp name="Header.value">4c2fbd33-79ec-4d48-8243-a4b19e27af03_25</stringProp>
+                </elementProp>
+                <elementProp name="X-APPLMA" elementType="Header">
+                  <stringProp name="Header.name">X-APPLMA</stringProp>
+                  <stringProp name="Header.value">true</stringProp>
+                </elementProp>
+                <elementProp name="APP-NAME" elementType="Header">
+                  <stringProp name="Header.name">APP-NAME</stringProp>
+                  <stringProp name="Header.value">videointerview</stringProp>
+                </elementProp>
+                <elementProp name="Content-Type" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">multipart/form-data; boundary=----WebKitFormBoundarydK6x9LJIZ0LEsLxc</stringProp>
+                </elementProp>
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
+                </elementProp>
+                <elementProp name="X-AUTH-TOKEN" elementType="Header">
+                  <stringProp name="Header.name">X-AUTH-TOKEN</stringProp>
+                  <stringProp name="Header.value">Tkn:e10910c9-9208-4917-b72d-16fb98d694cf</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="https://amsin.hirepro.in/py/common/filehandler/api/v2/persistent-save/" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">[{&quot;origFileUrl&quot;:&quot;https://s3-ap-southeast-1.amazonaws.com/ams-in-self-expiring-files/1-24h/crpodemo/uploaded/fc4491ae-2cfb-46c7-91ea-b1109746f086video_Profession.webm&quot;,&quot;relativePath&quot;:&quot;proctored_data/248/1467841/lipSync/6219f485-6198-4584-874d-6499211d4958/training-data/&quot;,&quot;targetBucket&quot;:&quot;rekognition-images&quot;,&quot;isSync&quot;:false,&quot;metaData&quot;:{&quot;sequence&quot;:5,&quot;Content-Type&quot;:&quot;video/webm&quot;}}]</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">py/common/filehandler/api/v2/persistent-save/</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="x-guid" elementType="Header">
+                  <stringProp name="Header.name">x-guid</stringProp>
+                  <stringProp name="Header.value">4c2fbd33-79ec-4d48-8243-a4b19e27af03_26</stringProp>
+                </elementProp>
+                <elementProp name="X-APPLMA" elementType="Header">
+                  <stringProp name="Header.name">X-APPLMA</stringProp>
+                  <stringProp name="Header.value">true</stringProp>
+                </elementProp>
+                <elementProp name="APP-NAME" elementType="Header">
+                  <stringProp name="Header.name">APP-NAME</stringProp>
+                  <stringProp name="Header.value">videointerview</stringProp>
+                </elementProp>
+                <elementProp name="Content-Type" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
+                </elementProp>
+                <elementProp name="X-AUTH-TOKEN" elementType="Header">
+                  <stringProp name="Header.name">X-AUTH-TOKEN</stringProp>
+                  <stringProp name="Header.value">Tkn:e10910c9-9208-4917-b72d-16fb98d694cf</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="https://amsin.hirepro.in/py/common/filehandler/api/v3/upload/.webm/5000/" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="------WebKitFormBoundaryDRUxrKegbBYyQBDx&#xd;&#xa;Content-Disposition: form-data; name" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                  <stringProp name="Argument.name">------WebKitFormBoundaryDRUxrKegbBYyQBDx&#xd;
+Content-Disposition: form-data; name</stringProp>
+                  <stringProp name="Argument.value">&quot;file&quot;; filename=&quot;video_Bodybuilder.webm&quot;&#xd;
+Content-Type: video/webm&#xd;
+&#xd;
+&#xd;
+------WebKitFormBoundaryDRUxrKegbBYyQBDx--&#xd;
+</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">py/common/filehandler/api/v3/upload/.webm/5000/</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="x-guid" elementType="Header">
+                  <stringProp name="Header.name">x-guid</stringProp>
+                  <stringProp name="Header.value">4c2fbd33-79ec-4d48-8243-a4b19e27af03_27</stringProp>
+                </elementProp>
+                <elementProp name="X-APPLMA" elementType="Header">
+                  <stringProp name="Header.name">X-APPLMA</stringProp>
+                  <stringProp name="Header.value">true</stringProp>
+                </elementProp>
+                <elementProp name="APP-NAME" elementType="Header">
+                  <stringProp name="Header.name">APP-NAME</stringProp>
+                  <stringProp name="Header.value">videointerview</stringProp>
+                </elementProp>
+                <elementProp name="Content-Type" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">multipart/form-data; boundary=----WebKitFormBoundaryDRUxrKegbBYyQBDx</stringProp>
+                </elementProp>
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
+                </elementProp>
+                <elementProp name="X-AUTH-TOKEN" elementType="Header">
+                  <stringProp name="Header.name">X-AUTH-TOKEN</stringProp>
+                  <stringProp name="Header.value">Tkn:e10910c9-9208-4917-b72d-16fb98d694cf</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="https://amsin.hirepro.in/py/common/filehandler/api/v2/persistent-save/" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">[{&quot;origFileUrl&quot;:&quot;https://s3-ap-southeast-1.amazonaws.com/ams-in-self-expiring-files/1-24h/crpodemo/uploaded/1ee42c31-623d-426c-9cbe-e197e1c0dc8fvideo_Bodybuilder.webm&quot;,&quot;relativePath&quot;:&quot;proctored_data/248/1467841/lipSync/6219f485-6198-4584-874d-6499211d4958/training-data/&quot;,&quot;targetBucket&quot;:&quot;rekognition-images&quot;,&quot;isSync&quot;:false,&quot;metaData&quot;:{&quot;sequence&quot;:6,&quot;Content-Type&quot;:&quot;video/webm&quot;}}]</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">py/common/filehandler/api/v2/persistent-save/</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="x-guid" elementType="Header">
+                  <stringProp name="Header.name">x-guid</stringProp>
+                  <stringProp name="Header.value">4c2fbd33-79ec-4d48-8243-a4b19e27af03_28</stringProp>
+                </elementProp>
+                <elementProp name="X-APPLMA" elementType="Header">
+                  <stringProp name="Header.name">X-APPLMA</stringProp>
+                  <stringProp name="Header.value">true</stringProp>
+                </elementProp>
+                <elementProp name="APP-NAME" elementType="Header">
+                  <stringProp name="Header.name">APP-NAME</stringProp>
+                  <stringProp name="Header.value">videointerview</stringProp>
+                </elementProp>
+                <elementProp name="Content-Type" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
+                </elementProp>
+                <elementProp name="X-AUTH-TOKEN" elementType="Header">
+                  <stringProp name="Header.name">X-AUTH-TOKEN</stringProp>
+                  <stringProp name="Header.value">Tkn:e10910c9-9208-4917-b72d-16fb98d694cf</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="https://amsin.hirepro.in/py/common/filehandler/api/v3/upload/.webm/5000/" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="------WebKitFormBoundaryxUHJBrxv6vupsTB9&#xd;&#xa;Content-Disposition: form-data; name" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                  <stringProp name="Argument.name">------WebKitFormBoundaryxUHJBrxv6vupsTB9&#xd;
+Content-Disposition: form-data; name</stringProp>
+                  <stringProp name="Argument.value">&quot;file&quot;; filename=&quot;video_Management.webm&quot;&#xd;
+Content-Type: video/webm&#xd;
+&#xd;
+&#xd;
+------WebKitFormBoundaryxUHJBrxv6vupsTB9--&#xd;
+</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">py/common/filehandler/api/v3/upload/.webm/5000/</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="x-guid" elementType="Header">
+                  <stringProp name="Header.name">x-guid</stringProp>
+                  <stringProp name="Header.value">4c2fbd33-79ec-4d48-8243-a4b19e27af03_29</stringProp>
+                </elementProp>
+                <elementProp name="X-APPLMA" elementType="Header">
+                  <stringProp name="Header.name">X-APPLMA</stringProp>
+                  <stringProp name="Header.value">true</stringProp>
+                </elementProp>
+                <elementProp name="APP-NAME" elementType="Header">
+                  <stringProp name="Header.name">APP-NAME</stringProp>
+                  <stringProp name="Header.value">videointerview</stringProp>
+                </elementProp>
+                <elementProp name="Content-Type" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">multipart/form-data; boundary=----WebKitFormBoundaryxUHJBrxv6vupsTB9</stringProp>
+                </elementProp>
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
+                </elementProp>
+                <elementProp name="X-AUTH-TOKEN" elementType="Header">
+                  <stringProp name="Header.name">X-AUTH-TOKEN</stringProp>
+                  <stringProp name="Header.value">Tkn:e10910c9-9208-4917-b72d-16fb98d694cf</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="https://amsin.hirepro.in/py/common/filehandler/api/v2/persistent-save/" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">[{&quot;origFileUrl&quot;:&quot;https://s3-ap-southeast-1.amazonaws.com/ams-in-self-expiring-files/1-24h/crpodemo/uploaded/6aadd559-4fee-4f31-8457-2dcd0d2b7eaavideo_Management.webm&quot;,&quot;relativePath&quot;:&quot;proctored_data/248/1467841/lipSync/6219f485-6198-4584-874d-6499211d4958/training-data/&quot;,&quot;targetBucket&quot;:&quot;rekognition-images&quot;,&quot;isSync&quot;:false,&quot;metaData&quot;:{&quot;sequence&quot;:7,&quot;Content-Type&quot;:&quot;video/webm&quot;}}]</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">py/common/filehandler/api/v2/persistent-save/</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="x-guid" elementType="Header">
+                  <stringProp name="Header.name">x-guid</stringProp>
+                  <stringProp name="Header.value">4c2fbd33-79ec-4d48-8243-a4b19e27af03_30</stringProp>
+                </elementProp>
+                <elementProp name="X-APPLMA" elementType="Header">
+                  <stringProp name="Header.name">X-APPLMA</stringProp>
+                  <stringProp name="Header.value">true</stringProp>
+                </elementProp>
+                <elementProp name="APP-NAME" elementType="Header">
+                  <stringProp name="Header.name">APP-NAME</stringProp>
+                  <stringProp name="Header.value">videointerview</stringProp>
+                </elementProp>
+                <elementProp name="Content-Type" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
+                </elementProp>
+                <elementProp name="X-AUTH-TOKEN" elementType="Header">
+                  <stringProp name="Header.name">X-AUTH-TOKEN</stringProp>
+                  <stringProp name="Header.value">Tkn:e10910c9-9208-4917-b72d-16fb98d694cf</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="https://amsin.hirepro.in/py/crpo/api/v1/interview/lipsync/start_lipsync_samples_processing/" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;irId&quot;:&quot;23803&quot;}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">py/crpo/api/v1/interview/lipsync/start_lipsync_samples_processing/</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="x-guid" elementType="Header">
+                  <stringProp name="Header.name">x-guid</stringProp>
+                  <stringProp name="Header.value">4c2fbd33-79ec-4d48-8243-a4b19e27af03_31</stringProp>
+                </elementProp>
+                <elementProp name="X-APPLMA" elementType="Header">
+                  <stringProp name="Header.name">X-APPLMA</stringProp>
+                  <stringProp name="Header.value">true</stringProp>
+                </elementProp>
+                <elementProp name="APP-NAME" elementType="Header">
+                  <stringProp name="Header.name">APP-NAME</stringProp>
+                  <stringProp name="Header.value">videointerview</stringProp>
+                </elementProp>
+                <elementProp name="Content-Type" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
+                </elementProp>
+                <elementProp name="X-AUTH-TOKEN" elementType="Header">
+                  <stringProp name="Header.name">X-AUTH-TOKEN</stringProp>
+                  <stringProp name="Header.value">Tkn:e10910c9-9208-4917-b72d-16fb98d694cf</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="https://amsin.hirepro.in/py/conference_app/conference/v1/join/" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;isRefresh&quot;:false,&quot;clientSystemInfo&quot;:&quot;Browser:chrome-104.0.0.0, OS:windows-windows-10, IPAddress:100.105.150.186, timeZone:Asia/Calcutta&quot;,&quot;isMediaFileNameRequired&quot;:true}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">py/conference_app/conference/v1/join/</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="x-guid" elementType="Header">
+                  <stringProp name="Header.name">x-guid</stringProp>
+                  <stringProp name="Header.value">4c2fbd33-79ec-4d48-8243-a4b19e27af03_34</stringProp>
+                </elementProp>
+                <elementProp name="X-APPLMA" elementType="Header">
+                  <stringProp name="Header.name">X-APPLMA</stringProp>
+                  <stringProp name="Header.value">true</stringProp>
+                </elementProp>
+                <elementProp name="APP-NAME" elementType="Header">
+                  <stringProp name="Header.name">APP-NAME</stringProp>
+                  <stringProp name="Header.value">videointerview</stringProp>
+                </elementProp>
+                <elementProp name="Content-Type" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
+                </elementProp>
+                <elementProp name="X-AUTH-TOKEN" elementType="Header">
+                  <stringProp name="Header.name">X-AUTH-TOKEN</stringProp>
+                  <stringProp name="Header.value">Tkn:e10910c9-9208-4917-b72d-16fb98d694cf</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="https://amsin.hirepro.in/py/common/websocket/chat/get_interview_participant_connections/" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;disableBlockUI&quot;:true}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">py/common/websocket/chat/get_interview_participant_connections/</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="x-guid" elementType="Header">
+                  <stringProp name="Header.name">x-guid</stringProp>
+                  <stringProp name="Header.value">4c2fbd33-79ec-4d48-8243-a4b19e27af03_35</stringProp>
+                </elementProp>
+                <elementProp name="X-APPLMA" elementType="Header">
+                  <stringProp name="Header.name">X-APPLMA</stringProp>
+                  <stringProp name="Header.value">true</stringProp>
+                </elementProp>
+                <elementProp name="APP-NAME" elementType="Header">
+                  <stringProp name="Header.name">APP-NAME</stringProp>
+                  <stringProp name="Header.value">videointerview</stringProp>
+                </elementProp>
+                <elementProp name="Content-Type" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
+                </elementProp>
+                <elementProp name="X-AUTH-TOKEN" elementType="Header">
+                  <stringProp name="Header.name">X-AUTH-TOKEN</stringProp>
+                  <stringProp name="Header.value">Tkn:e10910c9-9208-4917-b72d-16fb98d694cf</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="https://amsin.hirepro.in/py/conference_app/conference/v1/publishing/PublishingStarted/" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;serverUserId&quot;:455223747429959,&quot;serverSessionId&quot;:8382117189327575,&quot;pluginHandleId&quot;:5833041093780514,&quot;goldenImagePath&quot;:&quot;https://s3.ap-southeast-1.amazonaws.com/rekognition-hirepro-test/proctored_data/248/1467841/goldenImage/Interviewee_23623_Anil_Yadav/ee7b13d2-e240-4ccd-838b-9cbf37f6f513selfieImage.jpeg?AWSAccessKeyId=AKIAIPKT65FIXSXQGDOQ&amp;Signature=V4oOMhAk3jBeR0VNzeheGgg9XjI%3D&amp;Expires=1661527757&quot;,&quot;isRefresh&quot;:false}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">py/conference_app/conference/v1/publishing/PublishingStarted/</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="x-guid" elementType="Header">
+                  <stringProp name="Header.name">x-guid</stringProp>
+                  <stringProp name="Header.value">4c2fbd33-79ec-4d48-8243-a4b19e27af03_36</stringProp>
+                </elementProp>
+                <elementProp name="X-APPLMA" elementType="Header">
+                  <stringProp name="Header.name">X-APPLMA</stringProp>
+                  <stringProp name="Header.value">true</stringProp>
+                </elementProp>
+                <elementProp name="APP-NAME" elementType="Header">
+                  <stringProp name="Header.name">APP-NAME</stringProp>
+                  <stringProp name="Header.value">videointerview</stringProp>
+                </elementProp>
+                <elementProp name="Content-Type" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
+                </elementProp>
+                <elementProp name="X-AUTH-TOKEN" elementType="Header">
+                  <stringProp name="Header.name">X-AUTH-TOKEN</stringProp>
+                  <stringProp name="Header.value">Tkn:e10910c9-9208-4917-b72d-16fb98d694cf</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="https://amsin.hirepro.in/py/conference_app/conference/v1/save_stats_to_elastic/" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;webrtcLog&quot;:{&quot;candidatePairs&quot;:{&quot;tx&quot;:{&quot;localCandidate&quot;:{&quot;IP&quot;:&quot;15.206.176.140&quot;,&quot;port&quot;:54258,&quot;CandidateType&quot;:&quot;relay&quot;,&quot;NetworkType&quot;:&quot;unknown&quot;},&quot;remoteCandidate&quot;:{&quot;IP&quot;:&quot;65.1.7.130&quot;,&quot;port&quot;:43739,&quot;CandidateType&quot;:&quot;host&quot;}}},&quot;micInput&quot;:{&quot;audioLevel&quot;:0.004821924497207556,&quot;totalAudioEnergy&quot;:0.19239475848199591},&quot;micInputArr&quot;:[{&quot;audioLevel&quot;:0.003173924985503708,&quot;totalAudioEnergy&quot;:0.0005630775273644872},{&quot;audioLevel&quot;:0.00619525742362743,&quot;totalAudioEnergy&quot;:0.002686005446470273}],&quot;overallTxAudioPlusVideo&quot;:{&quot;availableSendBWInKbps&quot;:[0,0],&quot;actualBeingSentBWInKbps&quot;:[0,0]},&quot;videoTx&quot;:{&quot;videoCodec&quot;:&quot;vp9&quot;,&quot;nackCount&quot;:0,&quot;firCount&quot;:0,&quot;pliCount&quot;:5,&quot;actualVideoBwInKbps&quot;:[0,33.761],&quot;remoteJitter&quot;:0.0129,&quot;remoteRTT&quot;:0.057,&quot;remotePktsLost&quot;:0},&quot;audioTx&quot;:{&quot;actualAudioBwInKbps&quot;:[0,14.037],&quot;audioCodec&quot;:&quot;opus&quot;,&quot;remotePktsLost&quot;:0,&quot;remoteJitter&quot;:0.016083333333333335,&quot;remoteRTT&quot;:0.064},&quot;cameraInput&quot;:{&quot;width&quot;:410,&quot;height&quot;:230,&quot;fps&quot;:14},&quot;timeStampInIST&quot;:&quot;2022-08-26T14:32:03.205Z&quot;,&quot;snapshot_granularity&quot;:5},&quot;disableBlockUI&quot;:true,&quot;isSync&quot;:true}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">py/conference_app/conference/v1/save_stats_to_elastic/</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="x-guid" elementType="Header">
+                  <stringProp name="Header.name">x-guid</stringProp>
+                  <stringProp name="Header.value">4c2fbd33-79ec-4d48-8243-a4b19e27af03_97</stringProp>
+                </elementProp>
+                <elementProp name="X-APPLMA" elementType="Header">
+                  <stringProp name="Header.name">X-APPLMA</stringProp>
+                  <stringProp name="Header.value">true</stringProp>
+                </elementProp>
+                <elementProp name="APP-NAME" elementType="Header">
+                  <stringProp name="Header.name">APP-NAME</stringProp>
+                  <stringProp name="Header.value">videointerview</stringProp>
+                </elementProp>
+                <elementProp name="Content-Type" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
+                </elementProp>
+                <elementProp name="X-AUTH-TOKEN" elementType="Header">
+                  <stringProp name="Header.name">X-AUTH-TOKEN</stringProp>
+                  <stringProp name="Header.value">Tkn:e10910c9-9208-4917-b72d-16fb98d694cf</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="https://amsin.hirepro.in/py/conference_app/conference/v1/save_stats_to_elastic/" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;webrtcLog&quot;:{&quot;candidatePairs&quot;:{&quot;tx&quot;:{&quot;localCandidate&quot;:{&quot;IP&quot;:&quot;15.206.176.140&quot;,&quot;port&quot;:52674,&quot;CandidateType&quot;:&quot;relay&quot;,&quot;NetworkType&quot;:&quot;unknown&quot;},&quot;remoteCandidate&quot;:{&quot;IP&quot;:&quot;65.1.7.130&quot;,&quot;port&quot;:43739,&quot;CandidateType&quot;:&quot;host&quot;}}},&quot;micInput&quot;:{&quot;audioLevel&quot;:0.004058961760307627,&quot;totalAudioEnergy&quot;:0.19672139388187632},&quot;micInputArr&quot;:[{&quot;audioLevel&quot;:0.003173924985503708,&quot;totalAudioEnergy&quot;:0.0005630775273644872},{&quot;audioLevel&quot;:0.00619525742362743,&quot;totalAudioEnergy&quot;:0.002686005446470273},{&quot;audioLevel&quot;:0.004821924497207556,&quot;totalAudioEnergy&quot;:0.19239475848199591},{&quot;audioLevel&quot;:0.004058961760307627,&quot;totalAudioEnergy&quot;:0.19320673122362383},{&quot;audioLevel&quot;:0.004730368968779565,&quot;totalAudioEnergy&quot;:0.19436721035757157}],&quot;overallTxAudioPlusVideo&quot;:{&quot;currentRoundTripTime&quot;:0.076,&quot;availableSendBWInKbps&quot;:[0,0,0,128,128],&quot;actualBeingSentBWInKbps&quot;:[0,0,0,248.772,61.478]},&quot;videoTx&quot;:{&quot;videoCodec&quot;:&quot;vp9&quot;,&quot;nackCount&quot;:0,&quot;firCount&quot;:0,&quot;pliCount&quot;:11,&quot;actualVideoBwInKbps&quot;:[0,33.761,31.492,33.05,31.834],&quot;remoteJitter&quot;:0.009677777777777778,&quot;remoteRTT&quot;:0.057,&quot;remotePktsLost&quot;:0},&quot;audioTx&quot;:{&quot;actualAudioBwInKbps&quot;:[0,14.037,14.564,14.227,14.07],&quot;audioCodec&quot;:&quot;opus&quot;,&quot;remotePktsLost&quot;:0,&quot;remoteJitter&quot;:0.009416666666666667,&quot;remoteRTT&quot;:0.056},&quot;cameraInput&quot;:{&quot;width&quot;:410,&quot;height&quot;:230,&quot;fps&quot;:15},&quot;timeStampInIST&quot;:&quot;2022-08-26T14:32:33.202Z&quot;,&quot;snapshot_granularity&quot;:5},&quot;disableBlockUI&quot;:true,&quot;isSync&quot;:true}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">py/conference_app/conference/v1/save_stats_to_elastic/</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="x-guid" elementType="Header">
+                  <stringProp name="Header.name">x-guid</stringProp>
+                  <stringProp name="Header.value">4c2fbd33-79ec-4d48-8243-a4b19e27af03_129</stringProp>
+                </elementProp>
+                <elementProp name="X-APPLMA" elementType="Header">
+                  <stringProp name="Header.name">X-APPLMA</stringProp>
+                  <stringProp name="Header.value">true</stringProp>
+                </elementProp>
+                <elementProp name="APP-NAME" elementType="Header">
+                  <stringProp name="Header.name">APP-NAME</stringProp>
+                  <stringProp name="Header.value">videointerview</stringProp>
+                </elementProp>
+                <elementProp name="Content-Type" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
+                </elementProp>
+                <elementProp name="X-AUTH-TOKEN" elementType="Header">
+                  <stringProp name="Header.name">X-AUTH-TOKEN</stringProp>
+                  <stringProp name="Header.value">Tkn:e10910c9-9208-4917-b72d-16fb98d694cf</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="https://amsin.hirepro.in/py/conference_app/conference/v1/publishing/PublishingStopped/" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;streamStoppedDetails&quot;:{&quot;stoppedByUser&quot;:true},&quot;streamId&quot;:1550569}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">py/conference_app/conference/v1/publishing/PublishingStopped/</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="x-guid" elementType="Header">
+                  <stringProp name="Header.name">x-guid</stringProp>
+                  <stringProp name="Header.value">4c2fbd33-79ec-4d48-8243-a4b19e27af03_138</stringProp>
+                </elementProp>
+                <elementProp name="X-APPLMA" elementType="Header">
+                  <stringProp name="Header.name">X-APPLMA</stringProp>
+                  <stringProp name="Header.value">true</stringProp>
+                </elementProp>
+                <elementProp name="APP-NAME" elementType="Header">
+                  <stringProp name="Header.name">APP-NAME</stringProp>
+                  <stringProp name="Header.value">videointerview</stringProp>
+                </elementProp>
+                <elementProp name="Content-Type" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
+                </elementProp>
+                <elementProp name="X-AUTH-TOKEN" elementType="Header">
+                  <stringProp name="Header.name">X-AUTH-TOKEN</stringProp>
+                  <stringProp name="Header.value">Tkn:e10910c9-9208-4917-b72d-16fb98d694cf</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>

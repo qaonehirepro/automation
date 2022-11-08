@@ -12,7 +12,9 @@ class CrpoCommon:
         data = {"LoginName": login_name, "Password": password, "TenantAlias": tenant, "UserName": login_name}
         response = requests.post(crpo_common_obj.domain + "/py/common/user/login_user/", headers=header,
                                  data=json.dumps(data), verify=False)
+        print("Is Server by ECS - Login", response.headers.get('X-ServedByEcs'))
         login_response = response.json()
+
         headers = {"content-type": "application/json", "APP-NAME": "CRPO", "X-APPLMA": "true",
                    "X-AUTH-TOKEN": login_response.get("Token")}
         print(headers)
@@ -20,12 +22,20 @@ class CrpoCommon:
 
     @staticmethod
     def candidate_web_transcript(token, test_id, test_user_id):
+        # request = {"testId": int(test_id), "testUserId": int(test_user_id),
+        #            "reportFlags": {"eduWorkProfilesRequired": True, "testUsersScoreRequired": True,
+        #                            "fileContentRequired": False, "isProctroingDetailsRequired": True}, "print": False}
         request = {"testId": int(test_id), "testUserId": int(test_user_id),
                    "reportFlags": {"eduWorkProfilesRequired": True, "testUsersScoreRequired": True,
-                                   "fileContentRequired": False, "isProctroingDetailsRequired": True}, "print": False}
+                                   "fileContentRequired": False, "isProctroingDetailsRequired": True,
+                                   "testUserItemRequired": True}, "print": False}
         response = requests.post(crpo_common_obj.domain + "/py/assessment/report/api/v1/candidatetranscript/",
                                  headers=token,
                                  data=json.dumps(request, default=str), verify=False)
+        print("Is Server by ECS - Candidate web transcript", response.headers.get('X-ServedByEcs'))
+        # response1 = response.json()
+        # print("Is Server by ECS", response1.headers.get('X-ServedByEcs'))
+
         return response.json()
 
     @staticmethod
@@ -37,6 +47,34 @@ class CrpoCommon:
                                  "/py/assessment/htmltest/api/v1/initiate-test-proc/?isSync=false",
                                  headers=token,
                                  data=json.dumps(request, default=str), verify=False)
+        # response1 = response.json()
+        print("Is Server by ECS - Force Evaluate proctoring", response.headers.get('X-ServedByEcs'))
+        return response.json()
+
+    # interviews Grid
+    @staticmethod
+    def run_proctoring(token, ir_id):
+        print(token)
+        request = {"interviewId": int(ir_id)}
+        response = requests.post(crpo_common_obj.domain +
+                                 "/py/crpo/api/v1/interview/interviewer/view_proctored_data/",
+                                 headers=token,
+                                 data=json.dumps(request, default=str), verify=False)
+        # response1 = response.json()
+        # print(response.json())
+        print("Is Server by ECS - Force Evaluate proctoring", response.headers.get('X-ServedByEcs'))
+        return response.json()
+
+    # interviews Grid
+    @staticmethod
+    def lip_sync(token, ir_id):
+        print(token)
+        request = {"irId": int(ir_id)}
+        response = requests.post(crpo_common_obj.domain +
+                                 "/py/crpo/api/v1/interview/lipsync/get_lipsync_samples/",
+                                 headers=token,
+                                 data=json.dumps(request, default=str), verify=False)
+        print("Is Server by ECS - Force Evaluate proctoring", response.headers.get('X-ServedByEcs'))
         return response.json()
 
     @staticmethod
@@ -45,6 +83,7 @@ class CrpoCommon:
         request = {"ContextGUID": contextguid}
         response = requests.post(crpo_common_obj.domain + "/py/crpo/api/v1/getStatusOfAsyncAPI",
                                  headers=token, data=json.dumps(request, default=str), verify=False)
+        print("Is Server by ECS - job status", response.headers.get('X-ServedByEcs'))
         resp_dict = json.loads(response.content)
         # api_job_status = resp_dict['data']['JobState']
         # return api_job_status
@@ -67,6 +106,7 @@ class CrpoCommon:
 
         api_request = requests.post(url, headers=token, files=request, verify=False)
         # print(api_request.headers.get('X-GUID'))
+        print("Is Server by ECS - File upload", api_request.headers.get('X-ServedByEcs'))
         resp_dict = json.loads(api_request.content)
         # print(resp_dict)
         return resp_dict
@@ -78,6 +118,7 @@ class CrpoCommon:
             response = requests.post(crpo_common_obj.domain + "/py/assessment/testuser/api/v1/un-tag/",
                                      headers=token,
                                      data=json.dumps(request, default=str), verify=False)
+            print("Is Server by ECS - job status", response.headers.get('X-ServedByEcs'))
 
     @staticmethod
     def proctor_evaluation_detail(token, testuser_id):
@@ -87,8 +128,18 @@ class CrpoCommon:
         response = requests.post(crpo_common_obj.domain + "/py/assessment/testuser/api/v1/get_proctor_detail/",
                                  headers=token,
                                  data=json.dumps(request, default=str), verify=False)
+        print("Is Server by ECS - Proctor Eval Detail", response.headers.get('X-ServedByEcs'))
         tu_proctor_details = response.json()
         return tu_proctor_details
+
+    @staticmethod
+    def save_apppreferences(token, content, id, type):
+        # content1 = json.loads(content)
+        data = {"AppPreference": {"Id": id, "Content": content, "Type": type}, "IsTenantGlobal": True}
+
+        response = requests.post("https://amsin.hirepro.in/py/common/common_app_utils/save_app_preferences/",
+                          headers=token, data=json.dumps(data, default=str), verify=False)
+        return response.json()
 
     @staticmethod
     def re_initiate_automation(token, test_id, candidate_id):
@@ -98,12 +149,14 @@ class CrpoCommon:
         response = requests.post(crpo_common_obj.domain + "/py/assessment/testuser/api/v1/re_initiate_automation/",
                                  headers=token,
                                  data=json.dumps(request, default=str), verify=False)
+        print("Is Server by ECS - Re initiate automation", response.headers.get('X-ServedByEcs'))
 
     @staticmethod
     def get_all_questions(token, request_data):
         response = requests.post(crpo_common_obj.domain + "/py/assessment/authoring/api/v1/getAllQuestion/",
                                  headers=token,
                                  data=str(request_data.get('request')), verify=False)
+        print("Is Server by ECS - Get all candidates", response.headers.get('X-ServedByEcs'))
         get_all_questions_resp = json.loads(response.content)
         return get_all_questions_resp
 
@@ -111,6 +164,7 @@ class CrpoCommon:
     def generate_applicant_report(token, request_payload):
         response = requests.post(crpo_common_obj.domain + "/py/common/xl_creator/api/v1/generate_applicant_report/",
                                  headers=token, data=json.dumps(request_payload, default=str), verify=False)
+        print("Is Server by ECS - getall applicant report", response.headers.get('X-ServedByEcs'))
         resp_dict = json.loads(response.content)
         return resp_dict
 
@@ -118,6 +172,7 @@ class CrpoCommon:
     def generate_plagiarism_report(token, request_payload):
         response = requests.post(crpo_common_obj.domain + "/py/assessment/report/api/v1/plagiarismreport/",
                                  headers=token, data=json.dumps(request_payload, default=str), verify=False)
+        print("Is Server by ECS - generate plagiarism report", response.headers.get('X-ServedByEcs'))
         resp_dict = json.loads(response.content)
         return resp_dict
 
@@ -129,6 +184,7 @@ class CrpoCommon:
         response = requests.post(url,
                                  headers=crpotoken,
                                  data=json.dumps(data, default=str), verify=False)
+        print("Is Server by ECS - Initiate vendor score", response.headers.get('X-ServedByEcs'))
         it_vendor_resp = response.json()
         print(it_vendor_resp)
         return it_vendor_resp
@@ -140,6 +196,7 @@ class CrpoCommon:
             response = requests.post(crpo_common_obj.domain + "/py/assessment/testuser/api/v1/un-tag/",
                                      headers=token,
                                      data=json.dumps(request, default=str), verify=False)
+            print("Is Server by ECS - untag candidate by cid", response.headers.get('X-ServedByEcs'))
             print(response)
 
     @staticmethod
@@ -149,6 +206,7 @@ class CrpoCommon:
         # req = {"PersonalDetails": {"FirstName": "MuthuMurugan", "Email1": "qaonehirepro@gmail.com", "USN": "151_2"}}
         response = requests.post(crpo_common_obj.domain + "/py/rpo/create_candidate/", headers=token,
                                  data=json.dumps(request), verify=False)
+        print("Is Server by ECS - Create candidate", response.headers.get('X-ServedByEcs'))
         response_data = response.json()
         candidate_id = response_data.get('CandidateId')
         if response_data.get('status') == 'OK':
@@ -165,7 +223,9 @@ class CrpoCommon:
         # # req = {"PersonalDetails": {"FirstName": "MuthuMurugan", "Email1": "qaonehirepro@gmail.com", "USN": "151_2"}}
         response = requests.post(crpo_common_obj.domain + "/py/rpo/create_candidate/", headers=token,
                                  data=json.dumps(request), verify=False)
+        print("Is Server by ECS - create candidate v2", response.headers.get('X-ServedByEcs'))
         response_data = response.json()
+
         print(response_data)
         candidate_id = response_data.get('CandidateId')
         if response_data.get('status') == 'OK':
@@ -184,6 +244,7 @@ class CrpoCommon:
                                  "/py/crpo/applicant/api/v1/tagCandidatesToEventJobRoleTests/",
                                  headers=token,
                                  data=json.dumps(request, default=str), verify=False)
+        print("Is Server by ECS - tag candidate to test", response.headers.get('X-ServedByEcs'))
         return response
 
     @staticmethod
@@ -193,6 +254,7 @@ class CrpoCommon:
                                  "/py/assessment/testuser/api/v1/getCredential/",
                                  headers=token,
                                  data=json.dumps(request, default=str), verify=False)
+        print("Is Server by ECS - test user credentials", response.headers.get('X-ServedByEcs'))
         # data = response.json()
         return response.json()
 
@@ -202,6 +264,7 @@ class CrpoCommon:
         response = requests.post(crpo_common_obj.domain + "/py/assessment/testuser/api/v1/getAllTestUser/",
                                  headers=token,
                                  data=json.dumps(request, default=str), verify=False)
+        print("Is Server by ECS - getall test users", response.headers.get('X-ServedByEcs'))
         data = response.json()
         print(data)
         test_user_id = data['data']['testUserInfos'][0]['id']
@@ -213,6 +276,7 @@ class CrpoCommon:
         response = requests.post(crpo_common_obj.domain + "/py/rpo/get_candidate_details_by_id/",
                                  headers=token,
                                  data=json.dumps(request, default=str), verify=False)
+        print("Is Server by ECS - get candidate by id", response.headers.get('X-ServedByEcs'))
         candidate_details = response.json()
 
         return candidate_details
@@ -224,6 +288,7 @@ class CrpoCommon:
 
         response = requests.post(crpo_common_obj.domain + "/py/assessment/authoring/api/v1/createQuestion/",
                                  headers=token, data=json.dumps(request), verify=False)
+        print("Is Server by ECS - create question", response.headers.get('X-ServedByEcs'))
         question_id_resp = response.json()
         question_id = question_id_resp['data']['questionId']
         print(question_id)
@@ -237,6 +302,7 @@ class CrpoCommon:
         response = requests.post(crpo_common_obj.domain + "/py/assessment/authoring/api/v1/getQuestionForId/",
                                  headers=token,
                                  data=json.dumps(request, default=str), verify=False)
+        print("Is Server by ECS - get question for id", response.headers.get('X-ServedByEcs'))
         question_id_details = response.json()
         return question_id_details
 
@@ -245,6 +311,7 @@ class CrpoCommon:
         response = requests.post(crpo_common_obj.domain + "/py/assessment/testuser/api/v1/info/",
                                  headers=token,
                                  data=json.dumps(payload, default=str), verify=False)
+        print("Is Server by ECS - get testuser infos", response.headers.get('X-ServedByEcs'))
         test_user_infos = response.json()
         return test_user_infos
 
@@ -255,6 +322,7 @@ class CrpoCommon:
         response = requests.post(crpo_common_obj.domain + "/py/assessment/testuser/api/v1/getTestUsersForTest/",
                                  headers=token,
                                  data=json.dumps(request, default=str), verify=False)
+        print("Is Server by ECS - search testuser by cid and testid", response.headers.get('X-ServedByEcs'))
         data = response.json()
         if 'testInfo' in data['data']:
             test_user_id = data['data']['testUserInfos'][0]['applicantBasicInfos'][0]['testUserId']
@@ -277,6 +345,7 @@ class CrpoCommon:
         response = requests.post(crpo_common_obj.domain + "/py/assessment/testuser/api/v1/info/",
                                  headers=token,
                                  data=json.dumps(payload, default=str), verify=False)
+        print("Is Server by ECS - get testuser infos v2", response.headers.get('X-ServedByEcs'))
         test_user_infos = response.json()
         return test_user_infos
 
@@ -289,6 +358,7 @@ class CrpoCommon:
         response = requests.post(crpo_common_obj.domain + "/py/crpo/applicant/api/v1/applicantStatusChange/",
                                  headers=token,
                                  data=json.dumps(payload, default=str), verify=False)
+        print("Is Server by ECS - change applicant status", response.headers.get('X-ServedByEcs'))
         test_user_infos = response.json()
         print(test_user_infos)
         return test_user_infos
@@ -299,6 +369,7 @@ class CrpoCommon:
         response = requests.post(crpo_common_obj.domain + "/py/crpo/applicant/api/v1/getApplicantsInfo/",
                                  headers=token,
                                  data=json.dumps(payload, default=str), verify=False)
+        print("Is Server by ECS - get applicant infos", response.headers.get('X-ServedByEcs'))
         applicant_infos = response.json()
         return applicant_infos
 
@@ -308,6 +379,7 @@ class CrpoCommon:
         response = requests.post(crpo_common_obj.domain + "/py/assessment/testuser/api/v1/un-tag/",
                                  headers=token,
                                  data=json.dumps(request, default=str), verify=False)
+        print("Is Server by ECS - force untag testuser", response.headers.get('X-ServedByEcs'))
         return response
 
     @staticmethod
@@ -320,6 +392,7 @@ class CrpoCommon:
                                  "/py/common/filehandler/api/v2/persistent-save/",
                                  headers=token,
                                  data=json.dumps(request, default=str), verify=False)
+        print("Is Server by ECS - persistent save", response.headers.get('X-ServedByEcs'))
         resp = json.loads(response.content)
         return resp
 
@@ -330,6 +403,7 @@ class CrpoCommon:
                                  "/py/common/voice_distortion/check_audio_distortion/",
                                  headers=token,
                                  data=json.dumps(request, default=str), verify=False)
+        print("Is Server by ECS - check audio distortion", response.headers.get('X-ServedByEcs'))
         resp = json.loads(response.content)
         return resp
 

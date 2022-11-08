@@ -22,7 +22,7 @@ class delete_ssrf_data:
 
     def encryption_delete(self):
         self.amsdbconnection()
-        candidate = 'delete from candidates where hp_dec(first_name) like "%Encryption%" and hp_dec(email1)="qaonehirepro@gmail.com" and tenant_id=248';
+        candidate = 'delete from candidates where hp_dec(first_name) like "%Encryption2%" and hp_dec(email1)="qaonehirepro@gmail.com" and tenant_id=248';
         print(candidate)
 
         self.cursor.execute(candidate)

@@ -1,6 +1,8 @@
 import os
 import time
 from selenium import webdriver
+from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
@@ -311,6 +313,7 @@ class AssessmentUICommon:
         try:
             self.driver.find_element(By.XPATH, "//*[@class = 'proceed wizardButton greenBackground']").click()
             print("Proceed Test Successful")
+            time.sleep(20)
             os.system("F:\\my_test.mp3")
             vet_proceed_test = "Successful"
             is_element_successful = True
@@ -815,7 +818,17 @@ class AssessmentUICommon:
             wheebox_confirm_submit = "Not submitted"
         return wheebox_confirm_submit, is_element_successful
 
+    def coding_editor(self, code):
+        self.driver.find_element(By.CLASS_NAME, 'ace_content').click()
+        self.driver.switch_to.parent_frame()
+        self.driver.switch_to.active_element.send_keys(code)
+        self.driver.find_element(By.XPATH, '//button[text()=" Compile & Execute"]').click()
+
+
 
 assess_ui_common_obj = AssessmentUICommon()
 # status = assess_ui_common_obj.ui_login_to_test()
 # print(status)
+# url = "https://pearsonstg.hirepro.in/assessment/#/assess/login/eyJhbGlhcyI6ImF1dG9tYXRpb24ifQ%3D%3D"
+# path = r"F:\qa_automation\chromedriver.exe"
+# assess_ui_common_obj.initiate_browser_for_proctoring( url, path)

@@ -16,7 +16,7 @@ class Create_Case():
         # self.__borwser_Location = "/home/muthumurugan/Desktop/chromedriver_2.37"
         self.__url = "https://accenturetest-in.hirepro.in/automation-mandatory"
         # self.driver = webdriver.Chrome(self.__borwser_Location)
-        self.driver = webdriver.Chrome(executable_path=r"/chromedriver.exe")
+        self.driver = webdriver.Chrome(executable_path=r"F:\qa_automation\chromedriver.exe")
         now = datetime.datetime.now()
         self.__current_DateTime = now.strftime("%d-%m-%Y")
         # file_path = 'F:\\automation\\PythonWorkingScripts_InputData\\' \
@@ -99,7 +99,7 @@ class Create_Case():
         try:
             if self.driver.find_element_by_xpath(".//*[@id='registerbtndiv']").is_displayed() != 0:
                 self.driver.find_element_by_xpath(".//*[@id='registerbtndiv']").click()
-                time.sleep(0.10)
+                # time.sleep(0.10)
         except:
             print ("submit button is not available")
 
@@ -813,8 +813,8 @@ class Create_Case():
 
             else:
                 self.Microsite_Query()
-                time.sleep(5)
-                print ("Candidate ams_id is :-")
+                # time.sleep(5)
+                print("Candidate ams_id is :-")
                 print (self.candidate_amsid)
                 if self.candidate_amsid != None:
                     self.ams_Query()

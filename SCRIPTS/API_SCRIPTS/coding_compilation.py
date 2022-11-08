@@ -32,6 +32,7 @@ class CodingCompiler:
         write_excel_object.write_headers_for_scripts(1, 0, header, write_excel_object.black_color_bold)
 
     def coding_compilation_check(self, excel_input):
+        print("1")
         write_excel_object.current_status_color = write_excel_object.green_color
         write_excel_object.current_status = "Pass"
         # write_excel_object.current_status_color = write_excel_object.green_color
@@ -57,6 +58,7 @@ class CodingCompiler:
                                                        'https://amsin.hirepro.in/py/assessment/')
 
         code_token_result = assessment_common_obj.code_compiler(token.get('login_token'), request=code_compiler_request)
+        print(code_token_result)
         code_token = code_token_result.get('codeToken')
         if code_token:
             compilation_result_request = {"codeToken": code_token, "TenantId": int(excel_input.get('tenantId')),
@@ -67,7 +69,7 @@ class CodingCompiler:
                                           "debugTimeStamp": "2022-07-07T10:27:47.298Z"}
             compilation_results = assessment_common_obj.code_compiler_get_result(token.get('login_token'),
                                                                                  compilation_result_request)
-            print(compilation_results)
+            # print(compilation_results)
             compilation_message = compilation_results['codingCompileResponse']['compilationMessage']
             testcases_results = compilation_results['testCaseResults']
             total_tcs_results = []

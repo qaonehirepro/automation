@@ -1,0 +1,73 @@
+{
+  "video": {
+    "weightage": 0.3,
+    "zero_count": 3,
+    "multiple_count": 1,
+    "zero_timespan": 10,
+    "multipleIntervalCount": {
+      "isEnabled": true,
+      "intervalCount": [
+        {
+          "weightage": 0.32,
+          "count": 1,
+          "interval": 60
+        },
+        {
+          "weightage": 0.31,
+          "count": 2,
+          "interval": 30
+        }
+      ]
+    },
+    "isEnabled": true,
+    "multiple_timespan": 10,
+    "zeroIntervalCount": {
+      "isEnabled": true,
+      "intervalCount": [
+        {
+          "weightage": 0.34,
+          "count": 1,
+          "interval": 60
+        },
+        {
+          "weightage": 0.33,
+          "count": 2,
+          "interval": 30
+        }
+      ]
+    }
+  },
+  "audio": {
+    "weightage": 0.2,
+    "isEnabled": true,
+    "no_of_words": 10
+  },
+  "overall": 0.1,
+  "face": {
+    "faceMisMatch": {
+      "weightage": 0.6,
+      "suspiciousThreshold": 6,
+      "isEnabled": true
+    },
+    "noFace": {
+      "weightage": 0.5,
+      "suspiciousThreshold": 10,
+      "isEnabled": true
+    },
+    "goldenImage": {
+      "weightage": 0.9,
+      "isEnabled": true
+    },
+    "suspiciousCount": {
+      "weightage": 0.8,
+      "isEnabled": true,
+      "suspiciousThresholdPercentage": 80
+    },
+    "isEnabled": true,
+    "multipleFace": {
+      "weightage": 0.4,
+      "suspiciousThreshold": 10,
+      "isEnabled": true
+    }
+  }
+}

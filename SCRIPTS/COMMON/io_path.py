@@ -48,6 +48,10 @@ input_path_microsite_create_case = input_common_dir + 'Microsite\\GenericExcelTe
 input_path_microsite_update_case = input_common_dir + 'Microsite\\GenericExcelTest.xls'
 input_path_microsite_generic_case = input_common_dir + 'Microsite\\GenericExcelTest.xls'
 
+
+# interview
+input_interview_proctoring_evaluation = input_common_dir + 'Interview\\proctoring\\proctoring.xls'
+
 # security
 input_path_ssrf_check = input_common_dir + 'SSRF\\SSRF_Final1.xls'
 input_path_encryption_check = input_common_dir + 'Security\encryption.xls'
@@ -62,6 +66,7 @@ input_path_ui_test_security = input_common_dir + 'UI\\Assessment\\test_security.
 input_path_ui_reuse_score = input_common_dir + 'Assessment\\reuse_score.xls'
 input_path_ui_mcq_client_section_random = input_common_dir + 'UI\\Assessment\\clientside_randomization.xls'
 input_path_ui_rtc_static = input_common_dir + 'UI\\Assessment\\rtc_static.xls'
+input_path_ui_marking_schema = input_common_dir + 'UI\\Assessment\\test_marking.xls'
 
 # output paths
 output_path_allowed_extension = output_common_dir + 'allowed_extensions\\API_allowed_extensions(' + started + ').xlsx'
@@ -70,6 +75,8 @@ output_path_2tests_chaining = output_common_dir + 'Assessment\\API_2tests_Chaini
 output_path_3tests_chaining = output_common_dir + 'Assessment\\API_3tests_Chaining_Automation - '
 output_path_plagiarism_report = output_common_dir + 'Assessment\\plagiarism_report\\API_plagiarism_report'
 output_path_proctor_evaluation = output_common_dir + 'Assessment\\proctoring\\API_proctoring_eval100'
+output_path_dev_proctor_evaluation = output_common_dir + 'Assessment\\proctoring\\API_device_proctoring_eval'
+output_path_behaviour_proctor_evaluation = output_common_dir + 'Assessment\\proctoring\\API_behaviour_proctoring_eval'
 output_path_question_search_count = output_common_dir + 'Assessment\\search\\API_question_search_'
 output_path_question_search_boundary = output_common_dir + 'Assessment\\search\\API_question_boundary_search_'
 output_path_reinitiate_automation = output_common_dir + 'Assessment\\reinitiate\\API_reinitiate - '
@@ -83,12 +90,16 @@ output_path_mic_check = output_common_dir + 'Assessment\\mic_distortion_check'
 output_path_brightness_sharpness_check = output_common_dir + 'Assessment\\API_brightness_sharpnesscheck- '
 output_coding_compiler = output_common_dir + 'Assessment\\codingcompiler'
 
+# Interview
+output_interview_proctor_evaluation = output_common_dir + 'interview\\interview_proctoring_eval'
+
 # UI Automation Output Path
 output_path_ui_vet_qs = output_common_dir + 'Assessment\\UI\\VET\\UI_qs(' + started + ').xlsx'
 output_path_ui_cocubes = output_common_dir + 'UI\\UI_cocubes'
 output_path_ui_mettl = output_common_dir + 'UI\\UI_Mettl'
 output_path_ui_wheebox = output_common_dir + 'UI\\UI_Wheebox'
 output_path_ui_mcq_randomization = output_common_dir + 'UI\\UI_mcq_qprandomization_'
+output_path_ui_rtc_server_random = output_common_dir + 'UI\\UI_rtc_server_qprandomization_'
 output_path_ui_coding_randomization = output_common_dir + 'UI\\UI_coding_qprandomization_'
 output_path_ui_subjective_randomization = output_common_dir + 'UI\\UI_subjective_qprandomization_'
 output_path_ui_assessment_verification = output_common_dir + 'UI\\UI_ui_assessment_relogin.xls'
@@ -103,3 +114,5 @@ output_path_ui_rtc_static = output_common_dir + 'UI\\rtc_static.xls'
 output_path_ui_subjective_client_test_random = output_common_dir + 'UI\\UI_client_subjective_random_testlevel_'
 output_path_ui_subjective_client_group_random = output_common_dir + 'UI\\UI_client_subjective_random_grouplevel_'
 output_path_ui_subjective_client_section_random = output_common_dir + 'UI\\UI_client_subjective_random_sectionlevel_'
+output_path_ui_marking_schema = output_common_dir + 'UI\\UI_Static_MCQ_Marking'
+output_path_ui_rtc_marking_schema = output_common_dir + 'UI\\UI_Static_rtc_Marking'

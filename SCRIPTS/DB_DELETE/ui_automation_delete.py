@@ -22,6 +22,9 @@ class delete_ssrf_data:
 
     def delete_assessment_test_users(self):
         self.amsdbconnection()
+        tuser_results = "delete from test_results where testuser_id in (2359422,2359424,2359426,2359468,2359470);"
+        self.cursor.execute(tuser_results)
+        self.conn.commit()
         tuser_scores = 'delete from candidate_scores where testuser_id in ' \
                        '(select tu.id from test_users tu inner join tests t on t.id = tu.test_id ' \
                        'where test_id in(10564,15254)' \
@@ -48,7 +51,7 @@ class delete_ssrf_data:
 
         update_tuser_statuss = 'update test_users set login_time = NULL, log_out_time = NULL, status = 0, ' \
                                'client_system_info = NULL, time_spent = NULL, is_password_disabled = 0,config = NULL, ' \
-                               'client_system_info = NULL, total_score = NULL, percentage = NULL ' \
+                               'client_system_info = NULL, total_score = NULL, test_start_time = NULL, percentage = NULL ' \
                                'where test_id in(10564,15254) and ' \
                                'login_time is not null;'
         print(update_tuser_statuss)

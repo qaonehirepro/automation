@@ -18,6 +18,7 @@ class AssessmentCommon:
         response = requests.post("https://amsin.hirepro.in/py/assessment/htmltest/api/v2/login_to_test/",
                                  headers=header,
                                  data=json.dumps(data), verify=False)
+        print("Is Server by ECS - Login to test", response.headers.get('X-ServedByEcs'))
         login_response = response.json()
         # login_response = {"content-type": "application/json", "X-AUTH-TOKEN": login_response.get("Token"),
         #                   "X-APPLMA": "true"}
@@ -45,6 +46,7 @@ class AssessmentCommon:
         data = {"LoginName": login_name, "Password": password, "TenantAlias": tenant}
         login_url = domain + 'htmltest/api/v2/login_to_test/'
         response = requests.post(login_url, headers=header, data=json.dumps(data), verify=False)
+        print("Is Server by ECS - Loginto test v2", response.headers.get('X-ServedByEcs'))
         login_response = response.json()
         login_token = {}
         are_you_able_to_login = 'No'
@@ -84,6 +86,7 @@ class AssessmentCommon:
         response = requests.post(url,
                                  headers=assessment_token,
                                  data=json.dumps(data1, default=str), verify=False)
+        print("Is Server by ECS - submit test result", response.headers.get('X-ServedByEcs'))
         json_resp = response.json()
         if json_resp.get('isResultSubmitted'):
             submit_xauth_token = json_resp.get('systemTkn')
@@ -140,6 +143,8 @@ class AssessmentCommon:
         else:
             print("This is Pearson Callbacks please specify the tenant")
 
+        print("Is Server by ECS - Pearson callbacks", response.headers.get('X-ServedByEcs'))
+
         print(response.headers)
         print(response)
         print(response.content)
@@ -154,6 +159,7 @@ class AssessmentCommon:
         response = requests.post(url,
                                  headers=submit_token,
                                  data=json.dumps(data, default=str), verify=False)
+        print("Is Server by ECS - initiate automation", response.headers.get('X-ServedByEcs'))
         itua_resp = response.json()
         print(itua_resp)
         return itua_resp
@@ -170,6 +176,7 @@ class AssessmentCommon:
                 assessment_common_obj.common_domain + ".hirepro.in/py/crpo/api/v1/getStatusOfAsyncAPI",
                 headers=token,
                 data=json.dumps(data, default=str), verify=False)
+            print("Is Server by ECS - assess - job status", response.headers.get('X-ServedByEcs'))
             json_resp = response.json()
             status = json_resp['data']['JobState']
             print(json_resp)
@@ -231,6 +238,7 @@ class AssessmentCommon:
                 "debugTimeStamp": "2020-12-02T13:32:30.749Z"}
         login_url = domain + 'htmltest/api/v1/test-user-next_test/'
         response = requests.post(login_url, headers=header, data=json.dumps(data), verify=False)
+        print("Is Server by ECS - next test link for 2nd login", response.headers.get('X-ServedByEcs'))
         second_login_response = response.json()
         data = second_login_response.get('nextTestInfos')[0]
         if data.get('isShortlisted'):
@@ -255,6 +263,7 @@ class AssessmentCommon:
         data = {"LoginName": login_name, "Password": password, "TenantAlias": tenant}
         login_url = domain + 'htmltest/api/v2/login_to_test/'
         response = requests.post(login_url, headers=header, data=json.dumps(data), verify=False)
+        print("Is Server by ECS - LogintoTest V3", response.headers.get('X-ServedByEcs'))
         login_response = response.json()
         login_token = {}
         test_user_infos = {}
@@ -309,6 +318,7 @@ class AssessmentCommon:
         # print(token.get('x-guid'))
         url = assessment_common_obj.common_domain + '.hirepro.in/py/common/face_comparison/v2/analyze_image/true/false/false'
         api_request = requests.post(url, headers=token, files=request, verify=False)
+        print("Is Server by ECS - analyze image", api_request.headers.get('X-ServedByEcs'))
         # print(api_request.headers.get('X-GUID'))
         resp_dict = json.loads(api_request.content)
         # print(resp_dict)
@@ -321,6 +331,7 @@ class AssessmentCommon:
             assessment_common_obj.common_domain + ".hirepro.in/py/assessment/htmltest/api/v1/code-compiler/",
             headers=token,
             data=json.dumps(request, default=str), verify=False)
+        print("Is Server by ECS - Code compiler", response.headers.get('X-ServedByEcs'))
         code_token = response.json()
         return code_token
 
@@ -336,6 +347,7 @@ class AssessmentCommon:
                     assessment_common_obj.common_domain + ".hirepro.in/py/assessment/htmltest/api/v1/code-compiler-get-result/",
                     headers=token,
                     data=json.dumps(request, default=str), verify=False)
+                print("Is Server by ECS - Code compiler Result", response.headers.get('X-ServedByEcs'))
                 compilation_results = response.json()
                 if compilation_results['codingCompileResponse'] is None:
                     time.sleep(5)
