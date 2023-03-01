@@ -68,6 +68,10 @@ class Excel:
         self.write_position = comparision_required_from_index + 1
         self.overall_status = 'Pass'
         self.overall_status_color = self.green_color
+        # print(len(self.expected_excel_sheet1.nrows))
+        # print(len(self.expected_excel_sheet1.ncols))
+        # print(len(self.actual_excel_sheet1.nrows))
+        # print(len(self.actual_excel_sheet1.ncols))
         for row_indx in range(comparision_required_from_index, self.expected_excel_sheet1.nrows):
             expected_sheet_rows = self.expected_excel_sheet1.row_values(row_indx)
             actual_sheet_rows = self.actual_excel_sheet1.row_values(row_indx)

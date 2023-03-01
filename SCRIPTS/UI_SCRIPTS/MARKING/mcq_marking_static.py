@@ -161,7 +161,7 @@ assessment_obj = OnlineAssessment()
 # input_file_path = r"F:\qa_automation\PythonWorkingScripts_InputData\UI\Assessment\ui_relogin.xls"
 excel_read_obj.excel_read(input_path_ui_marking_schema, 0)
 excel_data = excel_read_obj.details
-crpo_token = crpo_common_obj.login_to_crpo('admin', 'At@2021$$', 'AT')
+crpo_token = crpo_common_obj.login_to_crpo('admin', 'At@2023$$', 'AT')
 for current_excel_row in excel_data:
     print(current_excel_row)
     assessment_obj.mcq_marking(current_excel_row, crpo_token)

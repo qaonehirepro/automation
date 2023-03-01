@@ -43,6 +43,8 @@ input_path_mic_distortion_files = input_common_dir + 'Assessment\\mic_distortion
 input_path_brightness_check = input_common_dir + 'Assessment\\brightnesscheck\\brightnesscheck.xls'
 input_path_brightness_check_files = input_common_dir + 'Assessment\\brightnesscheck\\%s'
 input_coding_compiler = input_common_dir + 'Assessment\\coding\\codingcompiler.xls'
+input_question_statistics = input_common_dir + 'Assessment\\question_statistics1.xls'
+input_question_statistics_tests = input_common_dir + 'Assessment\\question_statistics_crpoqa.xls'
 
 input_path_microsite_create_case = input_common_dir + 'Microsite\\GenericExcelTest.xls'
 input_path_microsite_update_case = input_common_dir + 'Microsite\\GenericExcelTest.xls'
@@ -89,6 +91,8 @@ output_path_reuse_score = output_common_dir + 'Assessment\\reuse_score - '
 output_path_mic_check = output_common_dir + 'Assessment\\mic_distortion_check'
 output_path_brightness_sharpness_check = output_common_dir + 'Assessment\\API_brightness_sharpnesscheck- '
 output_coding_compiler = output_common_dir + 'Assessment\\codingcompiler'
+output_question_statistics = output_common_dir + 'Assessment\\API_qn_statisctis'
+output_question_statistics_tests = output_common_dir + 'Assessment\\API_qn_statisctis_tests'
 
 # Interview
 output_interview_proctor_evaluation = output_common_dir + 'interview\\interview_proctoring_eval'
@@ -110,6 +114,19 @@ output_path_ui_vet_vet_chaining = output_common_dir + 'UI\\UI_vet_vet_chaining_p
 output_path_ui_mcq_client_section_random = output_common_dir + 'UI\\UI_client_mcq_random_sectionwise_qprandomization_'
 output_path_ui_mcq_client_group_random = output_common_dir + 'UI\\UI_client_mcq_random_groupwise_qprandomization_'
 output_path_ui_mcq_client_test_random = output_common_dir + 'UI\\UI_client_mcq_random_testlevel_qprandomization_'
+
+output_path_ui_mcqww_client_test_random = output_common_dir + 'UI\\UI_client_mcqww_test_randomization_'
+output_path_ui_mcqww_client_group_random = output_common_dir + 'UI\\UI_client_mcqww_group_randomization_'
+output_path_ui_mcqww_client_section_random = output_common_dir + 'UI\\UI_client_mcqww_section_randomization_'
+
+output_path_ui_coding_client_test_random = output_common_dir + 'UI\\UI_client_coding_test_randomization_'
+output_path_ui_coding_client_group_random = output_common_dir + 'UI\\UI_client_coding_group_randomization_'
+output_path_ui_coding_client_section_random = output_common_dir + 'UI\\UI_client_coding_section_randomization_'
+
+output_path_ui_mca_client_test_random = output_common_dir + 'UI\\UI_client_mca_test_randomization_'
+output_path_ui_mca_client_group_random = output_common_dir + 'UI\\UI_client_mca_group_randomization_'
+output_path_ui_mca_client_section_random = output_common_dir + 'UI\\UI_client_mca_section_randomization_'
+
 output_path_ui_rtc_static = output_common_dir + 'UI\\rtc_static.xls'
 output_path_ui_subjective_client_test_random = output_common_dir + 'UI\\UI_client_subjective_random_testlevel_'
 output_path_ui_subjective_client_group_random = output_common_dir + 'UI\\UI_client_subjective_random_grouplevel_'

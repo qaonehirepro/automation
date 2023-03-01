@@ -43,17 +43,25 @@ class ProctorEvaluation:
         tu_id = int(current_excel_data.get('testUserId'))
         tu_proctor_details = crpo_common_obj.proctor_evaluation_detail(token, tu_id)
         proctorDetail = tu_proctor_details['data']['proctorDetail']
-        behaviour_suspicious = proctorDetail.get('behaviouralSuspicious')
-        self.suspicious_or_not_supicious(behaviour_suspicious, False)
-        write_excel_object.compare_results_and_write_vertically(
-            current_excel_data.get('expectedBehaviourProctoringStatus'),
-            self.status, row_count, 5)
+        if current_excel_data.get('is_video_behaviour') == 'No':
+            behaviour_suspicious = proctorDetail.get('behaviouralSuspicious')
+            self.suspicious_or_not_supicious(behaviour_suspicious, False)
+            write_excel_object.compare_results_and_write_vertically(
+                current_excel_data.get('expectedBehaviourProctoringStatus'),
+                self.status, row_count, 5)
+        else:
+            behaviour_video_suspicious = proctorDetail.get('faceSuspicious')
+            self.suspicious_or_not_supicious(behaviour_video_suspicious, False)
+            write_excel_object.compare_results_and_write_vertically(
+                current_excel_data.get('expectedBehaviourProctoringStatus'),
+                self.status, row_count, 5)
+
         overall_proctoring_status = proctorDetail.get('finalDecision')
         overall_suspicious_value = proctorDetail.get('systemOverallDecision')
         self.suspicious_or_not_supicious(overall_proctoring_status, overall_suspicious_value)
         write_excel_object.compare_results_and_write_vertically(current_excel_data.get('overallProctoringStatus'),
                                                                 self.status, row_count, 7)
-        excel_overall_suspicious_value = round(current_excel_data.get('overallSuspiciousValue'), 2)
+        excel_overall_suspicious_value = round(current_excel_data.get('overallSuspiciousValue'), 3)
         write_excel_object.compare_results_and_write_vertically(excel_overall_suspicious_value,
                                                                 overall_suspicious_value, row_count, 9)
         write_excel_object.compare_results_and_write_vertically(current_excel_data.get('testCase'), None, row_count, 0)
@@ -65,8 +73,8 @@ class ProctorEvaluation:
                                                                 4)
 
 
-login_token = crpo_common_obj.login_to_crpo(cred_crpo_admin_at.get('user'), cred_crpo_admin_at.get('password'),
-                                            cred_crpo_admin_at.get('tenant'))
+login_token = crpo_common_obj.login_to_crpo(cred_crpo_admin.get('user'), cred_crpo_admin.get('password'),
+                                            cred_crpo_admin.get('tenant'))
 excel_read_obj.excel_read(input_path_proctor_evaluation, 2)
 excel_data = excel_read_obj.details
 proctor_obj = ProctorEvaluation()
@@ -91,4 +99,4 @@ for data in excel_data:
             print(current_job_status)
         proctor_obj.proctor_detail(row_count, data, login_token)
         row_count = row_count + 1
-write_excel_object.write_overall_status(testcases_count=1)
+write_excel_object.write_overall_status(testcases_count=41)

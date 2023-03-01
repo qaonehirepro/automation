@@ -52,7 +52,7 @@ class ProctorEvaluation:
                     if candidate_overall_decision >= 0.7:
                         candidate_final_status = 'Highly Suspicious'
                     elif candidate_overall_decision > 0:
-                        candidate_final_status = 'Suspicious'
+                        candidate_final_status = 'Medium'
                     else:
                         candidate_final_status = 'Not Suspicious'
                 else:

@@ -65,8 +65,8 @@ class ProctorEvaluation:
         write_excel_object.compare_results_and_write_vertically(current_excel_data.get('testUserId'), None, row_count,
                                                                 4)
 
-login_token = crpo_common_obj.login_to_crpo(cred_crpo_admin_at.get('user'), cred_crpo_admin_at.get('password'),
-                                            cred_crpo_admin_at.get('tenant'))
+login_token = crpo_common_obj.login_to_crpo(cred_crpo_admin.get('user'), cred_crpo_admin.get('password'),
+                                            cred_crpo_admin.get('tenant'))
 excel_read_obj.excel_read(input_path_proctor_evaluation, 1)
 excel_data = excel_read_obj.details
 proctor_obj = ProctorEvaluation()
@@ -91,4 +91,4 @@ for data in excel_data:
             print(current_job_status)
         proctor_obj.proctor_detail(row_count, data, login_token)
         row_count = row_count + 1
-write_excel_object.write_overall_status(testcases_count=1)
+write_excel_object.write_overall_status(testcases_count=25)

@@ -7,6 +7,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
+# from selenium.webdriver.common.keys import Keys
 
 
 # from selenium.common.exceptions import TimeoutException
@@ -263,7 +264,7 @@ class AssessmentUICommon:
         return vet_welcome_page, is_element_successful
 
     def vet_quiet_please(self):
-        time.sleep(5)
+        time.sleep(10)
         try:
             self.driver.find_element(By.ID, 'distraction_next_link').click()
             print("Quiet Please Page")
@@ -823,6 +824,22 @@ class AssessmentUICommon:
         self.driver.switch_to.parent_frame()
         self.driver.switch_to.active_element.send_keys(code)
         self.driver.find_element(By.XPATH, '//button[text()=" Compile & Execute"]').click()
+        time.sleep(7)
+        action = self.driver.find_element(By.CLASS_NAME, 'ace_content')
+        action.click()
+        self.driver.switch_to.parent_frame()
+        action.send_keys(Keys.CONTROL + 'A')
+
+    # def coding_editor(self, code):
+    #     self.driver.find_element(By.CLASS_NAME, 'ace_content').click()
+    #     self.driver.switch_to.parent_frame()
+    #     self.driver.switch_to.active_element.clear()
+    #     self.driver.switch_to.active_element.send_keys(code)
+    #     self.driver.find_element(By.XPATH, '//button[text()=" Compile & Execute"]').click()
+    #
+
+        # self.driver.find_element(By.XPATH, '//button[text()=" Compile & Execute"]').click()
+
 
 
 

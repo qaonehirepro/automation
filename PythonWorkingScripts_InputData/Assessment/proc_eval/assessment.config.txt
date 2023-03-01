@@ -1,0 +1,1 @@
+{"isLoadFullScreen":false,"requiredTestAutomationValidation":true}

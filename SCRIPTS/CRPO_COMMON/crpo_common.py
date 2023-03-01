@@ -1,5 +1,6 @@
 import requests
 import json
+import time
 
 
 class CrpoCommon:
@@ -129,6 +130,7 @@ class CrpoCommon:
                                  headers=token,
                                  data=json.dumps(request, default=str), verify=False)
         print("Is Server by ECS - Proctor Eval Detail", response.headers.get('X-ServedByEcs'))
+        time.sleep(10)
         tu_proctor_details = response.json()
         return tu_proctor_details
 
@@ -138,7 +140,7 @@ class CrpoCommon:
         data = {"AppPreference": {"Id": id, "Content": content, "Type": type}, "IsTenantGlobal": True}
 
         response = requests.post("https://amsin.hirepro.in/py/common/common_app_utils/save_app_preferences/",
-                          headers=token, data=json.dumps(data, default=str), verify=False)
+                                 headers=token, data=json.dumps(data, default=str), verify=False)
         return response.json()
 
     @staticmethod
@@ -305,6 +307,33 @@ class CrpoCommon:
         print("Is Server by ECS - get question for id", response.headers.get('X-ServedByEcs'))
         question_id_details = response.json()
         return question_id_details
+
+    @staticmethod
+    def calculate_question_statistics(token, question_ids):
+        request = {"isPagingRequired": True, "questionIds": question_ids, "isComputeOnly": False,
+                   "questionConfig": {"dontUpdateSystemDifficulty": False}}
+        print(request)
+        response = requests.post(
+            crpo_common_obj.domain + "/py/assessment/report/api/v1/question_statistics/?isSync=false",
+            headers=token,
+            data=json.dumps(request, default=str), verify=False)
+        print("Is Server by ECS - get question for id", response.headers.get('X-ServedByEcs'))
+        question_status = response.json()
+        question_status_context_id = question_status['data']['ContextId']
+        return question_status_context_id
+
+    @staticmethod
+    def calculate_question_statistics_for_tests(token, test_ids):
+        request = {"testIds": [test_ids]}
+        print(request)
+        response = requests.post(
+            crpo_common_obj.domain + "/py/assessment/report/api/v1/question_statistics_for_tests/?isSync=false",
+            headers=token,
+            data=json.dumps(request, default=str), verify=False)
+        print("Is Server by ECS - get question for id", response.headers.get('X-ServedByEcs'))
+        question_stats = response.json()
+        test_question_stats_context_id = question_stats['data']['ContextId']
+        return test_question_stats_context_id
 
     @staticmethod
     def get_test_user_infos(token, payload):

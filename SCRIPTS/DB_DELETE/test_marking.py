@@ -20,6 +20,12 @@ class DeleteTestMarking:
 
     def delete_assessment_test_users(self):
         self.amsdbconnection()
+        tuser_result_infos = "delete from test_result_infos where testresult_id in " \
+                             "(SELECT tr.id from test_results tr inner join test_users tu on tu.id=tr.testuser_id " \
+                             "where tu.test_id in(15370,15378) and tu.status=1);"
+        self.cursor.execute(tuser_result_infos)
+        self.conn.commit()
+
         tuser_results = "delete from test_results where testuser_id in (2452480,2452482,2452478,2452476,2452474,2452754,2452756);"
         self.cursor.execute(tuser_results)
         self.conn.commit()

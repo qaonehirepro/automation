@@ -8,8 +8,6 @@ from SCRIPTS.COMMON.io_path import *
 class OnlineAssessment:
 
     def __init__(self):
-        # self.url = amsin_at_assessment_url
-        # self.path = r"F:\qa_automation\chromedriver.exe"
         pass
 
     def mcq_assessment(self, current_excel_data):
@@ -38,8 +36,8 @@ input_file_path = r"F:\qa_automation\PythonWorkingScripts_InputData\UI\Assessmen
 excel_read_obj.excel_read(input_file_path, 0)
 excel_data = excel_read_obj.details
 for current_excel_row in excel_data:
-    print(current_excel_row)
-    print(current_excel_row.get("code"))
+    # print(current_excel_row)
+    # print(current_excel_row.get("code"))
     assessment_obj.mcq_assessment(current_excel_row)
 # crpo_token = crpo_common_obj.login_to_crpo('admin', 'At@2021$$', 'AT')
 # print(crpo_token)
