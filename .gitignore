@@ -1,5 +1,5 @@
 .idea/
 venv/
-qa_automation/PythonWorkingScripts_Output/*.xlsx
-qa_automation/PythonWorkingScripts_Output/*.xls
+/PythonWorkingScripts_Output/*.xlsx
+/PythonWorkingScripts_Output/*.xls
 /SCRIPTS/COMMON/io_user_directory.py
