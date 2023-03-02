@@ -3,4 +3,4 @@ venv/
 PythonWorkingScripts_Output/*.xlsx
 PythonWorkingScripts_Output/*.xls
 F:\qa_automation\SCRIPTS\COMMON\io_user_directory.py
-SCRIPTS/COMMON/io_user_directory.py
+qa_automation/SCRIPTS/COMMON/io_user_directory.py
