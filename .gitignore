@@ -1,3 +1,3 @@
 .idea/
 venv/
-PythonWorkingScripts_Output/*.xlsx
+/PythonWorkingScripts_Output/*.xlsx
