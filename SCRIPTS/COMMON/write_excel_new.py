@@ -144,7 +144,8 @@ class Excel:
     @staticmethod
     def write_overall_status(testcases_count):
         ended = datetime.datetime.now()
-        ended = "Ended:- %s" % ended.strftime("%Y-%M-%d-%H-%M-%S")
+        ended = "Ended:- %s" % ended.strftime("%Y-%m-%d-%H-%M-%S")
+        # print(ended)
         write_excel_object.ws.write(0, 1, "Overall Status is - %s" % write_excel_object.overall_status,
                                     write_excel_object.overall_status_color)
         write_excel_object.ws.write(0, 2, 'Started:- ' + write_excel_object.started,
@@ -156,3 +157,4 @@ class Excel:
 
 
 write_excel_object = Excel()
+# write_excel_object.write_overall_status(1)
