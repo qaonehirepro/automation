@@ -1,6 +1,6 @@
 import datetime
 import os
-
+from io_user_directory import *
 path = os.getcwd()
 # print(path)
 # SCRIPTS\\API_SCRIPTS is current working directory so to use the previous directory below operation is done
@@ -18,11 +18,10 @@ amsin_at_vet_url = 'https://pearsonstg.hirepro.in/assessment/#/assess/login/eyJh
 amsin_automation_assessment_url = common_domain + '.hirepro.in/assessment/#/assess/login/eyJhbGlhcyI6ImF1dG9tYXRpb24ifQ=='
 # print(input_path_ui_assessment_verification)
 
-input_common_dir = 'F:\\qa_automation\\PythonWorkingScripts_InputData\\'
-output_common_dir = 'F:\\qa_automation\\PythonWorkingScripts_Output\\'
-chrome_driver_path = 'F:\\qa_automation\\chromedriver.exe'
+chrome_driver_path = chrome_driver_dir + 'chromedriver.exe'
 started = datetime.datetime.now()
 started = started.strftime("%d-%m-%Y")
+
 # input paths
 input_path_allowed_extension = input_common_dir + 'allowed_extensions\\allowed_extensions_inputfile.xls'
 input_path_allowed_extension_files = input_common_dir + 'allowed_extensions\\%s'
