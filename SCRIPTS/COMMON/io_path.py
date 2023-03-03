@@ -1,6 +1,6 @@
 import datetime
 import os
-from io_user_directory import *
+from SCRIPTS.COMMON.io_user_directory import *
 path = os.getcwd()
 # print(path)
 # SCRIPTS\\API_SCRIPTS is current working directory so to use the previous directory below operation is done
