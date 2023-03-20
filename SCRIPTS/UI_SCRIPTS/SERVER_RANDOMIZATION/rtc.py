@@ -36,65 +36,65 @@ class QPVerification:
                   '2nd login Q16', '1st login Q17', '2nd login Q17', '1st login Q18', '2nd login Q18', '1st login Q19',
                   '2nd login Q19', '1st login Q20', '2nd login Q20', '1st login Q21', '2nd login Q21']
         write_excel_object.write_headers_for_scripts(1, 0, header, write_excel_object.black_color_bold)
-        # self.expected_low_section1_group1 = ['MS UI Automation MCQ Randomization Low1',
-        #                                      'MS UI Automation MCQ Randomization Low2',
-        #                                      'MS UI Automation MCQ Randomization Low3']
-        # self.expected_medium_section1_group1 = ['MS UI Automation MCQ Randomization Medium1',
-        #                                         'MS UI Automation MCQ Randomization Medium2',
-        #                                         'MS UI Automation MCQ Randomization Medium3']
-        # self.expected_high_section1_group1 = ['MS UI Automation MCQ Randomization High1',
-        #                                       'MS UI Automation MCQ Randomization High2',
-        #                                       'MS UI Automation MCQ Randomization High3']
-        #
-        # self.expected_low_section2_group1 = ['MS UI Automation MCQ Randomization Low4',
-        #                                      'MS UI Automation MCQ Randomization Low5']
-        # self.expected_medium_section2_group1 = ['MS UI Automation MCQ Randomization Medium4',
-        #                                         'MS UI Automation MCQ Randomization Medium5']
-        # self.expected_high_section2_group1 = ['MS UI Automation MCQ Randomization High4',
-        #                                       'MS UI Automation MCQ Randomization High5']
-        #
-        # self.expected_low_section1_group2 = ['MS UI Automation MCQ Randomization Low6',
-        #                                      'MS UI Automation MCQ Randomization Low7',
-        #                                      'MS UI Automation MCQ Randomization Low8',
-        #                                      'MS UI Automation MCQ Randomization Low9',
-        #                                      'MS UI Automation MCQ Randomization Low10']
-        # self.expected_medium_section1_group2 = ['MS UI Automation MCQ Randomization Medium6',
-        #                                         'MS UI Automation MCQ Randomization Medium7',
-        #                                         'MS UI Automation MCQ Randomization Medium8',
-        #                                         'MS UI Automation MCQ Randomization Medium9',
-        #                                         'MS UI Automation MCQ Randomization Medium10']
-        # self.expected_high_section1_group2 = ['MS UI Automation MCQ Randomization High6',
-        #                                       'MS UI Automation MCQ Randomization High7',
-        #                                       'MS UI Automation MCQ Randomization High8',
-        #                                       'MS UI Automation MCQ Randomization High9',
-        #                                       'MS UI Automation MCQ Randomization High10']
-        #
-        # self.expected_low_section2_group2 = ['MS UI Automation MCQ Randomization Low11',
-        #                                      'MS UI Automation MCQ Randomization Low12',
-        #                                      'MS UI Automation MCQ Randomization Low13',
-        #                                      'MS UI Automation MCQ Randomization Low14',
-        #                                      'MS UI Automation MCQ Randomization Low15']
-        # self.expected_medium_section2_group2 = ['MS UI Automation MCQ Randomization Medium11',
-        #                                         'MS UI Automation MCQ Randomization Medium12',
-        #                                         'MS UI Automation MCQ Randomization Medium13',
-        #                                         'MS UI Automation MCQ Randomization Medium14',
-        #                                         'MS UI Automation MCQ Randomization Medium15']
-        # self.expected_high_section2_group2 = ['MS UI Automation MCQ Randomization High11',
-        #                                       'MS UI Automation MCQ Randomization High12',
-        #                                       'MS UI Automation MCQ Randomization High13',
-        #                                       'MS UI Automation MCQ Randomization High14',
-        #                                       'MS UI Automation MCQ Randomization High15']
-        #
-        # self.expected_section1_group1 = self.expected_low_section1_group1 + self.expected_medium_section1_group1 \
-        #                                 + self.expected_high_section1_group1
-        # self.expected_section2_group1 = self.expected_low_section2_group1 + self.expected_medium_section2_group1 \
-        #                                 + self.expected_high_section2_group1
-        # self.expected_section1_group2 = self.expected_low_section1_group2 + self.expected_medium_section1_group2 \
-        #                                 + self.expected_high_section1_group2
-        # self.expected_section2_group2 = self.expected_low_section2_group2 + self.expected_medium_section2_group2 \
-        #                                 + self.expected_high_section2_group2
-        # self.expected_questions = self.expected_section1_group1 + self.expected_section2_group1 \
-        #                           + self.expected_section1_group2 + self.expected_section2_group2
+        self.expected_low_section1_group1 = ['MS UI Automation MCQ Randomization Low1',
+                                             'MS UI Automation MCQ Randomization Low2',
+                                             'MS UI Automation MCQ Randomization Low3']
+        self.expected_medium_section1_group1 = ['MS UI Automation MCQ Randomization Medium1',
+                                                'MS UI Automation MCQ Randomization Medium2',
+                                                'MS UI Automation MCQ Randomization Medium3']
+        self.expected_high_section1_group1 = ['MS UI Automation MCQ Randomization High1',
+                                              'MS UI Automation MCQ Randomization High2',
+                                              'MS UI Automation MCQ Randomization High3']
+
+        self.expected_low_section2_group1 = ['MS UI Automation MCQ Randomization Low4',
+                                             'MS UI Automation MCQ Randomization Low5']
+        self.expected_medium_section2_group1 = ['MS UI Automation MCQ Randomization Medium4',
+                                                'MS UI Automation MCQ Randomization Medium5']
+        self.expected_high_section2_group1 = ['MS UI Automation MCQ Randomization High4',
+                                              'MS UI Automation MCQ Randomization High5']
+
+        self.expected_low_section1_group2 = ['MS UI Automation MCQ Randomization Low6',
+                                             'MS UI Automation MCQ Randomization Low7',
+                                             'MS UI Automation MCQ Randomization Low8',
+                                             'MS UI Automation MCQ Randomization Low9',
+                                             'MS UI Automation MCQ Randomization Low10']
+        self.expected_medium_section1_group2 = ['MS UI Automation MCQ Randomization Medium6',
+                                                'MS UI Automation MCQ Randomization Medium7',
+                                                'MS UI Automation MCQ Randomization Medium8',
+                                                'MS UI Automation MCQ Randomization Medium9',
+                                                'MS UI Automation MCQ Randomization Medium10']
+        self.expected_high_section1_group2 = ['MS UI Automation MCQ Randomization High6',
+                                              'MS UI Automation MCQ Randomization High7',
+                                              'MS UI Automation MCQ Randomization High8',
+                                              'MS UI Automation MCQ Randomization High9',
+                                              'MS UI Automation MCQ Randomization High10']
+
+        self.expected_low_section2_group2 = ['MS UI Automation MCQ Randomization Low11',
+                                             'MS UI Automation MCQ Randomization Low12',
+                                             'MS UI Automation MCQ Randomization Low13',
+                                             'MS UI Automation MCQ Randomization Low14',
+                                             'MS UI Automation MCQ Randomization Low15']
+        self.expected_medium_section2_group2 = ['MS UI Automation MCQ Randomization Medium11',
+                                                'MS UI Automation MCQ Randomization Medium12',
+                                                'MS UI Automation MCQ Randomization Medium13',
+                                                'MS UI Automation MCQ Randomization Medium14',
+                                                'MS UI Automation MCQ Randomization Medium15']
+        self.expected_high_section2_group2 = ['MS UI Automation MCQ Randomization High11',
+                                              'MS UI Automation MCQ Randomization High12',
+                                              'MS UI Automation MCQ Randomization High13',
+                                              'MS UI Automation MCQ Randomization High14',
+                                              'MS UI Automation MCQ Randomization High15']
+
+        self.expected_section1_group1 = self.expected_low_section1_group1 + self.expected_medium_section1_group1 \
+                                        + self.expected_high_section1_group1
+        self.expected_section2_group1 = self.expected_low_section2_group1 + self.expected_medium_section2_group1 \
+                                        + self.expected_high_section2_group1
+        self.expected_section1_group2 = self.expected_low_section1_group2 + self.expected_medium_section1_group2 \
+                                        + self.expected_high_section1_group2
+        self.expected_section2_group2 = self.expected_low_section2_group2 + self.expected_medium_section2_group2 \
+                                        + self.expected_high_section2_group2
+        self.expected_questions = self.expected_section1_group1 + self.expected_section2_group1 \
+                                  + self.expected_section1_group2 + self.expected_section2_group2
 
         expected_parent_random_qns = [{}]
 

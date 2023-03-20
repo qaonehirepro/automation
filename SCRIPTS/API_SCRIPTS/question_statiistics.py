@@ -1,5 +1,3 @@
-from SCRIPTS.UI_COMMON.assessment_ui_common_v2 import *
-import time
 from SCRIPTS.CRPO_COMMON.credentials import *
 from SCRIPTS.UI_SCRIPTS.assessment_data_verification import *
 from SCRIPTS.COMMON.read_excel import *
@@ -92,26 +90,26 @@ class OnlineAssessment:
                                                                 total_attempts, self.row, 3)
         write_excel_object.compare_results_and_write_vertically(current_excel_data.get('avgResponseTime'),
                                                                 avg_res_time, self.row, 5)
-        write_excel_object.compare_results_and_write_vertically(current_excel_data.get('itemDifficultyLevel'),
-                                                                item_difficulty_level, self.row, 7)
+        write_excel_object.compare_results_and_write_vertically(round(current_excel_data.get('itemDifficultyLevel'), 4)
+                                                                , round(item_difficulty_level, 4), self.row, 7)
         write_excel_object.compare_results_and_write_vertically(int(current_excel_data.get('correct')),
                                                                 correct, self.row, 9)
         write_excel_object.compare_results_and_write_vertically(current_excel_data.get('partialCorrect'),
                                                                 partial_correct, self.row, 11)
-        write_excel_object.compare_results_and_write_vertically(current_excel_data.get('facilityValue'),
-                                                                facility_value, self.row, 13)
+        write_excel_object.compare_results_and_write_vertically(round(current_excel_data.get('facilityValue'), 5),
+                                                                round(facility_value, 5), self.row, 13)
         write_excel_object.compare_results_and_write_vertically(int(current_excel_data.get('inCorrect')),
                                                                 in_correct, self.row, 15)
         write_excel_object.compare_results_and_write_vertically(int(current_excel_data.get('unAttempted')),
                                                                 un_attempted, self.row, 17)
-        write_excel_object.compare_results_and_write_vertically(current_excel_data.get('distractorIndexA'),
-                                                                dist_index_a, self.row, 19)
-        write_excel_object.compare_results_and_write_vertically(current_excel_data.get('distractorIndexB'),
-                                                                dist_index_b, self.row, 21)
-        write_excel_object.compare_results_and_write_vertically(current_excel_data.get('distractorIndexC'),
-                                                                dist_index_c, self.row, 23)
-        write_excel_object.compare_results_and_write_vertically(current_excel_data.get('distracotrIndexD'),
-                                                                dist_index_d, self.row, 25)
+        write_excel_object.compare_results_and_write_vertically(round(current_excel_data.get('distractorIndexA'), 5),
+                                                                round(dist_index_a, 5), self.row, 19)
+        write_excel_object.compare_results_and_write_vertically(round(current_excel_data.get('distractorIndexB'), 5),
+                                                                round(dist_index_b, 5), self.row, 21)
+        write_excel_object.compare_results_and_write_vertically(round(current_excel_data.get('distractorIndexC'), 5),
+                                                                round(dist_index_c, 5), self.row, 23)
+        write_excel_object.compare_results_and_write_vertically(round(current_excel_data.get('distracotrIndexD'), 5),
+                                                                round(dist_index_d, 5), self.row, 25)
         write_excel_object.compare_results_and_write_vertically(int(current_excel_data.get('questionUsage')),
                                                                 question_usage, self.row, 27)
         write_excel_object.compare_results_and_write_vertically(int(current_excel_data.get('questionPapers')),

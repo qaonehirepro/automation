@@ -314,7 +314,7 @@ class AssessmentUICommon:
         try:
             self.driver.find_element(By.XPATH, "//*[@class = 'proceed wizardButton greenBackground']").click()
             print("Proceed Test Successful")
-            time.sleep(20)
+            time.sleep(25)
             os.system("F:\\my_test.mp3")
             vet_proceed_test = "Successful"
             is_element_successful = True
