@@ -2,14 +2,6 @@ import datetime
 import os
 from SCRIPTS.COMMON.io_user_directory import *
 path = os.getcwd()
-# print(path)
-# SCRIPTS\\API_SCRIPTS is current working directory so to use the previous directory below operation is done
-# input_common_dir = path.replace('\SCRIPTS\COMMON', '\\PythonWorkingScripts_InputData\\')
-# output_common_dir = path.replace('\SCRIPTS\COMMON', '\\PythonWorkingScripts_Output\\')
-# chrome_driver_path = path.replace('\SCRIPTS\COMMON', '\\chromedriver.exe')
-# print(input_common_dir)
-# print(output_common_dir)
-# print(chrome_driver_path)
 
 # Assessment URLS
 common_domain = 'https://amsin'
