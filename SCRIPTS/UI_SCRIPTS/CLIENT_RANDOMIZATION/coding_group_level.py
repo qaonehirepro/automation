@@ -287,9 +287,5 @@ for current_excel_row in candidate_details:
     tu_cred = crpo_common_obj.test_user_credentials(token, test_userid)
     login_id = tu_cred['data']['testUserCredential']['loginId']
     password = tu_cred['data']['testUserCredential']['password']
-    # login_id = "AT152381400410"
-    # password = "E@^XEQKg"
-    # candidate_id = 1400410
-    # test_userid = 2359164
     client_side_randomization.verify_questions(current_excel_row, login_id, password, candidate_id, test_userid)
 write_excel_object.write_overall_status(1)

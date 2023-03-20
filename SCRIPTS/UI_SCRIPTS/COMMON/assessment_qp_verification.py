@@ -63,6 +63,7 @@ class QPVerification:
                                             write_excel_object.green_color)
                 for excel in qn_infos:
                     for actual in delivered_questions:
+                        print(actual)
                         if excel['questions'] in actual['questions']:
                             write_excel_object.ws.write(self.row, self.col, excel['questions'],
                                                         write_excel_object.green_color)

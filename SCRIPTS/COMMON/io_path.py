@@ -44,6 +44,7 @@ input_path_brightness_check_files = input_common_dir + 'Assessment\\brightnessch
 input_coding_compiler = input_common_dir + 'Assessment\\coding\\codingcompiler.xls'
 input_question_statistics = input_common_dir + 'Assessment\\question_statistics1.xls'
 input_question_statistics_tests = input_common_dir + 'Assessment\\question_statistics_crpoqa.xls'
+input_question_statistics_hirepro_cron = input_common_dir + 'Assessment\\question_statistics_new_cron.xls'
 
 input_path_microsite_create_case = input_common_dir + 'Microsite\\GenericExcelTest.xls'
 input_path_microsite_update_case = input_common_dir + 'Microsite\\GenericExcelTest.xls'
@@ -92,6 +93,7 @@ output_path_brightness_sharpness_check = output_common_dir + 'Assessment\\API_br
 output_coding_compiler = output_common_dir + 'Assessment\\codingcompiler'
 output_question_statistics = output_common_dir + 'Assessment\\API_qn_statisctis'
 output_question_statistics_tests = output_common_dir + 'Assessment\\API_qn_statisctis_tests'
+output_question_statistics_new_cron = output_common_dir + 'Assessment\\API_qn_statisctis_new_cron'
 
 # Interview
 output_interview_proctor_evaluation = output_common_dir + 'interview\\interview_proctoring_eval'

@@ -320,6 +320,19 @@ class CrpoCommon:
         print("Is Server by ECS - get question for id", response.headers.get('X-ServedByEcs'))
         question_status = response.json()
         question_status_context_id = question_status['data']['ContextId']
+        return
+
+    @staticmethod
+    def calculate_hirepro_question_statistics(token, question_ids):
+        request = {"questionIds": question_ids, "isComputeOnly": False}
+        print(request)
+        response = requests.post(
+            crpo_common_obj.domain + "/py/assessment/report/api/v1/hirepro_question_stats_api/",
+            headers=token,
+            data=json.dumps(request, default=str), verify=False)
+        print("Is Server by ECS - get question for id", response.headers.get('X-ServedByEcs'))
+        question_status = response.json()
+        question_status_context_id = question_status['data']['ContextId']
         return question_status_context_id
 
     @staticmethod

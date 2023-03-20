@@ -93,6 +93,7 @@ while current_job_status == 'Pending':
     current_job_status = current_job_status['data']['JobState']
     print("_________________ Proctor Evaluation is in Progress _______________________")
     print(current_job_status)
+    # time.sleep(10)
 row_count = 2
 for data in excel_data:
     proctor_obj.proctor_detail(row_count, data, login_token)

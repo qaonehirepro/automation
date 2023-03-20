@@ -41,20 +41,21 @@ class ProctorEvaluation:
         write_excel_object.current_status_color = write_excel_object.green_color
         write_excel_object.current_status = "Pass"
         tu_id = int(current_excel_data.get('testUserId'))
+        print(tu_id)
         tu_proctor_details = crpo_common_obj.proctor_evaluation_detail(token, tu_id)
         proctorDetail = tu_proctor_details['data']['proctorDetail']
         device_suspicious = proctorDetail.get('deviceSuspicious')
 
         self.suspicious_or_not_supicious(device_suspicious, False)
         write_excel_object.compare_results_and_write_vertically(
-            current_excel_data.get('exoectedDeviceProctoringStatus'),
+            current_excel_data.get('expectedDeviceProctoringStatus'),
             self.status, row_count, 5)
         overall_proctoring_status = proctorDetail.get('finalDecision')
         overall_suspicious_value = proctorDetail.get('systemOverallDecision')
         self.suspicious_or_not_supicious(overall_proctoring_status, overall_suspicious_value)
         write_excel_object.compare_results_and_write_vertically(current_excel_data.get('overallProctoringStatus'),
                                                                 self.status, row_count, 7)
-        excel_overall_suspicious_value = round(current_excel_data.get('overallSuspiciousValue'), 2)
+        excel_overall_suspicious_value = round(current_excel_data.get('overallSuspiciousValue'), 4)
         write_excel_object.compare_results_and_write_vertically(excel_overall_suspicious_value,
                                                                 overall_suspicious_value, row_count, 9)
         write_excel_object.compare_results_and_write_vertically(current_excel_data.get('testCase'), None, row_count, 0)
@@ -72,23 +73,42 @@ excel_data = excel_read_obj.details
 proctor_obj = ProctorEvaluation()
 tuids = []
 over_all_status = 'Pass'
+for fetch_tuids in excel_data:
+    tuids.append(int(fetch_tuids.get('testUserId')))
+context_id = CrpoCommon.force_evaluate_proctoring(login_token, tuids)
+print(tuids)
+context_id = context_id['data']['ContextId']
+print(context_id)
+current_job_status = 'Pending'
+
+while current_job_status == 'Pending':
+    current_job_status = CrpoCommon.job_status(login_token, context_id)
+    current_job_status = current_job_status['data']['JobState']
+    print("_________________ Proctor Evaluation is in Progress _______________________")
+    print(current_job_status)
+    time.sleep(20)
+
 row_count = 2
 for data in excel_data:
-    id = int(data.get('appPreferenceId'))
-    content = data.get('appPreference')
-    type = data.get('appPreferenceType')
-    content1 = json.dumps(content)
-    update_app_preference = CrpoCommon.save_apppreferences(login_token, content, id, type)
-    if update_app_preference.get('status') == 'OK':
-        testuser_id = int(data.get('testUserId'))
-        context_id = CrpoCommon.force_evaluate_proctoring(login_token, [testuser_id])
-        context_id = context_id['data']['ContextId']
-        current_job_status = 'Pending'
-        while current_job_status == 'Pending':
-            current_job_status = CrpoCommon.job_status(login_token, context_id)
-            current_job_status = current_job_status['data']['JobState']
-            print("_________________ Proctor Evaluation is in Progress _______________________")
-            print(current_job_status)
-        proctor_obj.proctor_detail(row_count, data, login_token)
-        row_count = row_count + 1
-write_excel_object.write_overall_status(testcases_count=25)
+    proctor_obj.proctor_detail(row_count, data, login_token)
+    row_count = row_count + 1
+write_excel_object.write_overall_status(testcases_count=10)
+# for data in excel_data:
+#     id = int(data.get('appPreferenceId'))
+#     content = data.get('appPreference')
+#     type = data.get('appPreferenceType')
+#     content1 = json.dumps(content)
+#     update_app_preference = CrpoCommon.save_apppreferences(login_token, content, id, type)
+#     if update_app_preference.get('status') == 'OK':
+#         testuser_id = int(data.get('testUserId'))
+#         context_id = CrpoCommon.force_evaluate_proctoring(login_token, [testuser_id])
+#         context_id = context_id['data']['ContextId']
+#         current_job_status = 'Pending'
+#         while current_job_status == 'Pending':
+#             current_job_status = CrpoCommon.job_status(login_token, context_id)
+#             current_job_status = current_job_status['data']['JobState']
+#             print("_________________ Proctor Evaluation is in Progress _______________________")
+#             print(current_job_status)
+#         proctor_obj.proctor_detail(row_count, data, login_token)
+#         row_count = row_count + 1
+# write_excel_object.write_overall_status(testcases_count=25)
