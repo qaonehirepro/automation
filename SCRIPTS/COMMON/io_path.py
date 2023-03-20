@@ -44,7 +44,7 @@ input_path_brightness_check_files = input_common_dir + 'Assessment\\brightnessch
 input_coding_compiler = input_common_dir + 'Assessment\\coding\\codingcompiler.xls'
 input_question_statistics = input_common_dir + 'Assessment\\question_statistics1.xls'
 input_question_statistics_tests = input_common_dir + 'Assessment\\question_statistics_crpoqa.xls'
-input_question_statistics_hirepro_cron = input_common_dir + 'Assessment\\question_statistics_new_cron.xls'
+input_question_statistics_hirepro_cron = input_common_dir + 'Assessment\\question_statistics_new_cron_1.xls'
 
 input_path_microsite_create_case = input_common_dir + 'Microsite\\GenericExcelTest.xls'
 input_path_microsite_update_case = input_common_dir + 'Microsite\\GenericExcelTest.xls'
