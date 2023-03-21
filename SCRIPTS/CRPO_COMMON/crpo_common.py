@@ -298,8 +298,6 @@ class CrpoCommon:
 
     @staticmethod
     def get_question_for_id(token, question_id):
-        # token = {'content-type': 'application/json', 'APP-NAME': 'py3app', 'X-APPLMA': 'true',
-        #          'X-AUTH-TOKEN': 'Tkn:60be3298-12bd-4801-bb91-301712468d1e'}
         request = {"id": question_id}
         response = requests.post(crpo_common_obj.domain + "/py/assessment/authoring/api/v1/getQuestionForId/",
                                  headers=token,

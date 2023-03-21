@@ -25,10 +25,9 @@ class QuestionStatistics:
 
     def calculate_qn_stats(self, excel_datas, hirepro_token):
         hirepro_question_ids = []
-
         for i in excel_datas:
             if i.get('tenant') == 'hirepro':
-                hirepro_question_ids.append(int(i.get('questionId')))
+                hirepro_question_ids.append(int(i.get('question_id_for_api')))
             else:
                 print("Please include only hirepro questions")
 
@@ -48,6 +47,7 @@ class QuestionStatistics:
         print(current_excel_data.get('tenant'))
         if current_excel_data.get('tenant') == "hirepro":
             qn_infos = CrpoCommon.get_question_for_id(hirepro_token, excel_question_id)
+            print(qn_infos)
         else:
             print("Only hirepro questions are supported")
 
@@ -55,7 +55,7 @@ class QuestionStatistics:
         question_usage = qn_infos['data']['questionReuse']
         question_papers = len(qn_infos['data']['questionAttributes']['questionPaperInfos'])
         total_attempts = qn_statistics.get('totalAttempt')
-        avg_res_time = qn_statistics.get('avgResponseTime')
+        avg_res_time = round(qn_statistics.get('avgResponseTime'), 4)
         item_difficulty_level = round(qn_statistics.get('itemDifficulty'), 4)
         correct = qn_statistics.get('correct')
         partial_correct = qn_statistics.get('partialCorrect')
@@ -72,27 +72,27 @@ class QuestionStatistics:
         write_excel_object.compare_results_and_write_vertically(current_excel_data.get('questionId'), None, self.row, 2)
         write_excel_object.compare_results_and_write_vertically(int(current_excel_data.get('totalAttempts')),
                                                                 total_attempts, self.row, 3)
-        write_excel_object.compare_results_and_write_vertically(current_excel_data.get('avgResponseTime'),
+        write_excel_object.compare_results_and_write_vertically(round(current_excel_data.get('avgResponseTime'), 4),
                                                                 avg_res_time, self.row, 5)
-        write_excel_object.compare_results_and_write_vertically(round(current_excel_data.get('itemDifficultyLevel'),4),
+        write_excel_object.compare_results_and_write_vertically(round(current_excel_data.get('itemDifficultyLevel'), 4),
                                                                 item_difficulty_level, self.row, 7)
         write_excel_object.compare_results_and_write_vertically(int(current_excel_data.get('correct')),
                                                                 correct, self.row, 9)
         write_excel_object.compare_results_and_write_vertically(current_excel_data.get('partialCorrect'),
                                                                 partial_correct, self.row, 11)
-        write_excel_object.compare_results_and_write_vertically(round(current_excel_data.get('facilityValue'),4),
+        write_excel_object.compare_results_and_write_vertically(round(current_excel_data.get('facilityValue'), 4),
                                                                 facility_value, self.row, 13)
         write_excel_object.compare_results_and_write_vertically(int(current_excel_data.get('inCorrect')),
                                                                 in_correct, self.row, 15)
         write_excel_object.compare_results_and_write_vertically(int(current_excel_data.get('unAttempted')),
                                                                 un_attempted, self.row, 17)
-        write_excel_object.compare_results_and_write_vertically(round(current_excel_data.get('distractorIndexA'),4),
+        write_excel_object.compare_results_and_write_vertically(round(current_excel_data.get('distractorIndexA'), 4),
                                                                 dist_index_a, self.row, 19)
-        write_excel_object.compare_results_and_write_vertically(round(current_excel_data.get('distractorIndexB'),4),
+        write_excel_object.compare_results_and_write_vertically(round(current_excel_data.get('distractorIndexB'), 4),
                                                                 dist_index_b, self.row, 21)
-        write_excel_object.compare_results_and_write_vertically(round(current_excel_data.get('distractorIndexC'),4),
+        write_excel_object.compare_results_and_write_vertically(round(current_excel_data.get('distractorIndexC'), 4),
                                                                 dist_index_c, self.row, 23)
-        write_excel_object.compare_results_and_write_vertically(round(current_excel_data.get('distracotrIndexD'),4),
+        write_excel_object.compare_results_and_write_vertically(round(current_excel_data.get('distracotrIndexD'), 4),
                                                                 dist_index_d, self.row, 25)
         write_excel_object.compare_results_and_write_vertically(int(current_excel_data.get('questionUsage')),
                                                                 question_usage, self.row, 27)
