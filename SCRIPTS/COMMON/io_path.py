@@ -8,7 +8,6 @@ common_domain = 'https://amsin'
 amsin_at_assessment_url = common_domain + ".hirepro.in/assessment/#/assess/login/eyJhbGlhcyI6ImF0In0="
 amsin_at_vet_url = 'https://pearsonstg.hirepro.in/assessment/#/assess/login/eyJhbGlhcyI6ImF0In0='
 amsin_automation_assessment_url = common_domain + '.hirepro.in/assessment/#/assess/login/eyJhbGlhcyI6ImF1dG9tYXRpb24ifQ=='
-# print(input_path_ui_assessment_verification)
 
 chrome_driver_path = chrome_driver_dir + 'chromedriver.exe'
 started = datetime.datetime.now()
@@ -20,9 +19,7 @@ input_path_allowed_extension_files = input_common_dir + 'allowed_extensions\\%s'
 input_path_applicant_report = input_common_dir + 'Assessment\\applicant_report\\applicantreport.xlsx'
 input_path_applicant_report_downloaded = input_common_dir + 'Assessment\\applicant_report\\downloaded\\downloadedfile.xlsx'
 input_path_2tests_chaining = input_common_dir + 'Assessment\\chaining\\2ndlogincase.xls'
-# input_path_2tests_chaining = input_common_dir + 'Assessment\\chaining\\2ndlogincase - Copy.xls'
 input_path_3tests_chaining = input_common_dir + 'Assessment\\chaining\\3_tests_login_automation.xls'
-# input_path_3tests_chaining = input_common_dir + 'Assessment\\chaining\\3_tests_login_automationFailed.xls'
 input_path_plagiarism_report = input_common_dir + 'Assessment\\plagiarism_report\\plagiarism_report.xlsx'
 input_path_plagiarism_report_downloaded = input_common_dir + 'Assessment\\plagiarism_report\\downloaded\\plagiarism_report' + started + '.xlsx'
 input_path_proctor_evaluation = input_common_dir + 'Assessment\\proc_eval\\proc_eval3.xls'
