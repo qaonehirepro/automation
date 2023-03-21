@@ -68,10 +68,7 @@ class Excel:
         self.write_position = comparision_required_from_index + 1
         self.overall_status = 'Pass'
         self.overall_status_color = self.green_color
-        # print(len(self.expected_excel_sheet1.nrows))
-        # print(len(self.expected_excel_sheet1.ncols))
-        # print(len(self.actual_excel_sheet1.nrows))
-        # print(len(self.actual_excel_sheet1.ncols))
+
         for row_indx in range(comparision_required_from_index, self.expected_excel_sheet1.nrows):
             expected_sheet_rows = self.expected_excel_sheet1.row_values(row_indx)
             actual_sheet_rows = self.actual_excel_sheet1.row_values(row_indx)
@@ -115,7 +112,6 @@ class Excel:
                 if expected_data == actual_data:
                     write_excel_object.ws.write(row_index, column_index + 1, actual_data,
                                                 write_excel_object.green_color)
-                    # self.current_status_color = write_excel_object.green_color
                 else:
                     write_excel_object.ws.write(row_index, column_index + 1, actual_data, write_excel_object.red_color)
                     self.current_status = 'Fail'
@@ -157,4 +153,3 @@ class Excel:
 
 
 write_excel_object = Excel()
-# write_excel_object.write_overall_status(1)
