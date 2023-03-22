@@ -1,40 +1,27 @@
-import mysql
-import mysql.connector
+from SCRIPTS.COMMON.dbconnection import *
 import datetime
 
 
-class delete_ssrf_data:
+class UIVendorAutomationDelete:
 
     def __init__(self):
         print(datetime.datetime.now())
 
-    def amsdbconnection(self):
-        # replica = 35.154.213.175
-        # master = 35.154.36.218
-        self.conn = mysql.connector.connect(host='35.154.213.175',
-                                            database='appserver_core',
-                                            user='qauser',
-                                            password='qauser')
-        self.cursor = self.conn.cursor()
-
-    def commit_changes(self, query):
-        pass
-
-    def delete_assessment_test_users(self):
-        self.amsdbconnection()
+    @staticmethod
+    def delete_assessment_test_users():
+        db_connection = ams_db_connection()
+        cursor = db_connection.cursor()
         delete_candidates = 'delete from candidates where id in (select candidate_id ' \
                             'from test_users where test_id  in (14671,14673,14675,14677));'
         print(delete_candidates)
-
-        self.cursor.execute(delete_candidates)
-        self.conn.commit()
+        cursor.execute(delete_candidates)
+        db_connection.commit()
         delete_test_users = 'delete from test_users where test_id  in (14671,14673,14675,14677);'
         print(delete_test_users)
-        self.cursor.execute(delete_test_users)
-        self.conn.commit()
-        self.conn.close()
+        cursor.execute(delete_test_users)
+        db_connection.commit()
+        db_connection.close()
 
 
-del_data = delete_ssrf_data()
+del_data = UIVendorAutomationDelete()
 del_data.delete_assessment_test_users()
-print(datetime.datetime.now())
