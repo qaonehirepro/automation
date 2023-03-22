@@ -36,29 +36,27 @@ class MettlAutomation:
                 hirepro_start_test = assess_ui_common_obj.start_test()
                 mettl_start_test1 = assess_ui_common_obj.mettl_start_test()
                 mettl_start_test2 = assess_ui_common_obj.mettl_start_test2()
-                mettl_group_names = assess_ui_common_obj.mettl_group_names()
+                mettl_terms_and_conditions = assess_ui_common_obj.mettl_terms_and_conditions()
+                mettl_start_test3 = assess_ui_common_obj.mettl_start_test3()
+                mettl_group1_name = assess_ui_common_obj.mettl_group_names()
                 answer1 = assess_ui_common_obj.mettl_answer_question()
                 next_group1 = assess_ui_common_obj.mettl_next_section()
+                mettl_group2_name = assess_ui_common_obj.mettl_group_names()
                 answer2 = assess_ui_common_obj.mettl_answer_question()
                 next_group2 = assess_ui_common_obj.mettl_next_section()
+                mettl_group3_name = assess_ui_common_obj.mettl_group_names()
                 answer3 = assess_ui_common_obj.mettl_answer_question()
                 next_group3 = assess_ui_common_obj.mettl_next_section()
+                mettl_group4_name = assess_ui_common_obj.mettl_group_names()
                 answer4 = assess_ui_common_obj.mettl_answer_question()
                 next_group4 = assess_ui_common_obj.mettl_next_section()
+                mettl_group5_name = assess_ui_common_obj.mettl_group_names()
                 answer5 = assess_ui_common_obj.mettl_answer_question()
                 next_group5 = assess_ui_common_obj.mettl_next_section()
+                mettl_group6_name = assess_ui_common_obj.mettl_group_names()
                 answer6 = assess_ui_common_obj.mettl_answer_question()
                 final_submit = assess_ui_common_obj.mettl_finish_test()
                 final_submit_confirmation = assess_ui_common_obj.mettl_finish_test_confirmation()
-                print(mettl_group_names)
-                group_names = mettl_group_names[0].split('\n')
-                mettl_group1_name = group_names[0]
-                mettl_group2_name = group_names[1]
-                mettl_group3_name = group_names[2]
-                mettl_group4_name = group_names[3]
-                mettl_group5_name = group_names[4]
-                mettl_group6_name = group_names[5]
-
                 time.sleep(180)
                 tu_infos = crpo_common_obj.get_test_user_infos(tkn, tu_request)
                 report_link = tu_infos['data']['vendorDetails']['reportLink']
@@ -108,14 +106,15 @@ class MettlAutomation:
                     overall_status = 'Fail'
                 write_excel_object.ws.write(2, 6, mettl_start_test2[0], color)
 
-                if "English Ability" in mettl_group1_name:
+                print(mettl_group1_name)
+                if "1. English Ability" == mettl_group1_name[0]:
                     color = write_excel_object.green_color
 
                 else:
                     color = write_excel_object.red_color
                     overall_color = write_excel_object.red_color
                     overall_status = 'Fail'
-                write_excel_object.ws.write(2, 7, mettl_group1_name, color)
+                write_excel_object.ws.write(2, 7, mettl_group1_name[0], color)
 
                 if next_group1[0] == 'Next group success':
                     color = write_excel_object.green_color
@@ -126,14 +125,14 @@ class MettlAutomation:
                     overall_status = 'Fail'
                 write_excel_object.ws.write(2, 8, next_group1[0], color)
 
-                if 'Analytical Reasoning' in mettl_group2_name:
+                if '2. Analytical Reasoning' == mettl_group2_name[0]:
                     color = write_excel_object.green_color
 
                 else:
                     color = write_excel_object.red_color
                     overall_color = write_excel_object.red_color
                     overall_status = 'Fail'
-                write_excel_object.ws.write(2, 9, mettl_group2_name, color)
+                write_excel_object.ws.write(2, 9, mettl_group2_name[0], color)
 
                 if next_group2[0] == 'Next group success':
                     color = write_excel_object.green_color
@@ -144,14 +143,14 @@ class MettlAutomation:
                     overall_status = 'Fail'
                 write_excel_object.ws.write(2, 10, next_group2[0], color)
 
-                if 'Numerical Ability' in mettl_group3_name:
+                if '3. Numerical Ability' == mettl_group3_name[0]:
                     color = write_excel_object.green_color
 
                 else:
                     color = write_excel_object.red_color
                     overall_color = write_excel_object.red_color
                     overall_status = 'Fail'
-                write_excel_object.ws.write(2, 11, mettl_group3_name, color)
+                write_excel_object.ws.write(2, 11, mettl_group3_name[0], color)
 
                 if next_group3[0] == 'Next group success':
                     color = write_excel_object.green_color
@@ -162,14 +161,14 @@ class MettlAutomation:
                     overall_status = 'Fail'
                 write_excel_object.ws.write(2, 12, next_group3[0], color)
 
-                if 'Common Applications and MS office' in mettl_group4_name:
+                if '4. Common Applications and MS office' == mettl_group4_name[0]:
                     color = write_excel_object.green_color
 
                 else:
                     color = write_excel_object.red_color
                     overall_color = write_excel_object.red_color
                     overall_status = 'Fail'
-                write_excel_object.ws.write(2, 13, mettl_group4_name, color)
+                write_excel_object.ws.write(2, 13, mettl_group4_name[0], color)
 
                 if next_group4[0] == 'Next group success':
                     color = write_excel_object.green_color
@@ -180,14 +179,14 @@ class MettlAutomation:
                     overall_status = 'Fail'
                 write_excel_object.ws.write(2, 14, next_group4[0], color)
 
-                if 'Pseudo Code' in mettl_group5_name:
+                if '5. Pseudo Code' == mettl_group5_name[0]:
                     color = write_excel_object.green_color
 
                 else:
                     color = write_excel_object.red_color
                     overall_color = write_excel_object.red_color
                     overall_status = 'Fail'
-                write_excel_object.ws.write(2, 15, mettl_group5_name, color)
+                write_excel_object.ws.write(2, 15, mettl_group5_name[0], color)
 
                 if next_group5[0] == 'Next group success':
                     color = write_excel_object.green_color
@@ -198,14 +197,14 @@ class MettlAutomation:
                     overall_status = 'Fail'
                 write_excel_object.ws.write(2, 16, next_group5[0], color)
 
-                if 'Networking Security and Cloud' in mettl_group6_name:
+                if '6. Networking Security and Cloud' == mettl_group6_name[0]:
                     color = write_excel_object.green_color
 
                 else:
                     color = write_excel_object.red_color
                     overall_color = write_excel_object.red_color
                     overall_status = 'Fail'
-                write_excel_object.ws.write(2, 17, mettl_group6_name, color)
+                write_excel_object.ws.write(2, 17, mettl_group6_name[0], color)
 
                 if final_submit[0] == 'Mettl Final Submit success':
                     color = write_excel_object.green_color
@@ -306,12 +305,15 @@ tag_candidate = crpo_common_obj.tag_candidate_to_test(token, candidate_id, test_
 time.sleep(10)
 test_userid = crpo_common_obj.get_all_test_user(token, candidate_id)
 print(test_userid)
+# test_userid = 2548311
 tu_req_payload = {"testUserId": test_userid,
                   "requiredFlags": {"fileContentRequired": False, "isQuestionWise": True, "questionTypes": [16, 8],
                                     "isGroupSectionWiseMarks": True, "isVendorDetails": True, "isCodingSummary": False}}
 tu_cred = crpo_common_obj.test_user_credentials(token, test_userid)
 login_id = tu_cred['data']['testUserCredential']['loginId']
 password = tu_cred['data']['testUserCredential']['password']
+# login_id = "Automation146751461805"
+# password = "2PYU~~"
 print(login_id)
 print(password)
 qs.mettl_technical(login_id, password, token, tu_req_payload)

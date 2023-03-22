@@ -7,6 +7,8 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
+
+
 # from selenium.webdriver.common.keys import Keys
 
 
@@ -523,7 +525,8 @@ class AssessmentUICommon:
         time.sleep(10)
         try:
             self.driver.switch_to.frame('thirdPartyIframe')
-            self.driver.find_element(By.XPATH, "//*[@class='btn btn-primary ng-isolate-scope']").click()
+            self.driver.find_element(By.XPATH,
+                                     "//*[@class='btn btn-primary py-2 px-3 btn-lineheight mobile-fixed-btn btn btn-primary']").click()
             print("Mettl Test is Started")
             mettl_start_test = "Start test1 Success"
             is_element_successful = True
@@ -536,10 +539,10 @@ class AssessmentUICommon:
         return mettl_start_test, is_element_successful
 
     def mettl_start_test2(self):
-        time.sleep(20)
+        time.sleep(5)
         try:
             self.driver.find_element(By.XPATH,
-                                     "//*[@class='btn btn-primary _start-test start-test-button ng-isolate-scope']").click()
+                                     "//*[@class='py-2 px-4 mobile-btn-block btn btn-primary']").click()
             print("Mettl Test is Started2")
             mettl_start_test2 = "Start test2 Success"
             is_element_successful = True
@@ -551,10 +554,43 @@ class AssessmentUICommon:
             mettl_start_test2 = "Start test2 Failed"
         return mettl_start_test2, is_element_successful
 
+    def mettl_terms_and_conditions(self):
+        time.sleep(5)
+        try:
+            self.driver.find_element(By.NAME, "consentCheckbox").click()
+            time.sleep(2)
+            self.driver.find_element(By.XPATH, "//*[@class ='px-4 mobile-btn-block btn btn-primary']").click()
+            print("Terms and conditions Success")
+            mettl_start_test2 = "Terms and conditions Success"
+            is_element_successful = True
+
+        except Exception as e:
+            print(e)
+            print("Terms and conditions Failed")
+            is_element_successful = False
+            mettl_start_test2 = "Terms and conditions Failed"
+        return mettl_start_test2, is_element_successful
+
+    def mettl_start_test3(self):
+        time.sleep(5)
+        try:
+            self.driver.find_element(By.XPATH,
+                                     "//*[@class='px-4 text-sky-lighter mobile-fixed-btn  btn btn-primary']").click()
+            print("Mettl Test is Started3")
+            mettl_start_test3 = "Start test3 Success"
+            is_element_successful = True
+
+        except Exception as e:
+            print(e)
+            print("Mettl test is not Started3")
+            is_element_successful = False
+            mettl_start_test2 = "Start test3 Failed"
+        return mettl_start_test3, is_element_successful
+
     def mettl_answer_question(self):
         time.sleep(2)
         try:
-            self.driver.find_element(By.XPATH, "//*[@class='cursor-pointer ng-scope']").click()
+            self.driver.find_element(By.XPATH, "//*[@class='px-5 py-3 d-block form-check-label']").click()
             print("Mettl Test is Started2")
             mettl_answer_question = "answered_question"
             is_element_successful = True
@@ -570,7 +606,7 @@ class AssessmentUICommon:
         time.sleep(2)
         try:
             self.driver.find_element(By.XPATH,
-                                     "//*[@class='btn btn-success btn-sm btn-next-section _next-section ng-isolate-scope']").click()
+                                     "//*[@class='word-break border px-xl-3 px-2 btn btn-success']").click()
             print("Mettl Next section success")
             mettl_next_section = "Next group success"
             is_element_successful = True
@@ -586,7 +622,7 @@ class AssessmentUICommon:
         time.sleep(2)
         try:
             self.driver.find_element(By.XPATH,
-                                     '//button[text()="Finish Test"]').click()
+                                     "//*[@class=' last-item-btn  btn btn-ft btn-link btn-focus-outline  btn-default-ft border-white']").click()
             print("Mettl Final Submit success")
             mettl_next_section = "Mettl Final Submit success"
             is_element_successful = True
@@ -602,7 +638,7 @@ class AssessmentUICommon:
         time.sleep(2)
         try:
             self.driver.find_element(By.XPATH,
-                                     '//button[text()="Yes, Finish test"]').click()
+                                     '//*[@class="btn btn-primary py-2 px-3 ft-btn-danger btn-danger btn btn-primary"]').click()
             print("Mettl Final Submit success")
             mettl_next_section = "Mettl Final Submit Confirmation success"
             is_element_successful = True
@@ -618,7 +654,7 @@ class AssessmentUICommon:
         time.sleep(2)
         try:
             value = self.driver.find_element(By.XPATH,
-                                             '//*[@class="form-control inline _selectSections ng-pristine ng-valid"]').text
+                                             '//*[@class="pr-2 text-truncate"]').text
             print(value)
             print(type(value))
             print(len(value))
@@ -838,9 +874,7 @@ class AssessmentUICommon:
     #     self.driver.find_element(By.XPATH, '//button[text()=" Compile & Execute"]').click()
     #
 
-        # self.driver.find_element(By.XPATH, '//button[text()=" Compile & Execute"]').click()
-
-
+    # self.driver.find_element(By.XPATH, '//button[text()=" Compile & Execute"]').click()
 
 
 assess_ui_common_obj = AssessmentUICommon()
