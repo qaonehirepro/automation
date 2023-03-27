@@ -31,9 +31,9 @@ input_path_mic_distortion_files = input_common_dir + 'Assessment\\mic_distortion
 input_path_brightness_check = input_common_dir + 'Assessment\\brightnesscheck\\brightnesscheck.xls'
 input_path_brightness_check_files = input_common_dir + 'Assessment\\brightnesscheck\\%s'
 input_coding_compiler = input_common_dir + 'Assessment\\coding\\codingcompiler.xls'
-input_question_statistics = input_common_dir + 'Assessment\\question_statistics1.xls'
-input_question_statistics_tests = input_common_dir + 'Assessment\\question_statistics_crpoqa.xls'
-input_question_statistics_hirepro_cron = input_common_dir + 'Assessment\\question_statistics_new_cron_1.xls'
+input_question_statistics = input_common_dir + 'Assessment\\question_statistics_for_questions.xls'
+input_question_statistics_tests = input_common_dir + 'Assessment\\question_statistics_for_tests.xls'
+# input_question_statistics_hirepro_cron = input_common_dir + 'Assessment\\question_statistics_new_cron_1.xls'
 
 input_path_microsite_create_case = input_common_dir + 'Microsite\\GenericExcelTest.xls'
 input_path_microsite_update_case = input_common_dir + 'Microsite\\GenericExcelTest.xls'
@@ -83,6 +83,7 @@ output_coding_compiler = output_common_dir + 'Assessment\\codingcompiler'
 output_question_statistics = output_common_dir + 'Assessment\\API_qn_statisctis'
 output_question_statistics_tests = output_common_dir + 'Assessment\\API_qn_statisctis_tests'
 output_question_statistics_new_cron = output_common_dir + 'Assessment\\API_qn_statisctis_new_cron'
+output_question_statistics_tests_hp_cron = output_common_dir + 'Assessment\\API_hp_qn_statisctis_tests'
 
 # Interview
 output_interview_proctor_evaluation = output_common_dir + 'interview\\interview_proctoring_eval'
