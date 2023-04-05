@@ -4,6 +4,7 @@ from SCRIPTS.UI_SCRIPTS.assessment_data_verification import *
 from SCRIPTS.COMMON.read_excel import *
 from SCRIPTS.COMMON.io_path import *
 
+
 class OnlineAssessment:
 
     def __init__(self):

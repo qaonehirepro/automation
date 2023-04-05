@@ -10,8 +10,6 @@ from SCRIPTS.CRPO_COMMON.crpo_common import *
 class OnlineAssessment:
 
     def __init__(self):
-        # self.url = amsin_at_assessment_url
-        # self.path = r"F:\qa_automation\chromedriver.exe"
         self.row = 1
         write_excel_object.save_result(output_path_ui_rtc_static)
         header = ["UI automation"]

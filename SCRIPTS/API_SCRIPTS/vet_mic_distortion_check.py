@@ -25,6 +25,8 @@ class MicDistortionCheck:
         write_excel_object.write_headers_for_scripts(1, 0, header, write_excel_object.green_color_bold)
 
     def upload_audio_file(self, token, excel_input):
+        write_excel_object.current_status_color = write_excel_object.green_color
+        write_excel_object.current_status = "Pass"
         file_path = input_path_mic_distortion_files % (excel_input.get('filePathName'))
         file_name = excel_input.get('fileName')
         print(file_name)
@@ -40,8 +42,8 @@ class MicDistortionCheck:
             write_excel_object.compare_results_and_write_vertically(excel_input.get('result'),
                                                                     audio_distortion_response['Result'], self.row_size,
                                                                     3)
-            write_excel_object.compare_results_and_write_vertically(excel_input.get('distortionRatio'),
-                                                                    audio_distortion_response['DistortionRatio'],
+            write_excel_object.compare_results_and_write_vertically(round(excel_input.get('distortionRatio'),4),
+                                                                    round(audio_distortion_response['DistortionRatio'],4),
                                                                     self.row_size, 5)
             write_excel_object.compare_results_and_write_vertically(int(excel_input.get('totalSegments')),
                                                                     audio_distortion_response['TotalSegments'],
