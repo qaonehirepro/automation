@@ -3,6 +3,7 @@ from SCRIPTS.CRPO_COMMON.credentials import *
 from SCRIPTS.COMMON.read_excel import *
 from SCRIPTS.COMMON.write_excel_new import *
 from SCRIPTS.COMMON.io_path import *
+from SCRIPTS.CRPO_COMMON.proc_eval_config import *
 
 
 class ProctorEvaluation:
@@ -68,6 +69,12 @@ class ProctorEvaluation:
 
 login_token = crpo_common_obj.login_to_crpo(cred_crpo_admin.get('user'), cred_crpo_admin.get('password'),
                                             cred_crpo_admin.get('tenant'))
+content = json.dumps(automation_proctor_eval_app_pref)
+app_pref_proc_eval_id = automation_tenant_proc_eval_id
+app_pref_proc_eval_type = automation_tenant_proc_eval_type
+update_app_preference = CrpoCommon.save_apppreferences(login_token, content, app_pref_proc_eval_id,
+                                                       app_pref_proc_eval_type)
+
 excel_read_obj.excel_read(input_path_proctor_evaluation, 1)
 excel_data = excel_read_obj.details
 proctor_obj = ProctorEvaluation()
@@ -93,22 +100,3 @@ for data in excel_data:
     proctor_obj.proctor_detail(row_count, data, login_token)
     row_count = row_count + 1
 write_excel_object.write_overall_status(testcases_count=10)
-# for data in excel_data:
-#     id = int(data.get('appPreferenceId'))
-#     content = data.get('appPreference')
-#     type = data.get('appPreferenceType')
-#     content1 = json.dumps(content)
-#     update_app_preference = CrpoCommon.save_apppreferences(login_token, content, id, type)
-#     if update_app_preference.get('status') == 'OK':
-#         testuser_id = int(data.get('testUserId'))
-#         context_id = CrpoCommon.force_evaluate_proctoring(login_token, [testuser_id])
-#         context_id = context_id['data']['ContextId']
-#         current_job_status = 'Pending'
-#         while current_job_status == 'Pending':
-#             current_job_status = CrpoCommon.job_status(login_token, context_id)
-#             current_job_status = current_job_status['data']['JobState']
-#             print("_________________ Proctor Evaluation is in Progress _______________________")
-#             print(current_job_status)
-#         proctor_obj.proctor_detail(row_count, data, login_token)
-#         row_count = row_count + 1
-# write_excel_object.write_overall_status(testcases_count=25)

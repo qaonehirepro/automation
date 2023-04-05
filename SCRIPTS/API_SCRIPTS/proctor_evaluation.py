@@ -3,6 +3,7 @@ from SCRIPTS.CRPO_COMMON.credentials import *
 from SCRIPTS.COMMON.read_excel import *
 from SCRIPTS.COMMON.write_excel_new import *
 from SCRIPTS.COMMON.io_path import *
+from SCRIPTS.CRPO_COMMON.proc_eval_config import *
 
 
 class ProctorEvaluation:
@@ -75,6 +76,12 @@ class ProctorEvaluation:
 
 login_token = crpo_common_obj.login_to_crpo(cred_crpo_admin.get('user'), cred_crpo_admin.get('password'),
                                             cred_crpo_admin.get('tenant'))
+
+content = json.dumps(automation_proctor_eval_app_pref)
+app_pref_proc_eval_id = automation_tenant_proc_eval_id
+app_pref_proc_eval_type = automation_tenant_proc_eval_type
+update_app_preference = CrpoCommon.save_apppreferences(login_token, content, app_pref_proc_eval_id,
+                                                       app_pref_proc_eval_type)
 excel_read_obj.excel_read(input_path_proctor_evaluation, 0)
 excel_data = excel_read_obj.details
 proctor_obj = ProctorEvaluation()
