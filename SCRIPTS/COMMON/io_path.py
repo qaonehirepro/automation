@@ -58,6 +58,7 @@ input_path_ui_reuse_score = input_common_dir + 'Assessment\\reuse_score.xls'
 input_path_ui_mcq_client_section_random = input_common_dir + 'UI\\Assessment\\clientside_randomization.xls'
 input_path_ui_rtc_static = input_common_dir + 'UI\\Assessment\\rtc_static.xls'
 input_path_ui_marking_schema = input_common_dir + 'UI\\Assessment\\test_marking.xls'
+#input_path_ui_mcq_marking_schema = input_common_dir + 'UI\\Assessment\\test_marking_mcq.xls'
 
 # output paths
 output_path_allowed_extension = output_common_dir + 'allowed_extensions\\API_allowed_extensions(' + started + ').xlsx'
@@ -124,3 +125,4 @@ output_path_ui_subjective_client_group_random = output_common_dir + 'UI\\UI_clie
 output_path_ui_subjective_client_section_random = output_common_dir + 'UI\\UI_client_subjective_random_sectionlevel_'
 output_path_ui_marking_schema = output_common_dir + 'UI\\UI_Static_MCQ_Marking'
 output_path_ui_rtc_marking_schema = output_common_dir + 'UI\\UI_Static_rtc_Marking'
+output_path_ui_mcqww_marking_schema = output_common_dir + 'UI\\UI_Static_mcqww_Marking'
