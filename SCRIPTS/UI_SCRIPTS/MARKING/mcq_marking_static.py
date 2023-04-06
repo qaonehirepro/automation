@@ -1,3 +1,4 @@
+from SCRIPTS.CRPO_COMMON.credentials import cred_crpo_admin
 from SCRIPTS.UI_COMMON.assessment_ui_common_v2 import *
 import time
 from SCRIPTS.UI_SCRIPTS.assessment_data_verification import *
@@ -46,7 +47,7 @@ class OnlineAssessment:
     def mcq_marking(self, tu_details, token):
         write_excel_object.current_status_color = write_excel_object.green_color
         write_excel_object.current_status = 'pass'
-        self.browser = assess_ui_common_obj.initiate_browser(amsin_at_assessment_url, chrome_driver_path)
+        self.browser = assess_ui_common_obj.initiate_browser(amsin_automation_assessment_url, chrome_driver_path)
         login_details = assess_ui_common_obj.ui_login_to_test(tu_details.get('loginName'), (tu_details.get('password')))
         if login_details == 'SUCCESS':
             i_agreed = assess_ui_common_obj.select_i_agree()
@@ -161,7 +162,8 @@ assessment_obj = OnlineAssessment()
 # input_file_path = r"F:\qa_automation\PythonWorkingScripts_InputData\UI\Assessment\ui_relogin.xls"
 excel_read_obj.excel_read(input_path_ui_marking_schema, 0)
 excel_data = excel_read_obj.details
-crpo_token = crpo_common_obj.login_to_crpo('admin', 'At@2023$$', 'AT')
+crpo_token = crpo_common_obj.login_to_crpo(cred_crpo_admin.get('user'), cred_crpo_admin.get('password'),
+                                           cred_crpo_admin.get('tenant'))
 for current_excel_row in excel_data:
     print(current_excel_row)
     assessment_obj.mcq_marking(current_excel_row, crpo_token)

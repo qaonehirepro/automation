@@ -12,29 +12,29 @@ class DeleteTestMarking:
         cursor = db_connection.cursor()
         tuser_result_infos = "delete from test_result_infos where testresult_id in " \
                              "(SELECT tr.id from test_results tr inner join test_users tu on tu.id=tr.testuser_id " \
-                             "where tu.test_id in(15370,15378) and tu.status=1);"
+                             "where tu.test_id in(16241,16243,16249) and tu.status=1);"
         cursor.execute(tuser_result_infos)
         db_connection.commit()
 
-        tuser_results = "delete from test_results where testuser_id in (2452480,2452482,2452478,2452476,2452474,2452754,2452756);"
+        tuser_results = "delete from test_results where testuser_id in (2549815,2549813,2549819,2549817,2549879,2549877,2549875,2549873);"
         cursor.execute(tuser_results)
         db_connection.commit()
         tuser_scores = "delete from candidate_scores where testuser_id in(select tu.id from test_users tu " \
-                       "inner join tests t on t.id = tu.test_id where test_id in(15370,15378) and login_time " \
-                       "is not null and t.tenant_id in (159));"
+                       "inner join tests t on t.id = tu.test_id where test_id in(16241,16243,16249) and login_time " \
+                       "is not null and t.tenant_id in (1787));"
         cursor.execute(tuser_scores)
         db_connection.commit()
         tuser_login_infos = "delete from test_user_login_infos where testuser_id in " \
                             "(select tu.id from test_users tu inner join tests t on t.id = tu.test_id " \
-                            "where test_id in(15370,15378) and login_time is not null and t.tenant_id in (159));"
+                            "where test_id in(16241,16243,16249) and login_time is not null and t.tenant_id in (1787));"
         print(tuser_login_infos)
         cursor.execute(tuser_login_infos)
         db_connection.commit()
 
         tuser_proctoring_infos = "delete from test_user_proctor_details where testuser_id in " \
                                  "(select tu.id from test_users tu inner join tests t on " \
-                                 "t.id = tu.test_id where test_id in(15370,15378) and login_time is not null " \
-                                 "and t.tenant_id in (159));"
+                                 "t.id = tu.test_id where test_id in(16241,16243,16249) and login_time is not null " \
+                                 "and t.tenant_id in (1787));"
         print(tuser_proctoring_infos)
         cursor.execute(tuser_proctoring_infos)
         db_connection.commit()
@@ -42,7 +42,7 @@ class DeleteTestMarking:
         update_tuser_statuss = "update test_users set login_time = NULL, log_out_time = NULL, status = 0, " \
                                "client_system_info = NULL, time_spent = NULL, is_password_disabled = 0," \
                                "config = NULL,client_system_info = NULL, total_score = NULL, percentage = NULL, " \
-                               "test_start_time = NULL where test_id in(15370,15378) and login_time is not null;"
+                               "test_start_time = NULL where test_id in(16241,16243,16249) and login_time is not null;"
         print(update_tuser_statuss)
         cursor.execute(update_tuser_statuss)
         db_connection.commit()
