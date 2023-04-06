@@ -6,6 +6,7 @@ import time
 class CrpoCommon:
     domain = 'https://amsin.hirepro.in'
     pearson_domain = 'https://pearsonstg.hirepro.in'
+    eu_domain = 'https://euamsin.hirepro.in'
 
     @staticmethod
     def login_to_crpo(login_name, password, tenant):
@@ -372,6 +373,25 @@ class CrpoCommon:
                                  data=json.dumps(request, default=str), verify=False)
         resp = json.loads(response.content)
         return resp
+
+    @staticmethod
+    def get_app_preference(domain, token):
+        request = {}
+
+        response = requests.post(domain + "/py/assessment/test/api/v1/getAll/",
+                                 headers=token, data=json.dumps(request, default=str), verify=False)
+        get_all_resp = response.json()
+        # get_all_resp_status = get_all_resp['status']
+        return get_all_resp
+
+    @staticmethod
+    def app_node_by_random_api(domain, token):
+        request = {}
+
+        response = requests.post(domain + "/py/assessment/test/api/v1/getAll/",
+                                 headers=token, data=json.dumps(request, default=str), verify=False)
+        app_node = response.headers.get('X-APP_NODE')
+        return app_node
 
 
 crpo_common_obj = CrpoCommon()

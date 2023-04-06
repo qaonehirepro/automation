@@ -60,6 +60,11 @@ input_path_ui_rtc_static = input_common_dir + 'UI\\Assessment\\rtc_static.xls'
 input_path_ui_marking_schema = input_common_dir + 'UI\\Assessment\\test_marking.xls'
 #input_path_ui_mcq_marking_schema = input_common_dir + 'UI\\Assessment\\test_marking_mcq.xls'
 
+#INFRA
+input_infra_strict_domain_validations = input_common_dir + "INFRA\\strict_domain.xls"
+
+
+
 # output paths
 output_path_allowed_extension = output_common_dir + 'allowed_extensions\\API_allowed_extensions(' + started + ').xlsx'
 output_path_applicant_report = output_common_dir + 'Assessment\\report\\API_applicantreport'
@@ -126,3 +131,6 @@ output_path_ui_subjective_client_section_random = output_common_dir + 'UI\\UI_cl
 output_path_ui_marking_schema = output_common_dir + 'UI\\UI_Static_MCQ_Marking'
 output_path_ui_rtc_marking_schema = output_common_dir + 'UI\\UI_Static_rtc_Marking'
 output_path_ui_mcqww_marking_schema = output_common_dir + 'UI\\UI_Static_mcqww_Marking'
+
+#INFRA
+output_path_infra_strict_domain = output_common_dir + 'INFRA\\API_infra_strict_domain'
