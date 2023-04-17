@@ -393,5 +393,28 @@ class CrpoCommon:
         app_node = response.headers.get('X-APP_NODE')
         return app_node
 
+    @staticmethod
+    def update_role(request, token):
+        response = requests.post(crpo_common_obj.domain + "/py/common/role/update/",
+                                 headers=token, data=json.dumps(request, default=str), verify=False)
+        update_role = response.json()
+        return update_role
+
+    @staticmethod
+    def get_app_preference(token):
+        request = {"Type":"crpo.dashboard.config","IsTenantGlobal":True}
+        response = requests.post(crpo_common_obj.domain + "/py/common/common_app_utils/api/v1/getAppPreference/",
+                                 headers=token, data=json.dumps(request, default=str), verify=False)
+        app_preference = response.json()
+        return app_preference
+
+    @staticmethod
+    def auth_user_v2(token):
+        request = {}
+
+        response = requests.post(crpo_common_obj.domain + "/py/common/user/auth_user_v2/",
+                                 headers=token, data=json.dumps(request, default=str), verify=False)
+        auth_user_v2 = response.json()
+        return auth_user_v2
 
 crpo_common_obj = CrpoCommon()

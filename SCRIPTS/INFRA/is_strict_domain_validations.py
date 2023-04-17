@@ -62,21 +62,15 @@ class IsStrictValidations:
                                                                 self.row_count, 7)
         write_excel_object.compare_results_and_write_vertically(xl_data.get('pythonAppNode'), app_nodes[0],
                                                                 self.row_count, 9)
-        print(current_excel_data.get('testCases'))
         write_excel_object.compare_results_and_write_vertically(current_excel_data.get('testCases'), None,
                                                                 self.row_count, 0)
-        print(current_excel_data.get('tenantName'))
         write_excel_object.compare_results_and_write_vertically(current_excel_data.get('tenantName'), None,
                                                                 self.row_count, 2)
-        print(current_excel_data.get('typeOfUser'))
         write_excel_object.compare_results_and_write_vertically(current_excel_data.get('typeOfUser'), None,
                                                                 self.row_count, 3)
-        print(current_excel_data.get('user'))
         write_excel_object.compare_results_and_write_vertically(current_excel_data.get('user'), None, self.row_count, 4)
-        print(current_excel_data.get('domainName'))
         write_excel_object.compare_results_and_write_vertically(current_excel_data.get('domainName'), None,
                                                                 self.row_count, 5)
-        print(current_excel_data.get('appName'))
         write_excel_object.compare_results_and_write_vertically(current_excel_data.get('appName'), None, self.row_count,
                                                                 6)
         write_excel_object.compare_results_and_write_vertically(write_excel_object.current_status, None, self.row_count,

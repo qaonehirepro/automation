@@ -1,6 +1,7 @@
 import datetime
 import os
 from SCRIPTS.COMMON.io_user_directory import *
+
 path = os.getcwd()
 
 # Assessment URLS
@@ -9,6 +10,10 @@ amsin_at_assessment_url = common_domain + ".hirepro.in/assessment/#/assess/login
 amsin_at_vet_url = 'https://pearsonstg.hirepro.in/assessment/#/assess/login/eyJhbGlhcyI6ImF0In0='
 amsin_automation_assessment_url = common_domain + '.hirepro.in/assessment/#/assess/login/eyJhbGlhcyI6ImF1dG9tYXRpb24ifQ=='
 
+# CRPO Login
+amsin_at_crpo_login = 'https://amsin.hirepro.in/crpo/#/login/AT'
+
+# Chromedriver Related
 chrome_driver_path = chrome_driver_dir + 'chromedriver.exe'
 started = datetime.datetime.now()
 started = started.strftime("%d-%m-%Y")
@@ -39,7 +44,6 @@ input_path_microsite_create_case = input_common_dir + 'Microsite\\GenericExcelTe
 input_path_microsite_update_case = input_common_dir + 'Microsite\\GenericExcelTest.xls'
 input_path_microsite_generic_case = input_common_dir + 'Microsite\\GenericExcelTest.xls'
 
-
 # interview
 input_interview_proctoring_evaluation = input_common_dir + 'Interview\\proctoring\\proctoring.xls'
 
@@ -58,12 +62,11 @@ input_path_ui_reuse_score = input_common_dir + 'Assessment\\reuse_score.xls'
 input_path_ui_mcq_client_section_random = input_common_dir + 'UI\\Assessment\\clientside_randomization.xls'
 input_path_ui_rtc_static = input_common_dir + 'UI\\Assessment\\rtc_static.xls'
 input_path_ui_marking_schema = input_common_dir + 'UI\\Assessment\\test_marking.xls'
-#input_path_ui_mcq_marking_schema = input_common_dir + 'UI\\Assessment\\test_marking_mcq.xls'
+# input_path_ui_mcq_marking_schema = input_common_dir + 'UI\\Assessment\\test_marking_mcq.xls'
 
-#INFRA
+# INFRA
 input_infra_strict_domain_validations = input_common_dir + "INFRA\\strict_domain.xls"
-
-
+input_adhoc_profile_validations = input_common_dir + "INFRA\\adhoc_profile.xls"
 
 # output paths
 output_path_allowed_extension = output_common_dir + 'allowed_extensions\\API_allowed_extensions(' + started + ').xlsx'
@@ -132,5 +135,6 @@ output_path_ui_marking_schema = output_common_dir + 'UI\\UI_Static_MCQ_Marking'
 output_path_ui_rtc_marking_schema = output_common_dir + 'UI\\UI_Static_rtc_Marking'
 output_path_ui_mcqww_marking_schema = output_common_dir + 'UI\\UI_Static_mcqww_Marking'
 
-#INFRA
+# INFRA
 output_path_infra_strict_domain = output_common_dir + 'INFRA\\API_infra_strict_domain'
+output_path_adhoc_profile_api_validation = output_common_dir + 'INFRA\\API_adhoc_profile_api_validation'

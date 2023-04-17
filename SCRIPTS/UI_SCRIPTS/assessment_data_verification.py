@@ -69,6 +69,33 @@ class AssessmentDataVerification:
             row_size += 1
         self.ws.write(0, 1, self.over_all_status, self.over_all_status_color)
 
+    def assessment_data_report_for_mca(self, token, excel_data):
+        row_size = 2
+        print(token)
+        for tu_details in excel_data:
+            candidate_answers = []
+            test_id = int(tu_details.get('testId'))
+            test_user_id = int(tu_details.get('testUserId'))
+            print(test_user_id)
+            actual_data = crpo_common_obj.candidate_web_transcript(token, test_id, test_user_id)
+            print(actual_data)
+            data = actual_data.get('data')
+            mcq_data = data.get('multipleCorrectAnswer')
+            for index in range(0, len(mcq_data)):
+                if tu_details.get('reloginRequird') == 'Yes':
+                    data = {'excel': tu_details.get('orig_answer_qid' + str(index + 1)),
+                            'actual': str(mcq_data[index].get('candidateAnswer'))}
+                elif tu_details.get('unAnswerRequired') == 'Yes':
+                    data = {'excel': 'None',
+                            'actual': str(mcq_data[index].get('candidateAnswer'))}
+                else:
+                    data = {'excel': tu_details.get('orig_answer_qid' + str(index + 1)),
+                            'actual': str(mcq_data[index].get('candidateAnswer'))}
+                candidate_answers.append(data)
+            obj_assessment_data_verification.write_data(tu_details, candidate_answers, row_size)
+            row_size += 1
+        self.ws.write(0, 1, self.over_all_status, self.over_all_status_color)
+
     def write_data(self, excel_candidate_data, candidate_answers, row_value):
         col_index = 4
         status = "Pass"

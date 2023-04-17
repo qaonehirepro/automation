@@ -13,6 +13,8 @@ amsin_master = {"host": "35.154.213.175", "database": 'appserver_core', "user": 
 
 amsin_slave = {"host": "35.154.36.218", "database": 'appserver_core', "user": "qauser", "password": "qauser"}
 
+# AT Adhoc Profile login
+amsin_at_adhoc_profile = {"user": "ms_adhoc_automation", "password": "passpass1", "tenant": "AT"}
 
 # Infra Testing Credentials
 mumbai_non_eu_at = {"user": "admin", "password": "At@2023$$", "tenant": "AT"}

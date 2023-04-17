@@ -114,4 +114,4 @@ assessment_obj.calculate_qn_stats(excel_data, hirepro_token)
 for current_excel_row in excel_data:
     assessment_obj.question_statistics(current_excel_row, hirepro_token)
 
-write_excel_object.write_overall_status(1)
+write_excel_object.write_overall_status(11)

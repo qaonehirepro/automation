@@ -79,8 +79,25 @@ class AssessmentUICommon:
         if not is_answered:
             answered.click()
 
+    def select_answer_for_mca_question(self, answer):
+        # If user wants to select one or more options then If condition will work other wise else will pass the stmt.
+        if answer:
+            # user can choose n number of options, options be passed as string and comma separated
+            # below split will split the string by using comma and will make a list.
+            answer_choices = answer.split(',')
+            for options in answer_choices:
+                # strip is necessary to remove the leading and trailing space of each option.
+                options = options.strip()
+                # elem = self.driver.find_element_by_xpath('//*[@id="option2"]')
+                value = '//*[@id="%s"]' % options
+                elem = self.driver.find_element_by_xpath(value)
+                self.driver.implicitly_wait(10)
+                ActionChains(self.driver).move_to_element(elem).click(elem).perform()
+        else:
+            # User does not want to select any option, so pass the stmt.
+            pass
+
     def check_answered_status(self, previous_answer):
-        # time.sleep(1)
         value = "//input[@name='answerOptions' and @value='%s']" % previous_answer
         answered = self.driver.find_element(By.XPATH, value).is_enabled()
         return answered

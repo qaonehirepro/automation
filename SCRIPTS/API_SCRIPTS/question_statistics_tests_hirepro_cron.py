@@ -131,4 +131,4 @@ automation_token = crpo_common_obj.login_to_crpo(cred_crpo_admin.get('user'),
 print("AT")
 print(automation_token)
 assessment_obj.calculate_qn_stats(excel_data, automation_token)
-write_excel_object.write_overall_status(22)
+write_excel_object.write_overall_status(21)
