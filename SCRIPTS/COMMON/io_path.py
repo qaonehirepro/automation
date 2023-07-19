@@ -9,6 +9,7 @@ common_domain = 'https://amsin'
 amsin_at_assessment_url = common_domain + ".hirepro.in/assessment/#/assess/login/eyJhbGlhcyI6ImF0In0="
 amsin_at_vet_url = 'https://pearsonstg.hirepro.in/assessment/#/assess/login/eyJhbGlhcyI6ImF0In0='
 amsin_automation_assessment_url = common_domain + '.hirepro.in/assessment/#/assess/login/eyJhbGlhcyI6ImF1dG9tYXRpb24ifQ=='
+amsin_crpodemo_assessment_url = common_domain + '.hirepro.in/assessment/#/assess/login/eyJhbGlhcyI6ImNycG9kZW1vIn0='
 
 # CRPO Login
 amsin_at_crpo_login = 'https://amsin.hirepro.in/crpo/#/login/AT'
@@ -53,6 +54,7 @@ input_path_encryption_check = input_common_dir + 'Security\encryption.xls'
 
 # UI Automation Input Path
 input_path_ui_mcq_randomization = input_common_dir + 'UI\\Assessment\\qprandomization_automation.xls'
+input_path_ui_video_randomization = input_common_dir + 'UI\\Assessment\\qprandomization_crpodemo.xls'
 input_path_ui_assessment_verification = input_common_dir + 'UI\\Assessment\\ui_relogin.xls'
 input_path_ui_qp_verification = input_common_dir + "UI\\Assessment\\qp_verification.xls"
 input_path_ui_hirepro_chaining = input_common_dir + 'UI\\Assessment\\hirepro_chaining_at.xls'
@@ -62,7 +64,7 @@ input_path_ui_reuse_score = input_common_dir + 'Assessment\\reuse_score.xls'
 input_path_ui_mcq_client_section_random = input_common_dir + 'UI\\Assessment\\clientside_randomization.xls'
 input_path_ui_rtc_static = input_common_dir + 'UI\\Assessment\\rtc_static.xls'
 input_path_ui_marking_schema = input_common_dir + 'UI\\Assessment\\test_marking.xls'
-# input_path_ui_mcq_marking_schema = input_common_dir + 'UI\\Assessment\\test_marking_mcq.xls'
+#input_path_ui_fib_marking_schema = input_common_dir + 'UI\\Assessment\\test_marking_fib.xls'
 
 # INFRA
 input_infra_strict_domain_validations = input_common_dir + "INFRA\\strict_domain.xls"
@@ -106,6 +108,11 @@ output_path_ui_mcq_randomization = output_common_dir + 'UI\\UI_mcq_qprandomizati
 output_path_ui_rtc_server_random = output_common_dir + 'UI\\UI_rtc_server_qprandomization_'
 output_path_ui_coding_randomization = output_common_dir + 'UI\\UI_coding_qprandomization_'
 output_path_ui_subjective_randomization = output_common_dir + 'UI\\UI_subjective_qprandomization_'
+output_path_ui_mcqww_randomization = output_common_dir + 'UI\\UI_mcqww_qprandomization_'
+output_path_ui_mca_randomization = output_common_dir + 'UI\\UI_mca_qprandomization_'
+output_path_ui_fib_randomization = output_common_dir + 'UI\\UI_fib_qprandomization_'
+output_path_ui_video_randomization = output_common_dir + 'UI\\UI_video_qprandomization_'
+output_path_ui_draw_randomization = output_common_dir + 'UI\\UI_draw_qprandomization_'
 output_path_ui_assessment_verification = output_common_dir + 'UI\\UI_ui_assessment_relogin.xls'
 output_path_ui_qp_verification = output_common_dir + "UI\\UI_QP_verification"
 output_path_ui_test_security = output_common_dir + "UI\\UI_Test_Security"
@@ -134,6 +141,9 @@ output_path_ui_subjective_client_section_random = output_common_dir + 'UI\\UI_cl
 output_path_ui_marking_schema = output_common_dir + 'UI\\UI_Static_MCQ_Marking'
 output_path_ui_rtc_marking_schema = output_common_dir + 'UI\\UI_Static_rtc_Marking'
 output_path_ui_mcqww_marking_schema = output_common_dir + 'UI\\UI_Static_mcqww_Marking'
+output_path_ui_psych_marking_schema = output_common_dir + 'UI\\UI_Static_psych_Marking'
+output_path_ui_mca_marking_schema = output_common_dir + 'UI\\UI_Static_mca_Marking'
+output_path_ui_fib_marking_schema = output_common_dir + 'UI\\UI_Static_fib_Marking'
 
 # INFRA
 output_path_infra_strict_domain = output_common_dir + 'INFRA\\API_infra_strict_domain'

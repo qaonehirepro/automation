@@ -71,6 +71,43 @@ class AssessmentUICommon:
             print("I agree is not visible")
             print(e)
 
+    def selfie_page(self):
+
+        try:
+
+            tc_status = WebDriverWait(self.driver, 20).until(
+                EC.element_to_be_clickable(
+                    (By.XPATH, "/html/body/div[9]/div/div/div[2]/div[2]/div[2]/div[3]/div/p/label/span")))
+            tc_status.click()
+            self.driver.find_element(By.NAME, 'btnProctorNext').click()
+
+            tc2_chk1 = WebDriverWait(self.driver, 20).until(
+                EC.element_to_be_clickable(
+                    (By.XPATH, "/html/body/div[9]/div/div/div[2]/div[2]/assessment-terms-and-conditons/div/div/div/ul/li[5]/p/label/span")))
+            tc2_chk1.click()
+            tc2_chk2 = WebDriverWait(self.driver, 2).until(
+                EC.element_to_be_clickable(
+                    (By.XPATH, "/html/body/div[9]/div/div/div[2]/div[2]/assessment-terms-and-conditons/div/div/div/ul/li[6]/p/label/span[2]")))
+            tc2_chk2.click()
+            self.driver.find_element(By.NAME, 'btnProctorNext').click()
+
+            tc3_status = WebDriverWait(self.driver, 30).until(
+                EC.element_to_be_clickable(
+                    (By.XPATH,
+                     "/html/body/div[9]/div/div/div[2]/div[2]/div/proctor-compatibility/div[2]/div[3]/button")))
+            if tc3_status.is_enabled():
+                tc3_status.click()
+
+            time.sleep(20)
+            self.driver.find_element(By.NAME, 'btnProctorNext').click()
+
+            is_selected = True
+            return is_selected
+
+        except Exception as e:
+            print("Error in selfie page")
+            print(e)
+
     def select_answer_for_the_question(self, answer):
         # time.sleep(1)
         value = "//input[@name='answerOptions' and @value='%s']" % answer
@@ -78,6 +115,19 @@ class AssessmentUICommon:
         is_answered = answered.is_selected()
         if not is_answered:
             answered.click()
+
+    def select_answer_for_fib_question(self, answer):
+        if answer:
+            value = "//input[@placeholder = 'Blank']"
+            elem = self.driver.find_element(By.XPATH, value)
+            self.driver.implicitly_wait(10)
+            ActionChains(self.driver).move_to_element(elem).send_keys_to_element(elem, answer).perform()
+        else:
+            pass
+        # time.sleep(1)
+        # value = "//input[@placeholder = 'Blank']"
+        # answered = self.driver.find_element(By.XPATH, value)
+        # answered.send_keys(answer)
 
     def select_answer_for_mca_question(self, answer):
         # If user wants to select one or more options then If condition will work other wise else will pass the stmt.
@@ -90,7 +140,8 @@ class AssessmentUICommon:
                 options = options.strip()
                 # elem = self.driver.find_element_by_xpath('//*[@id="option2"]')
                 value = '//*[@id="%s"]' % options
-                elem = self.driver.find_element_by_xpath(value)
+                # elem = self.driver.find_element_by_xpath(value)
+                elem = self.driver.find_element(By.XPATH, value)
                 self.driver.implicitly_wait(10)
                 ActionChains(self.driver).move_to_element(elem).click(elem).perform()
         else:
