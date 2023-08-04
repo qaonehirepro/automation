@@ -306,6 +306,12 @@ class AssessmentUICommon:
         time.sleep(5)
         try:
             self.driver.switch_to.frame('thirdPartyIframe')
+            # To accept consent button
+            element = self.driver.find_element(By.ID, "accept-consent-button")
+            if element.is_displayed():
+                element.click()
+            else:
+                pass
             self.driver.find_element(By.XPATH, "//*[@class='wdtContextualItem  wdtContextStart']").click()
             print("VET Test is started Successfully")
             vet_test_started = "Successful"
