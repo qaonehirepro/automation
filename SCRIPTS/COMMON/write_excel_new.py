@@ -10,7 +10,7 @@ class Excel:
         self.started_time = self.now.strftime("%d-%m-%Y %H:%M")
 
     def save_result(self, save_excel_path):
-        self.started = datetime.datetime.now().strftime("%Y-%M-%d-%H-%M-%S")
+        self.started = datetime.datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
         self.write_excel = xlsxwriter.Workbook(save_excel_path + self.started + '.xls')
         self.ws = self.write_excel.add_worksheet()
         self.black_color = self.write_excel.add_format({'font_color': 'black', 'font_size': 9})

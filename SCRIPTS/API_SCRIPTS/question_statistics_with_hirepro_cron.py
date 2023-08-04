@@ -9,7 +9,7 @@ class QuestionStatistics:
 
     def __init__(self):
         self.row = 1
-        write_excel_object.save_result(output_question_statistics)
+        write_excel_object.save_result(output_question_statistics_new_cron)
         header = ['Question Statics']
         write_excel_object.write_headers_for_scripts(0, 0, header, write_excel_object.black_color_bold)
         header = ['Test Cases', 'Status', 'Question Id', 'Exp - Total Attempts', 'Act - Total Attempts',
