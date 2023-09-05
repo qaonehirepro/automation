@@ -22,6 +22,19 @@ class CrpoCommon:
         return headers
 
     @staticmethod
+    def eu_login_to_crpo(login_name, password, tenant):
+        header = {"content-type": "application/json"}
+        data = {"LoginName": login_name, "Password": password, "TenantAlias": tenant, "UserName": login_name}
+        response = requests.post(crpo_common_obj.eu_domain + "/py/common/user/login_user/", headers=header,
+                                 data=json.dumps(data), verify=False)
+        login_response = response.json()
+
+        headers = {"content-type": "application/json", "APP-NAME": "CRPO", "X-APPLMA": "true",
+                   "X-AUTH-TOKEN": login_response.get("Token")}
+        print(headers)
+        return headers
+
+    @staticmethod
     def candidate_web_transcript(token, test_id, test_user_id):
         request = {"testId": int(test_id), "testUserId": int(test_user_id),
                    "reportFlags": {"eduWorkProfilesRequired": True, "testUsersScoreRequired": True,
@@ -377,7 +390,6 @@ class CrpoCommon:
     @staticmethod
     def get_app_preference(domain, token):
         request = {}
-
         response = requests.post(domain + "/py/assessment/test/api/v1/getAll/",
                                  headers=token, data=json.dumps(request, default=str), verify=False)
         get_all_resp = response.json()
@@ -391,7 +403,10 @@ class CrpoCommon:
         response = requests.post(domain + "/py/assessment/test/api/v1/getAll/",
                                  headers=token, data=json.dumps(request, default=str), verify=False)
         app_node = response.headers.get('X-APP_NODE')
-        return app_node
+        get_all_resp = response.json()
+        resp = {'app_node': app_node, 'get_all_resp': get_all_resp}
+        return resp
+
 
     @staticmethod
     def update_role(request, token):
